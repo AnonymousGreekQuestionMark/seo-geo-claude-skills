@@ -1,9 +1,53 @@
 ---
 name: keyword-research
-description: Discovers high-value keywords with search intent analysis, difficulty assessment, and content opportunity mapping. Essential for starting any SEO or GEO content strategy.
+description: 'Use when the user asks to "find keywords", "keyword research", "what should I write about", "identify ranking opportunities", "topic ideas", "what are people searching for", "which keywords should I target", or "give me keyword ideas". Discovers high-value keywords with search intent analysis, difficulty assessment, and content opportunity mapping. Essential for starting any SEO or GEO content strategy. For analyzing competitor keywords specifically, see competitor-analysis. For content topic gaps, see content-gap-analysis.'
+license: Apache-2.0
+metadata:
+  author: aaron-he-zhu
+  version: "2.0.0"
+  geo-relevance: "medium"
+  tags:
+    - seo
+    - geo
+    - keywords
+    - search intent
+    - content strategy
+    - topic research
+    - content planning
+    - search volume
+    - long-tail keywords
+  triggers:
+    - "find keywords"
+    - "keyword research"
+    - "what should I write about"
+    - "identify ranking opportunities"
+    - "topic ideas"
+    - "search volume"
+    - "content opportunities"
+    - "what are people searching for"
+    - "which keywords should I target"
+    - "give me keyword ideas"
 ---
 
 # Keyword Research
+
+
+> **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
+
+<details>
+<summary>Browse all 20 skills</summary>
+
+**Research** · **keyword-research** · [competitor-analysis](../competitor-analysis/) · [serp-analysis](../serp-analysis/) · [content-gap-analysis](../content-gap-analysis/)
+
+**Build** · [seo-content-writer](../../build/seo-content-writer/) · [geo-content-optimizer](../../build/geo-content-optimizer/) · [meta-tags-optimizer](../../build/meta-tags-optimizer/) · [schema-markup-generator](../../build/schema-markup-generator/)
+
+**Optimize** · [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) · [technical-seo-checker](../../optimize/technical-seo-checker/) · [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) · [content-refresher](../../optimize/content-refresher/)
+
+**Monitor** · [rank-tracker](../../monitor/rank-tracker/) · [backlink-analyzer](../../monitor/backlink-analyzer/) · [performance-reporter](../../monitor/performance-reporter/) · [alert-manager](../../monitor/alert-manager/)
+
+**Cross-cutting** · [content-quality-auditor](../../cross-cutting/content-quality-auditor/) · [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) · [entity-optimizer](../../cross-cutting/entity-optimizer/) · [memory-management](../../cross-cutting/memory-management/)
+
+</details>
 
 This skill helps you discover, analyze, and prioritize keywords for SEO and GEO content strategies. It identifies high-value opportunities based on search volume, competition, intent, and business relevance.
 
@@ -53,6 +97,23 @@ Identify question-based keywords for [topic] that AI systems might answer
 ```
 What keywords is [competitor URL] ranking for that I should target?
 ```
+
+## Data Sources
+
+> See [CONNECTORS.md](../../CONNECTORS.md) for tool category placeholders.
+
+**With ~~SEO tool + ~~search console connected:**
+Automatically pull historical search volume data, keyword difficulty scores, SERP analysis, current rankings from ~~search console, and competitor keyword overlap. The skill will fetch seed keyword metrics, related keyword suggestions, and search trend data.
+
+**With manual data only:**
+Ask the user to provide:
+1. Seed keywords or topic description
+2. Target audience and geographic location
+3. Business goals (traffic, leads, sales)
+4. Current domain authority (if known) or site age
+5. Any known keyword performance data or search volume estimates
+
+Proceed with the full analysis using provided data. Note in the output which metrics are from automated collection vs. user-provided data.
 
 ## Instructions
 
@@ -114,7 +175,7 @@ When a user requests keyword research:
    |--------|---------|---------|--------------|
    | Informational | what, how, why, guide, learn | "what is SEO" | Blog posts, guides |
    | Navigational | brand names, specific sites | "google analytics login" | Homepage, product pages |
-   | Commercial | best, review, vs, compare | "best SEO tools 2024" | Comparison posts, reviews |
+   | Commercial | best, review, vs, compare | "best SEO tools [current year]" | Comparison posts, reviews |
    | Transactional | buy, price, discount, order | "buy SEO software" | Product pages, pricing |
 
 5. **Assess Keyword Difficulty**
@@ -145,6 +206,12 @@ When a user requests keyword research:
 6. **Calculate Opportunity Score**
 
    Formula: `Opportunity = (Volume × Intent Value) / Difficulty`
+
+   **Intent Value** assigns a numeric weight by search intent:
+   - Informational = 1
+   - Navigational = 1
+   - Commercial = 2
+   - Transactional = 3
 
    ```markdown
    ### Opportunity Matrix
@@ -256,11 +323,26 @@ When a user requests keyword research:
    | [Month] | [Title] | [Keyword] | [Type] |
    
    ## Next Steps
-   
+
    1. [Action item 1]
    2. [Action item 2]
    3. [Action item 3]
    ```
+
+## Validation Checkpoints
+
+### Input Validation
+- [ ] Seed keywords or topic description clearly provided
+- [ ] Target audience and business goals specified
+- [ ] Geographic and language targeting confirmed
+- [ ] Domain authority or site maturity level established
+
+### Output Validation
+- [ ] Every recommendation cites specific data points (not generic advice)
+- [ ] Search volume and difficulty scores included for each keyword
+- [ ] Keywords grouped by intent and mapped to content types
+- [ ] Topic clusters show clear pillar-to-cluster relationships
+- [ ] Source of each data point clearly stated (~~SEO tool data, user-provided, or estimated)
 
 ## Example
 
@@ -271,7 +353,7 @@ When a user requests keyword research:
 ```markdown
 # Keyword Research Report: Project Management Software
 
-**Generated**: December 2024
+**Generated**: [current month and year]
 **Target Audience**: Small business owners and teams
 **Business Goal**: Software signups and trials
 
@@ -302,7 +384,7 @@ When a user requests keyword research:
 | Keyword | Volume | Difficulty | Intent | Score |
 |---------|--------|------------|--------|-------|
 | project management software | 18,000 | 72 | Commercial | 65 |
-| best project management tools 2024 | 8,500 | 65 | Commercial | 62 |
+| best project management tools [current year] | 8,500 | 65 | Commercial | 62 |
 | project management app | 12,000 | 68 | Commercial | 58 |
 
 ### GEO Opportunities (AI-citation potential)
@@ -392,10 +474,107 @@ Research local keywords for [business type] in [city/region]
 6. **Include GEO keywords** in your strategy for AI visibility
 7. **Review quarterly** - keyword dynamics change over time
 
+## Keyword Intent Taxonomy
+
+Understanding search intent is critical for keyword selection and content planning.
+
+### Intent Classification Matrix
+
+| Intent Type | User Goal | SERP Signals | Content Strategy | Conversion Potential |
+|------------|-----------|--------------|-----------------|---------------------|
+| Informational | Learn something | Featured snippets, PAA, knowledge panels | Guides, tutorials, explainers | Low (nurture) |
+| Navigational | Find specific site/page | Brand results, sitelinks | Brand pages, login pages | Medium (brand) |
+| Commercial Investigation | Research before buying | Comparison results, reviews, "best" lists | Comparisons, reviews, buying guides | High (mid-funnel) |
+| Transactional | Complete an action | Shopping results, ads, product pages | Product pages, pricing, signup | Highest (bottom-funnel) |
+
+### Intent Signal Words
+
+| Intent | Signal Words | Example Keywords |
+|--------|-------------|-----------------|
+| Informational | how, what, why, when, guide, tutorial, learn, examples | "how to improve SEO", "what is schema markup" |
+| Navigational | [brand name], login, sign in, official, website | "Ahrefs login", "Google Search Console" |
+| Commercial | best, top, review, comparison, vs, alternative, pricing | "best SEO tools 2026", "Ahrefs vs SEMrush" |
+| Transactional | buy, purchase, discount, coupon, free trial, download, hire | "buy Ahrefs subscription", "SEO audit tool free" |
+
+## Topic Cluster Architecture
+
+### Hub-and-Spoke Model
+
+```
+                    ┌──────────────┐
+              ┌─────│  Sub-topic A  │
+              │     └──────────────┘
+              │     ┌──────────────┐
+┌─────────┐   ├─────│  Sub-topic B  │
+│  PILLAR  │───┤     └──────────────┘
+│  PAGE    │   ├─────┌──────────────┐
+└─────────┘   │     │  Sub-topic C  │
+              │     └──────────────┘
+              └─────┌──────────────┐
+                    │  Sub-topic D  │
+                    └──────────────┘
+```
+
+**Pillar Page**: Comprehensive overview (3,000-5,000 words) targeting broad keyword
+**Cluster Pages**: Focused articles (1,500-2,500 words) targeting specific long-tail keywords
+**Internal Links**: Every cluster page links to pillar; pillar links to all cluster pages
+
+### Topic Cluster Planning Template
+
+| Pillar Topic | Pillar Keyword | Cluster Topic | Cluster Keyword | Volume | Difficulty | Status |
+|-------------|---------------|--------------|----------------|--------|-----------|--------|
+| [Broad topic] | [Head keyword] | [Subtopic 1] | [Long-tail 1] | [X] | [X] | [Draft/Published] |
+
+## Keyword Prioritization Framework
+
+**Which score to use**: Use the Priority Score (below) for initial keyword triage and shortlisting. Use the Opportunity Score (Step 6 above) for final content calendar prioritization, where the additional GEO and competitive factors provide more nuanced ranking.
+
+### Priority Scoring Matrix
+
+Score each keyword 1-5 on these factors, then calculate weighted total:
+
+| Factor | Weight | Score 1 (Low) | Score 5 (High) |
+|--------|--------|---------------|----------------|
+| Search Volume | 20% | <100/mo | >10,000/mo |
+| Keyword Difficulty | 25% | KD >80 (hard) | KD <20 (easy) |
+| Business Relevance | 30% | Tangential to offering | Core to offering |
+| Search Intent Match | 15% | Informational only | Transactional/commercial |
+| Trend Direction | 10% | Declining | Growing |
+
+**Priority Score** = Σ(Factor Weight × Score) / 5
+
+### Priority Categories
+
+| Priority | Score Range | Action |
+|----------|------------|--------|
+| P0 — Must Target | 4.0-5.0 | Create content immediately |
+| P1 — High Value | 3.0-3.9 | Queue for next content sprint |
+| P2 — Opportunity | 2.0-2.9 | Plan for future content calendar |
+| P3 — Monitor | 1.0-1.9 | Track but don't prioritize |
+
+## Seasonal Keyword Patterns
+
+### Seasonal Analysis Framework
+
+| Season Trigger | Example Keywords | Planning Lead Time | Content Strategy |
+|---------------|-----------------|-------------------|-----------------|
+| Calendar events | "Black Friday SEO", "New Year marketing plan" | 3-4 months ahead | Publish 6-8 weeks before peak |
+| Industry events | "[Conference] takeaways", "Google algorithm update" | 1-2 months / reactive | Pre-plan templates, react quickly |
+| Budget cycles | "marketing budget template Q1", "SEO ROI report" | 2-3 months ahead | Target planning season (Oct-Dec) |
+| Seasonal demand | "summer marketing ideas", "holiday email campaigns" | 2-3 months ahead | Refresh annually with new data |
+
+## Reference Materials
+
+- [Keyword Intent Taxonomy](./references/keyword-intent-taxonomy.md) — Complete intent classification with signal words and content strategies
+- [Topic Cluster Templates](./references/topic-cluster-templates.md) — Hub-and-spoke architecture templates for pillar and cluster content
+
 ## Related Skills
 
-- [competitor-analysis](../competitor-analysis/) - See what keywords competitors rank for
-- [content-gap-analysis](../content-gap-analysis/) - Find missing keyword opportunities
-- [seo-content-writer](../../build/seo-content-writer/) - Create content for target keywords
-- [geo-content-optimizer](../../build/geo-content-optimizer/) - Optimize for AI citations
+- [competitor-analysis](../competitor-analysis/) — See what keywords competitors rank for
+- [content-gap-analysis](../content-gap-analysis/) — Find missing keyword opportunities
+- [seo-content-writer](../../build/seo-content-writer/) — Create content for target keywords
+- [geo-content-optimizer](../../build/geo-content-optimizer/) — Optimize for AI citations
+- [rank-tracker](../../monitor/rank-tracker/) — Monitor keyword position changes over time
+- [memory-management](../../cross-cutting/memory-management/) — Store keyword data in project memory
+- [serp-analysis](../serp-analysis/) — SERP patterns inform keyword strategy
 

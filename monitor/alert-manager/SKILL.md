@@ -1,9 +1,53 @@
 ---
 name: alert-manager
-description: Sets up and manages alerts for critical SEO and GEO metrics including ranking drops, traffic changes, technical issues, and competitor movements. Enables proactive monitoring and quick response to issues.
+description: 'Use when the user asks to "set up SEO alerts", "monitor rankings", "notify me when rankings drop", "traffic alerts", "watch competitor changes", "alert me if rankings drop", "notify me of traffic changes", or "watch my keywords for changes". Sets up and manages alerts for critical SEO and GEO metrics including ranking drops, traffic changes, technical issues, and competitor movements. Enables proactive monitoring and quick response to issues. For detailed rank analysis, see rank-tracker. For comprehensive reporting, see performance-reporter.'
+license: Apache-2.0
+metadata:
+  author: aaron-he-zhu
+  version: "2.0.0"
+  geo-relevance: "low"
+  tags:
+    - seo
+    - geo
+    - alerts
+    - monitoring
+    - ranking alerts
+    - traffic monitoring
+    - competitor alerts
+    - seo notifications
+    - proactive monitoring
+  triggers:
+    - "set up SEO alerts"
+    - "monitor rankings"
+    - "notify me when rankings drop"
+    - "traffic alerts"
+    - "watch competitor changes"
+    - "alert me"
+    - "ranking notifications"
+    - "alert me if rankings drop"
+    - "notify me of traffic changes"
+    - "watch my keywords for changes"
 ---
 
 # Alert Manager
+
+
+> **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
+
+<details>
+<summary>Browse all 20 skills</summary>
+
+**Research** · [keyword-research](../../research/keyword-research/) · [competitor-analysis](../../research/competitor-analysis/) · [serp-analysis](../../research/serp-analysis/) · [content-gap-analysis](../../research/content-gap-analysis/)
+
+**Build** · [seo-content-writer](../../build/seo-content-writer/) · [geo-content-optimizer](../../build/geo-content-optimizer/) · [meta-tags-optimizer](../../build/meta-tags-optimizer/) · [schema-markup-generator](../../build/schema-markup-generator/)
+
+**Optimize** · [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) · [technical-seo-checker](../../optimize/technical-seo-checker/) · [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) · [content-refresher](../../optimize/content-refresher/)
+
+**Monitor** · [rank-tracker](../rank-tracker/) · [backlink-analyzer](../backlink-analyzer/) · [performance-reporter](../performance-reporter/) · **alert-manager**
+
+**Cross-cutting** · [content-quality-auditor](../../cross-cutting/content-quality-auditor/) · [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) · [entity-optimizer](../../cross-cutting/entity-optimizer/) · [memory-management](../../cross-cutting/memory-management/)
+
+</details>
 
 This skill helps you set up proactive monitoring alerts for critical SEO and GEO metrics. Get notified when rankings drop, traffic changes significantly, technical issues occur, or competitors make moves.
 
@@ -54,6 +98,23 @@ Set up competitor monitoring for [competitor domains]
 ```
 Review and optimize my current SEO alerts
 ```
+
+## Data Sources
+
+> See [CONNECTORS.md](../../CONNECTORS.md) for tool category placeholders.
+
+**With ~~SEO tool + ~~search console + ~~web crawler connected:**
+Automatically monitor real-time metric feeds for ranking changes via ~~SEO tool API, indexing and coverage alerts from ~~search console, and technical health alerts from ~~web crawler. Set up automated threshold-based alerts with notification delivery.
+
+**With manual data only:**
+Ask the user to provide:
+1. Current baseline metrics for alert thresholds (rankings, traffic, backlinks)
+2. Critical keywords or pages to monitor
+3. Alert priority levels and notification preferences
+4. Historical data to understand normal fluctuation ranges
+5. Manual reporting on metric changes when they check their tools
+
+Proceed with the alert configuration using provided parameters. User will need to manually check metrics and report changes for alert triggers.
 
 ## Instructions
 
@@ -428,6 +489,20 @@ When a user requests alert setup:
     - [ ] Clean up false positives
     ```
 
+## Validation Checkpoints
+
+### Input Validation
+- [ ] Alert thresholds are based on realistic baseline data
+- [ ] Critical keywords and pages clearly identified
+- [ ] Response plans defined for each alert priority level
+- [ ] Notification channels configured with appropriate recipients
+
+### Output Validation
+- [ ] Every metric cites its data source and collection date
+- [ ] Alert thresholds account for normal metric fluctuations
+- [ ] Response plans are specific and time-bound
+- [ ] Source of each alert trigger clearly stated (~~SEO tool API alert, ~~search console notification, ~~web crawler alert, or manual user check)
+
 ## Example
 
 **User**: "Set up ranking drop alerts for my top keywords"
@@ -474,10 +549,109 @@ When a user requests alert setup:
 5. **Review regularly** - Alerts need maintenance as your SEO matures
 6. **Include positive alerts** - Track wins, not just problems
 
+## Alert Threshold Recommendations
+
+### Recommended Alert Thresholds by Metric
+
+| Metric | Warning Threshold | Critical Threshold | Check Frequency |
+|--------|------------------|-------------------|-----------------|
+| Organic traffic | -15% WoW | -30% WoW | Daily |
+| Average position (tracked KWs) | >3 position drop | >5 position drop | Daily |
+| Pages indexed | -5% change | -20% change | Weekly |
+| Crawl errors | >10 new errors | >50 new errors | Daily |
+| Core Web Vitals | Any metric moves to "Needs Improvement" | Any metric moves to "Poor" | Weekly |
+| Backlinks lost | >5% of total in 1 week | >15% in 1 week | Weekly |
+| AI citation loss | Any key query loses citation | >20% queries lose citation | Weekly |
+| Server errors (5xx) | >1% of pages | >5% of pages | Daily |
+| Security issues | Any detected | Any detected | Daily |
+| Manual penalty | N/A | Any notification | Daily |
+
+## Alert Fatigue Prevention
+
+### Alert Management Best Practices
+
+| Practice | Why | How |
+|----------|-----|-----|
+| **Tiered severity** | Not all alerts need immediate action | Critical: Immediate; Warning: Review daily; Info: Weekly digest |
+| **Threshold tuning** | Reduce false positives | Start conservative, tighten after 1 month of baseline data |
+| **Grouping** | Prevent alert storms | Group related alerts (e.g., multiple rank drops = "ranking alert") |
+| **Cooldown periods** | Avoid repeated alerts for same issue | Do not re-alert on same metric for 24-48 hours |
+| **Scheduled digests** | Reduce notification volume | Batch non-urgent alerts into daily or weekly email |
+| **Auto-resolution** | Close alerts when metric recovers | Track recovery and auto-close if threshold restored |
+
+### Alert Priority Classification
+
+| Priority | Response Time | Notification Channel | Example |
+|----------|-------------|---------------------|---------|
+| P0 — Emergency | Within 1 hour | SMS + Slack + Email | Site down, manual penalty, security breach |
+| P1 — Urgent | Same day | Slack + Email | Major traffic drop, crawl blocked, indexing issues |
+| P2 — Important | Within 48 hours | Email + Weekly digest | Rank drops, CWV degradation, backlink loss |
+| P3 — Monitor | Next weekly review | Weekly digest only | Minor fluctuations, new competitor content |
+
+## Escalation Path Templates
+
+### Standard Escalation Flow
+
+```
+Alert Triggers -> Automated Classification -> Route by Priority
+
+P0: Notify SEO Lead + Dev Team immediately
+    -> If not acknowledged in 30 min -> Notify Engineering Manager
+        -> If not resolved in 2 hours -> Notify VP/Director
+
+P1: Notify SEO Lead
+    -> If not acknowledged in 4 hours -> Notify Marketing Manager
+        -> Add to next standup agenda
+
+P2: Add to daily digest
+    -> If persists >1 week -> Escalate to P1
+
+P3: Add to weekly digest
+    -> If persists >1 month -> Escalate to P2
+```
+
+## Alert Response Playbooks
+
+### Traffic Drop Alert
+
+| Step | Action | If True | If False |
+|------|--------|---------|----------|
+| 1 | Check if site-wide or page-specific | Go to Step 2a | Go to Step 2b |
+| 2a | Check Google Search Status Dashboard for algorithm update | Document and wait | Go to Step 3 |
+| 2b | Check specific page for technical issues (404, noindex, slow) | Fix technical issue | Go to Step 3 |
+| 3 | Check Search Console for crawl errors or index drops | Fix crawl/index issues | Go to Step 4 |
+| 4 | Check if competitors published new content | Analyze and plan content response | Go to Step 5 |
+| 5 | Check backlink profile for lost links | Outreach for link recovery | Escalate for deeper analysis |
+
+### Ranking Drop Alert
+
+| Step | Action | If True | If False |
+|------|--------|---------|----------|
+| 1 | Verify the drop is real (check multiple tools, wait 24-48h) | Confirmed drop, go to Step 2 | False alarm, close alert |
+| 2 | Check if algorithm update occurred | Document, monitor, improve content quality | Go to Step 3 |
+| 3 | Check if your page changed recently | Revert or fix the change | Go to Step 4 |
+| 4 | Analyze the SERP — did a new competitor appear? | Study competitor, plan response | Go to Step 5 |
+| 5 | Check for lost backlinks to the ranking page | Recover links or build new ones | Escalate for full audit |
+
+### Technical Alert (Site Down / 5xx Errors)
+
+| Step | Action | If True | If False |
+|------|--------|---------|----------|
+| 1 | Confirm site is actually down (check from multiple locations) | Go to Step 2 | Close alert as false positive |
+| 2 | Check server/hosting status page | Provider issue — contact support, wait | Go to Step 3 |
+| 3 | Check recent deployments or configuration changes | Rollback the change | Go to Step 4 |
+| 4 | Check server resource usage (CPU, memory, disk) | Scale resources or optimize | Escalate to engineering |
+
+## Reference Materials
+
+- [Alert Threshold Guide](./references/alert-threshold-guide.md) — Recommended thresholds by metric, fatigue prevention strategies, and escalation path templates
+
 ## Related Skills
 
-- [rank-tracker](../rank-tracker/) - Ranking data for alerts
-- [backlink-analyzer](../backlink-analyzer/) - Backlink monitoring
-- [technical-seo-checker](../../optimize/technical-seo-checker/) - Technical monitoring
-- [performance-reporter](../performance-reporter/) - Alert summaries in reports
+- [rank-tracker](../rank-tracker/) — Ranking data for alerts
+- [backlink-analyzer](../backlink-analyzer/) — Backlink monitoring
+- [technical-seo-checker](../../optimize/technical-seo-checker/) — Technical monitoring
+- [performance-reporter](../performance-reporter/) — Alert summaries in reports
+- [memory-management](../../cross-cutting/memory-management/) — Store alert history and thresholds in project memory
+- [content-refresher](../../optimize/content-refresher/) — Content decay alerts trigger refresh workflows
 

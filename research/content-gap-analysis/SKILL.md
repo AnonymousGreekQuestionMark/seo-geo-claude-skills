@@ -1,9 +1,51 @@
 ---
 name: content-gap-analysis
-description: Identifies content opportunities by finding topics and keywords your competitors cover that you don't. Reveals untapped content potential and strategic gaps in your content strategy.
+description: 'Use when the user asks to "find content gaps", "what am I missing", "topics to cover", "content opportunities", "what do competitors write about that I do not", "what topics am I missing", "topics my competitors cover that I lack", or "where are my content blind spots". Identifies content opportunities by finding topics and keywords your competitors cover that you do not. Reveals untapped content potential and strategic gaps in your content strategy. For broader competitive intelligence, see competitor-analysis. For general keyword discovery, see keyword-research.'
+license: Apache-2.0
+metadata:
+  author: aaron-he-zhu
+  version: "2.0.0"
+  geo-relevance: "medium"
+  tags:
+    - seo
+    - geo
+    - content gaps
+    - content opportunities
+    - topic analysis
+    - content strategy
+    - competitive content
+  triggers:
+    - "find content gaps"
+    - "what am I missing"
+    - "topics to cover"
+    - "content opportunities"
+    - "what do competitors write about"
+    - "untapped topics"
+    - "content strategy gaps"
+    - "what topics am I missing"
+    - "they cover this but I don't"
+    - "where are my content blind spots"
 ---
 
 # Content Gap Analysis
+
+
+> **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
+
+<details>
+<summary>Browse all 20 skills</summary>
+
+**Research** · [keyword-research](../keyword-research/) · [competitor-analysis](../competitor-analysis/) · [serp-analysis](../serp-analysis/) · **content-gap-analysis**
+
+**Build** · [seo-content-writer](../../build/seo-content-writer/) · [geo-content-optimizer](../../build/geo-content-optimizer/) · [meta-tags-optimizer](../../build/meta-tags-optimizer/) · [schema-markup-generator](../../build/schema-markup-generator/)
+
+**Optimize** · [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) · [technical-seo-checker](../../optimize/technical-seo-checker/) · [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) · [content-refresher](../../optimize/content-refresher/)
+
+**Monitor** · [rank-tracker](../../monitor/rank-tracker/) · [backlink-analyzer](../../monitor/backlink-analyzer/) · [performance-reporter](../../monitor/performance-reporter/) · [alert-manager](../../monitor/alert-manager/)
+
+**Cross-cutting** · [content-quality-auditor](../../cross-cutting/content-quality-auditor/) · [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) · [entity-optimizer](../../cross-cutting/entity-optimizer/) · [memory-management](../../cross-cutting/memory-management/)
+
+</details>
 
 This skill identifies content opportunities by analyzing gaps between your content and competitors'. Find topics you're missing, keywords you could target, and content formats you should create.
 
@@ -54,6 +96,23 @@ What [content type] do competitors have that I don't?
 ```
 What content gaps exist for [audience segment] in my niche?
 ```
+
+## Data Sources
+
+> See [CONNECTORS.md](../../CONNECTORS.md) for tool category placeholders.
+
+**With ~~SEO tool + ~~search console + ~~analytics + ~~AI monitor connected:**
+Automatically pull your site's content inventory from ~~search console and ~~analytics (indexed pages, traffic per page, keywords ranking), competitor content data from ~~SEO tool (ranking keywords, top pages, backlink counts), and AI citation patterns from ~~AI monitor. Keyword overlap analysis and gap identification can be automated.
+
+**With manual data only:**
+Ask the user to provide:
+1. Your site URL and content inventory (list of published content with topics)
+2. Competitor URLs (3-5 sites)
+3. Your current traffic and keyword performance (if available)
+4. Known content strengths and weaknesses
+5. Industry context and business goals
+
+Proceed with the full analysis using provided data. Note in the output which metrics are from automated collection vs. user-provided data.
 
 ## Instructions
 
@@ -406,6 +465,21 @@ When a user requests content gap analysis:
    | AI citations | [X] | [X] | [X] |
    ```
 
+## Validation Checkpoints
+
+### Input Validation
+- [ ] Your content inventory is complete or representative sample provided
+- [ ] Competitor URLs identified (minimum 2-3 competitors)
+- [ ] Analysis scope defined (specific topics or comprehensive)
+- [ ] Business goals and priorities clarified
+
+### Output Validation
+- [ ] Every recommendation cites specific data points (not generic advice)
+- [ ] Gap analysis compares like-to-like content (topic clusters to topic clusters)
+- [ ] Priority scoring based on measurable criteria (volume, difficulty, business fit)
+- [ ] Content calendar maps gaps to realistic timeframes
+- [ ] Source of each data point clearly stated (~~SEO tool data, ~~analytics data, ~~AI monitor data, user-provided, or estimated)
+
 ## Example
 
 **User**: "Find content gaps for my SaaS marketing blog compared to HubSpot and Drift"
@@ -479,10 +553,69 @@ Find gaps in our [commercial/informational] intent content
 5. **Update regularly** - Gaps change as competitors publish
 6. **Include GEO opportunities** - Don't just optimize for traditional search
 
+## Content Audit Comparison Framework
+
+### Content Coverage Matrix
+
+Map content coverage across competitors by topic and format:
+
+| Topic/Theme | Your Content | Competitor A | Competitor B | Gap? | Priority |
+|------------|-------------|-------------|-------------|------|----------|
+| [Topic 1] | Blog post | Blog series, webinar | Nothing | Opp for B | High |
+| [Topic 2] | Nothing | Whitepaper | Blog, video | Gap for you | High |
+| [Topic 3] | Case study | Nothing | Case study | Parity | Low |
+
+### Content Type Coverage Matrix
+
+| Content Format | You | Comp A | Comp B | Comp C | Market Expectation |
+|---------------|-----|--------|--------|--------|-------------------|
+| Blog posts | ✅ | ✅ | ✅ | ✅ | Table stakes |
+| How-to guides | ✅ | ✅ | ❌ | ✅ | Expected |
+| Video content | ❌ | ✅ | ✅ | ✅ | Growing expectation |
+| Interactive tools | ❌ | ❌ | ❌ | ✅ | Differentiator |
+| Research/data | ❌ | ✅ | ❌ | ❌ | High-value linkbait |
+| Templates/downloads | ✅ | ❌ | ✅ | ❌ | Lead generation |
+| Podcasts | ❌ | ❌ | ✅ | ❌ | Emerging |
+| Comparison pages | ✅ | ✅ | ✅ | ❌ | Commercial intent |
+
+## Funnel Stage Gap Analysis
+
+### Content Funnel Mapping
+
+| Funnel Stage | Content Purpose | Expected Formats | Gap Signals |
+|-------------|----------------|-----------------|------------|
+| Awareness | Attract new visitors | Blog, social, video, PR | Low organic traffic, low brand searches |
+| Consideration | Educate and engage | Guides, comparisons, webinars | High bounce rate, low pages/session |
+| Decision | Convert visitors | Case studies, pricing, demos, trials | Low conversion rate |
+| Retention | Keep customers | Help docs, email sequences, community | High churn, low engagement |
+| Advocacy | Turn customers to promoters | Review programs, referral content | Low referral traffic |
+
+## Gap Prioritization Scoring
+
+### Impact x Effort Matrix
+
+Score each gap 1-5 on both dimensions:
+
+| Impact Factor | Weight | How to Assess |
+|--------------|--------|--------------|
+| Search demand | 30% | Keyword volume for gap topic |
+| Competitive density | 25% | How many competitors cover this? |
+| Business relevance | 25% | How close to your core offering? |
+| Funnel stage need | 20% | Which funnel stages are weakest? |
+
+**Priority** = High Impact + Low Effort first
+
+## Reference Materials
+
+- [Gap Analysis Frameworks](./references/gap-analysis-frameworks.md) — Content audit templates, funnel mapping, and gap prioritization methodologies
+
 ## Related Skills
 
-- [keyword-research](../keyword-research/) - Deep-dive on gap keywords
-- [competitor-analysis](../competitor-analysis/) - Understand competitor strategies
-- [seo-content-writer](../../build/seo-content-writer/) - Create gap-filling content
-- [content-refresher](../../optimize/content-refresher/) - Improve existing content
+- [keyword-research](../keyword-research/) — Deep-dive on gap keywords
+- [competitor-analysis](../competitor-analysis/) — Understand competitor strategies
+- [seo-content-writer](../../build/seo-content-writer/) — Create gap-filling content
+- [content-refresher](../../optimize/content-refresher/) — Refresh existing content to fill identified gaps
+- [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) — Identify and fix internal linking gaps
+- [backlink-analyzer](../../monitor/backlink-analyzer/) — Analyze link gap opportunities
+- [memory-management](../../cross-cutting/memory-management/) — Track content gaps over time
 

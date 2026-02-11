@@ -1,9 +1,51 @@
 ---
 name: competitor-analysis
-description: Analyzes competitor SEO and GEO strategies including their ranking keywords, content approaches, backlink profiles, and AI citation patterns. Reveals opportunities to outperform competition.
+description: 'Use when the user asks to "analyze competitors", "competitor SEO", "who ranks for", "competitive analysis", "what are my competitors doing", "what are they doing differently", "why do they rank higher", or "spy on competitor SEO". Analyzes competitor SEO and GEO strategies including their ranking keywords, content approaches, backlink profiles, and AI citation patterns. Reveals opportunities to outperform competition. For content-focused gap analysis, see content-gap-analysis. For link profile specifics, see backlink-analyzer.'
+license: Apache-2.0
+metadata:
+  author: aaron-he-zhu
+  version: "2.0.0"
+  geo-relevance: "medium"
+  tags:
+    - seo
+    - geo
+    - competitor analysis
+    - competitive intelligence
+    - benchmarking
+    - market analysis
+    - ranking analysis
+  triggers:
+    - "analyze competitors"
+    - "competitor SEO"
+    - "who ranks for"
+    - "competitive analysis"
+    - "what are my competitors doing"
+    - "competitor keywords"
+    - "competitor backlinks"
+    - "what are they doing differently"
+    - "why do they rank higher"
+    - "spy on competitor SEO"
 ---
 
 # Competitor Analysis
+
+
+> **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
+
+<details>
+<summary>Browse all 20 skills</summary>
+
+**Research** · [keyword-research](../keyword-research/) · **competitor-analysis** · [serp-analysis](../serp-analysis/) · [content-gap-analysis](../content-gap-analysis/)
+
+**Build** · [seo-content-writer](../../build/seo-content-writer/) · [geo-content-optimizer](../../build/geo-content-optimizer/) · [meta-tags-optimizer](../../build/meta-tags-optimizer/) · [schema-markup-generator](../../build/schema-markup-generator/)
+
+**Optimize** · [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) · [technical-seo-checker](../../optimize/technical-seo-checker/) · [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) · [content-refresher](../../optimize/content-refresher/)
+
+**Monitor** · [rank-tracker](../../monitor/rank-tracker/) · [backlink-analyzer](../../monitor/backlink-analyzer/) · [performance-reporter](../../monitor/performance-reporter/) · [alert-manager](../../monitor/alert-manager/)
+
+**Cross-cutting** · [content-quality-auditor](../../cross-cutting/content-quality-auditor/) · [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) · [entity-optimizer](../../cross-cutting/entity-optimizer/) · [memory-management](../../cross-cutting/memory-management/)
+
+</details>
 
 This skill provides comprehensive analysis of competitor SEO and GEO strategies, revealing what's working in your market and identifying opportunities to outperform the competition.
 
@@ -54,6 +96,23 @@ Analyze why [competitor] ranks #1 for [keyword]
 ```
 How is [competitor] getting cited in AI responses? What can I learn?
 ```
+
+## Data Sources
+
+> See [CONNECTORS.md](../../CONNECTORS.md) for tool category placeholders.
+
+**With ~~SEO tool + ~~analytics + ~~AI monitor connected:**
+Automatically pull competitor keyword rankings, backlink profiles, top performing content, domain authority metrics from ~~SEO tool. Compare against your site's metrics from ~~analytics and ~~search console. Check AI citation patterns for both your site and competitors using ~~AI monitor.
+
+**With manual data only:**
+Ask the user to provide:
+1. Competitor URLs to analyze (2-5 recommended)
+2. Your own site URL and current metrics (traffic, rankings if known)
+3. Industry or niche context
+4. Specific aspects to focus on (keywords, content, backlinks, etc.)
+5. Any known competitor strengths or weaknesses
+
+Proceed with the full analysis using provided data. Note in the output which metrics are from automated collection vs. user-provided data.
 
 ## Instructions
 
@@ -299,7 +358,19 @@ When a user requests competitor analysis:
    | Keywords Top 10 | [X] | [X] | [X] | [X] |
    | Backlinks | [X] | [X] | [X] | [X] |
    | Content Pages | [X] | [X] | [X] | [X] |
-   
+
+   **Domain Authority Comparison (Recommended)**
+
+   When domain-level comparison is needed, run the [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) for each competitor to get CITE scores:
+
+   | Domain | CITE Score | C (Citation) | I (Identity) | T (Trust) | E (Eminence) | Veto |
+   |--------|-----------|-------------|-------------|----------|-------------|------|
+   | Your domain | [score] | [score] | [score] | [score] | [score] | [pass/fail] |
+   | Competitor 1 | [score] | [score] | [score] | [score] | [score] | [pass/fail] |
+   | Competitor 2 | [score] | [score] | [score] | [score] | [score] | [pass/fail] |
+
+   This reveals domain authority gaps that inform link building and brand strategy beyond keyword-level competition.
+
    ## Competitor Strengths to Learn From
    
    ### [Competitor 1]
@@ -352,6 +423,21 @@ When a user requests competitor analysis:
    1. [Action item]
    2. [Action item]
    ```
+
+## Validation Checkpoints
+
+### Input Validation
+- [ ] Competitor URLs verified as relevant to your niche
+- [ ] Analysis scope defined (comprehensive or specific focus area)
+- [ ] Your own site metrics available for comparison
+- [ ] Minimum 2-3 competitors identified for meaningful patterns
+
+### Output Validation
+- [ ] Every recommendation cites specific data points (not generic advice)
+- [ ] Competitor strengths backed by measurable evidence (metrics, rankings)
+- [ ] Opportunities based on identifiable gaps, not assumptions
+- [ ] Action plan items are specific and actionable (not vague strategies)
+- [ ] Source of each data point clearly stated (~~SEO tool data, ~~analytics data, ~~AI monitor data, user-provided, or estimated)
 
 ## Example
 
@@ -460,10 +546,93 @@ How has [competitor]'s SEO strategy evolved over the past year?
 5. **Monitor regularly** - competitor strategies evolve
 6. **Focus on actionable insights** - what can you actually implement?
 
+## Messaging Comparison Framework
+
+### Messaging Matrix
+
+Compare competitor messaging across key dimensions:
+
+| Dimension | Your Site | Competitor A | Competitor B | Competitor C |
+|-----------|-----------|-------------|-------------|-------------|
+| Core value proposition | | | | |
+| Primary CTA | | | | |
+| Hero headline | | | | |
+| Tone/Voice | | | | |
+| Key differentiator claim | | | | |
+| Social proof type | | | | |
+| Category framing | | | | |
+| Target audience signal | | | | |
+
+### Narrative Analysis Framework
+
+For each competitor, identify their story arc:
+
+| Element | Description | How to Identify |
+|---------|------------|----------------|
+| **Villain** | Problem or enemy they position against | Homepage hero, "why us" page — what status quo do they attack? |
+| **Hero** | Who is the hero in their story | Customer stories, case studies — is the hero the customer or the product? |
+| **Transformation** | What before/after do they promise | Results pages, testimonials — what measurable change? |
+| **Stakes** | What happens if you don't act | Risk messaging, urgency signals — FOMO or loss framing? |
+
+### Value Proposition Comparison
+
+For each competitor, extract:
+
+```
+**[Competitor Name]**
+- Promise: what they promise the customer will achieve
+- Evidence: how they prove it (data, testimonials, demos)
+- Mechanism: how their product delivers (the "how it works")
+- Uniqueness: what they claim only they can do
+```
+
+## Positioning Strategy Frameworks
+
+### Positioning Map (2x2 Matrix)
+
+Plot competitors on key dimension pairs:
+
+| Axis Pair | Best For |
+|-----------|---------|
+| Price vs. Capability | Understanding market tiers |
+| Ease of Use vs. Power | Evaluating UX tradeoffs |
+| SMB vs. Enterprise Focus | Identifying segment gaps |
+| Point Solution vs. Platform | Finding positioning space |
+| Established vs. Innovative | Timing market entry |
+
+### Positioning Statement Reverse-Engineering
+
+For each competitor, reconstruct their implicit positioning:
+
+> For **[target audience]**, **[product]** is the **[category]** that **[key benefit]** because **[reason to believe]**.
+
+## Competitive Battlecard Template
+
+### Quick Reference Card Structure
+
+| Section | Content |
+|---------|---------|
+| **Overview** | One-sentence description + target customer + pricing model |
+| **Their Pitch** | Tagline + top 3 claimed differentiators |
+| **Strengths** | Where they genuinely compete well (be honest) |
+| **Weaknesses** | Consistent complaints from reviews, technical limitations |
+| **Your Differentiators** | 3-5 specific ways you're different, with proof |
+| **Objection Handling** | "If they say X → respond with Y" table |
+| **Landmines to Set** | Questions that highlight your advantages |
+| **Win/Loss Themes** | Common reasons deals are won/lost against them |
+
+## Reference Materials
+
+- [Battlecard Template](./references/battlecard-template.md) — Quick-reference competitive battlecard for sales and marketing teams
+- [Positioning Frameworks](./references/positioning-frameworks.md) — Positioning maps, strategy matrices, and differentiation frameworks
+
 ## Related Skills
 
-- [keyword-research](../keyword-research/) - Research keywords competitors rank for
-- [content-gap-analysis](../content-gap-analysis/) - Find content opportunities
-- [backlink-analyzer](../../monitor/backlink-analyzer/) - Deep-dive into backlinks
-- [serp-analysis](../serp-analysis/) - Understand search result composition
+- [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) — Compare CITE domain authority scores across competitors for domain-level benchmarking
+- [keyword-research](../keyword-research/) — Research keywords competitors rank for
+- [content-gap-analysis](../content-gap-analysis/) — Find content opportunities
+- [backlink-analyzer](../../monitor/backlink-analyzer/) — Deep-dive into backlinks
+- [serp-analysis](../serp-analysis/) — Understand search result composition
+- [memory-management](../../cross-cutting/memory-management/) — Store competitor data in project memory
+- [entity-optimizer](../../cross-cutting/entity-optimizer/) — Compare entity presence against competitors
 

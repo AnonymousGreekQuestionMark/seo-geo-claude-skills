@@ -1,9 +1,52 @@
 ---
 name: rank-tracker
-description: Tracks and analyzes keyword ranking positions over time for both traditional search results and AI-generated responses. Monitors ranking changes, identifies trends, and alerts on significant movements.
+description: 'Use when the user asks to "track rankings", "check keyword positions", "ranking changes", "monitor SERP positions", "how am I ranking", "where do I rank for this keyword", "did my rankings change", or "keyword position tracking". Tracks and analyzes keyword ranking positions over time for both traditional search results and AI-generated responses. Monitors ranking changes, identifies trends, and alerts on significant movements. For automated alerting, see alert-manager. For comprehensive reports, see performance-reporter.'
+license: Apache-2.0
+metadata:
+  author: aaron-he-zhu
+  version: "2.0.0"
+  geo-relevance: "medium"
+  tags:
+    - seo
+    - geo
+    - rank tracking
+    - keyword positions
+    - serp monitoring
+    - ranking trends
+    - position tracking
+    - ai ranking
+  triggers:
+    - "track rankings"
+    - "check keyword positions"
+    - "ranking changes"
+    - "monitor SERP positions"
+    - "how am I ranking"
+    - "keyword tracking"
+    - "position monitoring"
+    - "where do I rank for this keyword"
+    - "did my rankings change"
+    - "keyword position tracking"
 ---
 
 # Rank Tracker
+
+
+> **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
+
+<details>
+<summary>Browse all 20 skills</summary>
+
+**Research** · [keyword-research](../../research/keyword-research/) · [competitor-analysis](../../research/competitor-analysis/) · [serp-analysis](../../research/serp-analysis/) · [content-gap-analysis](../../research/content-gap-analysis/)
+
+**Build** · [seo-content-writer](../../build/seo-content-writer/) · [geo-content-optimizer](../../build/geo-content-optimizer/) · [meta-tags-optimizer](../../build/meta-tags-optimizer/) · [schema-markup-generator](../../build/schema-markup-generator/)
+
+**Optimize** · [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) · [technical-seo-checker](../../optimize/technical-seo-checker/) · [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) · [content-refresher](../../optimize/content-refresher/)
+
+**Monitor** · **rank-tracker** · [backlink-analyzer](../backlink-analyzer/) · [performance-reporter](../performance-reporter/) · [alert-manager](../alert-manager/)
+
+**Cross-cutting** · [content-quality-auditor](../../cross-cutting/content-quality-auditor/) · [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) · [entity-optimizer](../../cross-cutting/entity-optimizer/) · [memory-management](../../cross-cutting/memory-management/)
+
+</details>
 
 This skill helps you track, analyze, and report on keyword ranking positions over time. It monitors both traditional SERP rankings and AI/GEO visibility to provide comprehensive search performance insights.
 
@@ -52,6 +95,23 @@ Compare my rankings to [competitor] for [keywords]
 ```
 Create a ranking report for [domain/campaign]
 ```
+
+## Data Sources
+
+> See [CONNECTORS.md](../../CONNECTORS.md) for tool category placeholders.
+
+**With ~~SEO tool + ~~search console + ~~analytics + ~~AI monitor connected:**
+Automatically pull ranking positions from ~~SEO tool, search impressions/clicks from ~~search console, traffic data from ~~analytics, and AI Overview citation tracking from ~~AI monitor. Daily automated rank checks with historical trend data.
+
+**With manual data only:**
+Ask the user to provide:
+1. Keyword ranking positions (current and historical if available)
+2. Target keyword list with search volumes
+3. Competitor domains and their ranking positions for key terms
+4. SERP feature status (featured snippets, PAA appearances)
+5. AI Overview citation data (if tracking GEO metrics)
+
+Proceed with the full analysis using provided data. Note in the output which metrics are from automated collection vs. user-provided data.
 
 ## Instructions
 
@@ -161,20 +221,22 @@ When a user requests rank tracking or analysis:
    | [kw 2] | 25 | 9 | +16 | +[X] visits/mo |
    | [kw 3] | 8 | 2 | +6 | +[X] visits/mo |
    
-   **Why improved**:
-   - [kw 1]: [reason - e.g., content update, new backlinks]
-   - [kw 2]: [reason]
-   
+   **Possible causes**:
+   - [kw 1]: [hypothesis - e.g., content refresh may have improved relevance]
+   - [kw 2]: [hypothesis]
+
    ### Biggest Declines 📉
-   
+
    | Keyword | Old Rank | New Rank | Change | Est. Traffic Impact |
    |---------|----------|----------|--------|---------------------|
    | [kw 1] | 3 | 12 | -9 | -[X] visits/mo |
    | [kw 2] | 7 | 18 | -11 | -[X] visits/mo |
-   
-   **Why declined**:
-   - [kw 1]: [reason - e.g., competitor update, algo change]
-   - [kw 2]: [reason]
+
+   **Likely factors**:
+   - [kw 1]: [hypothesis - e.g., competitor may have published updated guide]
+   - [kw 2]: [hypothesis]
+
+   > These are hypotheses based on available signals, not confirmed causes. Investigate each with the relevant skill (on-page-seo-auditor, content-quality-auditor, backlink-analyzer) to confirm.
    
    **Recommended actions**:
    - [kw 1]: [action to recover]
@@ -403,10 +465,24 @@ When a user requests rank tracking or analysis:
    2. [Strategic action]
    
    ## Next Report
-   
+
    Scheduled: [date]
    Focus areas: [areas to monitor]
    ```
+
+## Validation Checkpoints
+
+### Input Validation
+- [ ] Keywords list is complete with search volumes
+- [ ] Target domain and tracking location are specified
+- [ ] Competitor domains identified for comparison
+- [ ] Historical baseline data available or initial tracking period set
+
+### Output Validation
+- [ ] Every metric cites its data source and collection date
+- [ ] Ranking changes include context (vs. previous period)
+- [ ] Significant movements have explanations or investigation notes
+- [ ] Source of each data point clearly stated (~~SEO tool data, ~~search console data, user-provided, or estimated)
 
 ## Example
 
@@ -415,7 +491,7 @@ When a user requests rank tracking or analysis:
 **Output**:
 
 ```markdown
-# Ranking Analysis: December 2024
+# Ranking Analysis: [current month, year]
 
 ## Summary
 
@@ -424,22 +500,22 @@ Keywords in top 10 increased from 12 to 17 (+5)
 
 ## Biggest Wins
 
-| Keyword | Old | New | Change | Why |
-|---------|-----|-----|--------|-----|
-| email marketing tips | 18 | 5 | +13 | Content refresh worked |
-| best crm software | 24 | 11 | +13 | New backlinks acquired |
-| sales automation | 15 | 7 | +8 | Schema markup added |
+| Keyword | Old | New | Change | Possible Cause |
+|---------|-----|-----|--------|----------------|
+| email marketing tips | 18 | 5 | +13 | Likely driven by content refresh |
+| best crm software | 24 | 11 | +13 | Correlates with new backlinks acquired |
+| sales automation | 15 | 7 | +8 | Correlates with schema markup addition |
 
 ## Needs Attention
 
 | Keyword | Old | New | Change | Action |
 |---------|-----|-----|--------|--------|
-| marketing automation | 4 | 12 | -8 | Competitor HubSpot published new guide |
+| marketing automation | 4 | 12 | -8 | Likely displaced by new HubSpot guide |
 
-**Recommended**: Update your marketing automation guide with 2024 statistics and examples.
+**Recommended**: Update your marketing automation guide with [current year] statistics and examples.
 ```
 
-## Tracking Best Practices
+## Tips for Success
 
 1. **Track consistently** - Same time, same device, same location
 2. **Include enough keywords** - 50-200 for meaningful data
@@ -448,10 +524,93 @@ Keywords in top 10 increased from 12 to 17 (+5)
 5. **Track SERP features** - Position 1 without snippet may lose to position 4 with snippet
 6. **Include GEO metrics** - AI visibility increasingly important
 
+## Rank Change Analysis Framework
+
+### Why Rankings Move — Root Cause Taxonomy
+
+| Category | Causes | Detection Method |
+|----------|--------|-----------------|
+| **Algorithm Updates** | Google core update, helpful content update, spam update | Check Google Search Status Dashboard, SEO news |
+| **Competitor Action** | New content published, content updated, new backlinks | Monitor competitor pages, SERP changes |
+| **Your Changes** | Content edit, technical change, migration | Cross-reference with deploy/change log |
+| **SERP Feature Changes** | New featured snippet, AI Overview added/removed | SERP monitoring tools |
+| **Seasonal Patterns** | Predictable demand shifts | Year-over-year comparison |
+| **Technical Issues** | Crawl errors, speed degradation, indexing problems | Search Console, crawl reports |
+| **Link Profile Changes** | Lost backlinks, new backlinks, disavow | Backlink monitoring |
+
+### Rank Change Response Protocol
+
+| Change | Timeframe | Action |
+|--------|-----------|--------|
+| Drop 1-3 positions | Wait 1-2 weeks | Monitor — may be normal fluctuation |
+| Drop 3-5 positions | Investigate within 1 week | Check for technical issues, competitor changes |
+| Drop 5-10 positions | Investigate immediately | Full diagnostic: technical, content, links |
+| Drop off page 1 | Emergency response | Comprehensive audit + recovery plan |
+| Position gained | Document and learn | What worked? Can you replicate? |
+
+## Position Distribution Benchmarks
+
+### Click-Through Rate by Position
+
+| Position | Desktop CTR | Mobile CTR | Notes |
+|----------|------------|------------|-------|
+| #1 | 31.7% | 24.0% | 10x more than position #10 |
+| #2 | 14.7% | 13.1% | ~50% drop from #1 |
+| #3 | 10.7% | 9.5% | Significant value |
+| #4 | 6.7% | 6.1% | Still above fold usually |
+| #5 | 5.1% | 4.6% | Often near fold |
+| #6 | 4.1% | 3.5% | Below fold on most devices |
+| #7 | 3.4% | 2.8% | Rapidly diminishing |
+| #8 | 2.9% | 2.3% | |
+| #9 | 2.5% | 1.9% | |
+| #10 | 2.2% | 1.6% | Bottom of page 1 |
+| #11-20 | <1.5% | <1.0% | Page 2 — minimal visibility |
+
+_Note: CTR varies significantly by query type, SERP features, and industry. These are averages._
+
+### CTR Impact of SERP Features
+
+| SERP Feature Present | Effect on Organic CTR |
+|---------------------|---------------------|
+| Featured Snippet (you own) | +20-30% CTR for your result |
+| Featured Snippet (competitor) | -15-25% CTR for position #1 |
+| AI Overview | -10-30% CTR for all organic results |
+| PAA boxes | -5-10% CTR for positions 3-6 |
+| Shopping results | -10-20% CTR for commercial queries |
+| Knowledge Panel | -5-15% CTR for navigational queries |
+
+## SERP Volatility Context
+
+### Algorithm Update Impact Assessment
+
+| Update Type | Typical Impact | Recovery Time | Response Strategy |
+|------------|---------------|---------------|-------------------|
+| Core update | ±20-50% traffic shifts | 3-6 months (next core update) | Improve content quality broadly |
+| Helpful Content | Content quality focused | 1-3 months | Remove/improve unhelpful content |
+| Spam update | Penalizes manipulative tactics | Varies (may require disavow) | Clean up link profile, remove spam |
+| Product Reviews | Review content specific | 1-2 months | Improve review depth and expertise |
+| Link Spam | Targets artificial links | 2-4 months | Disavow toxic links, build quality links |
+
+## Tracking Configuration Best Practices
+
+| Setting | Recommendation | Why |
+|---------|---------------|-----|
+| Check frequency | Daily for top 20 keywords; weekly for others | Balance accuracy vs. API costs |
+| Location settings | Match target market; track local separately | Rankings vary by location |
+| Device tracking | Track mobile AND desktop separately | Mobile rankings differ significantly |
+| Competitor tracking | Track 3-5 competitors for key terms | Context for your own movements |
+| SERP features | Track which features appear | Explain CTR changes |
+| Keyword grouping | Group by topic cluster, intent, funnel stage | Identify patterns, not just keywords |
+
+## Reference Materials
+
+- [Tracking Setup Guide](./references/tracking-setup-guide.md) — Configuration best practices, device/location settings, and SERP feature tracking setup
+
 ## Related Skills
 
-- [keyword-research](../../research/keyword-research/) - Find keywords to track
-- [serp-analysis](../../research/serp-analysis/) - Understand SERP composition
-- [alert-manager](../alert-manager/) - Set up ranking alerts
-- [performance-reporter](../performance-reporter/) - Comprehensive reporting
+- [keyword-research](../../research/keyword-research/) — Find keywords to track
+- [serp-analysis](../../research/serp-analysis/) — Understand SERP composition
+- [alert-manager](../alert-manager/) — Set up ranking alerts
+- [performance-reporter](../performance-reporter/) — Comprehensive reporting
+- [memory-management](../../cross-cutting/memory-management/) — Store ranking history in project memory
 

@@ -1,9 +1,54 @@
 ---
 name: schema-markup-generator
-description: Generates structured data markup (Schema.org JSON-LD) to enable rich results in search engines including FAQ snippets, How-To cards, Product listings, Reviews, and more.
+description: 'Use when the user asks to "add schema markup", "generate structured data", "JSON-LD", "rich snippets", "FAQ schema", "add FAQ rich results", "I want star ratings in Google", "product markup", or "recipe schema". Generates structured data markup (Schema.org JSON-LD) to enable rich results in search engines including FAQ snippets, How-To cards, Product listings, Reviews, and more. For meta tag optimization, see meta-tags-optimizer. For broader technical SEO, see technical-seo-checker.'
+license: Apache-2.0
+metadata:
+  author: aaron-he-zhu
+  version: "2.0.0"
+  geo-relevance: "medium"
+  tags:
+    - seo
+    - schema markup
+    - structured data
+    - json-ld
+    - rich results
+    - rich snippets
+    - faq schema
+    - how-to schema
+    - product schema
+  triggers:
+    - "add schema markup"
+    - "generate structured data"
+    - "JSON-LD"
+    - "rich snippets"
+    - "FAQ schema"
+    - "schema.org"
+    - "structured data markup"
+    - "add FAQ rich results"
+    - "I want star ratings in Google"
+    - "product markup"
+    - "recipe schema"
 ---
 
 # Schema Markup Generator
+
+
+> **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
+
+<details>
+<summary>Browse all 20 skills</summary>
+
+**Research** · [keyword-research](../../research/keyword-research/) · [competitor-analysis](../../research/competitor-analysis/) · [serp-analysis](../../research/serp-analysis/) · [content-gap-analysis](../../research/content-gap-analysis/)
+
+**Build** · [seo-content-writer](../seo-content-writer/) · [geo-content-optimizer](../geo-content-optimizer/) · [meta-tags-optimizer](../meta-tags-optimizer/) · **schema-markup-generator**
+
+**Optimize** · [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) · [technical-seo-checker](../../optimize/technical-seo-checker/) · [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) · [content-refresher](../../optimize/content-refresher/)
+
+**Monitor** · [rank-tracker](../../monitor/rank-tracker/) · [backlink-analyzer](../../monitor/backlink-analyzer/) · [performance-reporter](../../monitor/performance-reporter/) · [alert-manager](../../monitor/alert-manager/)
+
+**Cross-cutting** · [content-quality-auditor](../../cross-cutting/content-quality-auditor/) · [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) · [entity-optimizer](../../cross-cutting/entity-optimizer/) · [memory-management](../../cross-cutting/memory-management/)
+
+</details>
 
 This skill creates Schema.org structured data markup in JSON-LD format to help search engines understand your content and enable rich results in SERPs.
 
@@ -55,18 +100,54 @@ Generate LocalBusiness schema for [business name and details]
 Review and improve this schema markup: [existing schema]
 ```
 
+## Data Sources
+
+> See [CONNECTORS.md](../../CONNECTORS.md) for tool category placeholders.
+
+**With ~~web crawler connected:**
+Automatically crawl and extract page content (visible text, headings, lists, tables), existing schema markup, page metadata, and structured content elements that map to schema properties.
+
+**With manual data only:**
+Ask the user to provide:
+1. Page URL or full HTML content
+2. Page type (article, product, FAQ, how-to, local business, etc.)
+3. Specific data needed for schema (prices, dates, author info, Q&A pairs, etc.)
+4. Current schema markup (if optimizing existing)
+
+Proceed with the full workflow using provided data. Note in the output which data is from automated extraction vs. user-provided data.
+
 ## Instructions
 
 When a user requests schema markup:
 
 1. **Identify Content Type and Rich Result Opportunity**
 
+   Reference the [CORE-EEAT Benchmark](../../references/core-eeat-benchmark.md) item **O05 (Schema Markup)** for content-type to schema mapping:
+
+   ```markdown
+   ### CORE-EEAT Schema Mapping (O05)
+
+   | Content Type | Required Schema | Conditional Schema |
+   |-------------|----------------|--------------------|
+   | Blog (guides) | Article, Breadcrumb | FAQ, HowTo |
+   | Blog (tools) | Article, Breadcrumb | FAQ, Review |
+   | Blog (insights) | Article, Breadcrumb | FAQ |
+   | Alternative | Comparison*, Breadcrumb, FAQ | AggregateRating |
+   | Best-of | ItemList, Breadcrumb, FAQ | AggregateRating per tool |
+   | Use-case | WebPage, Breadcrumb, FAQ | — |
+   | FAQ | FAQPage, Breadcrumb | — |
+   | Landing | SoftwareApplication, Breadcrumb, FAQ | WebPage |
+   | Testimonial | Review, Breadcrumb | FAQ, Person |
+
+   *Use the mapping above to ensure schema type matches content type (CORE-EEAT O05: Pass criteria).*
+   ```
+
    ```markdown
    ### Schema Analysis
-   
+
    **Content Type**: [blog/product/FAQ/how-to/local business/etc.]
    **Page URL**: [URL]
-   
+
    **Eligible Rich Results**:
    
    | Rich Result Type | Eligibility | Impact |
@@ -426,17 +507,18 @@ When a user requests schema markup:
      {
        "@context": "https://schema.org",
        "@type": "Article",
-       // Article properties...
+       "headline": "[Article title]",
+       "author": { "@type": "Person", "name": "[Author name]" }
      },
      {
        "@context": "https://schema.org",
        "@type": "FAQPage",
-       // FAQ properties...
+       "mainEntity": [{ "@type": "Question", "name": "[Question]", "acceptedAnswer": { "@type": "Answer", "text": "[Answer]" } }]
      },
      {
        "@context": "https://schema.org",
        "@type": "BreadcrumbList",
-       // Breadcrumb properties...
+       "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "[URL]" }]
      }
    ]
    </script>
@@ -447,9 +529,9 @@ When a user requests schema markup:
 
     ```markdown
     ## Implementation Guide
-    
+
     ### Adding Schema to Your Page
-    
+
     **Option 1: In HTML <head>**
     ```html
     <head>
@@ -458,7 +540,7 @@ When a user requests schema markup:
       </script>
     </head>
     ```
-    
+
     **Option 2: Before closing </body>**
     ```html
       <script type="application/ld+json">
@@ -466,31 +548,47 @@ When a user requests schema markup:
       </script>
     </body>
     ```
-    
+
     ### Validation Steps
-    
-    1. **Google Rich Results Test**
-       - URL: https://search.google.com/test/rich-results
+
+    1. **~~schema validator**
        - Test your live URL or paste code
        - Check for errors and warnings
-    
+
     2. **Schema.org Validator**
        - URL: https://validator.schema.org/
        - Validates against Schema.org spec
-    
-    3. **Google Search Console**
-       - Monitor rich results in Search Console
+
+    3. **~~search console**
+       - Monitor rich results in ~~search console
        - Check Enhancements reports for issues
-    
+
     ### Validation Checklist
-    
+
     - [ ] JSON syntax is valid (no trailing commas)
     - [ ] All required properties present
     - [ ] URLs are absolute, not relative
     - [ ] Dates are in ISO 8601 format
     - [ ] Content matches visible page content
-    - [ ] No Google policy violations
+    - [ ] No policy violations
     ```
+
+## Validation Checkpoints
+
+### Input Validation
+- [ ] Page URL or content provided
+- [ ] Schema type appropriate for content (Article for blog, Product for e-commerce, etc.)
+- [ ] All required data available (author, dates, prices, etc. depending on schema type)
+- [ ] Content eligibility for rich results confirmed
+
+### Output Validation
+- [ ] JSON syntax validates (no trailing commas, proper quotes)
+- [ ] All required properties present for chosen schema type
+- [ ] URLs are absolute, not relative
+- [ ] Dates in ISO 8601 format (YYYY-MM-DDTHH:MM:SS+00:00)
+- [ ] Schema content matches visible page content exactly
+- [ ] Passes ~~schema validator with no errors
+- [ ] Source of each data point clearly stated (~~web crawler extraction, user-provided, or manual entry)
 
 ## Example
 
@@ -575,7 +673,7 @@ When a user requests schema markup:
 
 ### Validation
 
-Test at: https://search.google.com/test/rich-results
+Test with ~~schema validator
 
 ### SERP Preview
 
@@ -616,10 +714,73 @@ Learn SEO from scratch with our comprehensive guide...
 4. **Test thoroughly** - Validate before deploying
 5. **Monitor Search Console** - Watch for errors and warnings
 
+## Schema Type Decision Tree
+
+### When to Use Which Schema
+
+| Your Content | Primary Schema | Add If Applicable | Rich Result Eligibility |
+|-------------|---------------|-------------------|----------------------|
+| Blog post / article | Article | FAQ, HowTo, Speakable | Article carousel, FAQ rich result |
+| Product page | Product | Review, Offer, AggregateRating | Product snippet with price/rating |
+| Service page | Service | FAQ, LocalBusiness | Service snippet |
+| How-to guide | HowTo | Article, FAQ | How-to rich result with steps |
+| FAQ page | FAQPage | Article | FAQ accordion in SERP |
+| Recipe | Recipe | Video, AggregateRating | Recipe carousel |
+| Event | Event | Offer, Organization | Event snippet with date/location |
+| Video | VideoObject | Article | Video carousel, key moments |
+| Local business | LocalBusiness | Review, OpeningHoursSpecification | Local pack, knowledge panel |
+| Person/author | Person | Organization | Knowledge panel |
+| Organization | Organization | ContactPoint, Logo | Knowledge panel |
+| Course | Course | Organization | Course rich result |
+| Job posting | JobPosting | Organization | Google for Jobs listing |
+| Breadcrumb | BreadcrumbList | (Always add alongside other schema) | Breadcrumb trail in SERP |
+| Software/App | SoftwareApplication | Review, Offer | App snippet |
+
+### Industry-Specific Schema Recommendations
+
+| Industry | Essential Schema | High-Value Additions |
+|----------|-----------------|---------------------|
+| E-commerce | Product, BreadcrumbList, Organization | AggregateRating, FAQ, Review |
+| SaaS | SoftwareApplication, FAQPage, Organization | HowTo, VideoObject, Review |
+| Local Services | LocalBusiness, Service | FAQ, Review, Event |
+| Publishing/Media | Article, Person, Organization | FAQ, Speakable, VideoObject |
+| Education | Course, Organization | FAQ, HowTo, Event |
+| Healthcare | MedicalWebPage, Organization | FAQ, Physician, MedicalClinic |
+| Real Estate | RealEstateListing, Organization | LocalBusiness, FAQ |
+| Restaurants | Restaurant, Menu | Review, Event, FAQ |
+
+### Schema Implementation Priority
+
+| Priority | Schema Types | Why |
+|----------|-------------|-----|
+| P0 -- Always | Organization, BreadcrumbList, WebSite (SearchAction) | Foundation for all sites |
+| P1 -- Content | Article, FAQPage, HowTo | Direct rich result eligibility |
+| P2 -- Commercial | Product, Review, AggregateRating, Offer | Revenue-impacting rich results |
+| P3 -- Authority | Person, SameAs, Speakable | E-E-A-T signals, AI citation |
+| P4 -- Specialized | Industry-specific types | Niche rich results |
+
+### Schema Validation Quick Reference
+
+| Issue | Impact | Fix |
+|-------|--------|-----|
+| Missing required property | Schema ignored by Google | Add all required fields (check schema.org) |
+| Invalid date format | Warning, may lose rich result | Use ISO 8601: "2026-02-11" |
+| Incorrect @type | Schema misinterpreted | Match @type exactly to schema.org |
+| Self-referencing sameAs | Warning | sameAs should link to EXTERNAL profiles |
+| Missing image for Article | Loses article rich result | Add image property with valid URL |
+| Review without itemReviewed | Review not connected | Nest review inside Product/Service/etc. |
+
+## Reference Materials
+
+- [Schema Templates](./references/schema-templates.md) - Copy-ready JSON-LD templates for all schema types
+- [Validation Guide](./references/validation-guide.md) - Common errors, required properties, testing workflow
+
 ## Related Skills
 
-- [seo-content-writer](../seo-content-writer/) - Create content worth marking up
-- [geo-content-optimizer](../geo-content-optimizer/) - Optimize FAQ content
-- [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) - Audit existing schema
-- [technical-seo-checker](../../optimize/technical-seo-checker/) - Technical validation
+- [seo-content-writer](../seo-content-writer/) — Create content worth marking up
+- [geo-content-optimizer](../geo-content-optimizer/) — Optimize FAQ content
+- [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) — Audit existing schema
+- [technical-seo-checker](../../optimize/technical-seo-checker/) — Technical validation
+- [entity-optimizer](../../cross-cutting/entity-optimizer/) — Entity audit informs Organization, Person, Product schema
+- [meta-tags-optimizer](../meta-tags-optimizer/) — Optimize meta tags alongside structured data
 

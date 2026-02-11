@@ -1,9 +1,52 @@
 ---
 name: internal-linking-optimizer
-description: Analyzes and optimizes internal link structure to improve site architecture, distribute page authority, and help search engines understand content relationships. Creates strategic internal linking plans.
+description: 'Use when the user asks to "fix internal links", "improve site architecture", "link structure", "distribute page authority", "internal linking strategy", "orphan pages", "site architecture is messy", or "pages have no links pointing to them". Analyzes and optimizes internal link structure to improve site architecture, distribute page authority, and help search engines understand content relationships. Creates strategic internal linking plans. For a broader on-page audit, see on-page-seo-auditor. For external link analysis, see backlink-analyzer.'
+license: Apache-2.0
+metadata:
+  author: aaron-he-zhu
+  version: "2.0.0"
+  geo-relevance: "low"
+  tags:
+    - seo
+    - internal linking
+    - site architecture
+    - link structure
+    - page authority
+    - link equity
+    - content silos
+    - navigation optimization
+  triggers:
+    - "fix internal links"
+    - "improve site architecture"
+    - "link structure"
+    - "distribute page authority"
+    - "internal linking strategy"
+    - "site navigation"
+    - "link equity"
+    - "orphan pages"
+    - "site architecture is messy"
+    - "pages have no links pointing to them"
 ---
 
 # Internal Linking Optimizer
+
+
+> **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
+
+<details>
+<summary>Browse all 20 skills</summary>
+
+**Research** · [keyword-research](../../research/keyword-research/) · [competitor-analysis](../../research/competitor-analysis/) · [serp-analysis](../../research/serp-analysis/) · [content-gap-analysis](../../research/content-gap-analysis/)
+
+**Build** · [seo-content-writer](../../build/seo-content-writer/) · [geo-content-optimizer](../../build/geo-content-optimizer/) · [meta-tags-optimizer](../../build/meta-tags-optimizer/) · [schema-markup-generator](../../build/schema-markup-generator/)
+
+**Optimize** · [on-page-seo-auditor](../on-page-seo-auditor/) · [technical-seo-checker](../technical-seo-checker/) · **internal-linking-optimizer** · [content-refresher](../content-refresher/)
+
+**Monitor** · [rank-tracker](../../monitor/rank-tracker/) · [backlink-analyzer](../../monitor/backlink-analyzer/) · [performance-reporter](../../monitor/performance-reporter/) · [alert-manager](../../monitor/alert-manager/)
+
+**Cross-cutting** · [content-quality-auditor](../../cross-cutting/content-quality-auditor/) · [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) · [entity-optimizer](../../cross-cutting/entity-optimizer/) · [memory-management](../../cross-cutting/memory-management/)
+
+</details>
 
 This skill analyzes your site's internal link structure and provides recommendations to improve SEO through strategic internal linking. It helps distribute authority, establish topical relevance, and improve crawlability.
 
@@ -58,6 +101,22 @@ Find orphan pages on [domain]
 ```
 Optimize anchor text across the site
 ```
+
+## Data Sources
+
+> See [CONNECTORS.md](../../CONNECTORS.md) for tool category placeholders.
+
+**With ~~web crawler + ~~analytics connected:**
+Claude can automatically perform a full site crawl via ~~web crawler to map the complete link graph, fetch page performance metrics from ~~analytics to identify high-value pages, and analyze link flow throughout the site. This enables data-driven internal linking strategies.
+
+**With manual data only:**
+Ask the user to provide:
+1. Sitemap URL or list of important pages
+2. Key page URLs that need more internal links
+3. Content categories or topic clusters
+4. Any existing link structure documentation
+
+Proceed with the analysis using provided data. Note in the output which findings are from automated crawl vs. manual review.
 
 ## Instructions
 
@@ -136,6 +195,8 @@ When a user requests internal linking optimization:
    ```
 
 3. **Analyze Anchor Text Distribution**
+
+   > **CORE-EEAT alignment**: Internal linking quality maps to R08 (Internal Link Graph) in the CORE-EEAT benchmark -- use descriptive anchors, ensure links support topical authority. See [content-quality-auditor](../../cross-cutting/content-quality-auditor/) for full audit.
 
    ```markdown
    ## Anchor Text Analysis
@@ -379,13 +440,26 @@ When a user requests internal linking optimization:
    | Natural | "this article", "learn more" | 20-30% |
    
    ## Tracking Success
-   
+
    Monitor these metrics weekly:
    - [ ] Rankings for target keywords
    - [ ] Traffic to previously orphan pages
-   - [ ] Crawl stats in Search Console
+   - [ ] Crawl stats in ~~search console
    - [ ] Internal link distribution changes
    ```
+
+## Validation Checkpoints
+
+### Input Validation
+- [ ] Site structure or sitemap provided (URL or file)
+- [ ] Target pages or topic clusters clearly defined
+- [ ] If optimizing specific page, page URL or content provided
+
+### Output Validation
+- [ ] Every recommendation cites specific data points (not generic advice)
+- [ ] All link suggestions include source page, target page, and recommended anchor text
+- [ ] Orphan page lists include URLs and recommended actions
+- [ ] Source of each data point clearly stated (~~web crawler data, ~~analytics, user-provided, or manual analysis)
 
 ## Example
 
@@ -432,10 +506,93 @@ When a user requests internal linking optimization:
 4. **Link to important pages** - Distribute authority strategically
 5. **Regular audits** - Internal links need maintenance as content grows
 
+## Link Architecture Patterns
+
+### Common Architecture Models
+
+| Model | Description | Best For | Limitations |
+|-------|------------|---------|------------|
+| **Hub-and-Spoke** | Central pillar links to/from cluster pages | Topic authority, content hubs | Can isolate topic clusters |
+| **Silo Structure** | Strict category hierarchies, vertical linking | Large e-commerce, strict taxonomy | Limits cross-topic discovery |
+| **Flat Architecture** | All pages 2-3 clicks from homepage | Small sites (<100 pages) | Doesn't scale to large sites |
+| **Pyramid** | Homepage → Categories → Subcategories → Pages | News sites, large blogs | Deep pages get less authority |
+| **Mesh/Matrix** | Cross-links between related content freely | Knowledge bases, wikis | Can become chaotic without rules |
+
+### Hub-and-Spoke Implementation
+
+```
+Homepage
+  └── Topic Hub A (pillar page)
+  │     ├── Cluster Article A1 ←→ A2
+  │     ├── Cluster Article A2 ←→ A3
+  │     └── Cluster Article A3 ←→ A1
+  └── Topic Hub B (pillar page)
+        ├── Cluster Article B1 ←→ B2
+        └── Cluster Article B2 ←→ B1
+
+Cross-links: A2 → B1 (related subtopics)
+```
+
+## Anchor Text Diversity Framework
+
+### Anchor Text Types
+
+| Type | Example | Target Distribution | Risk Level |
+|------|---------|-------------------|------------|
+| Exact match | "keyword research tools" | 10-15% | Over-optimization risk if higher |
+| Partial match | "best tools for keyword research" | 20-30% | Safe, natural variation |
+| Branded | "Ahrefs keyword explorer" | 15-25% | Always safe |
+| Generic | "click here", "learn more", "read this" | 5-10% | Low SEO value |
+| Descriptive/natural | "this comprehensive guide covers..." | 20-30% | Most natural, recommended |
+| Naked URL | "example.com/page" | 5-10% | Natural for citations |
+
+### Anchor Text Best Practices
+- Vary anchor text for the same target page
+- Use descriptive text that tells users AND search engines what to expect
+- Never use identical anchor text for different target pages
+- Monitor for accidental over-optimization of commercial keywords
+
+## Link Equity Flow Model
+
+### Link Equity Distribution
+
+| Page Position | Equity Received | Action to Increase |
+|--------------|----------------|-------------------|
+| Homepage | Highest (all external links flow here) | Distribute to key pages via prominent links |
+| Category pages | High (linked from homepage + child pages) | Link to from blog posts, not just nav |
+| Top content | Medium-High (if well-linked internally) | Increase internal links from other strong pages |
+| Deep pages | Low (few internal links) | Add contextual links from related pages |
+| Orphan pages | Zero (no internal links!) | Critical: add at least 3 internal links |
+
+### Link Equity Optimization Rules
+1. **Link from strong pages to weak pages** — pages with high authority should link to priority pages
+2. **Reduce click depth** — important pages should be within 3 clicks of homepage
+3. **Fix orphan pages** — every page needs at least one internal link
+4. **Use contextual links** — links within body content pass more value than navigation/footer links
+5. **Limit links per page** — diminishing returns above 100 internal links per page
+
+## Internal Link Audit Checklist
+
+| Check | Tool/Method | Pass Criteria |
+|-------|------------|--------------|
+| Orphan pages | Crawl report | Zero orphan pages |
+| Click depth | Crawl report | All priority pages ≤3 clicks from home |
+| Broken internal links | Crawl report | Zero 404 internal links |
+| Redirect chains | Crawl report | No chain >2 redirects |
+| Anchor text diversity | Manual audit | No anchor text >30% exact match |
+| Bidirectional links | Manual audit | Related pages link to each other |
+| Navigation consistency | Manual audit | Key pages in main nav |
+| Contextual links per page | Manual audit | 3-5 contextual links per 1000 words |
+
+## Reference Materials
+
+- [Link Architecture Patterns](./references/link-architecture-patterns.md) — Architecture models, implementation guides, and link equity optimization strategies
+
 ## Related Skills
 
-- [content-gap-analysis](../../research/content-gap-analysis/) - Find content to link to
-- [seo-content-writer](../../build/seo-content-writer/) - Create linkable content
-- [on-page-seo-auditor](../on-page-seo-auditor/) - Audit overall on-page SEO
-- [technical-seo-checker](../technical-seo-checker/) - Check crawlability
-
+- [content-gap-analysis](../../research/content-gap-analysis/) — Find content to link to
+- [seo-content-writer](../../build/seo-content-writer/) — Create linkable content
+- [on-page-seo-auditor](../on-page-seo-auditor/) — Audit overall on-page SEO
+- [technical-seo-checker](../technical-seo-checker/) — Check crawlability
+- [content-quality-auditor](../../cross-cutting/content-quality-auditor/) — Full 80-item CORE-EEAT audit
+- [schema-markup-generator](../../build/schema-markup-generator/) — Breadcrumb and navigation schema

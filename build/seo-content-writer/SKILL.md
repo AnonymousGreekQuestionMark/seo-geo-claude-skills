@@ -1,9 +1,52 @@
 ---
 name: seo-content-writer
-description: Creates high-quality, SEO-optimized content that ranks in search engines. Applies on-page SEO best practices, keyword optimization, and content structure for maximum visibility and engagement.
+description: 'Use when the user asks to "write SEO content", "create a blog post", "write an article", "content writing", "draft optimized content", "write me an article", "create a blog post about", "help me write SEO content", or "draft content for". Creates high-quality, SEO-optimized content that ranks in search engines. Applies on-page SEO best practices, keyword optimization, and content structure for maximum visibility and engagement. For AI citation optimization, see geo-content-optimizer. For updating existing content, see content-refresher.'
+license: Apache-2.0
+metadata:
+  author: aaron-he-zhu
+  version: "2.0.0"
+  geo-relevance: "medium"
+  tags:
+    - seo
+    - content writing
+    - blog post
+    - article
+    - copywriting
+    - content creation
+    - on-page seo
+  triggers:
+    - "write SEO content"
+    - "create blog post"
+    - "write an article"
+    - "content writing"
+    - "draft optimized content"
+    - "write for SEO"
+    - "blog writing"
+    - "write me an article"
+    - "create a blog post about"
+    - "help me write SEO content"
+    - "draft content for"
 ---
 
 # SEO Content Writer
+
+
+> **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
+
+<details>
+<summary>Browse all 20 skills</summary>
+
+**Research** · [keyword-research](../../research/keyword-research/) · [competitor-analysis](../../research/competitor-analysis/) · [serp-analysis](../../research/serp-analysis/) · [content-gap-analysis](../../research/content-gap-analysis/)
+
+**Build** · **seo-content-writer** · [geo-content-optimizer](../geo-content-optimizer/) · [meta-tags-optimizer](../meta-tags-optimizer/) · [schema-markup-generator](../schema-markup-generator/)
+
+**Optimize** · [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) · [technical-seo-checker](../../optimize/technical-seo-checker/) · [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) · [content-refresher](../../optimize/content-refresher/)
+
+**Monitor** · [rank-tracker](../../monitor/rank-tracker/) · [backlink-analyzer](../../monitor/backlink-analyzer/) · [performance-reporter](../../monitor/performance-reporter/) · [alert-manager](../../monitor/alert-manager/)
+
+**Cross-cutting** · [content-quality-auditor](../../cross-cutting/content-quality-auditor/) · [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) · [entity-optimizer](../../cross-cutting/entity-optimizer/) · [memory-management](../../cross-cutting/memory-management/)
+
+</details>
 
 This skill creates search-engine-optimized content that ranks well while providing genuine value to readers. It applies proven SEO copywriting techniques, proper keyword integration, and optimal content structure.
 
@@ -42,7 +85,7 @@ Create a blog post for [topic] with these keywords: [keyword list]
 ### With Specific Requirements
 
 ```
-Write a 2,000-word guide about [topic] targeting [keyword], 
+Write a 2,000-word guide about [topic] targeting [keyword],
 include FAQ section for featured snippets
 ```
 
@@ -51,6 +94,22 @@ include FAQ section for featured snippets
 ```
 Here's my content brief: [brief]. Write SEO-optimized content following this outline.
 ```
+
+## Data Sources
+
+> See [CONNECTORS.md](../../CONNECTORS.md) for tool category placeholders.
+
+**With ~~SEO tool + ~~search console connected:**
+Automatically pull keyword metrics (search volume, difficulty, CPC), competitor content analysis (top-ranking pages, content length, common topics), SERP features (featured snippets, PAA questions), and keyword opportunities (related keywords, question-based queries).
+
+**With manual data only:**
+Ask the user to provide:
+1. Target primary keyword and 3-5 secondary keywords
+2. Target audience and search intent (informational/commercial/transactional)
+3. Target word count and desired tone
+4. Any competitor URLs or content examples to reference
+
+Proceed with the full workflow using provided data. Note in the output which metrics are from automated collection vs. user-provided data.
 
 ## Instructions
 
@@ -74,7 +133,43 @@ When a user requests SEO content:
    **Competitor URLs**: [top ranking content to beat]
    ```
 
-2. **Research and Plan**
+2. **Load CORE-EEAT Quality Constraints**
+
+   Before writing, load content quality standards from the [CORE-EEAT Benchmark](../../references/core-eeat-benchmark.md):
+
+   ```markdown
+   ### CORE-EEAT Pre-Write Checklist
+
+   **Content Type**: [identified from requirements above]
+   **Loaded Constraints** (high-weight items for this content type):
+
+   Apply these standards while writing:
+
+   | ID | Standard | How to Apply |
+   |----|----------|-------------|
+   | C01 | Intent Alignment | Title promise must match content delivery |
+   | C02 | Direct Answer | Core answer in first 150 words |
+   | C06 | Audience Targeting | State "this article is for..." |
+   | C10 | Semantic Closure | Conclusion answers opening question + next steps |
+   | O01 | Heading Hierarchy | H1→H2→H3, no level skipping |
+   | O02 | Summary Box | Include TL;DR or Key Takeaways |
+   | O06 | Section Chunking | Each section single topic; paragraphs 3–5 sentences |
+   | O09 | Information Density | No filler; consistent terminology |
+   | R01 | Data Precision | ≥5 precise numbers with units |
+   | R02 | Citation Density | ≥1 external citation per 500 words |
+   | R04 | Evidence-Claim Mapping | Every claim backed by evidence |
+   | R07 | Entity Precision | Full names for people/orgs/products |
+   | C03 | Query Coverage | Cover ≥3 query variants (synonyms, long-tail) |
+   | O08 | Anchor Navigation | Table of contents with jump links |
+   | O10 | Multimedia Structure | Images/videos have captions and carry information |
+   | E07 | Practical Tools | Include downloadable templates, checklists, or calculators |
+
+   _These 16 items apply across all content types. For content-type-specific dimension weights, see the Content-Type Weight Table in [core-eeat-benchmark.md](../../references/core-eeat-benchmark.md)._
+   _Full 80-item benchmark: [references/core-eeat-benchmark.md](../../references/core-eeat-benchmark.md)_
+   _For complete content quality audit: use [content-quality-auditor](../../cross-cutting/content-quality-auditor/)_
+   ```
+
+3. **Research and Plan**
 
    Before writing:
    
@@ -97,7 +192,7 @@ When a user requests SEO content:
    [What unique perspective or value will this content provide?]
    ```
 
-3. **Create Optimized Title**
+4. **Create Optimized Title**
 
    ```markdown
    ### Title Optimization
@@ -121,7 +216,7 @@ When a user requests SEO content:
    **Recommended**: [Best option with reasoning]
    ```
 
-4. **Write Meta Description**
+5. **Write Meta Description**
 
    ```markdown
    ### Meta Description
@@ -141,7 +236,7 @@ When a user requests SEO content:
    - ✅ CTA or curiosity hook
    ```
 
-5. **Structure Content with SEO Headers**
+6. **Structure Content with SEO Headers**
 
    ```markdown
    ### Content Structure
@@ -176,7 +271,7 @@ When a user requests SEO content:
    - Clear call-to-action
    ```
 
-6. **Apply On-Page SEO Best Practices**
+7. **Apply On-Page SEO Best Practices**
 
    ```markdown
    ### On-Page SEO Checklist
@@ -199,7 +294,7 @@ When a user requests SEO content:
    - [ ] Expert quotes or citations (for E-E-A-T)
    
    **Readability**:
-   - [ ] Short paragraphs (2-4 sentences)
+   - [ ] Paragraphs of 3-5 sentences (per CORE-EEAT O06 Section Chunking standard)
    - [ ] Varied sentence length
    - [ ] Bullet points and lists
    - [ ] Bold key phrases
@@ -212,7 +307,7 @@ When a user requests SEO content:
    - [ ] URL slug includes keyword
    ```
 
-7. **Write the Content**
+8. **Write the Content**
 
    Follow this structure:
 
@@ -283,7 +378,7 @@ When a user requests SEO content:
    [Clear call-to-action: what should reader do next?]
    ```
 
-8. **Optimize for Featured Snippets**
+9. **Optimize for Featured Snippets**
 
    ```markdown
    ### Featured Snippet Optimization
@@ -301,7 +396,7 @@ When a user requests SEO content:
    Number each step clearly: "Step 1:", "Step 2:", etc.
    ```
 
-9. **Add Internal/External Links**
+10. **Add Internal/External Links**
 
    ```markdown
    ### Link Recommendations
@@ -315,11 +410,11 @@ When a user requests SEO content:
    2. "[anchor text]" → [authoritative-source.com] (supports: [claim])
    ```
 
-10. **Final SEO Review**
+11. **Final SEO Review**
 
     ```markdown
     ### Content SEO Score
-    
+
     | Factor | Status | Notes |
     |--------|--------|-------|
     | Title optimized | ✅/⚠️/❌ | [notes] |
@@ -332,13 +427,60 @@ When a user requests SEO content:
     | FAQ section | ✅/⚠️/❌ | [notes] |
     | Readability | ✅/⚠️/❌ | [notes] |
     | Word count | ✅/⚠️/❌ | [X] words |
-    
+
     **Overall SEO Score**: [X]/10
-    
+
     **Improvements to Consider**:
     1. [Suggestion]
     2. [Suggestion]
     ```
+
+12. **CORE-EEAT Self-Check**
+
+    After writing, verify content against loaded CORE-EEAT constraints:
+
+    ```markdown
+    ### CORE-EEAT Post-Write Check
+
+    | ID | Standard | Status | Notes |
+    |----|----------|--------|-------|
+    | C01 | Intent Alignment: title = content | ✅/⚠️/❌ | [notes] |
+    | C02 | Direct Answer in first 150 words | ✅/⚠️/❌ | [notes] |
+    | C06 | Audience explicitly stated | ✅/⚠️/❌ | [notes] |
+    | C10 | Conclusion answers opening question | ✅/⚠️/❌ | [notes] |
+    | O01 | Heading hierarchy correct | ✅/⚠️/❌ | [notes] |
+    | O02 | Summary/Key Takeaways present | ✅/⚠️/❌ | [notes] |
+    | O06 | Paragraphs 3–5 sentences | ✅/⚠️/❌ | [notes] |
+    | O09 | No filler; consistent terms | ✅/⚠️/❌ | [notes] |
+    | R01 | ≥5 precise data points with units | ✅/⚠️/❌ | [notes] |
+    | R02 | ≥1 citation per 500 words | ✅/⚠️/❌ | [notes] |
+    | R04 | Claims backed by evidence | ✅/⚠️/❌ | [notes] |
+    | R07 | Full entity names used | ✅/⚠️/❌ | [notes] |
+    | C03 | ≥3 query variants covered | ✅/⚠️/❌ | [notes] |
+    | O08 | Table of contents with jump links | ✅/⚠️/❌ | [notes] |
+    | O10 | Images/videos captioned and informative | ✅/⚠️/❌ | [notes] |
+    | E07 | Downloadable template/checklist included | ✅/⚠️/❌ | [notes] |
+
+    **Items Needing Attention**: [list any ⚠️/❌ items]
+
+    _For full 80-item audit, use [content-quality-auditor](../../cross-cutting/content-quality-auditor/)_
+    ```
+
+## Validation Checkpoints
+
+### Input Validation
+- [ ] Primary keyword confirmed and matches search intent
+- [ ] Target word count specified (minimum 800 words for substantive content)
+- [ ] Content type and audience clearly defined
+- [ ] Competitor URLs reviewed or target SERP features identified
+
+### Output Validation
+- [ ] Keyword density within 1-2% for primary keyword (Note: Keyword density is a guideline, not a hard rule. Modern search engines prioritize semantic relevance and natural language over exact density targets. Focus on covering the topic comprehensively with semantic variants rather than hitting a specific percentage.)
+- [ ] All sections from outline covered completely
+- [ ] Internal links included (2-5 relevant links)
+- [ ] FAQ section present with at least 3 questions
+- [ ] Readability score appropriate for target audience
+- [ ] Source of each data point clearly stated (~~SEO tool data, user-provided, or estimated)
 
 ## Example
 
@@ -499,10 +641,21 @@ Write an ultimate guide about [topic] (3,000+ words) targeting [keyword]
 5. **Include visual elements** - Break up text with images, tables, lists
 6. **Update regularly** - Fresh content signals to search engines
 
+## Reference Materials
+
+- [Title Formulas](./references/title-formulas.md) - Proven headline formulas, power words, CTR patterns
+- [Content Structure Templates](./references/content-structure-templates.md) - Templates for blog posts, comparisons, listicles, how-tos, pillar pages
+
 ## Related Skills
 
-- [keyword-research](../../research/keyword-research/) - Find keywords to target
-- [geo-content-optimizer](../geo-content-optimizer/) - Optimize for AI citations
-- [meta-tags-optimizer](../meta-tags-optimizer/) - Create compelling meta tags
-- [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) - Audit SEO elements
+- [keyword-research](../../research/keyword-research/) — Find keywords to target
+- [geo-content-optimizer](../geo-content-optimizer/) — Optimize for AI citations
+- [meta-tags-optimizer](../meta-tags-optimizer/) — Create compelling meta tags
+- [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) — Audit SEO elements
+- [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) — Place internal links during content writing
+- [content-refresher](../../optimize/content-refresher/) — Refresh and update existing content
+- [content-quality-auditor](../../cross-cutting/content-quality-auditor/) — Full 80-item CORE-EEAT audit
+- [memory-management](../../cross-cutting/memory-management/) — Track content performance over time
+- [content-gap-analysis](../../research/content-gap-analysis/) — Identify content opportunities to write about
+- [schema-markup-generator](../schema-markup-generator/) — Add structured data to published content
 

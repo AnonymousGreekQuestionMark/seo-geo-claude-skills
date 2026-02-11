@@ -1,9 +1,53 @@
 ---
 name: serp-analysis
-description: Analyzes search engine results pages (SERPs) to understand ranking factors, SERP features, user intent patterns, and AI overview triggers. Essential for understanding what it takes to rank.
+description: 'Use when the user asks to "analyze search results", "SERP analysis", "what ranks for", "SERP features", "why does this page rank", "what is on page one for this query", "who ranks for this keyword", or "what does Google show for". Analyzes search engine results pages (SERPs) to understand ranking factors, SERP features, user intent patterns, and AI overview triggers. Essential for understanding what it takes to rank. For tracking rankings over time, see rank-tracker. For keyword discovery, see keyword-research.'
+license: Apache-2.0
+metadata:
+  author: aaron-he-zhu
+  version: "2.0.0"
+  geo-relevance: "high"
+  tags:
+    - seo
+    - geo
+    - serp
+    - search results
+    - ranking factors
+    - serp features
+    - ai overviews
+    - featured snippets
+    - search intent
+  triggers:
+    - "analyze search results"
+    - "SERP analysis"
+    - "what ranks for"
+    - "SERP features"
+    - "why does this page rank"
+    - "featured snippets"
+    - "AI overviews"
+    - "what's on page one for this query"
+    - "who ranks for this keyword"
+    - "what does Google show for"
 ---
 
 # SERP Analysis
+
+
+> **[SEO & GEO Skills Library](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)** · 20 skills for SEO + GEO · Install all: `npx skills add aaron-he-zhu/seo-geo-claude-skills`
+
+<details>
+<summary>Browse all 20 skills</summary>
+
+**Research** · [keyword-research](../keyword-research/) · [competitor-analysis](../competitor-analysis/) · **serp-analysis** · [content-gap-analysis](../content-gap-analysis/)
+
+**Build** · [seo-content-writer](../../build/seo-content-writer/) · [geo-content-optimizer](../../build/geo-content-optimizer/) · [meta-tags-optimizer](../../build/meta-tags-optimizer/) · [schema-markup-generator](../../build/schema-markup-generator/)
+
+**Optimize** · [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) · [technical-seo-checker](../../optimize/technical-seo-checker/) · [internal-linking-optimizer](../../optimize/internal-linking-optimizer/) · [content-refresher](../../optimize/content-refresher/)
+
+**Monitor** · [rank-tracker](../../monitor/rank-tracker/) · [backlink-analyzer](../../monitor/backlink-analyzer/) · [performance-reporter](../../monitor/performance-reporter/) · [alert-manager](../../monitor/alert-manager/)
+
+**Cross-cutting** · [content-quality-auditor](../../cross-cutting/content-quality-auditor/) · [domain-authority-auditor](../../cross-cutting/domain-authority-auditor/) · [entity-optimizer](../../cross-cutting/entity-optimizer/) · [memory-management](../../cross-cutting/memory-management/)
+
+</details>
 
 This skill analyzes Search Engine Results Pages to reveal what's working for ranking content, which SERP features appear, and what triggers AI-generated answers. Understand the battlefield before creating content.
 
@@ -54,6 +98,23 @@ Which of these keywords trigger AI Overviews? [keyword list]
 ```
 Why does [URL] rank #1 for [keyword]?
 ```
+
+## Data Sources
+
+> See [CONNECTORS.md](../../CONNECTORS.md) for tool category placeholders.
+
+**With ~~SEO tool + ~~search console + ~~AI monitor connected:**
+Automatically fetch SERP snapshots for target keywords, extract ranking page metrics (domain authority, backlinks, content length), pull SERP feature data, and check AI Overview presence using ~~AI monitor. Historical SERP change data and mobile vs. desktop variations can be retrieved automatically.
+
+**With manual data only:**
+Ask the user to provide:
+1. Target keyword(s) to analyze
+2. SERP screenshots or detailed descriptions of search results
+3. URLs of top 10 ranking pages
+4. Search location and device type (mobile/desktop)
+5. Any observations about SERP features (featured snippets, PAA, AI Overviews)
+
+Proceed with the full analysis using provided data. Note in the output which metrics are from automated collection vs. user-provided data.
 
 ## Instructions
 
@@ -359,11 +420,26 @@ When a user requests SERP analysis:
    ```
    
    ### Next Steps
-   
+
    1. [Immediate action]
    2. [Content creation action]
    3. [Optimization action]
    ```
+
+## Validation Checkpoints
+
+### Input Validation
+- [ ] Target keyword(s) clearly specified
+- [ ] Search location and device type confirmed
+- [ ] SERP data is current (date confirmed)
+- [ ] Top 10 ranking URLs identified or provided
+
+### Output Validation
+- [ ] Every recommendation cites specific data points (not generic advice)
+- [ ] SERP composition mapped with all features documented
+- [ ] Ranking factors identified from actual top 10 analysis (not assumptions)
+- [ ] Content requirements based on observed patterns in current SERP
+- [ ] Source of each data point clearly stated (~~SEO tool data, ~~AI monitor data, user-provided, or manual observation)
 
 ## Example
 
@@ -404,7 +480,7 @@ When a user requests SERP analysis:
 
 Buzzsprout's guide succeeds because:
 1. **Comprehensive** - Covers every step in detail
-2. **Updated** - "2024" in title, recent updates
+2. **Updated** - Current year in title, recent updates
 3. **Structured** - Clear numbered steps (owns featured snippet)
 4. **Authoritative** - Podcast hosting company (topical authority)
 5. **Supporting content** - Links to detailed sub-guides
@@ -482,10 +558,79 @@ Analyze mobile vs desktop SERP differences for [keyword]
 5. **Study the outliers** - Why does a weaker site rank? Opportunity!
 6. **Consider AI Overview optimization** - Growing importance
 
+## SERP Feature Taxonomy
+
+### Feature Types and Trigger Conditions
+
+| SERP Feature | Trigger Conditions | Content Requirements | Optimization Approach |
+|-------------|-------------------|---------------------|---------------------|
+| Featured Snippet (paragraph) | Question/definition queries | 40-60 word direct answer under H2 | Answer immediately, then elaborate |
+| Featured Snippet (list) | "How to", "best", "top" queries | Numbered/bulleted list with clear items | Use numbered steps or ranked lists |
+| Featured Snippet (table) | Comparison/data queries | Well-structured HTML table | Create comparison tables |
+| People Also Ask | Most informational queries | Concise answer paragraphs | Target PAA questions as H2/H3s |
+| Knowledge Panel | Entity queries | Schema markup, Wikipedia presence | Structured data + authoritative citations |
+| Image Pack | Visual/product queries | Optimized images with alt text | Descriptive filenames, proper alt text |
+| Video Carousel | How-to/tutorial queries | Video content with transcripts | YouTube optimization, video schema |
+| Local Pack | Location-based queries | Google Business Profile | Local SEO optimization |
+| Shopping Results | Product/purchase queries | Product schema, Google Merchant | Product feed optimization |
+| Sitelinks | Navigational/brand queries | Clear site structure | Logical hierarchy, breadcrumbs |
+
+### AI Overview Analysis Framework
+
+| Analysis Dimension | What to Look For | Why It Matters |
+|-------------------|-----------------|----------------|
+| **Trigger Rate** | Does this query generate an AI Overview? | Not all queries have AI responses |
+| **Source Selection** | Which domains are cited? How many? | Reveals authority signals AI uses |
+| **Citation Format** | Direct quotes vs. synthesized content | Shows what content format AI prefers |
+| **Answer Structure** | Bullet points, paragraphs, tables | Indicates optimal content formatting |
+| **Fact Patterns** | Statistics, definitions, lists cited | Shows what content elements get cited |
+| **Update Sensitivity** | How fresh are cited sources? | Reveals recency bias strength |
+
+### Search Intent Signals from SERP Composition
+
+| SERP Composition | Implied Intent | Content Strategy |
+|-----------------|---------------|-----------------|
+| All blog posts / articles | Informational | Create comprehensive guide |
+| Product pages + shopping | Transactional | Optimize product/category page |
+| Mix of reviews + products | Commercial investigation | Create comparison/review content |
+| Videos dominate | Visual/instructional | Create video content + transcript |
+| Local pack present | Local intent | Local SEO optimization |
+| News results present | Trending/current | Timely, newsworthy content |
+| Forum/Reddit results | Community/opinion | Create opinionated, discussion-worthy content |
+
+## SERP Volatility Assessment
+
+### Volatility Indicators
+
+| Indicator | Stability Signal | Volatility Signal |
+|-----------|-----------------|-------------------|
+| Top 3 age | Same pages for 6+ months | New pages in top 3 within 3 months |
+| Domain diversity | 2-3 domains dominate top 10 | 8+ different domains in top 10 |
+| SERP feature changes | Same features consistently | Features appearing/disappearing |
+| Algorithm sensitivity | Positions stable through updates | Major position shifts during updates |
+
+### Opportunity Assessment Based on SERP
+
+| SERP Signal | Opportunity Level | Recommended Action |
+|------------|------------------|-------------------|
+| Low-authority sites in top 5 | High | Create superior content to outrank |
+| Outdated content ranking | High | Publish fresh, updated content |
+| Thin content ranking | High | Create comprehensive coverage |
+| Forums/UGC ranking | High | Create authoritative alternative |
+| All DR 90+ sites | Low | Target related long-tail instead |
+| AI Overview with few sources | Medium | Optimize for AI citation |
+
+## Reference Materials
+
+- [SERP Feature Taxonomy](./references/serp-feature-taxonomy.md) — Complete taxonomy of SERP features with trigger conditions and optimization approaches
+
 ## Related Skills
 
-- [keyword-research](../keyword-research/) - Find keywords to analyze
-- [competitor-analysis](../competitor-analysis/) - Deep dive on ranking competitors
-- [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) - Optimize based on findings
-- [geo-content-optimizer](../../build/geo-content-optimizer/) - Optimize for AI citations
+- [keyword-research](../keyword-research/) — Find keywords to analyze
+- [competitor-analysis](../competitor-analysis/) — Deep dive on ranking competitors
+- [on-page-seo-auditor](../../optimize/on-page-seo-auditor/) — Optimize based on findings
+- [geo-content-optimizer](../../build/geo-content-optimizer/) — Optimize for AI citations
+- [meta-tags-optimizer](../../build/meta-tags-optimizer/) — Optimize SERP appearance with meta tags
+- [rank-tracker](../../monitor/rank-tracker/) — Track keyword position changes in SERPs
+- [performance-reporter](../../monitor/performance-reporter/) — Track SERP visibility metrics over time
 
