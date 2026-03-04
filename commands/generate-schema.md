@@ -2,6 +2,16 @@
 name: generate-schema
 description: Generate Schema.org JSON-LD structured data markup for a page
 argument-hint: "<schema type> for <content description>"
+allowed-tools: ["WebFetch"]
+parameters:
+  - name: schema_type
+    type: string
+    required: true
+    description: "Schema type: FAQ, HowTo, Article, Product, LocalBusiness, Organization, Breadcrumb, Review, Event, Video"
+  - name: source
+    type: string
+    required: false
+    description: URL, pasted content, or description of the content
 ---
 
 # Generate Schema Command

@@ -45,11 +45,14 @@ seo-geo-claude-skills/
 ├── references/                       # Shared reference documents
 │   ├── core-eeat-benchmark.md        # 80-item content quality framework
 │   └── cite-domain-rating.md         # 40-item domain authority framework
+├── scripts/                          # Developer utilities
+│   └── validate-skill.sh             # Validate SKILL.md spec compliance
 ├── .claude-plugin/                   # Claude Code plugin manifest
-│   ├── marketplace.json
 │   └── plugin.json
+├── marketplace.json                  # skills.sh marketplace manifest
 ├── .mcp.json                         # Pre-configured MCP servers
-├── AGENTS.md                         # This file
+├── CLAUDE.md                         # Claude Code auto-loaded agent context
+├── AGENTS.md                         # This file (skills.sh convention)
 ├── CONNECTORS.md                     # Tool placeholder mappings
 ├── CONTRIBUTING.md                   # Contribution guide
 ├── VERSIONS.md                       # Version tracking for all skills
@@ -69,9 +72,15 @@ Each skill directory contains a `SKILL.md` and optionally a `references/` subdir
 | Monitor | `monitor/` | Track performance and catch issues | rank-tracker, backlink-analyzer, performance-reporter, alert-manager |
 | Cross-cutting | `cross-cutting/` | Span all phases | content-quality-auditor, domain-authority-auditor, entity-optimizer, memory-management |
 
-## Agent Skills Specification
+## Skill Format Specifications
 
-All skills follow the [Agent Skills specification](https://agentskills.io/specification.md).
+All skills are compatible with three skill ecosystems:
+
+| Ecosystem | Spec | Install |
+|-----------|------|---------|
+| **Agent Skills** | [agentskills.io/specification.md](https://agentskills.io/specification.md) | `npx skills add aaron-he-zhu/seo-geo-claude-skills` |
+| **ClawHub** | [openclaw/clawhub skill-format.md](https://github.com/openclaw/clawhub/blob/main/docs/skill-format.md) | ClawHub marketplace |
+| **Vercel Labs skills** | [vercel-labs/skills find-skills](https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md) | `npx skills find seo` |
 
 ### Required Frontmatter
 
@@ -79,23 +88,40 @@ Every `SKILL.md` must have YAML frontmatter with:
 
 | Field | Required | Rules |
 |-------|----------|-------|
-| `name` | Yes | 1-64 chars, lowercase a-z, numbers, hyphens only. Must match directory name exactly. Cannot start/end with hyphen. No consecutive hyphens. |
-| `description` | Yes | 1-1024 chars. Must include: what it does, when to use it (trigger phrases), and scope boundaries (related skills). |
+| `name` | Yes | 1-64 chars, lowercase a-z, numbers, hyphens only. Must match directory name exactly. Cannot start/end with hyphen. No consecutive hyphens. Also satisfies ClawHub slug pattern `^[a-z0-9][a-z0-9-]*$`. |
+| `description` | Yes | 1-1024 chars. Must include: what it does, when to use it (trigger phrases), and scope boundaries (related skills). Optimized for `npx skills find` (Vercel Labs) discovery. |
 
 ### Optional Frontmatter
 
-| Field | Purpose |
-|-------|---------|
-| `license` | License name (default: Apache-2.0) |
-| `metadata.author` | Skill author |
-| `metadata.version` | Semantic version |
-| `metadata.geo-relevance` | How relevant to GEO (high/medium/low) |
-| `metadata.tags` | Searchable keywords |
-| `metadata.triggers` | Phrases that activate the skill |
+| Field | Purpose | Ecosystem |
+|-------|---------|-----------|
+| `license` | License name (default: Apache-2.0) | All |
+| `compatibility` | Platform list: Claude Code, skills.sh, ClawHub, Vercel Labs | All |
+| `allowed-tools` | Space-delimited pre-approved tools (e.g., `WebFetch`) | Agent Skills |
+| `metadata.author` | Skill author | All |
+| `metadata.version` | Semantic version | All |
+| `metadata.geo-relevance` | GEO optimization relevance (high/medium/low) | This library |
+| `metadata.tags` | Searchable keywords | All |
+| `metadata.triggers` | Trigger phrases that activate the skill | Agent Skills |
+| `metadata.openclaw` | ClawHub runtime declarations (`requires.env`, `requires.bins`) | ClawHub |
+
+### ClawHub Runtime Declaration
+
+Skills declare runtime requirements under `metadata.openclaw` only when they have a hard dependency or a `primaryEnv` signal. Skills with no hard dependencies omit the `openclaw` block entirely.
+
+If a skill requires a specific API key to function at all, declare it:
+```yaml
+metadata:
+  openclaw:
+    primaryEnv: AHREFS_API_KEY
+    requires:
+      env:
+        - AHREFS_API_KEY
+```
 
 ### Description Field Best Practices
 
-The `description` field is critical for skills.sh/find-skills discovery. It must include:
+The `description` field drives discovery across all three ecosystems (skills.sh, ClawHub search, `npx skills find`). It must include:
 
 1. **When to use** — Start with `Use when the user asks to "..."` followed by trigger phrases
 2. **What it does** — One sentence describing the skill's function
@@ -205,8 +231,9 @@ When contributing to this repository:
 
 - **Branch naming**: `feature/skill-name`, `fix/skill-name`, `docs/description`
 - **Conventional Commits**: `feat: add skill-name skill`, `fix: correct scoring in on-page-seo-auditor`, `docs: update VERSIONS.md`
-- **After adding or updating a skill**: Update `VERSIONS.md`, `.claude-plugin/marketplace.json` skills array, `.claude-plugin/plugin.json` skills array, and the relevant README.md skills table
-- **Keep SKILL.md under 500 lines** — use `references/` subdirectories for detailed documentation
+- **After adding or updating a skill**: Update all 5 tracking files: `VERSIONS.md`, `.claude-plugin/plugin.json` skills array, `marketplace.json` (repo root) skills array (must match plugin.json exactly), `README.md` skills table, `CLAUDE.md` category table
+- **Keep SKILL.md under 350 lines** (~4000 tokens) — use `references/` subdirectories for detailed documentation
+- **Validate before submitting**: Run `./scripts/validate-skill.sh <category>/<skill-name>`
 
 ## Writing Style
 
@@ -214,5 +241,5 @@ When contributing to this repository:
 - Bold key terms on first use
 - Use code blocks for commands, templates, and examples
 - Use tables for structured data
-- Keep SKILL.md focused — one skill per file, under 500 lines
+- Keep SKILL.md focused — one skill per file, under 350 lines
 - Additional documentation goes in `references/` subdirectories

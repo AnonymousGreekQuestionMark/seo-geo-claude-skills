@@ -2,7 +2,7 @@
 
 [![Skills](https://img.shields.io/badge/skills-20-blue)](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
-[![Version](https://img.shields.io/badge/version-2.0.0-orange)](./VERSIONS.md)
+[![Version](https://img.shields.io/badge/version-3.0.0-orange)](./VERSIONS.md)
 
 Claude Skills and Commands for Search Engine Optimization (SEO) and Generative Engine Optimization (GEO). 20 skills, 9 commands, tool-agnostic, works with or without integrations. Content quality powered by the [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark). Domain authority powered by the [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating).
 
@@ -339,6 +339,10 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to add new skills, improve exis
 |------------|-----------------|
 | [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark) | 80-item content quality scoring framework |
 | [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating) | 40-item domain authority scoring framework |
+
+## Disclaimer
+
+These skills assist with SEO and GEO workflows but do not guarantee search rankings, AI citations, or traffic results. SEO and GEO outcomes depend on many factors outside the scope of this tool. Always verify recommendations with qualified professionals before making significant changes to your content strategy. AI-generated analysis should be reviewed by domain experts before being relied upon for business decisions.
 
 ## License
 

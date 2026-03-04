@@ -32,14 +32,19 @@ The directory name must:
 
 ### 3. Create `SKILL.md` with required frontmatter
 
+Use this template:
+
 ```yaml
 ---
 name: your-skill-name
+version: "1.0.0"
 description: 'Use when the user asks to "[trigger phrase 1]", "[trigger phrase 2]". [What it does in one sentence]. For [related task], see [other-skill].'
 license: Apache-2.0
+compatibility: "Claude Code ≥1.0, skills.sh marketplace. No system packages required. Optional: MCP network access for SEO tool integrations."
+# allowed-tools: WebFetch   # Uncomment if skill fetches live URLs
 metadata:
   author: your-github-username
-  version: "2.0.0"
+  version: "1.0.0"
   geo-relevance: "high|medium|low"
   tags:
     - seo
@@ -69,16 +74,31 @@ A well-structured SKILL.md includes:
 - **Example** — concrete input/output example
 - **Related Skills** — links to complementary skills
 
-Keep the main SKILL.md under 500 lines. Put detailed references, templates, and rubrics in a `references/` subdirectory.
+Keep the main SKILL.md under 350 lines. Put detailed references, templates, and rubrics in a `references/` subdirectory.
 
-### 5. Update tracking files
+### 5. Validate the skill
 
-After adding or updating a skill, update these files:
+```bash
+# Run the built-in validator (from repo root)
+./scripts/validate-skill.sh <category>/<skill-name>
+
+# Example
+./scripts/validate-skill.sh research/keyword-research
+```
+
+Fix any FAIL items before proceeding. Resolve WARN items where possible.
+
+### 6. Update tracking files
+
+After adding or updating a skill, **all 5 files must stay in sync**:
 
 - [ ] `VERSIONS.md` — add or update the skill's version and date
-- [ ] `.claude-plugin/marketplace.json` — add the skill path to the `skills` array
 - [ ] `.claude-plugin/plugin.json` — add the skill path to the `skills` array
+- [ ] `marketplace.json` (repo root) — add the skill path to the `skills` array (must match plugin.json exactly)
 - [ ] `README.md` — add the skill to the appropriate category table
+- [ ] `CLAUDE.md` — add the skill to the phase/category table
+
+> **Important**: `plugin.json` and `marketplace.json` must be updated together on every version bump. They must contain identical skills arrays. Keeping them out of sync breaks skills.sh marketplace discovery.
 
 ## Improving Existing Skills
 
@@ -91,22 +111,42 @@ After adding or updating a skill, update these files:
 
 Before submitting a PR:
 
-- [ ] `name` field matches directory name exactly
-- [ ] `description` includes trigger phrases AND scope boundaries
-- [ ] SKILL.md is under 500 lines
+- [ ] `name` field matches directory name exactly (also satisfies ClawHub slug `^[a-z0-9][a-z0-9-]*$`)
+- [ ] `description` includes trigger phrases AND scope boundaries (≤1024 chars, optimized for `npx skills find`)
+- [ ] `compatibility` lists all three ecosystems: Claude Code, skills.sh, ClawHub marketplace, Vercel Labs skills ecosystem
+- [ ] `metadata.openclaw` block present **only if** the skill has a hard `primaryEnv` dependency or required bins (omit entirely for tool-agnostic skills)
+- [ ] SKILL.md body is under 350 lines (~4000 tokens); detailed rubrics/tables in `references/`
+- [ ] Validator passes (all 3 specs checked): `./scripts/validate-skill.sh <category>/<skill-name>`
 - [ ] Follows the [Agent Skills specification](https://agentskills.io/specification.md)
+- [ ] Follows [ClawHub skill format](https://github.com/openclaw/clawhub/blob/main/docs/skill-format.md) (text-only files, openclaw metadata)
+- [ ] Compatible with [Vercel Labs skills ecosystem](https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md) (description discoverable via `npx skills find`)
 - [ ] Uses `~~placeholder` pattern for tool references (not specific tool names)
+- [ ] `allowed-tools: WebFetch` added if skill fetches live URLs
 - [ ] Includes validation checkpoints
 - [ ] Includes at least one concrete example
 - [ ] Related skills are linked correctly
-- [ ] All tracking files updated (VERSIONS.md, marketplace.json, plugin.json, README.md)
+- [ ] All 5 tracking files updated (VERSIONS.md, plugin.json, marketplace.json, README.md, CLAUDE.md)
+- [ ] plugin.json and marketplace.json skills arrays are identical
 
 ## Submitting Your Contribution
+
+### GitHub (skills.sh + Vercel Labs ecosystem)
 
 1. Fork this repository
 2. Create a feature branch: `feature/your-skill-name`
 3. Make your changes following the guidelines above
 4. Submit a pull request with a clear description
+
+### ClawHub Marketplace
+
+After your PR is merged, publish to ClawHub from the skill directory:
+
+```bash
+# From repo root
+cd <category>/<skill-name>
+# Follow ClawHub CLI publish flow
+# See: https://github.com/openclaw/clawhub
+```
 
 ## Code of Conduct
 

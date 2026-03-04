@@ -2,6 +2,19 @@
 name: write-content
 description: Write SEO and GEO optimized content from a topic and target keyword
 argument-hint: "<topic> keyword=\"<target keyword>\" type=\"<content type>\""
+parameters:
+  - name: topic
+    type: string
+    required: true
+    description: Content topic
+  - name: keyword
+    type: string
+    required: true
+    description: Primary SEO target keyword
+  - name: type
+    type: string
+    required: false
+    description: "Content type (default: blog post). Options: blog post, how-to guide, comparison, listicle, landing page, ultimate guide"
 ---
 
 # Write Content Command

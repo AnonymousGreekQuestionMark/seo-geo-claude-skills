@@ -30,4 +30,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: sync skills manifest"
-          file_pattern: ".claude-plugin/marketplace.json .claude-plugin/plugin.json"
+          file_pattern: "marketplace.json .claude-plugin/plugin.json"

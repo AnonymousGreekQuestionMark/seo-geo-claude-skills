@@ -2,6 +2,16 @@
 name: audit-page
 description: Run a comprehensive on-page SEO + CORE-EEAT content quality audit for a given URL or content
 argument-hint: "<URL or paste content>"
+allowed-tools: ["WebFetch"]
+parameters:
+  - name: source
+    type: string
+    required: true
+    description: URL to audit or pasted content
+  - name: keyword
+    type: string
+    required: false
+    description: Target keyword for relevance scoring
 ---
 
 # Audit Page Command

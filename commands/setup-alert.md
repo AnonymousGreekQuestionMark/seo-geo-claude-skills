@@ -2,6 +2,23 @@
 name: setup-alert
 description: Configure monitoring alerts for critical SEO and GEO metrics
 argument-hint: "<metric type> <threshold>"
+parameters:
+  - name: alert_type
+    type: string
+    required: true
+    description: "Alert type: ranking-drop, traffic-change, indexing-issue, backlink-change, geo-visibility, core-web-vitals, technical-error, conversion-rate, all-critical"
+  - name: threshold
+    type: string
+    required: false
+    description: Numeric or percentage threshold (e.g., -5, -20%, poor)
+  - name: keywords
+    type: string
+    required: false
+    description: Specific keywords to monitor (comma-separated)
+  - name: severity
+    type: string
+    required: false
+    description: "Alert priority: high, medium, low"
 ---
 
 # Setup Alert Command

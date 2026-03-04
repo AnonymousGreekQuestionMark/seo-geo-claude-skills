@@ -2,6 +2,27 @@
 name: keyword-research
 description: Research and analyze keywords for a topic or niche
 argument-hint: "<seed keyword or topic>"
+parameters:
+  - name: seed
+    type: string
+    required: true
+    description: Seed keyword or topic
+  - name: audience
+    type: string
+    required: false
+    description: Target audience
+  - name: goal
+    type: string
+    required: false
+    description: "Business goal: traffic, leads, sales, awareness"
+  - name: authority
+    type: string
+    required: false
+    description: "Site authority level: low, medium, high"
+  - name: competitors
+    type: string
+    required: false
+    description: Competitor domains (comma-separated) for keyword gap analysis
 ---
 
 # Keyword Research Command

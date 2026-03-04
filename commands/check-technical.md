@@ -2,6 +2,12 @@
 name: check-technical
 description: Run a quick technical SEO health check for a given URL or domain
 argument-hint: "<URL or domain>"
+allowed-tools: ["WebFetch"]
+parameters:
+  - name: target
+    type: string
+    required: true
+    description: URL or domain to check
 ---
 
 # Check Technical Command

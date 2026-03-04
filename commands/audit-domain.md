@@ -2,6 +2,19 @@
 name: audit-domain
 description: Run a full CITE domain authority audit with 40-item scoring, veto checks, and prioritized action plan
 argument-hint: "<domain>"
+parameters:
+  - name: domain
+    type: string
+    required: true
+    description: Domain to audit (e.g., example.com)
+  - name: type
+    type: string
+    required: false
+    description: "Domain type: Content Publisher, Product & Service, E-commerce, Community & UGC, Tool & Utility, Authority & Institutional"
+  - name: competitors
+    type: string
+    required: false
+    description: Competitor domains for comparison (space-separated)
 ---
 
 # Audit Domain Command

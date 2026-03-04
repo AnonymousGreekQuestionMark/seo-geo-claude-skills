@@ -2,6 +2,23 @@
 name: report
 description: Generate a comprehensive SEO and GEO performance report
 argument-hint: "<domain> <time period>"
+parameters:
+  - name: domain
+    type: string
+    required: true
+    description: Domain to report on
+  - name: period
+    type: string
+    required: true
+    description: "Time period: last-month, last-quarter, Q[N]-[YYYY], [YYYY-MM-DD] to [YYYY-MM-DD], last-30-days, last-90-days"
+  - name: comparison
+    type: string
+    required: false
+    description: "Comparison period: vs previous-quarter, vs last-year, vs previous-period"
+  - name: format
+    type: string
+    required: false
+    description: "Output format: detailed (default) or executive (condensed for stakeholders)"
 ---
 
 # Report Command

@@ -20,8 +20,5 @@ docs/plans/
 .env
 .env.*
 
-# Internal scripts
-scripts/
-
 # Node (if any tooling added later)
 node_modules/

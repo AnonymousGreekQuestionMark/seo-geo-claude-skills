@@ -17,11 +17,7 @@ const CATEGORIES = [
 ];
 
 const ROOT = path.resolve(__dirname, "../..");
-const MARKETPLACE_PATH = path.join(
-  ROOT,
-  ".claude-plugin",
-  "marketplace.json"
-);
+const MARKETPLACE_PATH = path.join(ROOT, "marketplace.json");
 const PLUGIN_PATH = path.join(ROOT, ".claude-plugin", "plugin.json");
 
 function discoverSkills() {

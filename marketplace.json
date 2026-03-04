@@ -1,0 +1,59 @@
+{
+  "name": "seo-geo-claude-skills",
+  "owner": {
+    "name": "Aaron He Zhu",
+    "url": "https://github.com/aaron-he-zhu"
+  },
+  "metadata": {
+    "description": "SEO & GEO agent tools for Claude Code and Cowork",
+    "version": "3.0.0",
+    "repository": "https://github.com/aaron-he-zhu/seo-geo-claude-skills"
+  },
+  "plugins": [
+    {
+      "name": "seo-geo-claude-skills",
+      "source": "./",
+      "description": "20 skills and 9 commands for Search Engine Optimization (SEO) and Generative Engine Optimization (GEO). Content quality powered by CORE-EEAT (80 items). Domain authority powered by CITE (40 items). Keyword research, competitor analysis, content writing, technical audits, rank tracking, schema markup, and AI citation optimization.",
+      "version": "3.0.0",
+      "category": "marketing",
+      "tags": [
+        "seo",
+        "geo",
+        "content-optimization",
+        "search-engine-optimization",
+        "generative-engine-optimization",
+        "ai-citation",
+        "core-eeat",
+        "cite",
+        "keyword-research",
+        "content-writing",
+        "technical-seo",
+        "schema-markup",
+        "rank-tracking",
+        "backlink-analysis"
+      ],
+      "skills": [
+        { "name": "keyword-research", "description": "Discovers high-value keywords with search intent classification, difficulty scoring, and topic clustering", "path": "research/keyword-research" },
+        { "name": "competitor-analysis", "description": "Analyzes competitor SEO and GEO strategies including keyword gaps, content tactics, and authority signals", "path": "research/competitor-analysis" },
+        { "name": "serp-analysis", "description": "Analyzes search engine results pages to identify ranking patterns, SERP features, and content opportunities", "path": "research/serp-analysis" },
+        { "name": "content-gap-analysis", "description": "Identifies topic coverage gaps by comparing existing content against competitor and SERP data", "path": "research/content-gap-analysis" },
+        { "name": "seo-content-writer", "description": "Creates keyword-optimized content using a 12-step workflow with CORE-EEAT quality checks", "path": "build/seo-content-writer" },
+        { "name": "geo-content-optimizer", "description": "Optimizes content for AI citation by enhancing quotability, factual density, and structured data", "path": "build/geo-content-optimizer" },
+        { "name": "meta-tags-optimizer", "description": "Generates optimized title tags, meta descriptions, and Open Graph tags with CTR-focused formulas", "path": "build/meta-tags-optimizer" },
+        { "name": "schema-markup-generator", "description": "Generates Schema.org JSON-LD structured data markup based on content type and page context", "path": "build/schema-markup-generator" },
+        { "name": "on-page-seo-auditor", "description": "Performs comprehensive on-page SEO audits covering title, meta, headers, content, links, and images", "path": "optimize/on-page-seo-auditor" },
+        { "name": "technical-seo-checker", "description": "Audits technical SEO health including crawlability, indexation, Core Web Vitals, and server configuration", "path": "optimize/technical-seo-checker" },
+        { "name": "internal-linking-optimizer", "description": "Analyzes and improves internal link structure for better crawl efficiency and authority distribution", "path": "optimize/internal-linking-optimizer" },
+        { "name": "content-refresher", "description": "Identifies and refreshes decaying content using traffic signals, freshness checks, and CORE-EEAT scoring", "path": "optimize/content-refresher" },
+        { "name": "rank-tracker", "description": "Tracks keyword ranking positions over time with trend analysis and SERP feature monitoring", "path": "monitor/rank-tracker" },
+        { "name": "backlink-analyzer", "description": "Analyzes backlink profiles for quality, toxicity, anchor text distribution, and link-building opportunities", "path": "monitor/backlink-analyzer" },
+        { "name": "performance-reporter", "description": "Generates SEO and GEO performance reports with KPI tracking, trend analysis, and recommendations", "path": "monitor/performance-reporter" },
+        { "name": "alert-manager", "description": "Configures and manages monitoring alerts for critical SEO and GEO metric changes", "path": "monitor/alert-manager" },
+        { "name": "content-quality-auditor", "description": "Scores content quality using the 80-item CORE-EEAT framework with veto checks and dimension breakdowns", "path": "cross-cutting/content-quality-auditor" },
+        { "name": "domain-authority-auditor", "description": "Audits domain authority using the 40-item CITE framework with veto checks and action prioritization", "path": "cross-cutting/domain-authority-auditor" },
+        { "name": "entity-optimizer", "description": "Optimizes entity presence across Knowledge Graph, Wikidata, and structured data for AI discoverability", "path": "cross-cutting/entity-optimizer" },
+        { "name": "memory-management", "description": "Manages a two-layer memory system for SEO/GEO project context with hot cache and cold storage", "path": "cross-cutting/memory-management" }
+      ]
+    }
+  ]
+}
