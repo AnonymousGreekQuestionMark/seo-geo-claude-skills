@@ -49,4 +49,4 @@ Skills use `~~category` placeholders (e.g., `~~SEO tool`, `~~analytics`). Every 
 - After updating a skill: update all 5 tracking files — `VERSIONS.md`, `.claude-plugin/plugin.json`, `marketplace.json` (repo root), `README.md` skills table, and this `CLAUDE.md` category table
 - Branch naming: `feature/skill-name`, `fix/skill-name`, `docs/description`
 
-> Full agent guidelines: [AGENTS.md](./AGENTS.md) · Full documentation: [README.md](./README.md)
+> [AGENTS.md](./AGENTS.md) · [README.md](./README.md) · Install: [ClawHub](https://clawhub.ai/u/aaron-he-zhu) · [skills.sh](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)

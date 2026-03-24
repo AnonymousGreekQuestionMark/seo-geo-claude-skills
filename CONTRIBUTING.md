@@ -40,7 +40,7 @@ name: your-skill-name
 version: "1.0.0"
 description: 'Use when the user asks to "[trigger phrase 1]", "[trigger phrase 2]". [What it does in one sentence]. For [related task], see [other-skill].'
 license: Apache-2.0
-compatibility: "Claude Code ≥1.0, skills.sh marketplace. No system packages required. Optional: MCP network access for SEO tool integrations."
+compatibility: "Claude Code ≥1.0, skills.sh marketplace, ClawHub marketplace, Vercel Labs skills ecosystem. No system packages required. Optional: MCP network access for SEO tool integrations."
 # allowed-tools: WebFetch   # Uncomment if skill fetches live URLs
 metadata:
   author: your-github-username
@@ -130,7 +130,7 @@ Before submitting a PR:
 
 ## Submitting Your Contribution
 
-### GitHub (skills.sh + Vercel Labs ecosystem)
+### GitHub
 
 1. Fork this repository
 2. Create a feature branch: `feature/your-skill-name`
@@ -139,14 +139,18 @@ Before submitting a PR:
 
 ### ClawHub Marketplace
 
-After your PR is merged, publish to ClawHub from the skill directory:
+After your PR is merged, publish updated skills to ClawHub:
 
 ```bash
-# From repo root
+# Publish a single skill
 cd <category>/<skill-name>
-# Follow ClawHub CLI publish flow
-# See: https://github.com/openclaw/clawhub
+clawhub publish
+
+# Or sync all skills from repo root
+clawhub sync
 ```
+
+See [ClawHub CLI docs](https://github.com/openclaw/clawhub) for authentication and setup.
 
 ## Code of Conduct
 

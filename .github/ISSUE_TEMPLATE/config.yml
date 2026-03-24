@@ -6,6 +6,9 @@ contact_links:
   - name: Contributing Guide
     url: https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CONTRIBUTING.md
     about: How to contribute a new skill to this repository
-  - name: Skills Marketplace
+  - name: ClawHub Marketplace
+    url: https://clawhub.ai/u/aaron-he-zhu
+    about: Browse and install individual skills via ClawHub
+  - name: Skills.sh Marketplace
     url: https://skills.sh/aaron-he-zhu/seo-geo-claude-skills
-    about: Browse and install skills via skills.sh
+    about: Browse and install all 20 skills via skills.sh

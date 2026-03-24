@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "SEO & GEO agent tools for Claude Code and Cowork",
-    "version": "3.0.0",
+    "version": "4.0.0",
     "repository": "https://github.com/aaron-he-zhu/seo-geo-claude-skills"
   },
   "plugins": [
@@ -14,7 +14,7 @@
       "name": "seo-geo-claude-skills",
       "source": "./",
       "description": "20 skills and 9 commands for Search Engine Optimization (SEO) and Generative Engine Optimization (GEO). Content quality powered by CORE-EEAT (80 items). Domain authority powered by CITE (40 items). Keyword research, competitor analysis, content writing, technical audits, rank tracking, schema markup, and AI citation optimization.",
-      "version": "3.0.0",
+      "version": "4.0.0",
       "category": "marketing",
       "tags": [
         "seo",

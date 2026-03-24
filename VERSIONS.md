@@ -8,28 +8,55 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 
 | Skill | Category | Version | Last Updated |
 |-------|----------|---------|--------------|
-| keyword-research | research | 3.0.0 | 2026-03-04 |
-| competitor-analysis | research | 3.0.0 | 2026-03-04 |
-| serp-analysis | research | 3.0.0 | 2026-03-04 |
-| content-gap-analysis | research | 3.0.0 | 2026-03-04 |
-| seo-content-writer | build | 3.0.0 | 2026-03-04 |
-| geo-content-optimizer | build | 3.0.0 | 2026-03-04 |
-| meta-tags-optimizer | build | 3.0.0 | 2026-03-04 |
-| schema-markup-generator | build | 3.0.0 | 2026-03-04 |
-| on-page-seo-auditor | optimize | 3.0.0 | 2026-03-04 |
-| technical-seo-checker | optimize | 3.0.0 | 2026-03-04 |
-| internal-linking-optimizer | optimize | 3.0.0 | 2026-03-04 |
-| content-refresher | optimize | 3.0.0 | 2026-03-04 |
-| rank-tracker | monitor | 3.0.0 | 2026-03-04 |
-| backlink-analyzer | monitor | 3.0.0 | 2026-03-04 |
-| performance-reporter | monitor | 3.0.0 | 2026-03-04 |
-| alert-manager | monitor | 3.0.0 | 2026-03-04 |
-| content-quality-auditor | cross-cutting | 3.0.0 | 2026-03-04 |
-| domain-authority-auditor | cross-cutting | 3.0.0 | 2026-03-04 |
-| entity-optimizer | cross-cutting | 3.0.0 | 2026-03-04 |
-| memory-management | cross-cutting | 3.0.0 | 2026-03-04 |
+| keyword-research | research | 4.0.0 | 2026-03-24 |
+| competitor-analysis | research | 4.0.0 | 2026-03-24 |
+| serp-analysis | research | 4.0.0 | 2026-03-24 |
+| content-gap-analysis | research | 4.0.0 | 2026-03-24 |
+| seo-content-writer | build | 4.0.0 | 2026-03-24 |
+| geo-content-optimizer | build | 4.0.0 | 2026-03-24 |
+| meta-tags-optimizer | build | 4.0.0 | 2026-03-24 |
+| schema-markup-generator | build | 4.0.0 | 2026-03-24 |
+| on-page-seo-auditor | optimize | 4.0.0 | 2026-03-24 |
+| technical-seo-checker | optimize | 4.0.0 | 2026-03-24 |
+| internal-linking-optimizer | optimize | 4.0.0 | 2026-03-24 |
+| content-refresher | optimize | 4.0.0 | 2026-03-24 |
+| rank-tracker | monitor | 4.0.0 | 2026-03-24 |
+| backlink-analyzer | monitor | 4.0.0 | 2026-03-24 |
+| performance-reporter | monitor | 4.0.0 | 2026-03-24 |
+| alert-manager | monitor | 4.0.0 | 2026-03-24 |
+| content-quality-auditor | cross-cutting | 4.0.0 | 2026-03-24 |
+| domain-authority-auditor | cross-cutting | 4.0.0 | 2026-03-24 |
+| entity-optimizer | cross-cutting | 4.0.0 | 2026-03-24 |
+| memory-management | cross-cutting | 4.0.0 | 2026-03-24 |
 
 ## Changelog
+
+### v4.0.0 (2026-03-24)
+
+ClawHub-first marketplace optimization: security fixes, vector search descriptions, multi-ecosystem install documentation.
+
+**Security & metadata fixes**:
+- Removed self-contradictory `metadata.openclaw` blocks from 9 skills (soft dependencies incorrectly declared as hard requirements)
+- Fixed copy-paste error: alert-manager and performance-reporter had `primaryEnv: AMPLITUDE_API_KEY` (unrelated to their function)
+- Added credential-optional statements to 11 skills with external tool integrations
+- Added `homepage` field to all 20 SKILL.md frontmatters
+
+**ClawHub search optimization**:
+- Rewrote all 20 skill descriptions with natural language summaries prepended for vector search discovery
+- Streamlined trigger phrases to 6-8 highest-frequency per skill
+- Updated footer links to include GitHub, ClawHub, and skills.sh
+
+**Documentation migration**:
+- README: Replaced single-recommendation install with tool-based routing table (OpenClaw / Claude Code / Cursor+Codex+Windsurf)
+- AGENTS.md: ClawHub moved to first position in ecosystem table; install section uses routing table
+- CONTRIBUTING.md: Fixed template missing ClawHub and Vercel Labs in compatibility field; added `clawhub publish` / `clawhub sync` commands
+- CLAUDE.md: Added ClawHub and skills.sh marketplace links
+- config.yml: Added ClawHub Marketplace as issue template contact link
+
+**Infrastructure**:
+- plugin.json: homepage changed from skills.sh to GitHub repo URL (neutral)
+- marketplace.json: version synced to 4.0.0
+- validate-skill.sh: Updated openclaw check from WARN-if-missing to PASS-if-missing (pure instruction skills don't need runtime declarations)
 
 ### v3.0.0 (2026-03-04)
 

@@ -78,8 +78,8 @@ All skills are compatible with three skill ecosystems:
 
 | Ecosystem | Spec | Install |
 |-----------|------|---------|
+| **ClawHub** | [openclaw/clawhub skill-format.md](https://github.com/openclaw/clawhub/blob/main/docs/skill-format.md) | `clawhub install aaron-he-zhu/<skill-name>` — [browse all 20](https://clawhub.ai/u/aaron-he-zhu) |
 | **Agent Skills** | [agentskills.io/specification.md](https://agentskills.io/specification.md) | `npx skills add aaron-he-zhu/seo-geo-claude-skills` |
-| **ClawHub** | [openclaw/clawhub skill-format.md](https://github.com/openclaw/clawhub/blob/main/docs/skill-format.md) | ClawHub marketplace |
 | **Vercel Labs skills** | [vercel-labs/skills find-skills](https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md) | `npx skills find seo` |
 
 ### Required Frontmatter
@@ -180,15 +180,11 @@ Every skill works at Tier 1. Tool integration enhances but never gates functiona
 
 ## Installation
 
-**Skills CLI** (recommended — works with [35+ agents](https://skills.sh)):
-```bash
-npx skills add aaron-he-zhu/seo-geo-claude-skills
-```
-
-**Claude Code Plugin**:
-```bash
-/plugin marketplace add aaron-he-zhu/seo-geo-claude-skills
-```
+| Your tool | Install command |
+|-----------|----------------|
+| **OpenClaw** | `clawhub install aaron-he-zhu/<skill-name>` — [browse all 20](https://clawhub.ai/u/aaron-he-zhu) |
+| **Claude Code** | `/plugin marketplace add aaron-he-zhu/seo-geo-claude-skills` (all 20) |
+| **Cursor / Codex / Windsurf / other** | `npx skills add aaron-he-zhu/seo-geo-claude-skills` (all 20) |
 
 **Git Submodule** (version-pinned):
 ```bash
@@ -205,7 +201,8 @@ Once per session, agents should check for updates:
 
 ```
 SEO & GEO Skills update available: [list updated skills with old → new versions]
-Run: npx skills add aaron-he-zhu/seo-geo-claude-skills
+- OpenClaw: clawhub install aaron-he-zhu/<skill-name>  (for each updated skill)
+- Other agents: npx skills add aaron-he-zhu/seo-geo-claude-skills
 ```
 
 4. Do not block the user's workflow for update checks. Notify non-intrusively.

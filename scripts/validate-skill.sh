@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# validate-skill.sh — Validate a SKILL.md against the Agent Skills, ClawHub, and Vercel Labs skill specs
+# validate-skill.sh — Validate a SKILL.md against the ClawHub, Agent Skills, and Vercel Labs skill specs
 # Usage: ./scripts/validate-skill.sh <path-to-skill-directory>
 # Example: ./scripts/validate-skill.sh research/keyword-research
 
@@ -21,7 +21,7 @@ warn() { echo -e "${YELLOW}  ⚠️  WARN${NC}: $1"; WARN=$((WARN + 1)); }
 
 echo ""
 echo "Validating: $SKILL_FILE"
-echo "Specs: Agent Skills · ClawHub · Vercel Labs skills ecosystem"
+echo "Specs: ClawHub · Agent Skills · Vercel Labs skills ecosystem"
 echo "=============================================="
 
 # Check file exists
@@ -121,10 +121,19 @@ if echo "$FRONTMATTER" | grep -qE '^metadata:'; then
         warn "metadata.version not found"
     fi
     # ClawHub: metadata.openclaw (or metadata.clawdbot / metadata.clawdis)
+    # Tool-agnostic skills (no hard dependencies) should omit the openclaw block entirely.
+    # If present, check for inconsistencies (primaryEnv declared but requires.env empty).
     if echo "$FRONTMATTER" | grep -qE '  openclaw:|  clawdbot:|  clawdis:'; then
-        pass "ClawHub: metadata.openclaw runtime declaration present"
+        # Check for primaryEnv + empty requires.env inconsistency
+        HAS_PRIMARY_ENV=$(echo "$FRONTMATTER" | grep -qE '    primaryEnv:' && echo "yes" || echo "no")
+        HAS_EMPTY_REQ_ENV=$(echo "$FRONTMATTER" | grep -qE '      env: \[\]' && echo "yes" || echo "no")
+        if [ "$HAS_PRIMARY_ENV" = "yes" ] && [ "$HAS_EMPTY_REQ_ENV" = "yes" ]; then
+            fail "ClawHub: metadata.openclaw declares primaryEnv but requires.env is empty — inconsistent (either add the key to requires.env or remove the openclaw block for tool-agnostic skills)"
+        else
+            pass "ClawHub: metadata.openclaw runtime declaration present and consistent"
+        fi
     else
-        warn "ClawHub: missing metadata.openclaw runtime declaration (add 'openclaw: {requires: {env: [], bins: []}}' under metadata)"
+        pass "ClawHub: no metadata.openclaw block (tool-agnostic skill — OK per AGENTS.md)"
     fi
 else
     warn "Missing recommended field: metadata"

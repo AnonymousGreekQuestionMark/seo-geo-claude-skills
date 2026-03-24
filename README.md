@@ -1,8 +1,9 @@
 # SEO & GEO Skills Library
 
-[![Skills](https://img.shields.io/badge/skills-20-blue)](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)
+[![ClawHub](https://img.shields.io/badge/ClawHub-20_skills-purple)](https://clawhub.ai/u/aaron-he-zhu)
+[![Skills](https://img.shields.io/badge/skills.sh-20_skills-blue)](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green)](./LICENSE)
-[![Version](https://img.shields.io/badge/version-3.0.0-orange)](./VERSIONS.md)
+[![Version](https://img.shields.io/badge/version-3.0.1-orange)](./VERSIONS.md)
 
 Claude Skills and Commands for Search Engine Optimization (SEO) and Generative Engine Optimization (GEO). 20 skills, 9 commands, tool-agnostic, works with or without integrations. Content quality powered by the [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark). Domain authority powered by the [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating).
 
@@ -10,29 +11,29 @@ Claude Skills and Commands for Search Engine Optimization (SEO) and Generative E
 
 ## Quick Start
 
-> Works with [Claude Code](https://claude.ai/download), [Cursor](https://cursor.com), [Codex](https://openai.com/codex), and [35+ other agents](https://skills.sh). No other dependencies.
+> Works with [Claude Code](https://claude.ai/download), [OpenClaw](https://openclaw.com), [Cursor](https://cursor.com), [Codex](https://openai.com/codex), and [35+ other agents](https://skills.sh). No other dependencies.
 
-1. **Install** — choose your method:
+1. **Install** — pick the method for your tool:
 
-   **Skills CLI** (recommended — works with [35+ agents](https://skills.sh)):
-   ```bash
-   npx skills add aaron-he-zhu/seo-geo-claude-skills
-   ```
+   | Your tool | Install command |
+   |-----------|----------------|
+   | **OpenClaw** | `clawhub install aaron-he-zhu/<skill-name>` — [browse all 20](https://clawhub.ai/u/aaron-he-zhu) |
+   | **Claude Code** | `/plugin marketplace add aaron-he-zhu/seo-geo-claude-skills` (all 20) |
+   | **Cursor / Codex / Windsurf / other** | `npx skills add aaron-he-zhu/seo-geo-claude-skills` (all 20) |
 
-   Or install a single skill:
+   > All installation methods remain available at all times. If any marketplace is temporarily unavailable, use an alternative method.
+
+   Install a single skill via skills.sh:
    ```bash
    npx skills add aaron-he-zhu/seo-geo-claude-skills -s keyword-research
    ```
 
    <details>
-   <summary>Claude Code Plugin</summary>
+   <summary>Claude Code Plugin (alternative)</summary>
 
-   Install directly as a Claude Code plugin:
+   Already listed in the table above. Use this method if you need to load locally:
 
    ```bash
-   # From the Claude Code plugin marketplace
-   /plugin marketplace add aaron-he-zhu/seo-geo-claude-skills
-
    # Or load locally
    claude --plugin-dir ./seo-geo-claude-skills
    ```
@@ -307,20 +308,24 @@ Not sure which skill to use? Search by what you're trying to do:
 
 | Method | Command | Best for |
 |--------|---------|----------|
-| **Skills CLI** | `npx skills add aaron-he-zhu/seo-geo-claude-skills` | Most users, 35+ agents |
+| **ClawHub** | `clawhub install aaron-he-zhu/<skill-name>` | OpenClaw users, individual skills |
+| **Skills CLI** | `npx skills add aaron-he-zhu/seo-geo-claude-skills` | Most users, 35+ agents, all 20 at once |
 | **Claude Code Plugin** | `/plugin marketplace add aaron-he-zhu/seo-geo-claude-skills` | Claude Code plugin system |
 | **Git Submodule** | `git submodule add ... .claude/skills/seo-geo` | Version-pinned team installs |
 | **Fork & Customize** | Fork + `npx skills add YOUR-ORG/...` | Teams with custom needs |
 | **Manual** | `git clone` + copy | No CLI needed |
 
-Browse all 20 skills: [skills.sh/aaron-he-zhu/seo-geo-claude-skills](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)
+Browse all 20 skills: [GitHub](https://github.com/aaron-he-zhu/seo-geo-claude-skills) · [ClawHub](https://clawhub.ai/u/aaron-he-zhu) · [skills.sh](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)
 
 ```bash
-# Install all skills
+# Install all skills (skills.sh)
 npx skills add aaron-he-zhu/seo-geo-claude-skills
 
-# Install a specific skill
+# Install a specific skill (skills.sh)
 npx skills add aaron-he-zhu/seo-geo-claude-skills -s keyword-research
+
+# Install a specific skill (ClawHub)
+clawhub install aaron-he-zhu/keyword-research
 
 # Preview available skills
 npx skills add aaron-he-zhu/seo-geo-claude-skills --list
