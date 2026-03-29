@@ -16,7 +16,7 @@ parameters:
 
 # Audit Page Command
 
-> Content quality scoring based on [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark). Full reference: [references/core-eeat-benchmark.md](../references/core-eeat-benchmark.md)
+> Content quality scoring based on [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark). Full reference: [references/core-eeat-benchmark.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md)
 
 A combined **on-page SEO** + **CORE-EEAT content quality** audit. For full site-wide technical SEO, use `/seo:check-technical`.
 
@@ -111,5 +111,5 @@ NOTE: For technical SEO (speed, crawl, HTTPS), run: /seo:check-technical
 
 ## Related Skills
 
-- [on-page-seo-auditor](../optimize/on-page-seo-auditor/) -- Detailed on-page SEO analysis
-- [content-quality-auditor](../cross-cutting/content-quality-auditor/) -- Full CORE-EEAT 80-item content quality audit
+- [on-page-seo-auditor](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/on-page-seo-auditor/SKILL.md) -- Detailed on-page SEO analysis
+- [content-quality-auditor](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/content-quality-auditor/SKILL.md) -- Full CORE-EEAT 80-item content quality audit

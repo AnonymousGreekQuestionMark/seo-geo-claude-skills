@@ -8,28 +8,80 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 
 | Skill | Category | Version | Last Updated |
 |-------|----------|---------|--------------|
-| keyword-research | research | 4.0.0 | 2026-03-24 |
-| competitor-analysis | research | 4.0.0 | 2026-03-24 |
-| serp-analysis | research | 4.0.0 | 2026-03-24 |
-| content-gap-analysis | research | 4.0.0 | 2026-03-24 |
-| seo-content-writer | build | 4.0.0 | 2026-03-24 |
-| geo-content-optimizer | build | 4.0.0 | 2026-03-24 |
-| meta-tags-optimizer | build | 4.0.0 | 2026-03-24 |
-| schema-markup-generator | build | 4.0.0 | 2026-03-24 |
-| on-page-seo-auditor | optimize | 4.0.0 | 2026-03-24 |
-| technical-seo-checker | optimize | 4.0.0 | 2026-03-24 |
-| internal-linking-optimizer | optimize | 4.0.0 | 2026-03-24 |
-| content-refresher | optimize | 4.0.0 | 2026-03-24 |
-| rank-tracker | monitor | 4.0.0 | 2026-03-24 |
-| backlink-analyzer | monitor | 4.0.0 | 2026-03-24 |
-| performance-reporter | monitor | 4.0.0 | 2026-03-24 |
-| alert-manager | monitor | 4.0.0 | 2026-03-24 |
-| content-quality-auditor | cross-cutting | 4.0.0 | 2026-03-24 |
-| domain-authority-auditor | cross-cutting | 4.0.0 | 2026-03-24 |
-| entity-optimizer | cross-cutting | 4.0.0 | 2026-03-24 |
-| memory-management | cross-cutting | 4.0.0 | 2026-03-24 |
+| keyword-research | research | 5.0.0 | 2026-03-29 |
+| competitor-analysis | research | 5.0.0 | 2026-03-29 |
+| serp-analysis | research | 5.0.0 | 2026-03-29 |
+| content-gap-analysis | research | 5.0.0 | 2026-03-29 |
+| seo-content-writer | build | 5.0.0 | 2026-03-29 |
+| geo-content-optimizer | build | 5.0.0 | 2026-03-29 |
+| meta-tags-optimizer | build | 5.0.0 | 2026-03-29 |
+| schema-markup-generator | build | 5.0.0 | 2026-03-29 |
+| on-page-seo-auditor | optimize | 5.0.0 | 2026-03-29 |
+| technical-seo-checker | optimize | 5.0.0 | 2026-03-29 |
+| internal-linking-optimizer | optimize | 5.0.0 | 2026-03-29 |
+| content-refresher | optimize | 5.0.0 | 2026-03-29 |
+| rank-tracker | monitor | 5.0.0 | 2026-03-29 |
+| backlink-analyzer | monitor | 5.0.0 | 2026-03-29 |
+| performance-reporter | monitor | 5.0.0 | 2026-03-29 |
+| alert-manager | monitor | 5.0.0 | 2026-03-29 |
+| content-quality-auditor | cross-cutting | 5.0.0 | 2026-03-29 |
+| domain-authority-auditor | cross-cutting | 5.0.0 | 2026-03-29 |
+| entity-optimizer | cross-cutting | 5.0.0 | 2026-03-29 |
+| memory-management | cross-cutting | 5.0.0 | 2026-03-29 |
 
 ## Changelog
+
+### v5.0.0 (2026-03-29)
+
+Unified operating model: shared skill contract, prompt-based hook automation, three-tier temperature memory, protocol-layer gates, state write-through, trigger widening, and published-link hardening.
+
+**Unified skill contract (Plan C)**:
+- Added shared [skill contract](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/skill-contract.md) and [state model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) reference documents
+- Updated all 20 SKILL.md files with `When This Must Trigger`, `Quick Start`, `Skill Contract`, and `Next Best Skill` sections
+- Replaced bulky per-file 20-skill navigation blocks with a compact system-mode header
+
+**Hook lifecycle (Plan C+)**:
+- Added 4-event prompt-based hooks in hooks/hooks.json (SessionStart, UserPromptSubmit, PostToolUse, Stop)
+- SessionStart auto-loads memory/hot-cache.md and reminds stale open loops (>7 days)
+- PostToolUse auto-recommends content-quality-auditor after content writing
+- Stop prompts to save findings and auto-saves veto-level issues to hot-cache
+
+**Temperature memory (Plan C+)**:
+- Three-tier model: HOT (80 lines, auto-loaded) / WARM (200 lines/file, on-demand) / COLD (archive, unlimited)
+- Automatic promotion (2+ skill refs or 3+ refs within 7 days) and demotion (30 days HOT→WARM, 90 days WARM→COLD)
+- memory-management upgraded to Campaign Memory Loop with sole WARM→COLD archival authority
+
+**Protocol-layer gates (Plan C + C+)**:
+- content-quality-auditor → Publish Readiness Gate with SHIP/FIX/BLOCK verdicts
+- domain-authority-auditor → Citation Trust Gate with TRUSTED/CAUTIOUS/UNTRUSTED verdicts
+- entity-optimizer → Canonical Entity Profile with sole write authority for memory/entities/
+- memory-management → Campaign Memory Loop with cross-skill aggregation and lifecycle management
+- Gate checks automatically recommended in build and monitor skill handoffs
+
+**State write-through (Plan C+)**:
+- All 20 skills include Save Results flow with user confirmation
+- Veto-level issues (CORE-EEAT T04/C01/R10, CITE T03/T05/T09) auto-save to memory/hot-cache.md
+- Dated file naming: YYYY-MM-DD-topic.md across all memory/ paths
+
+**Trigger widening (Plan C+)**:
+- All 20 skills add 3-4 everyday language triggers alongside professional terms
+- When This Must Trigger sections add scenario lead-in for intent matching without SEO terminology
+
+**Published link reliability**:
+- Replaced repo-internal relative Markdown links with absolute GitHub links across all docs, commands, skills, and references
+- Updated README badges and navigation links to point at canonical GitHub pages
+- Corrected mis-nested cross-reference targets during link conversion
+
+**Documentation and positioning**:
+- README, AGENTS, CLAUDE, CONTRIBUTING updated for operating-model positioning
+- AGENTS.md: new Hooks & Automation section with hook table and temperature memory model
+- CLAUDE.md: added hook automation and temperature memory references
+- README: added Automation and Memory subsections to Operating Model
+
+**Infrastructure**:
+- plugin.json: hooks array expanded to 4 events; description updated; version 5.0.0
+- marketplace.json: version synced to 5.0.0
+- All 20 skill metadata.version bumped to 5.0.0
 
 ### v4.0.0 (2026-03-24)
 

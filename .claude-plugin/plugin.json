@@ -2,9 +2,9 @@
   "schemaVersion": "1.0.0",
   "id": "seo-geo-claude-skills",
   "name": "seo-geo-claude-skills",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "displayName": "SEO & GEO Skills Library",
-  "description": "20 skills and 9 commands for Search Engine Optimization (SEO) and Generative Engine Optimization (GEO). Content quality powered by CORE-EEAT (80 items). Domain authority powered by CITE (40 items). Tool-agnostic — works with or without integrations.",
+  "description": "20 SEO and GEO skills with prompt-based hook automation, three-tier memory, and protocol-layer gates for content quality, domain trust, entity truth, and campaign memory. Tool-agnostic, works with or without integrations.",
   "author": {
     "name": "Aaron He Zhu",
     "email": "hello@zhuhe.io",
@@ -130,6 +130,18 @@
   "hooks": [
     {
       "event": "SessionStart",
+      "path": "hooks/hooks.json"
+    },
+    {
+      "event": "UserPromptSubmit",
+      "path": "hooks/hooks.json"
+    },
+    {
+      "event": "PostToolUse",
+      "path": "hooks/hooks.json"
+    },
+    {
+      "event": "Stop",
       "path": "hooks/hooks.json"
     }
   ],

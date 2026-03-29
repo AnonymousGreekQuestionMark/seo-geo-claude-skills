@@ -8,7 +8,7 @@
 
 **4 dimensions × 10 items = 40 evaluation criteria** for assessing domain authority in the Generative Engine Optimization (GEO) era.
 
-**Sister benchmark**: [CORE-EEAT Content Benchmark](./core-eeat-benchmark.md) — content-level quality assessment (80 items).
+**Sister benchmark**: [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md) — content-level quality assessment (80 items).
 
 ---
 
@@ -422,7 +422,7 @@ What is the domain's primary function?
 
 ## 8. Data Source Mapping
 
-> Maps each check item to data sources, tools, and audit methods. Use `~~placeholder` categories from [CONNECTORS.md](../CONNECTORS.md) when integrations are available.
+> Maps each check item to data sources, tools, and audit methods. Use `~~placeholder` categories from [CONNECTORS.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CONNECTORS.md) when integrations are available.
 
 | Check Item | Data Source | Tools | Audit Method |
 |-----------|------------|-------|-------------|

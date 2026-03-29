@@ -77,4 +77,4 @@ NOTE: For content quality + on-page SEO, run: /seo:audit-page
 
 ## Related Skills
 
-- [technical-seo-checker](../optimize/technical-seo-checker/) -- Comprehensive technical SEO audit
+- [technical-seo-checker](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/technical-seo-checker/SKILL.md) -- Comprehensive technical SEO audit

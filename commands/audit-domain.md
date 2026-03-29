@@ -19,7 +19,7 @@ parameters:
 
 # Audit Domain Command
 
-> Domain authority scoring based on [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating). Full reference: [references/cite-domain-rating.md](../references/cite-domain-rating.md)
+> Domain authority scoring based on [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating). Full reference: [references/cite-domain-rating.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/cite-domain-rating.md)
 
 A comprehensive **CITE 40-item domain authority** audit with veto checks and actionable recommendations. For page-level content quality, use `/seo:audit-page`.
 
@@ -40,7 +40,7 @@ A comprehensive **CITE 40-item domain authority** audit with veto checks and act
 
 1. **Identify Domain Type** -- If not specified, classify using the `domain-authority-auditor` skill's decision tree. Apply dimension weights:
 
-   > Canonical source: `references/cite-domain-rating.md`. This inline copy is for convenience.
+   > Canonical source: [references/cite-domain-rating.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/cite-domain-rating.md). This inline copy is for convenience.
 
    | Dim | Default | Content Publisher | Product & Service | E-commerce | Community & UGC | Tool & Utility | Authority & Institutional |
    |-----|:-------:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -113,5 +113,5 @@ For combined 120-item assessment: run both commands
 
 ## Related Skills
 
-- [domain-authority-auditor](../cross-cutting/domain-authority-auditor/) -- Full CITE 40-item domain authority audit
-- [backlink-analyzer](../monitor/backlink-analyzer/) -- Detailed backlink profile analysis
+- [domain-authority-auditor](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/domain-authority-auditor/SKILL.md) -- Full CITE 40-item domain authority audit
+- [backlink-analyzer](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/monitor/backlink-analyzer/SKILL.md) -- Detailed backlink profile analysis

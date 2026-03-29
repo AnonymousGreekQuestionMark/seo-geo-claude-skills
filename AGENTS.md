@@ -36,7 +36,7 @@ seo-geo-claude-skills/
 │   ├── backlink-analyzer/SKILL.md
 │   ├── performance-reporter/SKILL.md
 │   └── alert-manager/SKILL.md
-├── cross-cutting/                    # Span all phases (4 skills)
+├── cross-cutting/                    # Protocol layer across all phases (4 skills)
 │   ├── content-quality-auditor/SKILL.md
 │   ├── domain-authority-auditor/SKILL.md
 │   ├── entity-optimizer/SKILL.md
@@ -44,7 +44,9 @@ seo-geo-claude-skills/
 ├── commands/                         # 9 one-shot command files
 ├── references/                       # Shared reference documents
 │   ├── core-eeat-benchmark.md        # 80-item content quality framework
-│   └── cite-domain-rating.md         # 40-item domain authority framework
+│   ├── cite-domain-rating.md         # 40-item domain authority framework
+│   ├── skill-contract.md             # Shared skill contract and handoff format
+│   └── state-model.md                # Shared memory layout and ownership rules
 ├── scripts/                          # Developer utilities
 │   └── validate-skill.sh             # Validate SKILL.md spec compliance
 ├── .claude-plugin/                   # Claude Code plugin manifest
@@ -70,7 +72,34 @@ Each skill directory contains a `SKILL.md` and optionally a `references/` subdir
 | Build | `build/` | Content creation optimized for search and AI | seo-content-writer, geo-content-optimizer, meta-tags-optimizer, schema-markup-generator |
 | Optimize | `optimize/` | Improve existing content and technical health | on-page-seo-auditor, technical-seo-checker, internal-linking-optimizer, content-refresher |
 | Monitor | `monitor/` | Track performance and catch issues | rank-tracker, backlink-analyzer, performance-reporter, alert-manager |
-| Cross-cutting | `cross-cutting/` | Span all phases | content-quality-auditor, domain-authority-auditor, entity-optimizer, memory-management |
+| Cross-cutting | `cross-cutting/` | Protocol layer across all phases | content-quality-auditor, domain-authority-auditor, entity-optimizer, memory-management |
+
+## Hooks & Automation
+
+This library uses prompt-based hooks to automate cross-skill coordination. All hooks are prompt instructions in `hooks/hooks.json` — no shell scripts, no executables.
+
+| Event | Matcher | Behavior |
+|-------|---------|----------|
+| SessionStart | all | Load `memory/hot-cache.md` as project context; remind open loops older than 7 days |
+| UserPromptSubmit | all | Keep hot-cache priorities in mind silently |
+| PostToolUse | Write, Edit | Recommend content-quality-auditor after content writing |
+| Stop | all | Prompt to save findings to `memory/`; auto-save veto issues to hot-cache |
+
+### Hook Design Principles
+
+- **Prompt-based only** — no shell scripts, no executables, no dependencies
+- **Transparent** — user can see and override any hook behavior
+- **Non-blocking** — hooks suggest actions, they never force them
+
+### Temperature Memory Model
+
+The library uses a three-tier memory model. See [references/state-model.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) for full specification.
+
+| Tier | Location | Capacity | Lifecycle |
+|------|----------|----------|-----------|
+| HOT | `memory/hot-cache.md` | 80 lines | Auto-loaded every session; demotes after 30 days unreferenced |
+| WARM | `memory/<category>/` | 200 lines/file | On-demand loading; promotes to HOT on high frequency; demotes after 90 days |
+| COLD | `memory/archive/` | Unlimited | Query-only via memory-management; never auto-deleted |
 
 ## Skill Format Specifications
 
@@ -148,7 +177,7 @@ Two proprietary frameworks power this library's auditing skills:
 
 Used by: content-quality-auditor, seo-content-writer, geo-content-optimizer, content-refresher, on-page-seo-auditor
 
-Full reference: `references/core-eeat-benchmark.md`
+Full reference: [references/core-eeat-benchmark.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md)
 
 ### CITE (40 items, 4 dimensions)
 - **C**itation (10 items) — backlink profiles, media mentions
@@ -158,7 +187,7 @@ Full reference: `references/core-eeat-benchmark.md`
 
 Used by: domain-authority-auditor, backlink-analyzer, competitor-analysis, performance-reporter
 
-Full reference: `references/cite-domain-rating.md`
+Full reference: [references/cite-domain-rating.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/cite-domain-rating.md)
 
 ### Veto System
 Both frameworks include critical items that can override the overall score:
@@ -167,7 +196,7 @@ Both frameworks include critical items that can override the overall score:
 
 ## Tool Connector Pattern
 
-Skills use `~~category` placeholders instead of specific tool names. See [CONNECTORS.md](./CONNECTORS.md) for the full mapping.
+Skills use `~~category` placeholders instead of specific tool names. See [CONNECTORS.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CONNECTORS.md) for the full mapping.
 
 ### Progressive Enhancement
 | Tier | Integration | Experience |
@@ -209,10 +238,14 @@ SEO & GEO Skills update available: [list updated skills with old → new version
 
 ## Inter-Skill Handoff Protocol
 
-When one skill recommends running another (via Related Skills sections), preserve this context:
+When one skill points to its `Next Best Skill`, preserve this context:
 
 | Context | How to Pass |
 |---------|------------|
+| Objective | State what was analyzed, created, or fixed |
+| Key findings / output | Carry forward the highest-signal result |
+| Evidence | Include URLs, datasets, or sections reviewed |
+| Open loops | Note blockers, missing inputs, or unresolved risks |
 | Target keyword | Include in the skill invocation |
 | Content type | State explicitly |
 | CORE-EEAT scores | Summarize dimension scores (e.g., C:75 O:60 R:80 E:45) |
@@ -220,7 +253,7 @@ When one skill recommends running another (via Related Skills sections), preserv
 | Priority items | List specific item IDs |
 | Content URL | Include for fetch-capable skills |
 
-If `memory-management` is active, prior audit results are automatically available via the hot cache in `CLAUDE.md`.
+If `memory-management` is active, prior audit results are automatically available via the hot cache in [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md).
 
 ## Git Workflow
 
@@ -229,6 +262,7 @@ When contributing to this repository:
 - **Branch naming**: `feature/skill-name`, `fix/skill-name`, `docs/description`
 - **Conventional Commits**: `feat: add skill-name skill`, `fix: correct scoring in on-page-seo-auditor`, `docs: update VERSIONS.md`
 - **After adding or updating a skill**: Update all 5 tracking files: `VERSIONS.md`, `.claude-plugin/plugin.json` skills array, `marketplace.json` (repo root) skills array (must match plugin.json exactly), `README.md` skills table, `CLAUDE.md` category table
+- **If shared behavior changes**: Keep `references/skill-contract.md`, `references/state-model.md`, `AGENTS.md`, `README.md`, and `CLAUDE.md` aligned
 - **Keep SKILL.md under 350 lines** (~4000 tokens) — use `references/` subdirectories for detailed documentation
 - **Validate before submitting**: Run `./scripts/validate-skill.sh <category>/<skill-name>`
 

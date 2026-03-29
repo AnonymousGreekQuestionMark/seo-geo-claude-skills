@@ -77,7 +77,7 @@ Writes search-engine-optimized content, then applies a GEO optimization pass for
 
 ## Related Skills
 
-- [seo-content-writer](../build/seo-content-writer/) -- SEO content creation
-- [geo-content-optimizer](../build/geo-content-optimizer/) -- GEO optimization
-- [keyword-research](../research/keyword-research/) -- Research keywords before writing
-- [content-quality-auditor](../cross-cutting/content-quality-auditor/) -- Full 80-item CORE-EEAT audit
+- [seo-content-writer](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/build/seo-content-writer/SKILL.md) -- SEO content creation
+- [geo-content-optimizer](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/build/geo-content-optimizer/SKILL.md) -- GEO optimization
+- [keyword-research](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/research/keyword-research/SKILL.md) -- Research keywords before writing
+- [content-quality-auditor](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/content-quality-auditor/SKILL.md) -- Full 80-item CORE-EEAT audit

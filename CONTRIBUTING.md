@@ -68,7 +68,7 @@ A well-structured SKILL.md includes:
 - **When to Use This Skill** — specific use cases
 - **What This Skill Does** — numbered list of functions
 - **How to Use** — invocation examples
-- **Data Sources** — which `~~placeholders` it uses (see [CONNECTORS.md](./CONNECTORS.md))
+- **Data Sources** — which `~~placeholders` it uses (see [CONNECTORS.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CONNECTORS.md))
 - **Instructions** — step-by-step workflow with markdown templates for output
 - **Validation Checkpoints** — input and output quality checks
 - **Example** — concrete input/output example

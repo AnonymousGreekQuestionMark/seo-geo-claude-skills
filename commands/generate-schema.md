@@ -79,4 +79,4 @@ IMPLEMENTATION INSTRUCTIONS
 
 ## Related Skills
 
-- [schema-markup-generator](../build/schema-markup-generator/) -- Full schema markup generation workflow
+- [schema-markup-generator](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/build/schema-markup-generator/SKILL.md) -- Full schema markup generation workflow

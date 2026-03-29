@@ -100,6 +100,6 @@ Data Sources, Methodology, Historical Trends, Competitor Benchmarking
 
 ## Related Skills
 
-- [performance-reporter](../monitor/performance-reporter/) -- Comprehensive performance reporting
-- [domain-authority-auditor](../cross-cutting/domain-authority-auditor/) -- CITE domain authority scoring
-- [content-quality-auditor](../cross-cutting/content-quality-auditor/) -- CORE-EEAT content quality scoring
+- [performance-reporter](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/monitor/performance-reporter/SKILL.md) -- Comprehensive performance reporting
+- [domain-authority-auditor](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/domain-authority-auditor/SKILL.md) -- CITE domain authority scoring
+- [content-quality-auditor](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/content-quality-auditor/SKILL.md) -- CORE-EEAT content quality scoring
