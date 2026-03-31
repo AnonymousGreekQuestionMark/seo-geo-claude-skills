@@ -7,6 +7,10 @@
           {
             "type": "prompt",
             "prompt": "If memory/hot-cache.md exists in the user's project, read it silently and use it as project context for this session. If memory/open-loops.md exists and contains items with dates older than 7 days, briefly remind the user: 'You have open items from [date] — want to review them?' Do not block on this; proceed with the user's request."
+          },
+          {
+            "type": "prompt",
+            "prompt": "Check memory/audits/ for files with dates in filenames (YYYY-MM-DD format). If any audit file is older than 30 days, briefly note: 'Audit for [topic] is [X] days old — consider re-running.' Show at most 3 stale audits. Do not block on this."
           }
         ]
       }

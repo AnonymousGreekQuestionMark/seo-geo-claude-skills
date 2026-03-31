@@ -3,13 +3,78 @@
 # Usage: ./scripts/validate-skill.sh <path-to-skill-directory>
 # Example: ./scripts/validate-skill.sh research/keyword-research
 
-SKILL_DIR="${1:-.}"
-SKILL_FILE="$SKILL_DIR/SKILL.md"
-
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
+
+# --status: verify version: == metadata.version: within each SKILL.md (internal consistency)
+#           and display library version from plugin.json and marketplace.json for reference
+if [ "$1" = "--status" ]; then
+    REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+    PLUGIN_JSON="$REPO_ROOT/.claude-plugin/plugin.json"
+    MARKETPLACE_JSON="$REPO_ROOT/marketplace.json"
+
+    if [ ! -f "$PLUGIN_JSON" ]; then
+        echo -e "${RED}ERROR${NC}: plugin.json not found at $PLUGIN_JSON"
+        exit 1
+    fi
+    if [ ! -f "$MARKETPLACE_JSON" ]; then
+        echo -e "${RED}ERROR${NC}: marketplace.json not found at $MARKETPLACE_JSON"
+        exit 1
+    fi
+
+    # Library-level version (single entry in plugin.json / marketplace.json)
+    lib_plugin=$(grep '"version"' "$PLUGIN_JSON" | head -1 | sed 's/.*"version" *: *"//' | sed 's/".*//' | tr -d '\r')
+    lib_market=$(grep '"version"' "$MARKETPLACE_JSON" | head -1 | sed 's/.*"version" *: *"//' | sed 's/".*//' | tr -d '\r')
+    echo ""
+    echo "Library version — plugin.json: ${lib_plugin}  marketplace.json: ${lib_market}"
+    if [ "$lib_plugin" != "$lib_market" ]; then
+        echo -e "${RED}WARN${NC}: plugin.json and marketplace.json library versions differ"
+    fi
+    echo ""
+
+    SPLIT=0
+
+    printf "%-30s %-12s %-18s %s\n" "SKILL" "version:" "metadata.version:" "STATUS"
+    printf "%-30s %-12s %-18s %s\n" "-----" "--------" "-----------------" "------"
+
+    while IFS= read -r skill_file; do
+        skill_dir="$(dirname "$skill_file")"
+        skill_name="$(basename "$skill_dir")"
+
+        # Extract top-level version: from SKILL.md frontmatter
+        skill_ver=$(awk '/^---/{if(++n==2)exit} n && /^version:/{gsub(/version: */, ""); gsub(/["'"'"']/, ""); print; exit}' "$skill_file" | tr -d '\r')
+
+        # Extract metadata.version: (indented) from SKILL.md frontmatter
+        meta_ver=$(awk '/^---/{if(++n==2)exit} n && /^  version:/{gsub(/ *version: */, ""); gsub(/["'"'"']/, ""); print; exit}' "$skill_file" | tr -d '\r')
+
+        # Determine status
+        if [ -z "$skill_ver" ]; then
+            status="${YELLOW}SKIP${NC}"
+        elif [ -z "$meta_ver" ] || [ "$skill_ver" = "$meta_ver" ]; then
+            status="${GREEN}OK${NC}"
+        else
+            status="${RED}SPLIT${NC}"  # version: and metadata.version: disagree within SKILL.md
+            SPLIT=1
+        fi
+
+        printf "%-30s %-12s %-18s " "$skill_name" "${skill_ver:-—}" "${meta_ver:-—}"
+        echo -e "$status"
+    done < <(find "$REPO_ROOT" -name "SKILL.md" -not -path "$REPO_ROOT/docs/*" -not -path "$REPO_ROOT/.claude/*" | sort)
+
+    echo ""
+    if [ "$SPLIT" -gt 0 ]; then
+        echo -e "${RED}SPLIT detected — version: and metadata.version: disagree in one or more skills${NC}"
+        exit 1
+    else
+        echo -e "${GREEN}All skill versions internally consistent${NC}"
+        exit 0
+    fi
+fi
+
+SKILL_DIR="${1:-.}"
+SKILL_FILE="$SKILL_DIR/SKILL.md"
 
 PASS=0
 FAIL=0
