@@ -3,7 +3,7 @@
 **20 skills. 9 comandos. Posicionate en buscadores. Se citado por IA.**
 
 [![GitHub Stars](https://img.shields.io/github/stars/aaron-he-zhu/seo-geo-claude-skills?style=flat)](https://github.com/aaron-he-zhu/seo-geo-claude-skills)
-[![Version](https://img.shields.io/badge/version-5.1.0-orange)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/VERSIONS.md)
+[![Version](https://img.shields.io/badge/version-6.1.0-orange)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/VERSIONS.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/LICENSE)
 
 [English](../README.md) | [中文](README.zh.md) | [日本語](README.ja.md) | [한국어](README.ko.md) | **Espanol** | [Portugues](README.pt.md)
@@ -112,4 +112,4 @@ Las contribuciones son bienvenidas. Consulta [CONTRIBUTING.md](https://github.co
 
 Apache License 2.0
 
-*Ultima sincronizacion con README en ingles: v5.1.0*
+*Ultima sincronizacion con README en ingles: v6.1.0*

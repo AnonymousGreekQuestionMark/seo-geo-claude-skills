@@ -3,7 +3,7 @@
 **20 个技能。9 个命令。搜索排名 + AI 引用，一次搞定。**
 
 [![GitHub Stars](https://img.shields.io/github/stars/aaron-he-zhu/seo-geo-claude-skills?style=flat)](https://github.com/aaron-he-zhu/seo-geo-claude-skills)
-[![Version](https://img.shields.io/badge/version-5.1.0-orange)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/VERSIONS.md)
+[![Version](https://img.shields.io/badge/version-6.1.0-orange)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/VERSIONS.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/LICENSE)
 
 [English](../README.md) | **中文** | [日本語](README.ja.md) | [한국어](README.ko.md) | [Espanol](README.es.md) | [Portugues](README.pt.md)
@@ -112,4 +112,4 @@ npx skills add aaron-he-zhu/seo-geo-claude-skills -s keyword-research
 
 Apache License 2.0
 
-*最后同步英文 README：v5.1.0*
+*最后同步英文 README：v6.1.0*
