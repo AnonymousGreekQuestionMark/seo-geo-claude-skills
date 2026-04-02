@@ -31,6 +31,18 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 
 ## Changelog
 
+### v6.1.0 — Community Governance, README Redesign, Localization (2026-04-02)
+
+Infrastructure and community health release. No skill logic changes.
+
+- **Community governance files**: SECURITY.md, CODE_OF_CONDUCT.md (Contributor Covenant 2.1), CITATION.cff, PRIVACY.md, .github/FUNDING.yml
+- **Issue templates**: bug-report.yml and feature-request.yml (structured YAML forms)
+- **README redesign**: hero tagline, "Why This Library" value props, GitHub Stars + Last Commit badges, 6-language switcher, collapsible skill finder, Ecosystem section, Community links
+- **5 localized READMEs**: Chinese (zh), Japanese (ja), Korean (ko), Spanish (es), Portuguese (pt) in docs/
+- plugin.json: version 6.0.0 → 6.1.0
+- marketplace.json: version 6.0.0 → 6.1.0
+- CITATION.cff: version synced to 6.1.0
+
 ### v6.0.0 — GStack Pattern Adoption + Full Polish (2026-03-31)
 
 Consolidates v5.1.0, v5.2.0, and v5.2.1 into a single major release. All 20 skills updated to 6.0.0.
