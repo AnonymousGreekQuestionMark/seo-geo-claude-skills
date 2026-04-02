@@ -80,10 +80,11 @@ This library uses prompt-based hooks to automate cross-skill coordination. All h
 
 | Event | Matcher | Behavior |
 |-------|---------|----------|
-| SessionStart | all | Load `memory/hot-cache.md` as project context; remind open loops older than 7 days |
+| SessionStart | startup | Load `memory/hot-cache.md` as project context; remind open loops older than 7 days |
 | UserPromptSubmit | all | Keep hot-cache priorities in mind silently |
 | PostToolUse | Write, Edit | Recommend content-quality-auditor after content writing |
 | Stop | all | Prompt to save findings to `memory/`; auto-save veto issues to hot-cache |
+| FileChanged | hot-cache.md | Warn if hot-cache exceeds 80 lines or 25KB |
 
 ### Hook Design Principles
 
@@ -133,6 +134,8 @@ Every `SKILL.md` must have YAML frontmatter with:
 | `metadata.tags` | Searchable keywords | All |
 | `metadata.triggers` | Trigger phrases that activate the skill | Agent Skills |
 | `metadata.openclaw` | ClawHub runtime declarations (`requires.env`, `requires.bins`) | ClawHub |
+| `when_to_use` | Detailed trigger scenarios for auto-invocation (underscores, not hyphens) | Claude Code |
+| `argument-hint` | Argument format hint in command picker | All |
 
 ### ClawHub Runtime Declaration
 

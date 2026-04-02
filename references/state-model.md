@@ -36,6 +36,35 @@ Plan C standardizes where reusable project state belongs. All state follows a th
 90 days unreferenced                   → WARM demotes to COLD
 ```
 
+### Dual Truncation Rule
+
+HOT tier is limited to 80 lines AND 25KB (whichever triggers first). Truncation occurs at newline boundaries — no mid-line cuts. If exceeded, the FileChanged hook warns the user.
+
+### Staleness Protocol
+
+| Age | Treatment |
+|-----|-----------|
+| ≤7 days | Current — use without caveat |
+| 8–30 days | Point-in-time — verify against current state before asserting as fact |
+| 31–90 days | Stale — flag for review in SessionStart hook |
+| >90 days | Archive candidate — recommend archival via memory-management |
+
+## Memory File Frontmatter
+
+Every file in `memory/` (except `hot-cache.md`) SHOULD include YAML frontmatter:
+
+```yaml
+---
+name: campaign-q2-seo
+description: Q2 SEO campaign targeting 50 keywords across 3 verticals
+type: project
+---
+```
+
+Valid `type` values: `project`, `reference`, `decision`, `entity`
+
+The `description` field enables future semantic search across memory files.
+
 ## Durable State
 
 ### `memory/decisions.md`

@@ -2,7 +2,7 @@
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "",
+        "matcher": "startup",
         "hooks": [
           {
             "type": "prompt",
@@ -21,7 +21,7 @@
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "If memory/hot-cache.md was loaded this session, keep its priorities, hero keywords, and active veto items in mind when responding. This is a silent reminder — do not mention it to the user unless directly relevant."
+            "prompt": "If memory/hot-cache.md was loaded this session, keep its priorities, hero keywords, and active veto items in mind when responding. If the user's request involves a skill that uses ~~SEO tool or ~~analytics and no MCP server is connected for that category, briefly note that the skill will work in Tier 1 (manual data) mode. This is a silent reminder — do not mention it to the user unless directly relevant."
           }
         ]
       }
@@ -37,13 +37,28 @@
         ]
       }
     ],
+    "FileChanged": [
+      {
+        "matcher": "hot-cache.md",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "hot-cache.md was just modified. Count its lines. If it exceeds 80 lines, warn the user: 'Hot cache is at [N] lines (limit: 80). Consider running memory-management to archive older entries.' If it exceeds 25KB, also warn about byte limit."
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "matcher": "",
         "hooks": [
           {
             "type": "prompt",
-            "prompt": "Before ending this turn: if this session produced SEO/GEO findings, audit results, keyword research, or other reusable data, ask the user: 'Save these results for future sessions?' If they agree, write a dated summary to the appropriate memory/ path per the state model. If any veto-level issue was found during this session (CORE-EEAT T04, C01, R10 or CITE T03, T05, T09), append a one-line alert to memory/hot-cache.md without asking."
+            "prompt": "Before ending this turn: if any veto-level issue was found during this session (CORE-EEAT T04, C01, R10 or CITE T03, T05, T09), append a one-line alert to memory/hot-cache.md without asking. Format: YYYY-MM-DD | VETO | <item-id> | <one-line description>"
+          },
+          {
+            "type": "prompt",
+            "prompt": "If this session produced SEO/GEO findings, audit results, keyword research, or other reusable data, ask the user: 'Save these results for future sessions?' If they agree, write a dated summary to the appropriate memory/ path per the state model (YYYY-MM-DD-<topic>.md)."
           }
         ]
       }

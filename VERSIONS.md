@@ -31,6 +31,23 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 
 ## Changelog
 
+### v6.2.0 — Frontmatter Enrichment + Hook Hardening (2026-04-02)
+
+Infrastructure upgrade aligned with Claude Code native patterns. No skill logic changes.
+
+- **`when_to_use` field (all 20 skills)**: Added detailed trigger scenarios for improved auto-invocation accuracy. Uses underscores per Claude Code convention.
+- **`argument-hint` field (all 20 skills)**: Added argument format hints for command picker display.
+- **Hooks hardening**:
+  - SessionStart: matcher narrowed to `"startup"` (avoids firing on compact/resume)
+  - Stop: split into 2 focused prompts (veto auto-save + findings save)
+  - FileChanged: new hook monitors hot-cache.md for overflow (80 lines / 25KB)
+  - UserPromptSubmit: added connector tier awareness
+- **Memory system**: dual truncation rule (lines + bytes), staleness protocol, frontmatter standard for memory files
+- **Documentation**: frontmatter reference table in skill-contract.md, field requirements in CLAUDE.md and AGENTS.md
+- plugin.json: version 6.1.0 → 6.2.0
+- marketplace.json: version 6.1.0 → 6.2.0
+- CITATION.cff: version synced to 6.2.0
+
 ### v6.1.0 — Community Governance, README Redesign, Localization (2026-04-02)
 
 Infrastructure and community health release. No skill logic changes.

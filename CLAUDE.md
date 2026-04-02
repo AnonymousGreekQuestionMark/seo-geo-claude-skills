@@ -42,6 +42,7 @@ This plugin provides **20 skills and 9 commands** for Search Engine Optimization
   - `memory-management` = campaign memory loop
 - Hook automation: `hooks/hooks.json` — prompt-based hooks for SessionStart, UserPromptSubmit, PostToolUse, Stop
 - Temperature memory: HOT (`memory/hot-cache.md`, 80 lines, auto-loaded) / WARM (`memory/` subdirs) / COLD (`memory/archive/`)
+- Dual truncation: HOT tier limited to 80 lines AND 25KB (whichever triggers first)
 
 ## Inter-Skill Handoff
 
@@ -55,7 +56,7 @@ Skills use `~~category` placeholders (e.g., `~~SEO tool`, `~~analytics`). Every 
 
 ## Contribution Rules
 
-- All `SKILL.md` files must include: `name`, `version`, `description`, `license`, `compatibility`, `metadata` frontmatter
+- All `SKILL.md` files must include: `name`, `version`, `description`, `license`, `compatibility`, `metadata` frontmatter. Recommended: `when_to_use` (underscores, not hyphens) and `argument-hint`.
 - `plugin.json` must include: `schemaVersion`, `id`, and `description` on every command and skill entry
 - Keep `SKILL.md` body under 350 lines — move detail to `references/` subdirectories
 - After updating a skill: update all 5 tracking files — `VERSIONS.md`, `.claude-plugin/plugin.json`, `marketplace.json` (repo root), `README.md` skills table, and this `CLAUDE.md` category table

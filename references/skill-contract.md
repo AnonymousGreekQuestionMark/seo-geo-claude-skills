@@ -14,6 +14,22 @@ Every `SKILL.md` should expose these sections near the top:
 - `Reference Materials`
 - `Next Best Skill`
 
+## Frontmatter Fields Reference
+
+| Field | Format | Required | Effect |
+|-------|--------|----------|--------|
+| `name` | kebab-case | Yes | Skill identifier, must match directory |
+| `description` | String ≤1024 chars | Yes | UI display + vector search discovery |
+| `version` | Semver | Yes | Skill version tracking |
+| `when_to_use` | String (underscores) | Recommended | Detailed trigger scenarios for auto-invocation |
+| `argument-hint` | String | Recommended | Shows argument format in command picker |
+| `allowed-tools` | String or array | Optional | Pre-approved tools (e.g., `WebFetch`) |
+| `license` | SPDX string | Optional | Default: Apache-2.0 |
+| `compatibility` | String | Optional | Platform compatibility statement |
+| `homepage` | URL | Optional | Skill homepage |
+
+Note: `when_to_use` uses underscores (not hyphens). This matches Claude Code's internal parser.
+
 ## Section Meanings
 
 ### When This Must Trigger
