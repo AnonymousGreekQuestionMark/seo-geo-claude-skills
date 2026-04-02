@@ -1,13 +1,26 @@
 # SEO & GEO Skills Library
 
-[![ClawHub](https://img.shields.io/badge/ClawHub-20_skills-purple)](https://clawhub.ai/u/aaron-he-zhu)
-[![Skills](https://img.shields.io/badge/skills.sh-20_skills-blue)](https://skills.sh/aaron-he-zhu/seo-geo-claude-skills)
-[![License](https://img.shields.io/badge/license-Apache%202.0-green)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-6.0.0-orange)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/VERSIONS.md)
+**20 skills. 9 commands. Rank in search. Get cited by AI.**
 
-Claude Skills and Commands for Search Engine Optimization (SEO) and Generative Engine Optimization (GEO). 20 skills, 9 commands, and one shared operating contract. Tool-agnostic, works with or without integrations. Content quality is powered by the [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark). Domain authority is powered by the [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating).
+[![GitHub Stars](https://img.shields.io/github/stars/aaron-he-zhu/seo-geo-claude-skills?style=flat)](https://github.com/aaron-he-zhu/seo-geo-claude-skills)
+[![Version](https://img.shields.io/badge/version-6.1.0-orange)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/VERSIONS.md)
+[![License](https://img.shields.io/badge/license-Apache%202.0-green)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/aaron-he-zhu/seo-geo-claude-skills)](https://github.com/aaron-he-zhu/seo-geo-claude-skills/commits/main)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-purple)](https://claude.ai/download)
+
+[English](README.md) | [中文](docs/README.zh.md) | [日本語](docs/README.ja.md) | [한국어](docs/README.ko.md) | [Espanol](docs/README.es.md) | [Portugues](docs/README.pt.md)
+
+Claude Skills and Commands for Search Engine Optimization (SEO) and Generative Engine Optimization (GEO). Zero dependencies, works with [Claude Code](https://claude.ai/download), [Cursor](https://cursor.com), [Codex](https://openai.com/codex), and [35+ other agents](https://skills.sh). Content quality scored by the [CORE-EEAT Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark) (80 items). Domain authority scored by [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating) (40 items).
 
 > **SEO** gets you ranked in search results. **GEO** gets you cited by AI systems (ChatGPT, Perplexity, Google AI Overviews). This library covers both.
+
+### Why This Library
+
+- **120-item quality frameworks** — CORE-EEAT (80 items) + CITE (40 items) with veto gates, not narrative guesswork
+- **8 languages, 750+ triggers** — EN, ZH, JA, KO, ES, PT with formal, casual, and misspelling variants
+- **Zero dependencies** — pure markdown skills, no Python, no venv, no API keys required
+- **Tool-agnostic** — works standalone or with Ahrefs, Semrush, Google Search Console via MCP
+- **6 install methods** — ClawHub, skills.sh, Claude Code plugin, git submodule, fork, manual
 
 ## Quick Start
 
@@ -303,7 +316,20 @@ Most skills also include `references/` subdirectories with skill-specific templa
 
 ## Finding the Right Skill
 
-Not sure which skill to use? Search by what you're trying to do:
+Not sure which skill to use? Here's a quick guide by goal:
+
+**Research** — `keyword-research` (keywords, topics, search volume) | `competitor-analysis` (competitive intel, benchmarking) | `serp-analysis` (SERP features, AI overviews) | `content-gap-analysis` (missing topics, content opportunities)
+
+**Build** — `seo-content-writer` (blog posts, articles, SEO copy) | `geo-content-optimizer` (AI citations, LLM optimization) | `meta-tags-optimizer` (titles, descriptions, OG tags) | `schema-markup-generator` (JSON-LD, rich snippets)
+
+**Optimize** — `on-page-seo-auditor` (page audit, SEO score) | `technical-seo-checker` (speed, crawlability, Core Web Vitals) | `internal-linking-optimizer` (link structure, silos) | `content-refresher` (update old content, fix decay)
+
+**Monitor** — `rank-tracker` (keyword positions, trends) | `backlink-analyzer` (link profile, toxic links) | `performance-reporter` (SEO/GEO reports) | `alert-manager` (ranking drops, traffic alerts)
+
+**Protocol** — `content-quality-auditor` (80-item CORE-EEAT) | `domain-authority-auditor` (40-item CITE) | `entity-optimizer` (knowledge graph, brand entity) | `memory-management` (campaign memory, project context)
+
+<details>
+<summary>Full use-case search index (40 entries)</summary>
 
 | You're looking for... | Use this skill |
 |----------------------|---------------|
@@ -348,6 +374,8 @@ Not sure which skill to use? Search by what you're trying to do:
 | Remember project context / save SEO data / track campaign | [memory-management](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/memory-management/SKILL.md) |
 | Store keyword data / save progress / project memory | [memory-management](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/memory-management/SKILL.md) |
 
+</details>
+
 ## All Installation Methods
 
 | Method | Command | Best for |
@@ -382,12 +410,20 @@ npx skills add aaron-he-zhu/seo-geo-claude-skills -g -y --all
 
 See [CONTRIBUTING.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CONTRIBUTING.md) for how to add new skills, improve existing ones, or request features.
 
-## Related Repositories
+## Ecosystem
 
-| Repository | What it provides |
-|------------|-----------------|
-| [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark) | 80-item content quality scoring framework |
-| [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating) | 40-item domain authority scoring framework |
+| Repository | What it provides | How it connects |
+|------------|-----------------|-----------------|
+| [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark) | 80-item content quality scoring framework | Powers `content-quality-auditor` and publish readiness gate |
+| [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating) | 40-item domain authority scoring framework | Powers `domain-authority-auditor` and citation trust gate |
+
+## Community
+
+- [Report a bug](https://github.com/aaron-he-zhu/seo-geo-claude-skills/issues/new?template=bug-report.yml)
+- [Request a feature](https://github.com/aaron-he-zhu/seo-geo-claude-skills/issues/new?template=feature-request.yml)
+- [Contributing guide](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CONTRIBUTING.md)
+- [Security policy](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/SECURITY.md)
+- [Code of Conduct](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CODE_OF_CONDUCT.md)
 
 ## Disclaimer
 
