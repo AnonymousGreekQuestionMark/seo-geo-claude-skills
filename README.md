@@ -14,19 +14,17 @@
 
 ## Just send a URL
 
-The fastest way to start: paste any domain into Claude (with this plugin loaded) and the agent will automatically run a full company analysis.
-
-```
-caplinq.com
-```
-
-or explicitly:
+The fastest way to start — one command, any domain:
 
 ```
 /seo:analyze-company caplinq.com
 ```
 
-That's it. The agent runs all 20 skills in sequence, saves organized results, and generates a self-contained HTML report — no other input needed.
+The agent runs all 20 skills in sequence, saves organized results, and generates a self-contained HTML report. No other input needed.
+
+You can also type a bare domain or say "analyze caplinq.com" and Claude will recognize it as a company analysis request — but `/seo:analyze-company` is the reliable path and the one to use if you want it to run every time without ambiguity.
+
+> **First time?** You need to install this library before commands like `/seo:analyze-company` are available. See [Install](#install) below — it's a one-time setup that takes under a minute.
 
 ---
 
@@ -54,24 +52,33 @@ Dark-mode, fully self-contained (no external dependencies). Tabs for each phase,
 
 ## Install
 
+Skills and commands like `/seo:analyze-company` only work after you've installed this library once. Here's how depending on what tool you're using.
+
 ### Claude Code (recommended)
 
+[Claude Code](https://claude.ai/download) is Anthropic's official CLI. If you haven't installed it yet, download it first.
+
+**Step 1 — Download this library:**
 ```bash
 git clone https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills.git
+```
+
+**Step 2 — Start Claude Code with the library loaded:**
+```bash
 claude --plugin-dir ./seo-geo-claude-skills
 ```
 
-Or as a submodule in an existing project:
+That's it. Every `/seo:` command is now available in your Claude session. You run this once per terminal session (or add it to a shell alias so you don't have to type it every time).
 
-```bash
-git submodule add https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills.git .claude/skills/seo-geo
-```
+> If you don't have `git` installed, [download it here](https://git-scm.com/downloads). If you're on Mac, running `git` in Terminal for the first time will prompt you to install it automatically.
 
-### Cursor / Windsurf / other agents
+### Cursor / Windsurf / other Claude-compatible agents
 
 ```bash
 npx skills add AnonymousGreekQuestionMark/seo-geo-claude-skills
 ```
+
+This installs the skills into your agent's context. `npx` comes with Node.js — [download Node here](https://nodejs.org) if you don't have it.
 
 ---
 
