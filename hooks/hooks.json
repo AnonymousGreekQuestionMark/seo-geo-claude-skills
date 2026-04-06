@@ -21,6 +21,10 @@
         "hooks": [
           {
             "type": "prompt",
+            "prompt": "Check the user's message. If it consists of only a domain or URL (e.g. 'caplinq.com', 'https://caplinq.com', 'blog.caplinq.com') with no other request, automatically run the company-analysis orchestration skill for that domain — do not ask for confirmation, just begin the 21-step analysis. If the message says 'analyze <domain>' or 'audit <domain>' or 'run analysis on <domain>' with no further instruction, also treat it as a company-analysis request and start immediately."
+          },
+          {
+            "type": "prompt",
             "prompt": "If memory/hot-cache.md was loaded this session, keep its priorities, hero keywords, and active veto items in mind when responding. If the user's request involves a skill that uses ~~SEO tool or ~~analytics and no MCP server is connected for that category, briefly note that the skill will work in Tier 1 (manual data) mode. This is a silent reminder — do not mention it to the user unless directly relevant."
           }
         ]
