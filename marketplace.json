@@ -1,13 +1,13 @@
 {
   "name": "seo-geo-claude-skills",
   "owner": {
-    "name": "Aaron He Zhu",
-    "url": "https://github.com/aaron-he-zhu"
+    "name": "AAR AI Automation",
+    "url": "https://github.com/AnonymousGreekQuestionMark"
   },
   "metadata": {
     "description": "SEO & GEO skill operating system with a shared contract, protocol-layer gates, and reusable state handoffs",
     "version": "6.3.0",
-    "repository": "https://github.com/aaron-he-zhu/seo-geo-claude-skills"
+    "repository": "https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills"
   },
   "plugins": [
     {

@@ -34,6 +34,7 @@ metadata:
     - "full audit from scratch"
     - "analyze caplinq.com"
     - "run all 20 skills"
+    - "/geo:analyze-company"
     - "caplinq.com"
     - "https://caplinq.com"
     - "audit this domain"
@@ -52,15 +53,15 @@ Full-company SEO and GEO analysis that runs all 20 library skills in a fixed 21-
 ## When This Must Trigger
 
 - User provides a company domain and asks for a full, complete, or comprehensive analysis
-- User invokes `/seo:analyze-company <domain>` command
+- User invokes `/geo:analyze-company <domain>` command
 - User says "analyze everything", "run all skills", or "do a full audit" with a domain
 - Starting a new company engagement and need a complete baseline
 
 ## Quick Start
 
 ```
-/seo:analyze-company caplinq.com
-/seo:analyze-company blog.caplinq.com
+/geo:analyze-company caplinq.com
+/geo:analyze-company blog.caplinq.com
 Analyze everything about caplinq.com and generate an HTML report
 ```
 

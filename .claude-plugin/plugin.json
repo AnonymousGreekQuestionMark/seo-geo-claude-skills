@@ -6,12 +6,12 @@
   "displayName": "SEO & GEO Skills Library",
   "description": "21 SEO and GEO skills with prompt-based hook automation, three-tier memory, and protocol-layer gates for content quality, domain trust, entity truth, and campaign memory. Includes company-analysis orchestration for full-domain audits with HTML reports. Tool-agnostic, works with or without integrations.",
   "author": {
-    "name": "Aaron He Zhu",
-    "email": "hello@zhuhe.io",
-    "url": "https://github.com/aaron-he-zhu"
+    "name": "AAR AI Automation",
+    "email": "contact@aarai.ai",
+    "url": "https://github.com/AnonymousGreekQuestionMark"
   },
-  "homepage": "https://github.com/aaron-he-zhu/seo-geo-claude-skills",
-  "repository": "https://github.com/aaron-he-zhu/seo-geo-claude-skills",
+  "homepage": "https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills",
+  "repository": "https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills",
   "license": "Apache-2.0",
   "keywords": [
     "seo",

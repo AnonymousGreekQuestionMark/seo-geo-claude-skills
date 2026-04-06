@@ -21,16 +21,20 @@ parameters:
 ## Usage
 
 ```
-/seo:analyze-company caplinq.com
-/seo:analyze-company blog.caplinq.com
-/seo:analyze-company acme.io pages="https://acme.io/product,https://acme.io/about"
+/geo:analyze-company caplinq.com
+/geo:analyze-company blog.caplinq.com
+/geo:analyze-company acme.io pages="https://acme.io/product,https://acme.io/about"
 ```
 
-## What it Does
+## Execution Instructions
 
-1. Parses the domain and derives the company root (e.g. `blog.caplinq.com` → root `caplinq`)
+**This command invokes the `company-analysis` orchestration skill. Follow the full execution instructions in [`orchestration/company-analysis/SKILL.md`](https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills/blob/main/orchestration/company-analysis/SKILL.md) exactly — including all 21 steps, the handoff file template, the HTML report generation, and the hot-cache promotion step.**
+
+Summary of what that skill does:
+
+1. Parses the domain → derives company root (e.g. `blog.caplinq.com` → root `caplinq`)
 2. Creates `analyses/<company-root>/<domain>/analysis-<timestamp>/` with 7 phase subdirectories
-3. Runs all 20 skills in sequence, saving handoff summaries per skill:
+3. Runs all 20 skills in sequence (Steps 1–20), saving a handoff `.md` file per skill:
    - **Phase 01**: entity-optimizer, domain-authority-auditor
    - **Phase 02**: keyword-research, competitor-analysis, serp-analysis, content-gap-analysis
    - **Phase 03**: technical-seo-checker, on-page-seo-auditor, internal-linking-optimizer, backlink-analyzer
@@ -38,7 +42,8 @@ parameters:
    - **Phase 05**: seo-content-writer, geo-content-optimizer, meta-tags-optimizer, schema-markup-generator
    - **Phase 06**: rank-tracker, performance-reporter, alert-manager
    - **Phase 07**: memory-management
-4. Generates `analyses/<company-root>/reports/<company-root>_<domain>_<timestamp>.html`
+4. **Step 21 — Generates the HTML report**: writes a single self-contained dark-mode HTML file to `analyses/<company-root>/reports/<company-root>_<domain>_<timestamp>.html` with 8 tabs (Executive Summary + one per phase), CITE verdict badge, CORE-EEAT score grid, 90-day action plan, and skills completion table
+5. Appends CITE verdict and top finding to `memory/hot-cache.md`
 
 ## Output Structure
 
@@ -55,13 +60,8 @@ analyses/
         06-monitoring/
         07-memory/
     reports/
-      <company-root>_<domain>_<timestamp>.html
+      <company-root>_<domain>_<timestamp>.html   ← self-contained HTML report
 ```
-
-## Related Skills
-
-- [company-analysis](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/orchestration/company-analysis/SKILL.md) — the orchestration skill this command invokes
-- [memory-management](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/memory-management/SKILL.md) — recommended next step after the analysis completes
 
 ## Notes
 

@@ -17,14 +17,14 @@
 The fastest way to start — one command, any domain:
 
 ```
-/seo:analyze-company caplinq.com
+/geo:analyze-company caplinq.com
 ```
 
 The agent runs all 20 skills in sequence, saves organized results, and generates a self-contained HTML report. No other input needed.
 
-You can also type a bare domain or say "analyze caplinq.com" and Claude will recognize it as a company analysis request — but `/seo:analyze-company` is the reliable path and the one to use if you want it to run every time without ambiguity.
+You can also type a bare domain or say "analyze caplinq.com" and Claude will recognize it as a company analysis request — but `/geo:analyze-company` is the reliable path and the one to use if you want it to run every time without ambiguity.
 
-> **First time?** You need to install this library before commands like `/seo:analyze-company` are available. See [Install](#install) below — it's a one-time setup that takes under a minute.
+> **First time?** You need to install this library before commands like `/geo:analyze-company` are available. See [Install](#install) below — it's a one-time setup that takes under a minute.
 
 ---
 
@@ -52,7 +52,7 @@ Dark-mode, fully self-contained (no external dependencies). Tabs for each phase,
 
 ## Install
 
-Skills and commands like `/seo:analyze-company` only work after you've installed this library once. Here's how depending on what tool you're using.
+Skills and commands like `/geo:analyze-company` only work after you've installed this library once. Here's how depending on what tool you're using.
 
 ### Claude Code (recommended)
 
@@ -86,13 +86,13 @@ This installs the skills into your agent's context. `npx` comes with Node.js —
 
 ```bash
 # Full company analysis — just provide a domain
-/seo:analyze-company caplinq.com
+/geo:analyze-company caplinq.com
 
 # Analyze a subdomain separately
-/seo:analyze-company blog.caplinq.com
+/geo:analyze-company blog.caplinq.com
 
 # Include specific pages in the on-page audit
-/seo:analyze-company acme.io pages="https://acme.io/product,https://acme.io/about"
+/geo:analyze-company acme.io pages="https://acme.io/product,https://acme.io/about"
 ```
 
 Works in **Tier 1** (no MCP tools needed) using publicly available data. If Ahrefs, Amplitude, or other MCP servers are connected, skills use them automatically.
@@ -162,7 +162,7 @@ One-shot tasks with explicit input and structured output.
 
 | Command | Description |
 |---------|-------------|
-| `/seo:analyze-company <domain>` | Run all 20 skills end-to-end and generate an HTML report in `analyses/` |
+| `/geo:analyze-company <domain>` | Run all 20 skills end-to-end and generate an HTML report in `analyses/` |
 | `/seo:audit-page <URL>` | On-page SEO + CORE-EEAT content quality audit |
 | `/seo:audit-domain <domain>` | Full CITE domain authority audit (40-item) |
 | `/seo:check-technical <URL>` | Technical SEO health check |
@@ -192,7 +192,7 @@ Scores are color-coded throughout: green ≥80, amber 60–79, red <60.
 | Fix technical issues | `/seo:check-technical example.com` |
 | Check domain authority | `/seo:audit-domain example.com` |
 | Write new content | `/seo:write-content "your topic"` |
-| Full company audit | `/seo:analyze-company example.com` |
+| Full company audit | `/geo:analyze-company example.com` |
 
 ---
 
