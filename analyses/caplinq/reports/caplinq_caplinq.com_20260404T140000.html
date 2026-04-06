@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO &amp; GEO Analysis — caplinq.com — 2026-04-04</title>
+<style>
+:root {
+  --bg: #0d1117; --surface: #161b22; --surface2: #1c2128; --border: #30363d;
+  --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+  --green: #3fb950; --amber: #d29922; --red: #f85149;
+  --trusted: #3fb950; --cautious: #d29922; --untrusted: #f85149;
+  --ship: #3fb950; --fix: #d29922; --block: #f85149;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 14px; line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* HEADER */
+header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+header h1 { font-size: 18px; font-weight: 600; color: var(--text); }
+header .meta { color: var(--muted); font-size: 12px; }
+.version-badge { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--muted); }
+
+/* TABS */
+nav.tabs { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 16px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+nav.tabs button { background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); cursor: pointer; font-size: 13px; padding: 12px 14px; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+nav.tabs button:hover { color: var(--text); }
+nav.tabs button.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* MAIN */
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* CARDS */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.card h2 { font-size: 16px; font-weight: 600; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.card h3 { font-size: 14px; font-weight: 600; margin: 12px 0 8px; color: var(--accent); }
+
+/* SCORES */
+.score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+.score-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 12px; text-align: center; }
+.score-item .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.score-item .value { font-size: 24px; font-weight: 700; }
+.score-item .sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.score-green { color: var(--green); }
+.score-amber { color: var(--amber); }
+.score-red { color: var(--red); }
+
+/* PROGRESS BAR */
+.score-bar { width: 100%; background: var(--surface2); border-radius: 4px; height: 6px; margin-top: 6px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s; }
+.bar-green { background: var(--green); }
+.bar-amber { background: var(--amber); }
+.bar-red { background: var(--red); }
+
+/* VERDICT BADGES */
+.badge { display: inline-block; border-radius: 20px; font-size: 12px; font-weight: 600; padding: 4px 14px; letter-spacing: 0.03em; }
+.badge-cautious { background: rgba(210, 153, 34, 0.15); color: var(--amber); border: 1px solid var(--amber); }
+.badge-trusted { background: rgba(63, 185, 80, 0.15); color: var(--green); border: 1px solid var(--green); }
+.badge-untrusted { background: rgba(248, 81, 73, 0.15); color: var(--red); border: 1px solid var(--red); }
+.badge-fix { background: rgba(210, 153, 34, 0.15); color: var(--amber); border: 1px solid var(--amber); }
+.badge-ship { background: rgba(63, 185, 80, 0.15); color: var(--green); border: 1px solid var(--green); }
+.badge-block { background: rgba(248, 81, 73, 0.15); color: var(--red); border: 1px solid var(--red); }
+.badge-done { background: rgba(63, 185, 80, 0.10); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+.badge-concern { background: rgba(210, 153, 34, 0.10); color: var(--amber); border: 1px solid rgba(210,153,34,0.3); }
+
+/* TABLES */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+th { background: var(--surface2); border: 1px solid var(--border); padding: 8px 10px; text-align: left; font-weight: 600; color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; }
+td { border: 1px solid var(--border); padding: 8px 10px; vertical-align: top; }
+tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+tr:hover td { background: rgba(88, 166, 255, 0.05); }
+
+/* FINDINGS */
+.finding { padding: 10px 14px; border-radius: 6px; margin: 8px 0; border-left: 3px solid; }
+.finding-critical { background: rgba(248,81,73,0.08); border-color: var(--red); }
+.finding-warning { background: rgba(210,153,34,0.08); border-color: var(--amber); }
+.finding-info { background: rgba(88,166,255,0.08); border-color: var(--accent); }
+.finding-title { font-weight: 600; font-size: 13px; }
+.finding-desc { color: var(--muted); font-size: 12px; margin-top: 3px; }
+
+/* ACTION TABLE */
+.priority-p0 { color: var(--red); font-weight: 600; }
+.priority-p1 { color: var(--amber); font-weight: 600; }
+.priority-p2 { color: var(--accent); font-weight: 600; }
+.priority-p3 { color: var(--muted); }
+
+/* SECTION DIVIDER */
+.section-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .score-grid { grid-template-columns: repeat(2, 1fr); }
+  header { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>SEO &amp; GEO Analysis: caplinq.com</h1>
+    <div class="meta">Company: CAPLINQ Corporation &nbsp;·&nbsp; Domain: caplinq.com &nbsp;·&nbsp; Analysis: 2026-04-04T14:00:00 UTC &nbsp;·&nbsp; Tier 1 (no MCP tools)</div>
+  </div>
+  <span class="version-badge">SEO &amp; GEO Skills Library v6.3.0</span>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="summary">Executive Summary</button>
+  <button data-tab="baseline">1 · Domain Baseline</button>
+  <button data-tab="research">2 · Research</button>
+  <button data-tab="technical">3 · Technical</button>
+  <button data-tab="content">4 · Content Quality</button>
+  <button data-tab="recommendations">5 · Recommendations</button>
+  <button data-tab="monitoring">6 · Monitoring</button>
+  <button data-tab="nextsteps">7 · Next Steps</button>
+</nav>
+
+<main>
+
+<!-- TAB 0: EXECUTIVE SUMMARY -->
+<div class="tab-panel active" id="tab-summary">
+  <div class="card">
+    <h2>Executive Summary</h2>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px;">
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Domain Authority</div>
+        <span class="badge badge-cautious">⚠ CAUTIOUS — 52/100</span>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Content Quality</div>
+        <span class="badge badge-fix">FIX — GEO 69 · SEO 69</span>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Veto Items</div>
+        <span class="badge badge-ship">✓ NONE</span>
+      </div>
+    </div>
+
+    <div class="section-title">CITE Domain Scores</div>
+    <div class="score-grid">
+      <div class="score-item">
+        <div class="label">Citation (C)</div>
+        <div class="value score-amber">55</div>
+        <div class="score-bar"><div class="score-bar-fill bar-amber" style="width:55%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="label">Identity (I)</div>
+        <div class="value score-red">35</div>
+        <div class="score-bar"><div class="score-bar-fill bar-red" style="width:35%"></div></div>
+        <div class="sub">⚠ Weakest dimension</div>
+      </div>
+      <div class="score-item">
+        <div class="label">Trust (T)</div>
+        <div class="value score-amber">65</div>
+        <div class="score-bar"><div class="score-bar-fill bar-amber" style="width:65%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="label">Eminence (E)</div>
+        <div class="value score-amber">52</div>
+        <div class="score-bar"><div class="score-bar-fill bar-amber" style="width:52%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="label">CITE Overall</div>
+        <div class="value score-amber">52</div>
+        <div class="score-bar"><div class="score-bar-fill bar-amber" style="width:52%"></div></div>
+      </div>
+    </div>
+
+    <div class="section-title">CORE-EEAT Content Scores</div>
+    <div class="score-grid">
+      <div class="score-item"><div class="label">Contextual (C)</div><div class="value score-amber">72</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:72%"></div></div></div>
+      <div class="score-item"><div class="label">Organization (O)</div><div class="value score-amber">78</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:78%"></div></div></div>
+      <div class="score-item"><div class="label">Referenceability (R)</div><div class="value score-amber">65</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:65%"></div></div></div>
+      <div class="score-item"><div class="label">Exclusivity (E)</div><div class="value score-amber">62</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:62%"></div></div></div>
+      <div class="score-item"><div class="label">Experience</div><div class="value score-green">80</div><div class="score-bar"><div class="score-bar-fill bar-green" style="width:80%"></div></div></div>
+      <div class="score-item"><div class="label">Expertise</div><div class="value score-green">82</div><div class="score-bar"><div class="score-bar-fill bar-green" style="width:82%"></div></div></div>
+      <div class="score-item"><div class="label">Authority (A)</div><div class="value score-red">55</div><div class="score-bar"><div class="score-bar-fill bar-red" style="width:55%"></div></div></div>
+      <div class="score-item"><div class="label">Trust (T)</div><div class="value score-amber">60</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:60%"></div></div></div>
+      <div class="score-item"><div class="label">GEO Score</div><div class="value score-amber">69</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:69%"></div></div></div>
+      <div class="score-item"><div class="label">SEO Score</div><div class="value score-amber">69</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:69%"></div></div></div>
+    </div>
+
+    <div class="section-title">Top 5 Critical Findings</div>
+    <div class="finding finding-critical"><div class="finding-title">Identity Dimension Critical Weakness (I: 35/100)</div><div class="finding-desc">No Wikipedia article, unverified Wikidata entry — this is the single largest CITE score improvement opportunity. Fix: create Wikidata entry + sameAs schema links.</div></div>
+    <div class="finding finding-critical"><div class="finding-title">Blog Subdomain Splits Domain Authority</div><div class="finding-desc">blog.caplinq.com is a separate subdomain. 290 high-quality blog posts are not passing full link equity to caplinq.com. Evaluate migration to caplinq.com/blog/.</div></div>
+    <div class="finding finding-warning"><div class="finding-title">No Pillar Pages for Top 3 Keyword Clusters</div><div class="finding-desc">Category pages exist but aren't structured as authoritative pillar content. TIM guide, Electrochemical guide, and Die Attach comparison guide would each rank for multiple valuable keywords.</div></div>
+    <div class="finding finding-warning"><div class="finding-title">Joomla CWV Performance Risk</div><div class="finding-desc">Joomla CMS typically generates slow LCP (&gt;4s). Core Web Vitals failures directly impact Google ranking. Priority: CDN + image compression + caching plugin.</div></div>
+    <div class="finding finding-warning"><div class="finding-title">No FAQPage Schema on Category Pages</div><div class="finding-desc">FAQ sections exist on TIM and Electrochemical pages but lack FAQPage JSON-LD. Adding schema = immediate eligibility for Google PAA boxes and AI Overview citations.</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Skills Completion Status</h2>
+    <table>
+      <thead><tr><th>Step</th><th>Skill</th><th>Phase</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>entity-optimizer</td><td>Domain Baseline</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>2</td><td>domain-authority-auditor</td><td>Domain Baseline</td><td><span class="badge badge-concern">DONE W/ CONCERNS</span></td></tr>
+        <tr><td>3</td><td>keyword-research</td><td>Research</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>4</td><td>competitor-analysis</td><td>Research</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>5</td><td>serp-analysis</td><td>Research</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>6</td><td>content-gap-analysis</td><td>Research</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>7</td><td>technical-seo-checker</td><td>Technical</td><td><span class="badge badge-concern">DONE W/ CONCERNS</span></td></tr>
+        <tr><td>8</td><td>on-page-seo-auditor</td><td>Technical</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>9</td><td>internal-linking-optimizer</td><td>Technical</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>10</td><td>backlink-analyzer</td><td>Technical</td><td><span class="badge badge-concern">DONE W/ CONCERNS</span></td></tr>
+        <tr><td>11</td><td>content-quality-auditor</td><td>Content Quality</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>12</td><td>content-refresher</td><td>Content Quality</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>13</td><td>seo-content-writer</td><td>Recommendations</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>14</td><td>geo-content-optimizer</td><td>Recommendations</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>15</td><td>meta-tags-optimizer</td><td>Recommendations</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>16</td><td>schema-markup-generator</td><td>Recommendations</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>17</td><td>rank-tracker</td><td>Monitoring</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>18</td><td>performance-reporter</td><td>Monitoring</td><td><span class="badge badge-concern">DONE W/ CONCERNS</span></td></tr>
+        <tr><td>19</td><td>alert-manager</td><td>Monitoring</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>20</td><td>memory-management</td><td>Memory</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>21</td><td>HTML Report</td><td>Orchestration</td><td><span class="badge badge-done">DONE</span></td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--muted);font-size:12px;margin-top:8px;">17 DONE · 4 DONE_WITH_CONCERNS · 0 BLOCKED &nbsp;|&nbsp; Overall: <strong>DONE_WITH_CONCERNS</strong> (data gaps due to Tier 1 mode — connect Ahrefs/Analytics for full metrics)</p>
+  </div>
+</div>
+
+<!-- TAB 1: DOMAIN BASELINE -->
+<div class="tab-panel" id="tab-baseline">
+  <div class="card">
+    <h2>Entity Optimizer — Step 1</h2>
+    <h3>Entity Profile</h3>
+    <table>
+      <thead><tr><th>Platform</th><th>Status</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td>Google Knowledge Panel</td><td>⚠️ Likely absent</td><td>B2B niche; no evidence of robust KP</td></tr>
+        <tr><td>Wikidata</td><td>⚠️ Unknown</td><td>Needs manual verification at wikidata.org</td></tr>
+        <tr><td>Wikipedia</td><td>❌ No article</td><td>B2B distributor; notability path indirect</td></tr>
+        <tr><td>Schema.org on site</td><td>⚠️ Partial</td><td>Organization schema likely; sameAs links unconfirmed</td></tr>
+        <tr><td>AI Entity Resolution</td><td>⚠️ Partial</td><td>May surface for product queries; brand-level recognition weak</td></tr>
+      </tbody>
+    </table>
+    <h3>Entity Signal Audit</h3>
+    <table>
+      <thead><tr><th>Category</th><th>Status</th><th>Key Finding</th></tr></thead>
+      <tbody>
+        <tr><td>Structured Data</td><td>⚠️ Gaps</td><td>sameAs links to Wikidata/LinkedIn not confirmed</td></tr>
+        <tr><td>Knowledge Base</td><td>❌ Missing</td><td>No Wikipedia; Wikidata unverified</td></tr>
+        <tr><td>NAP+E Consistency</td><td>✅ Strong</td><td>6 global offices listed consistently; ISO 9001</td></tr>
+        <tr><td>Content-Based</td><td>✅ Strong</td><td>290-post technical blog + deep product pages</td></tr>
+        <tr><td>Third-Party</td><td>⚠️ Gaps</td><td>21+ client logos; limited trade press coverage</td></tr>
+        <tr><td>AI-Specific</td><td>⚠️ Gaps</td><td>Some definitional content; needs GEO structuring</td></tr>
+      </tbody>
+    </table>
+    <div class="finding finding-critical"><div class="finding-title">Priority Action: Create Wikidata Entry</div><div class="finding-desc">A Wikidata entry with sameAs links is the fastest path to improving Identity score (+10–15 points) and triggering Knowledge Panel. Target: within 30 days.</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Domain Authority Auditor (CITE) — Step 2</h2>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <span class="badge badge-cautious">⚠ CAUTIOUS — 52/100</span>
+      <span style="color:var(--muted);font-size:12px;">No veto items (T03 ✓ T05 ✓ T09 ✓)</span>
+    </div>
+    <table>
+      <thead><tr><th>Dimension</th><th>Score</th><th>Key Issues</th></tr></thead>
+      <tbody>
+        <tr><td>C — Citation</td><td class="score-amber">55/100</td><td>Backlink data unavailable (Tier 1); estimated moderate quality</td></tr>
+        <tr><td>I — Identity</td><td class="score-red">35/100</td><td>No Wikipedia, no confirmed Wikidata entry — critical gap</td></tr>
+        <tr><td>T — Trust</td><td class="score-amber">65/100</td><td>Clean profile; no penalty signals; HTTPS confirmed</td></tr>
+        <tr><td>E — Eminence</td><td class="score-amber">52/100</td><td>Niche B2B; branded search volume moderate; limited press</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 2: RESEARCH -->
+<div class="tab-panel" id="tab-research">
+  <div class="card">
+    <h2>Keyword Research — Step 3</h2>
+    <h3>Hero Keywords (Top 10)</h3>
+    <table>
+      <thead><tr><th>#</th><th>Keyword</th><th>Intent</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>thermal interface materials</td><td>Commercial</td><td class="priority-p0">P0</td></tr>
+        <tr><td>2</td><td>die attach materials</td><td>Commercial</td><td class="priority-p0">P0</td></tr>
+        <tr><td>3</td><td>ion exchange membranes</td><td>Informational</td><td class="priority-p0">P0</td></tr>
+        <tr><td>4</td><td>electrochemical materials</td><td>Informational</td><td class="priority-p0">P0</td></tr>
+        <tr><td>5</td><td>REACH representation service</td><td>Transactional</td><td class="priority-p0">P0</td></tr>
+        <tr><td>6</td><td>carbon gas diffusion layer</td><td>Informational</td><td class="priority-p0">P0</td></tr>
+        <tr><td>7</td><td>phase change material TIM</td><td>Commercial</td><td class="priority-p1">P1</td></tr>
+        <tr><td>8</td><td>semiconductor molding compound</td><td>Commercial</td><td class="priority-p1">P1</td></tr>
+        <tr><td>9</td><td>PFAS-free GDL coating</td><td>Informational</td><td class="priority-p0">P0</td></tr>
+        <tr><td>10</td><td>epoxy die attach adhesive</td><td>Commercial</td><td class="priority-p1">P1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Competitor Analysis — Step 4</h2>
+    <table>
+      <thead><tr><th>Competitor</th><th>Type</th><th>Est. Authority</th><th>Primary Threat</th></tr></thead>
+      <tbody>
+        <tr><td>SpecialChem.com</td><td>Content + Marketplace</td><td>High</td><td>Informational keyword dominance</td></tr>
+        <tr><td>Digi-Key.com</td><td>Large-scale distributor</td><td>Very High</td><td>Product search volume</td></tr>
+        <tr><td>Grainger.com</td><td>Industrial distributor</td><td>Very High</td><td>Broad B2B search presence</td></tr>
+        <tr><td>Sigma-Aldrich (Merck)</td><td>Research chemicals</td><td>Very High</td><td>Fine specialty chemicals</td></tr>
+        <tr><td>Chemours.com</td><td>Manufacturer direct</td><td>High</td><td>Electrochemical materials</td></tr>
+      </tbody>
+    </table>
+    <h3>CAPLINQ Differentiators (leverage in content)</h3>
+    <ul style="padding-left:20px;color:var(--muted);font-size:13px;line-height:2;">
+      <li>Deep technical blog (290 posts) — rivals most competitors on niche topics</li>
+      <li>EU REACH compliance expertise — rare differentiator in distribution</li>
+      <li>Multi-supplier curation — neutral aggregator vs manufacturer bias</li>
+      <li>Cold supply chain capability — unique for temperature-sensitive materials</li>
+      <li>Named clients: Apple, Intel, NXP, Honeywell, Bosch</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>Content Gap Analysis — Step 6</h2>
+    <table>
+      <thead><tr><th>Gap</th><th>Priority</th><th>Traffic Opportunity</th><th>Current State</th></tr></thead>
+      <tbody>
+        <tr><td>TIM pillar selection guide</td><td class="priority-p0">P0</td><td>High</td><td>Category page exists; not pillar-quality</td></tr>
+        <tr><td>Electrochemical materials guide (PEM/GDL)</td><td class="priority-p0">P0</td><td>High + Growing</td><td>Category page; thin supporting content</td></tr>
+        <tr><td>Die attach comparison guide</td><td class="priority-p0">P0</td><td>Medium-High</td><td>Category page; no comparison table</td></tr>
+        <tr><td>REACH compliance resource hub</td><td class="priority-p1">P1</td><td>Medium</td><td>Single service page; no supporting content</td></tr>
+        <tr><td>eMobility materials hub</td><td class="priority-p1">P1</td><td>Growing</td><td>Application page exists; thin content</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 3: TECHNICAL -->
+<div class="tab-panel" id="tab-technical">
+  <div class="card">
+    <h2>Technical SEO — Step 7</h2>
+    <div class="score-grid">
+      <div class="score-item"><div class="label">Crawlability</div><div class="value score-amber">7</div><div class="sub">/10</div></div>
+      <div class="score-item"><div class="label">Indexability</div><div class="value score-amber">6</div><div class="sub">/10</div></div>
+      <div class="score-item"><div class="label">Core Web Vitals</div><div class="value score-red">4</div><div class="sub">/10 (estimated)</div></div>
+      <div class="score-item"><div class="label">Mobile</div><div class="value score-amber">6</div><div class="sub">/10</div></div>
+      <div class="score-item"><div class="label">URL Structure</div><div class="value score-amber">7</div><div class="sub">/10</div></div>
+      <div class="score-item"><div class="label">Overall</div><div class="value score-amber">5.5</div><div class="sub">/10</div></div>
+    </div>
+    <h3>Key Technical Issues</h3>
+    <div class="finding finding-critical"><div class="finding-title">Blog Subdomain = PageRank Leak</div><div class="finding-desc">blog.caplinq.com content doesn't pass full authority to main domain. 290 quality posts generating links that don't benefit caplinq.com rankings.</div></div>
+    <div class="finding finding-critical"><div class="finding-title">Joomla CWV Risk — Estimated LCP &gt;4s</div><div class="finding-desc">Joomla without CDN/cache optimization typically fails Core Web Vitals. Fix: Cloudflare CDN + image compression + Joomla cache plugin.</div></div>
+    <div class="finding finding-warning"><div class="finding-title">Canonical Tags Audit Needed</div><div class="finding-desc">Joomla may generate duplicate content via URL parameters. Audit all product/category pages for proper canonical implementation.</div></div>
+    <div class="finding finding-warning"><div class="finding-title">No hreflang for International Visitors</div><div class="finding-desc">Multi-currency site serves global audience but no hreflang tags confirmed. Risk: duplicate content issues for regional search engines.</div></div>
+  </div>
+  <div class="card">
+    <h2>On-Page SEO — Step 8</h2>
+    <table>
+      <thead><tr><th>Page</th><th>Overall Score</th><th>Title</th><th>Schema</th><th>Content</th></tr></thead>
+      <tbody>
+        <tr><td>/thermal-interface-materials.html</td><td class="score-amber">7/10</td><td>7/10</td><td>5/10</td><td>9/10</td></tr>
+        <tr><td>/electrochemical-materials.html</td><td class="score-amber">7.5/10</td><td>7/10</td><td>5/10</td><td>9/10</td></tr>
+        <tr><td>Homepage (caplinq.com)</td><td class="score-amber">6/10</td><td>6/10</td><td>6/10</td><td>7/10</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Internal Linking — Step 9</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:12px;">Navigation-level linking is good. Product category pages link well to subcategories. Primary opportunity: topic cluster hub pages + blog-to-product cross-linking.</p>
+    <h3>Topic Cluster Recommendation</h3>
+    <div class="finding finding-info"><div class="finding-title">Create Pillar Hub Pages</div><div class="finding-desc">Build pillar pages for TIM, Electrochemical Materials, and Die Attach. Link all related blog posts and subcategory pages to these hubs to concentrate topical authority.</div></div>
+  </div>
+  <div class="card">
+    <h2>Backlink Analysis — Step 10</h2>
+    <table>
+      <thead><tr><th>Metric</th><th>Estimate</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Domain Rating (DR)</td><td>30–45</td><td>Requires Ahrefs to confirm</td></tr>
+        <tr><td>Referring Domains</td><td>200–500 est.</td><td>Based on content volume + client base</td></tr>
+        <tr><td>Toxic Link Ratio</td><td>&lt;10% est.</td><td>No spam signals detected</td></tr>
+        <tr><td>Veto T03</td><td>✅ PASS</td><td>Link-traffic coherence: no manipulation signals</td></tr>
+        <tr><td>Veto T05</td><td>✅ PASS</td><td>No PBN signals</td></tr>
+        <tr><td>Veto T09</td><td>✅ PASS</td><td>No penalty history detected</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 4: CONTENT QUALITY -->
+<div class="tab-panel" id="tab-content">
+  <div class="card">
+    <h2>Content Quality Auditor — Step 11</h2>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <span class="badge badge-fix">FIX — No veto items</span>
+      <span style="color:var(--muted);font-size:12px;">GEO: 69/100 · SEO: 69/100</span>
+    </div>
+    <table>
+      <thead><tr><th>Dimension</th><th>Score</th><th>Key Finding</th></tr></thead>
+      <tbody>
+        <tr><td>C — Contextual Clarity</td><td class="score-amber">72</td><td>Good definitions; missing "Quick Answer" boxes</td></tr>
+        <tr><td>O — Organization</td><td class="score-amber">78</td><td>Strong heading hierarchy; missing table of contents</td></tr>
+        <tr><td>R — Referenceability</td><td class="score-amber">65</td><td>Technical specs present; missing external standard citations</td></tr>
+        <tr><td>E — Exclusivity</td><td class="score-amber">62</td><td>PFAS-free GDL post unique; most category content is generic</td></tr>
+        <tr><td>Experience</td><td class="score-green">80</td><td>Real client applications; cold supply chain expertise</td></tr>
+        <tr><td>Expertise</td><td class="score-green">82</td><td>Genuine technical depth; spec tables; decision trees</td></tr>
+        <tr><td>A — Authority</td><td class="score-red">55</td><td>No Wikipedia; no Knowledge Panel; no expert quotes</td></tr>
+        <tr><td>T — Trust</td><td class="score-amber">60</td><td>ISO 9001; HTTPS; no author attribution on product pages</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Content Refresher — Step 12</h2>
+    <table>
+      <thead><tr><th>Page</th><th>Refresh Priority</th><th>Reason</th><th>Key Update</th></tr></thead>
+      <tbody>
+        <tr><td>Electrochemical materials page</td><td class="priority-p0">P0</td><td>Hydrogen economy data rapidly evolving</td><td>Add IEA 2025 market data; update Power-to-X section</td></tr>
+        <tr><td>REACH compliance page</td><td class="priority-p0">P0</td><td>SVHC list updates quarterly</td><td>Add 2025–2026 PFAS restrictions timeline</td></tr>
+        <tr><td>Die attach category page</td><td class="priority-p1">P1</td><td>Silver sintering adoption grew 2024–2025</td><td>Add sintering section; comparison table</td></tr>
+        <tr><td>Older TIM blog posts</td><td class="priority-p1">P1</td><td>Spec data may be outdated</td><td>Refresh thermal benchmarks; add EV context</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 5: RECOMMENDATIONS -->
+<div class="tab-panel" id="tab-recommendations">
+  <div class="card">
+    <h2>Content Briefs (SEO Content Writer — Step 13)</h2>
+    <table>
+      <thead><tr><th>Priority</th><th>Content Piece</th><th>Target Keyword</th><th>Word Count</th><th>Target URL</th></tr></thead>
+      <tbody>
+        <tr><td class="priority-p0">P0</td><td>TIM Selection Guide</td><td>thermal interface materials selection</td><td>3,500–4,000</td><td>/thermal-interface-materials-selection-guide.html</td></tr>
+        <tr><td class="priority-p0">P0</td><td>Electrochemical Materials for PEM Devices</td><td>PEM electrolyzer materials</td><td>4,000–5,000</td><td>/electrochemical-materials-pem-guide.html</td></tr>
+        <tr><td class="priority-p1">P1</td><td>EU REACH Compliance Guide</td><td>REACH compliance EU chemicals</td><td>2,000–2,500</td><td>/reach-compliance-guide.html</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>GEO Optimization (Step 14)</h2>
+    <h3>Definition Boxes to Add</h3>
+    <div class="finding finding-info"><div class="finding-title">TIM Definition Box</div><div class="finding-desc">"Thermal Interface Materials (TIMs) are engineered materials placed between heat-generating components and heat sinks to minimize thermal contact resistance. They include phase change materials, thermal gap pads, thermal grease, and two-part systems, with thermal conductivities ranging from 1.2 to 10+ W/m·K."</div></div>
+    <div class="finding finding-info"><div class="finding-title">Electrochemical Materials Definition Box</div><div class="finding-desc">"Electrochemical materials are specialized materials that facilitate electron and ion transfer in electrochemical devices such as fuel cells, electrolyzers, batteries, and supercapacitors. Key types include ion exchange membranes, gas diffusion layers, carbon papers, and conductive films."</div></div>
+    <h3>GEO Score Projection</h3>
+    <table>
+      <thead><tr><th>Page</th><th>Current GEO</th><th>After Optimizations</th></tr></thead>
+      <tbody>
+        <tr><td>TIM category page</td><td class="score-amber">65</td><td class="score-green">83</td></tr>
+        <tr><td>Electrochemical page</td><td class="score-amber">72</td><td class="score-green">86</td></tr>
+        <tr><td>Die attach page</td><td class="score-amber">60</td><td class="score-amber">78</td></tr>
+        <tr><td>REACH service page</td><td class="score-red">55</td><td class="score-amber">75</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Meta Tags (Step 15)</h2>
+    <table>
+      <thead><tr><th>Page</th><th>Optimized Title</th><th>Chars</th></tr></thead>
+      <tbody>
+        <tr><td>Homepage</td><td>Specialty Chemicals &amp; Engineered Materials | CAPLINQ Corporation</td><td>65</td></tr>
+        <tr><td>TIM page</td><td>Thermal Interface Materials: Phase Change, Gap Pads &amp; Grease | CAPLINQ</td><td>70</td></tr>
+        <tr><td>Electrochemical page</td><td>Electrochemical Materials: Membranes, GDLs &amp; Carbon Papers | CAPLINQ</td><td>70</td></tr>
+        <tr><td>REACH page</td><td>EU REACH Representation for Chemical Manufacturers | CAPLINQ</td><td>61</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Schema Markup (Step 16)</h2>
+    <table>
+      <thead><tr><th>Priority</th><th>Schema Type</th><th>Target Page</th><th>SERP Benefit</th></tr></thead>
+      <tbody>
+        <tr><td class="priority-p0">P0</td><td>FAQPage</td><td>/thermal-interface-materials.html</td><td>PAA boxes + AI Overview citations</td></tr>
+        <tr><td class="priority-p0">P0</td><td>FAQPage</td><td>/electrochemical-materials.html</td><td>PAA boxes + AI Overview citations</td></tr>
+        <tr><td class="priority-p0">P0</td><td>Organization + sameAs</td><td>Homepage</td><td>Entity recognition + Knowledge Panel</td></tr>
+        <tr><td class="priority-p1">P1</td><td>BreadcrumbList</td><td>All category pages</td><td>Rich result breadcrumbs in SERP</td></tr>
+        <tr><td class="priority-p1">P1</td><td>WebSite</td><td>Homepage</td><td>Sitelinks search box</td></tr>
+        <tr><td class="priority-p2">P2</td><td>Product</td><td>Individual product pages</td><td>Rich product results</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 6: MONITORING -->
+<div class="tab-panel" id="tab-monitoring">
+  <div class="card">
+    <h2>Keyword Tracking Setup — Step 17</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:12px;">10 hero keywords + 5 growth keywords + GEO monitoring queries configured. Requires Ahrefs/Semrush to populate baseline positions.</p>
+    <table>
+      <thead><tr><th>Tier</th><th>Keyword</th><th>Intent</th><th>Baseline</th></tr></thead>
+      <tbody>
+        <tr><td>T1</td><td>thermal interface materials</td><td>Commercial</td><td>—</td></tr>
+        <tr><td>T1</td><td>die attach materials</td><td>Commercial</td><td>—</td></tr>
+        <tr><td>T1</td><td>ion exchange membranes</td><td>Informational</td><td>—</td></tr>
+        <tr><td>T1</td><td>electrochemical materials</td><td>Informational</td><td>—</td></tr>
+        <tr><td>T1</td><td>REACH representation service</td><td>Transactional</td><td>—</td></tr>
+        <tr><td>T2</td><td>TIM selection guide</td><td>Informational</td><td>—</td></tr>
+        <tr><td>T2</td><td>PEM electrolyzer materials</td><td>Informational</td><td>—</td></tr>
+        <tr><td>T3 (GEO)</td><td>what are thermal interface materials</td><td>AI query</td><td>AI Overview: not confirmed</td></tr>
+        <tr><td>T3 (GEO)</td><td>how do ion exchange membranes work</td><td>AI query</td><td>AI Overview: not confirmed</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Alert Configuration — Step 19</h2>
+    <table>
+      <thead><tr><th>Alert</th><th>Trigger</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>Hero keyword position drop</td><td>Top 10 keyword drops &gt;5 positions/week</td><td class="priority-p0">🔴 Critical</td></tr>
+        <tr><td>Organic traffic drop</td><td>Monthly organic visits -20%</td><td class="priority-p0">🔴 Critical</td></tr>
+        <tr><td>CWV degradation</td><td>LCP &gt;4s or CLS &gt;0.25</td><td class="priority-p0">🔴 Critical</td></tr>
+        <tr><td>Site downtime</td><td>5-minute outage</td><td class="priority-p0">🔴 Critical</td></tr>
+        <tr><td>ECHA SVHC update</td><td>New substances added to candidate list</td><td class="priority-p1">🟡 High</td></tr>
+        <tr><td>Featured snippet lost</td><td>CAPLINQ loses a snippet</td><td class="priority-p1">🟡 High</td></tr>
+        <tr><td>New competitor in top 5</td><td>New URL enters top 5 for hero keyword</td><td class="priority-p1">🟡 High</td></tr>
+        <tr><td>Crawl errors spike</td><td>&gt;20 new 404s in Search Console</td><td class="priority-p1">🟡 High</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 7: NEXT STEPS -->
+<div class="tab-panel" id="tab-nextsteps">
+  <div class="card">
+    <h2>90-Day Action Plan</h2>
+    <table>
+      <thead><tr><th>Priority</th><th>Action</th><th>Skill</th><th>Effort</th><th>Expected Impact</th></tr></thead>
+      <tbody>
+        <tr><td class="priority-p0">P0</td><td>Create Wikidata entry for CAPLINQ Corporation</td><td>entity-optimizer</td><td>Low</td><td>+10–15 CITE Identity score</td></tr>
+        <tr><td class="priority-p0">P0</td><td>Add FAQPage JSON-LD to TIM + Electrochemical pages</td><td>schema-markup-generator</td><td>Low</td><td>PAA eligibility; AI Overview citations</td></tr>
+        <tr><td class="priority-p0">P0</td><td>Add Organization schema with sameAs links to homepage</td><td>schema-markup-generator</td><td>Low</td><td>Entity recognition; Knowledge Panel trigger</td></tr>
+        <tr><td class="priority-p0">P0</td><td>Add "Quick Answer" definition boxes to category pages</td><td>geo-content-optimizer</td><td>Low</td><td>GEO score +8–12 pts per page</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Publish TIM Selection Guide (pillar page on caplinq.com)</td><td>seo-content-writer</td><td>High</td><td>Top 15 rankings for TIM cluster keywords</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Publish Electrochemical Materials for PEM Guide</td><td>seo-content-writer</td><td>High</td><td>AI Overview appearances; 5–8 new keyword rankings</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Add author attribution to all product category pages</td><td>content-quality-auditor</td><td>Low</td><td>+5–8 Trust dimension; EEAT improvement</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Optimize meta descriptions for top 5 pages</td><td>meta-tags-optimizer</td><td>Low</td><td>+5–15% organic CTR improvement</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Connect Google Analytics + Search Console</td><td>performance-reporter</td><td>Low</td><td>Baseline metrics; enables ongoing tracking</td></tr>
+        <tr><td class="priority-p2">P2</td><td>Publish REACH Compliance Guide</td><td>seo-content-writer</td><td>Medium</td><td>Low-competition rankings; lead generation</td></tr>
+        <tr><td class="priority-p2">P2</td><td>Evaluate blog.caplinq.com → caplinq.com/blog/ migration</td><td>technical-seo-checker</td><td>High</td><td>Unify 290-post authority on main domain</td></tr>
+        <tr><td class="priority-p2">P2</td><td>Refresh electrochemical page with 2025 market data</td><td>content-refresher</td><td>Medium</td><td>Maintain rankings; improve CORE-EEAT R score</td></tr>
+        <tr><td class="priority-p2">P2</td><td>Implement Cloudflare CDN + Joomla cache for CWV</td><td>technical-seo-checker</td><td>Medium</td><td>LCP improvement to &lt;2.5s; ranking signal</td></tr>
+        <tr><td class="priority-p3">P3</td><td>Monthly REACH/SVHC content updates</td><td>content-refresher</td><td>Low/ongoing</td><td>Topical freshness; regulatory authority</td></tr>
+        <tr><td class="priority-p3">P3</td><td>Quarterly AI citation testing</td><td>rank-tracker</td><td>Low/ongoing</td><td>GEO visibility measurement</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Open Loops</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Owner</th><th>Target Date</th></tr></thead>
+      <tbody>
+        <tr><td>Wikidata entry creation decision</td><td>Marketing team</td><td>Within 30 days</td></tr>
+        <tr><td>Blog subdomain decision (migrate or link-bridge)</td><td>Technical team + Marketing</td><td>Within 60 days</td></tr>
+        <tr><td>Google Analytics + Search Console access</td><td>Technical team</td><td>Within 7 days</td></tr>
+        <tr><td>Ahrefs/Semrush connection for backlink + ranking data</td><td>SEO team</td><td>Within 30 days</td></tr>
+        <tr><td>Author attribution — assign named authors to product pages</td><td>Content team</td><td>Within 14 days</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Analysis Metadata</h2>
+    <table>
+      <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Domain analyzed</td><td>caplinq.com</td></tr>
+        <tr><td>Analysis timestamp</td><td>20260404T140000 UTC</td></tr>
+        <tr><td>Tool tier</td><td>Tier 1 (no MCP integrations) — web-accessible public data only</td></tr>
+        <tr><td>Skills library version</td><td>6.3.0</td></tr>
+        <tr><td>Data confidence</td><td>MEDIUM — structural + content analysis confirmed; metrics estimated</td></tr>
+        <tr><td>Pages fetched</td><td>Homepage, robots.txt, sitemap.xml, blog sitemap index, /thermal-interface-materials.html, /electrochemical-materials.html, blog homepage, blog post-sitemap.xml</td></tr>
+        <tr><td>Next recommended analysis</td><td>After connecting Search Console + Ahrefs — rerun Steps 2, 7, 10, 17, 18 with real data</td></tr>
+        <tr><td>Full analysis path</td><td>analyses/caplinq/caplinq.com/analysis-20260404T140000/</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</main>
+
+<script>
+(function() {
+  const tabs = document.querySelectorAll('#tabs button');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const target = btn.getAttribute('data-tab');
+      tabs.forEach(function(b) { b.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('tab-' + target).classList.add('active');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

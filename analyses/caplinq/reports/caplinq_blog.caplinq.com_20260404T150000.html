@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO &amp; GEO Analysis — blog.caplinq.com — 2026-04-04</title>
+<style>
+:root {
+  --bg: #0d1117; --surface: #161b22; --surface2: #1c2128; --border: #30363d;
+  --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+  --green: #3fb950; --amber: #d29922; --red: #f85149;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 14px; line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; }
+header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+header h1 { font-size: 18px; font-weight: 600; }
+header .meta { color: var(--muted); font-size: 12px; }
+.version-badge { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--muted); }
+nav.tabs { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 16px; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+nav.tabs button { background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); cursor: pointer; font-size: 13px; padding: 12px 14px; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+nav.tabs button:hover { color: var(--text); }
+nav.tabs button.active { color: var(--accent); border-bottom-color: var(--accent); }
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.card h2 { font-size: 16px; font-weight: 600; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.card h3 { font-size: 14px; font-weight: 600; margin: 12px 0 8px; color: var(--accent); }
+.score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+.score-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 12px; text-align: center; }
+.score-item .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.score-item .value { font-size: 24px; font-weight: 700; }
+.score-item .sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.score-green { color: var(--green); }
+.score-amber { color: var(--amber); }
+.score-red { color: var(--red); }
+.score-bar { width: 100%; background: var(--surface2); border-radius: 4px; height: 6px; margin-top: 6px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 4px; }
+.bar-green { background: var(--green); }
+.bar-amber { background: var(--amber); }
+.bar-red { background: var(--red); }
+.badge { display: inline-block; border-radius: 20px; font-size: 12px; font-weight: 600; padding: 4px 14px; letter-spacing: 0.03em; }
+.badge-cautious { background: rgba(210,153,34,.15); color: var(--amber); border: 1px solid var(--amber); }
+.badge-fix { background: rgba(210,153,34,.15); color: var(--amber); border: 1px solid var(--amber); }
+.badge-ship { background: rgba(63,185,80,.15); color: var(--green); border: 1px solid var(--green); }
+.badge-done { background: rgba(63,185,80,.10); color: var(--green); border: 1px solid rgba(63,185,80,.3); }
+.badge-concern { background: rgba(210,153,34,.10); color: var(--amber); border: 1px solid rgba(210,153,34,.3); }
+.badge-highlight { background: rgba(88,166,255,.15); color: var(--accent); border: 1px solid var(--accent); }
+.finding { padding: 10px 14px; border-radius: 6px; margin: 8px 0; border-left: 3px solid; }
+.finding-critical { background: rgba(248,81,73,.08); border-color: var(--red); }
+.finding-warning { background: rgba(210,153,34,.08); border-color: var(--amber); }
+.finding-info { background: rgba(88,166,255,.08); border-color: var(--accent); }
+.finding-success { background: rgba(63,185,80,.08); border-color: var(--green); }
+.finding-title { font-weight: 600; font-size: 13px; }
+.finding-desc { color: var(--muted); font-size: 12px; margin-top: 3px; }
+.section-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+th { background: var(--surface2); border: 1px solid var(--border); padding: 8px 10px; text-align: left; font-weight: 600; color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: .05em; }
+td { border: 1px solid var(--border); padding: 8px 10px; vertical-align: top; }
+tr:nth-child(even) td { background: rgba(255,255,255,.02); }
+tr:hover td { background: rgba(88,166,255,.05); }
+.priority-p0 { color: var(--red); font-weight: 600; }
+.priority-p1 { color: var(--amber); font-weight: 600; }
+.priority-p2 { color: var(--accent); font-weight: 600; }
+.priority-p3 { color: var(--muted); }
+.highlight-box { background: rgba(88,166,255,.08); border: 1px solid rgba(88,166,255,.3); border-radius: 8px; padding: 16px; margin: 12px 0; }
+.highlight-box .title { color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+blockquote { border-left: 3px solid var(--accent); padding: 8px 14px; margin: 12px 0; background: rgba(88,166,255,.05); border-radius: 0 6px 6px 0; font-style: italic; color: var(--text); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>SEO &amp; GEO Analysis: blog.caplinq.com</h1>
+    <div class="meta">Company: CAPLINQ Corporation &nbsp;·&nbsp; Domain: blog.caplinq.com &nbsp;·&nbsp; Analysis: 2026-04-04T15:00:00 UTC &nbsp;·&nbsp; Tier 1 (no MCP tools)</div>
+  </div>
+  <span class="version-badge">SEO &amp; GEO Skills Library v6.3.0</span>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="summary">Executive Summary</button>
+  <button data-tab="baseline">1 · Domain Baseline</button>
+  <button data-tab="research">2 · Research</button>
+  <button data-tab="technical">3 · Technical</button>
+  <button data-tab="content">4 · Content Quality</button>
+  <button data-tab="recommendations">5 · Recommendations</button>
+  <button data-tab="monitoring">6 · Monitoring</button>
+  <button data-tab="nextsteps">7 · Next Steps</button>
+</nav>
+
+<main>
+
+<!-- TAB 0: EXECUTIVE SUMMARY -->
+<div class="tab-panel active" id="tab-summary">
+  <div class="card">
+    <h2>Executive Summary</h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
+      <div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Domain Authority</div><span class="badge badge-cautious">⚠ CAUTIOUS — 48/100</span></div>
+      <div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Content Quality (avg)</div><span class="badge badge-fix">FIX — GEO 74 · SEO 74</span></div>
+      <div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Top Post (PFAS GDL)</div><span class="badge badge-highlight">GEO 80/100</span></div>
+      <div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:4px;">Veto Items</div><span class="badge badge-ship">✓ NONE</span></div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="title">🔬 Key Asset: PFAS-free GDL Coating Research</div>
+      <p style="font-size:13px;color:var(--muted);">The blog's <strong style="color:var(--text);">"CAPLINQ Develops Sustainable PFAS-free Hydrophobic Coatings"</strong> post contains unique performance data: <strong style="color:var(--green);">154.4° water contact angle</strong> (vs 153.8° for PTFE-coated GDLs) and <strong style="color:var(--green);">HFR 1.8 kΩ</strong> comparable to PFAS standard. This is proprietary R&amp;D data available nowhere else — it is the blog's highest-value GEO citation asset.</p>
+    </div>
+
+    <div class="section-title">CITE Domain Scores</div>
+    <div class="score-grid">
+      <div class="score-item"><div class="label">Citation (C)</div><div class="value score-amber">50</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:50%"></div></div></div>
+      <div class="score-item"><div class="label">Identity (I)</div><div class="value score-red">35</div><div class="score-bar"><div class="score-bar-fill bar-red" style="width:35%"></div></div><div class="sub">⚠ Weakest</div></div>
+      <div class="score-item"><div class="label">Trust (T)</div><div class="value score-amber">60</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:60%"></div></div></div>
+      <div class="score-item"><div class="label">Eminence (E)</div><div class="value score-red">48</div><div class="score-bar"><div class="score-bar-fill bar-red" style="width:48%"></div></div></div>
+      <div class="score-item"><div class="label">CITE Overall</div><div class="value score-red">48</div><div class="score-bar"><div class="score-bar-fill bar-red" style="width:48%"></div></div></div>
+    </div>
+
+    <div class="section-title">CORE-EEAT Scores — Top Post (PFAS-free GDL)</div>
+    <div class="score-grid">
+      <div class="score-item"><div class="label">Contextual (C)</div><div class="value score-amber">75</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:75%"></div></div></div>
+      <div class="score-item"><div class="label">Organization (O)</div><div class="value score-green">82</div><div class="score-bar"><div class="score-bar-fill bar-green" style="width:82%"></div></div></div>
+      <div class="score-item"><div class="label">Referenceability (R)</div><div class="value score-amber">78</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:78%"></div></div></div>
+      <div class="score-item"><div class="label">Exclusivity (E)</div><div class="value score-green">85</div><div class="score-bar"><div class="score-bar-fill bar-green" style="width:85%"></div></div></div>
+      <div class="score-item"><div class="label">Experience</div><div class="value score-green">88</div><div class="score-bar"><div class="score-bar-fill bar-green" style="width:88%"></div></div></div>
+      <div class="score-item"><div class="label">Expertise</div><div class="value score-green">90</div><div class="score-bar"><div class="score-bar-fill bar-green" style="width:90%"></div></div></div>
+      <div class="score-item"><div class="label">Authority (A)</div><div class="value score-amber">60</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:60%"></div></div></div>
+      <div class="score-item"><div class="label">Trust (T)</div><div class="value score-amber">72</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:72%"></div></div></div>
+      <div class="score-item"><div class="label">GEO Score</div><div class="value score-green">80</div><div class="score-bar"><div class="score-bar-fill bar-green" style="width:80%"></div></div></div>
+      <div class="score-item"><div class="label">SEO Score</div><div class="value score-amber">76</div><div class="score-bar"><div class="score-bar-fill bar-amber" style="width:76%"></div></div></div>
+    </div>
+
+    <div class="section-title">Top 5 Critical Findings</div>
+    <div class="finding finding-success"><div class="finding-title">PFAS-free GDL Post = Best GEO Asset in CAPLINQ Portfolio</div><div class="finding-desc">GEO score 80/100 with original performance data. Adding FAQPage schema + "Key Takeaways" box would push this to 90/100 and make it prime AI Overview material.</div></div>
+    <div class="finding finding-success"><div class="finding-title">Blog Has Better Technical SEO Than Main Site (WordPress + Yoast)</div><div class="finding-desc">Article schema, Person schema, BreadcrumbList all confirmed. Named authors with credentials. Schema foundation is ahead of caplinq.com's Joomla setup.</div></div>
+    <div class="finding finding-critical"><div class="finding-title">Subdomain Splits Authority from caplinq.com</div><div class="finding-desc">290 high-quality posts building authority on blog.caplinq.com separately. Neither domain reaches full potential. Bridge strategy (or migration) is the highest-leverage structural fix.</div></div>
+    <div class="finding finding-warning"><div class="finding-title">No FAQPage or HowTo Schema Despite Content Qualifying</div><div class="finding-desc">Die attach and GDL posts have clear Q&amp;A and process content. Adding schema via Yoast FAQ blocks is a 10-minute task per post — immediate SERP feature eligibility.</div></div>
+    <div class="finding finding-warning"><div class="finding-title">Blog Homepage Meta is Unfocused</div><div class="finding-desc">Current title: "CAPLINQ BLOG | Molding compounds, Coating powders…" (80+ chars, likely truncated). Optimize to: "CAPLINQ Technical Blog — Specialty Materials for Engineers" (54 chars).</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Skills Completion Status</h2>
+    <table>
+      <thead><tr><th>Step</th><th>Skill</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>entity-optimizer</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>2</td><td>domain-authority-auditor</td><td><span class="badge badge-concern">DONE W/ CONCERNS</span></td></tr>
+        <tr><td>3</td><td>keyword-research</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>4</td><td>competitor-analysis</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>5</td><td>serp-analysis</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>6</td><td>content-gap-analysis</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>7</td><td>technical-seo-checker</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>8</td><td>on-page-seo-auditor</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>9</td><td>internal-linking-optimizer</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>10</td><td>backlink-analyzer</td><td><span class="badge badge-concern">DONE W/ CONCERNS</span></td></tr>
+        <tr><td>11</td><td>content-quality-auditor</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>12</td><td>content-refresher</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>13</td><td>seo-content-writer</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>14</td><td>geo-content-optimizer</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>15</td><td>meta-tags-optimizer</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>16</td><td>schema-markup-generator</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>17</td><td>rank-tracker</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>18</td><td>performance-reporter</td><td><span class="badge badge-concern">DONE W/ CONCERNS</span></td></tr>
+        <tr><td>19</td><td>alert-manager</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>20</td><td>memory-management</td><td><span class="badge badge-done">DONE</span></td></tr>
+        <tr><td>21</td><td>HTML Report</td><td><span class="badge badge-done">DONE</span></td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--muted);font-size:12px;margin-top:8px;">18 DONE · 3 DONE_WITH_CONCERNS · 0 BLOCKED &nbsp;|&nbsp; Overall: <strong>DONE_WITH_CONCERNS</strong></p>
+  </div>
+</div>
+
+<!-- TAB 1: DOMAIN BASELINE -->
+<div class="tab-panel" id="tab-baseline">
+  <div class="card">
+    <h2>Entity Optimizer — blog.caplinq.com</h2>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:12px;">Same parent entity as caplinq.com. Blog has stronger author entity signals (named engineers with Person schema). Requires Organization schema link to parent entity to consolidate identity.</p>
+    <table>
+      <thead><tr><th>Signal Category</th><th>Status</th><th>Details</th></tr></thead>
+      <tbody>
+        <tr><td>Structured Data</td><td>✅ Strong</td><td>Article + Person + BreadcrumbList confirmed on posts</td></tr>
+        <tr><td>Author Entity</td><td>✅ Strong</td><td>Named engineers: George Kountardas, Rose Anne Acedera + others</td></tr>
+        <tr><td>Knowledge Base</td><td>❌ Same gap</td><td>No Wikipedia/Wikidata for parent company</td></tr>
+        <tr><td>NAP+E Consistency</td><td>✅ Strong</td><td>6 offices consistently listed across posts</td></tr>
+        <tr><td>Organization Link</td><td>❌ Missing</td><td>Blog header lacks Organization schema linking to caplinq.com entity</td></tr>
+        <tr><td>AI Recognition</td><td>✅ Good</td><td>PFAS-free GDL post contains citable data for AI systems</td></tr>
+      </tbody>
+    </table>
+    <div class="finding finding-info"><div class="finding-title">Priority: Add Organization/Publisher Schema to Blog Header</div><div class="finding-desc">One JSON-LD block in the blog header links blog.caplinq.com to the CAPLINQ Corporation entity on caplinq.com. This is the fastest entity improvement for the blog.</div></div>
+  </div>
+  <div class="card">
+    <h2>Domain Authority (CITE) — blog.caplinq.com</h2>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      <span class="badge badge-cautious">⚠ CAUTIOUS — 48/100</span>
+      <span style="color:var(--muted);font-size:12px;">No veto items</span>
+    </div>
+    <p style="color:var(--muted);font-size:13px;">Subdomain earns 48/100 vs main site's 52/100. Same identity gap. Blog has stronger content signals but weaker domain authority due to subdomain split.</p>
+  </div>
+</div>
+
+<!-- TAB 2: RESEARCH -->
+<div class="tab-panel" id="tab-research">
+  <div class="card">
+    <h2>Keyword Research — Blog-Specific</h2>
+    <table>
+      <thead><tr><th>Keyword</th><th>Target Post</th><th>GEO Potential</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>PFAS-free gas diffusion layer</td><td>Existing post</td><td>🟢 Very High</td><td class="priority-p0">P0 — optimize</td></tr>
+        <tr><td>die attach dispensing optimization</td><td>Existing post</td><td>🟡 Medium</td><td class="priority-p1">P1 — schema add</td></tr>
+        <tr><td>PEM electrolyzer GDL selection</td><td>New post needed</td><td>🟢 High</td><td class="priority-p0">P0 — create</td></tr>
+        <tr><td>die attach silver sintering vs epoxy</td><td>New post needed</td><td>🟡 Medium</td><td class="priority-p0">P0 — create</td></tr>
+        <tr><td>ion exchange membrane pretreatment</td><td>Existing post</td><td>🟡 Medium</td><td class="priority-p1">P1 — schema add</td></tr>
+        <tr><td>REACH SVHC 2025 updates</td><td>New post needed</td><td>🟡 Medium</td><td class="priority-p1">P1 — create</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Content Gap Analysis — Blog</h2>
+    <table>
+      <thead><tr><th>Gap</th><th>Priority</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td>Die attach materials full comparison (epoxy vs sintering)</td><td class="priority-p0">P0</td><td>Comparison guide (new post)</td></tr>
+        <tr><td>PEM electrolyzer GDL complete guide</td><td class="priority-p0">P0</td><td>Long-form technical (new post)</td></tr>
+        <tr><td>REACH SVHC 2025 updates</td><td class="priority-p1">P1</td><td>Compliance update (new post)</td></tr>
+        <tr><td>Die attach pillar hub post</td><td class="priority-p1">P1</td><td>Cluster hub linking existing posts</td></tr>
+        <tr><td>FAQPage schema on existing posts</td><td class="priority-p0">P0</td><td>Schema addition (quick win, all posts)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 3: TECHNICAL -->
+<div class="tab-panel" id="tab-technical">
+  <div class="card">
+    <h2>Technical SEO — blog.caplinq.com vs caplinq.com</h2>
+    <table>
+      <thead><tr><th>Check</th><th>blog.caplinq.com</th><th>caplinq.com</th></tr></thead>
+      <tbody>
+        <tr><td>CMS</td><td class="score-green">WordPress ✅</td><td>Joomla ⚠️</td></tr>
+        <tr><td>SEO Plugin</td><td class="score-green">Yoast SEO ✅</td><td>Manual</td></tr>
+        <tr><td>Schema Markup</td><td class="score-green">Confirmed ✅</td><td>Partial ⚠️</td></tr>
+        <tr><td>CWV (est.)</td><td class="score-amber">Better (WordPress)</td><td class="score-red">Likely Poor (Joomla)</td></tr>
+        <tr><td>Author Attribution</td><td class="score-green">Confirmed ✅</td><td class="score-red">Absent ❌</td></tr>
+        <tr><td>Sitemap Structure</td><td class="score-green">9 child sitemaps ✅</td><td>4 sitemaps ✅</td></tr>
+        <tr><td>Technical Score</td><td class="score-green"><strong>7/10</strong></td><td class="score-amber"><strong>5.5/10</strong></td></tr>
+      </tbody>
+    </table>
+    <h3>Issues to Fix</h3>
+    <div class="finding finding-warning"><div class="finding-title">Attachment pages + thin tag pages should be noindexed</div><div class="finding-desc">WordPress creates pages for every uploaded image. Ensure Yoast noindexes attachment pages and low-post tag pages to prevent index bloat.</div></div>
+    <div class="finding finding-warning"><div class="finding-title">Missing FAQPage and HowTo schema</div><div class="finding-desc">Both are supported by Yoast SEO via FAQ blocks and HowTo schema plugin. Adding these requires no custom code — just WordPress block editor usage.</div></div>
+  </div>
+</div>
+
+<!-- TAB 4: CONTENT QUALITY -->
+<div class="tab-panel" id="tab-content">
+  <div class="card">
+    <h2>Content Quality — PFAS-free GDL Post (Best-in-Portfolio)</h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+      <span class="badge badge-highlight">GEO 80/100</span>
+      <span class="badge badge-fix">FIX (minor gaps only)</span>
+      <span style="color:var(--muted);font-size:12px;">Author: Rose Anne Acedera, Technical Applications Engineer</span>
+    </div>
+    <blockquote>"CAPLINQ's PFAS-free hydrophobic coating achieves a water contact angle of 154.4° compared to 153.8° for PTFE-coated carbon GDLs, demonstrating performance parity while eliminating PFAS contamination risks." — Ready to cite</blockquote>
+    <table>
+      <thead><tr><th>Dimension</th><th>Score</th><th>Key Finding</th></tr></thead>
+      <tbody>
+        <tr><td>E — Exclusivity</td><td class="score-green">85</td><td>Proprietary R&amp;D data unavailable elsewhere</td></tr>
+        <tr><td>Expertise</td><td class="score-green">90</td><td>Named Technical Applications Engineer + measurement data</td></tr>
+        <tr><td>Experience</td><td class="score-green">88</td><td>Real lab testing; contact angle + HFR measurements</td></tr>
+        <tr><td>O — Organization</td><td class="score-green">82</td><td>Background → Application → Need → Solution → Outlook</td></tr>
+        <tr><td>R — Referenceability</td><td class="score-amber">78</td><td>Original data is highly referenceable; needs external citations</td></tr>
+        <tr><td>C — Contextual</td><td class="score-amber">75</td><td>Good definitions; missing "Key Takeaways" box</td></tr>
+        <tr><td>T — Trust</td><td class="score-amber">72</td><td>Named author + specific measurements; add disclaimer/methodology</td></tr>
+        <tr><td>A — Authority</td><td class="score-amber">60</td><td>Published by distributor blog; no external publisher status</td></tr>
+      </tbody>
+    </table>
+    <div class="finding finding-info"><div class="finding-title">3-Step Fix to Reach 90/100 GEO Score</div><div class="finding-desc">1. Add "Key Takeaways" box with the 3 quantitative findings. 2. Add FAQPage schema with 5 questions. 3. Add external citation (IEA Green Hydrogen report). These three changes take &lt;30 minutes total.</div></div>
+  </div>
+</div>
+
+<!-- TAB 5: RECOMMENDATIONS -->
+<div class="tab-panel" id="tab-recommendations">
+  <div class="card">
+    <h2>Priority Content Briefs</h2>
+    <table>
+      <thead><tr><th>Priority</th><th>Post Title</th><th>Target Keyword</th><th>Author</th></tr></thead>
+      <tbody>
+        <tr><td class="priority-p0">P0</td><td>Die Attach Materials Comparison: Epoxy vs Silver Sintering</td><td>die attach silver sintering vs epoxy</td><td>George Kountardas</td></tr>
+        <tr><td class="priority-p0">P0</td><td>PEM Electrolyzer GDL Complete Guide</td><td>gas diffusion layer electrolyzer</td><td>Rose Anne Acedera</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Die Attach Pillar Hub (links to existing posts)</td><td>die attach materials guide</td><td>George Kountardas</td></tr>
+        <tr><td class="priority-p1">P1</td><td>REACH SVHC 2025: What Changed?</td><td>SVHC candidate list 2025</td><td>Compliance team</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>GEO Optimization — Quick Wins</h2>
+    <table>
+      <thead><tr><th>Action</th><th>Target Post</th><th>Effort</th><th>GEO Score Delta</th></tr></thead>
+      <tbody>
+        <tr><td>Add "Key Takeaways" box</td><td>PFAS-free GDL post</td><td>5 min</td><td class="score-green">+10 pts</td></tr>
+        <tr><td>Add FAQPage schema (Yoast block)</td><td>All eligible posts (20+)</td><td>10 min/post</td><td class="score-green">+5–8 pts/post</td></tr>
+        <tr><td>Add quotable statement attribution</td><td>PFAS-free GDL post</td><td>5 min</td><td class="score-green">+5 pts</td></tr>
+        <tr><td>Add HowTo schema</td><td>Die attach dispensing post</td><td>15 min</td><td class="score-amber">+5 pts</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Meta Tags</h2>
+    <table>
+      <thead><tr><th>Page</th><th>Optimized Title</th><th>Chars</th></tr></thead>
+      <tbody>
+        <tr><td>Blog Homepage</td><td>CAPLINQ Technical Blog — Specialty Materials for Engineers</td><td>54 ✅</td></tr>
+        <tr><td>PFAS-free GDL post</td><td>CAPLINQ's PFAS-Free Hydrophobic GDL Coatings: Performance Data</td><td>62 ✅</td></tr>
+        <tr><td>Die attach dispensing post</td><td>Optimizing Die Attach Dispensing: When to Remove the Syringe Plunger</td><td>68 ✅</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 6: MONITORING -->
+<div class="tab-panel" id="tab-monitoring">
+  <div class="card">
+    <h2>Alert Configuration — Blog-Specific</h2>
+    <table>
+      <thead><tr><th>Alert</th><th>Trigger</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td>PFAS regulation change</td><td>EU PFAS restriction update</td><td class="priority-p0">🔴 Critical</td></tr>
+        <tr><td>PFAS-free GDL post ranking drop</td><td>Drops 5+ positions</td><td class="priority-p1">🟡 High</td></tr>
+        <tr><td>Blog traffic drop</td><td>Monthly -20%</td><td class="priority-p1">🟡 High</td></tr>
+        <tr><td>ECHA SVHC update</td><td>Quarterly additions</td><td class="priority-p1">🟡 High</td></tr>
+        <tr><td>Schema validation error</td><td>Yoast/GSC error</td><td class="priority-p1">🟡 High</td></tr>
+        <tr><td>Publishing frequency drop</td><td>No post in 30 days</td><td class="priority-p2">ℹ️ Info</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 7: NEXT STEPS -->
+<div class="tab-panel" id="tab-nextsteps">
+  <div class="card">
+    <h2>90-Day Action Plan — blog.caplinq.com</h2>
+    <table>
+      <thead><tr><th>Priority</th><th>Action</th><th>Effort</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr><td class="priority-p0">P0</td><td>Add FAQPage schema (Yoast blocks) to top 10 posts</td><td>2h total</td><td>PAA eligibility; AI Overview citations</td></tr>
+        <tr><td class="priority-p0">P0</td><td>Add "Key Takeaways" box to PFAS-free GDL post</td><td>5 min</td><td>GEO 80 → 90</td></tr>
+        <tr><td class="priority-p0">P0</td><td>Add Organization schema to blog header (link to caplinq.com)</td><td>15 min</td><td>Entity consolidation</td></tr>
+        <tr><td class="priority-p0">P0</td><td>Optimize blog homepage meta title</td><td>5 min</td><td>CTR improvement</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Publish die attach comparison post (epoxy vs silver sintering)</td><td>High</td><td>New keyword rankings; blog authority</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Add "From Our Blog" sections to top 5 caplinq.com product pages</td><td>1h</td><td>Cross-domain authority bridge</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Create full author bio pages for top 3 contributors</td><td>Medium</td><td>Person entity signals; EEAT improvement</td></tr>
+        <tr><td class="priority-p1">P1</td><td>Pitch PFAS-free GDL post to H2 Bulletin / Fuel Cells Bulletin</td><td>Medium</td><td>High-authority backlinks; brand mentions</td></tr>
+        <tr><td class="priority-p2">P2</td><td>Publish PEM electrolyzer GDL complete guide</td><td>High</td><td>AI Overview; long-tail rankings</td></tr>
+        <tr><td class="priority-p2">P2</td><td>Noindex attachment pages + thin tag pages in Yoast</td><td>30 min</td><td>Index hygiene; crawl efficiency</td></tr>
+        <tr><td class="priority-p2">P2</td><td>Add HowTo schema to process-describing posts (Yoast)</td><td>1h</td><td>Rich result eligibility</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Analysis Metadata</h2>
+    <table>
+      <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Domain analyzed</td><td>blog.caplinq.com</td></tr>
+        <tr><td>Timestamp</td><td>20260404T150000 UTC</td></tr>
+        <tr><td>Data confidence</td><td>MEDIUM — schema + content confirmed; metrics estimated</td></tr>
+        <tr><td>Pages fetched</td><td>Blog homepage, sitemap_index.xml, post-sitemap.xml, 2 full blog posts</td></tr>
+        <tr><td>Full analysis path</td><td>analyses/caplinq/blog.caplinq.com/analysis-20260404T150000/</td></tr>
+        <tr><td>Companion analysis</td><td>analyses/caplinq/caplinq.com/analysis-20260404T140000/</td></tr>
+        <tr><td>Related report</td><td>analyses/caplinq/reports/caplinq_caplinq.com_20260404T140000.html</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</main>
+
+<script>
+(function() {
+  var tabs = document.querySelectorAll('#tabs button');
+  var panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var t = btn.getAttribute('data-tab');
+      tabs.forEach(function(b) { b.classList.remove('active'); });
+      panels.forEach(function(p) { p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('tab-' + t).classList.add('active');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -6,15 +6,15 @@
   },
   "metadata": {
     "description": "SEO & GEO skill operating system with a shared contract, protocol-layer gates, and reusable state handoffs",
-    "version": "6.2.0",
+    "version": "6.3.0",
     "repository": "https://github.com/aaron-he-zhu/seo-geo-claude-skills"
   },
   "plugins": [
     {
       "name": "seo-geo-claude-skills",
       "source": "./",
-      "description": "20 SEO and GEO skills plus 9 commands on one shared operating contract. Includes protocol-layer gates for content quality, domain trust, entity truth, and campaign memory alongside keyword research, content creation, audits, monitoring, schema markup, and AI citation optimization.",
-      "version": "6.2.0",
+      "description": "21 SEO and GEO skills plus 10 commands on one shared operating contract. Includes company-analysis orchestration for full-domain audits with HTML reports, protocol-layer gates for content quality, domain trust, entity truth, and campaign memory alongside keyword research, content creation, audits, monitoring, schema markup, and AI citation optimization.",
+      "version": "6.3.0",
       "category": "marketing",
       "tags": [
         "seo",
@@ -52,7 +52,8 @@
         "./cross-cutting/content-quality-auditor",
         "./cross-cutting/domain-authority-auditor",
         "./cross-cutting/entity-optimizer",
-        "./cross-cutting/memory-management"
+        "./cross-cutting/memory-management",
+        "./orchestration/company-analysis"
       ]
     }
   ]

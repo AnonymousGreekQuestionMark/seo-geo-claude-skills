@@ -2,9 +2,9 @@
   "schemaVersion": "1.0.0",
   "id": "seo-geo-claude-skills",
   "name": "seo-geo-claude-skills",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "displayName": "SEO & GEO Skills Library",
-  "description": "20 SEO and GEO skills with prompt-based hook automation, three-tier memory, and protocol-layer gates for content quality, domain trust, entity truth, and campaign memory. Tool-agnostic, works with or without integrations.",
+  "description": "21 SEO and GEO skills with prompt-based hook automation, three-tier memory, and protocol-layer gates for content quality, domain trust, entity truth, and campaign memory. Includes company-analysis orchestration for full-domain audits with HTML reports. Tool-agnostic, works with or without integrations.",
   "author": {
     "name": "Aaron He Zhu",
     "email": "hello@zhuhe.io",
@@ -103,6 +103,11 @@
       "name": "write-content",
       "description": "Write SEO and GEO optimized content from a topic and target keyword",
       "path": "commands/write-content.md"
+    },
+    {
+      "name": "analyze-company",
+      "description": "Run all 20 SEO/GEO skills end-to-end for a company domain and generate a self-contained HTML report with CITE and CORE-EEAT scores",
+      "path": "commands/analyze-company.md"
     }
   ],
   "skills": [
@@ -125,7 +130,8 @@
     "./cross-cutting/content-quality-auditor",
     "./cross-cutting/domain-authority-auditor",
     "./cross-cutting/entity-optimizer",
-    "./cross-cutting/memory-management"
+    "./cross-cutting/memory-management",
+    "./orchestration/company-analysis"
   ],
   "hooks": [
     {

@@ -28,8 +28,20 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 | domain-authority-auditor | cross-cutting | 6.0.0 | 2026-03-31 |
 | entity-optimizer | cross-cutting | 6.0.0 | 2026-03-31 |
 | memory-management | cross-cutting | 6.0.0 | 2026-03-31 |
+| company-analysis | orchestration | 1.0.0 | 2026-04-04 |
 
 ## Changelog
+
+### v6.3.0 — Company Analysis Orchestration Workflow (2026-04-04)
+
+New orchestration skill and command for full-company SEO/GEO analysis.
+
+- **`company-analysis` skill**: Orchestrates all 20 existing skills in a fixed 21-step sequence against a company domain. Parses URL to company root (e.g. `blog.caplinq.com` → `caplinq`). Saves phase-organized handoff summaries to `analyses/<company-root>/<domain>/analysis-<timestamp>/` across 7 phase subdirectories. Generates a self-contained dark-mode HTML report.
+- **`/seo:analyze-company` command**: One-shot command that invokes the `company-analysis` skill. Supports optional `pages` parameter for targeted on-page audits.
+- **`analyses/` directory**: New output directory for all company analysis runs. Organized by company root → domain → timestamped run → 7 phase subdirectories. Reports saved to `analyses/<company-root>/reports/`.
+- **BLOCKED handling**: Individual skill blocks are recorded and skipped; analysis continues. Overall DONE_WITH_CONCERNS if ≤5 skills blocked.
+- plugin.json: version 6.2.0 → 6.3.0
+- marketplace.json: version 6.2.0 → 6.3.0
 
 ### v6.2.0 — Frontmatter Enrichment + Hook Hardening (2026-04-02)
 
