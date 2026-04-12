@@ -150,6 +150,7 @@ Create a content refresh strategy for [domain/topic]
 - **Reads**: the current page or site state, symptoms, prior audits, and current priorities from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing audit or optimization plan plus a reusable summary that can be stored under `memory/audits/`.
 - **Promotes**: blocking defects, repeated weaknesses, and fix priorities to `memory/open-loops.md` and `memory/decisions.md`.
+- **Maps to**: CORE R06 (timestamps / freshness signals), C03 (query coverage gaps addressed), C09 (FAQ coverage added)
 - **Next handoff**: use the `Next Best Skill` below when the repair path is clear.
 
 ## Data Sources
@@ -172,28 +173,26 @@ Proceed with the analysis using provided data. Note in the output which findings
 
 When a user requests content refresh help:
 
-1. **CORE-EEAT Quick Score — Identify Weak Dimensions**
+1. **CORE-EEAT Refresh Priority Flags — Identify Weak Dimensions**
 
-   Before refreshing, run a quick CORE-EEAT assessment to focus effort on the weakest areas. Reference: [CORE-EEAT Benchmark](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md)
+   Before refreshing, identify which dimensions need the most work to focus refresh effort. Reference: [CORE-EEAT Benchmark](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md)
 
    ```markdown
-   ### CORE-EEAT Quick Assessment
+   ### CORE-EEAT Refresh Priority Flags
 
    **Content**: [title or URL]
    **Content Type**: [type]
 
-   Rapidly score each dimension (estimate 0-100):
-
-   | Dimension | Quick Score | Key Weakness | Refresh Priority |
-   |-----------|-----------|--------------|-----------------|
-   | C — Contextual Clarity | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | O — Organization | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | R — Referenceability | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | E — Exclusivity | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | Exp — Experience | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | Ept — Expertise | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | A — Authority | [X]/100 | [main issue] | 🔴/🟡/🟢 |
-   | T — Trust | [X]/100 | [main issue] | 🔴/🟡/🟢 |
+   | Dimension | Key Weakness | Refresh Priority |
+   |-----------|--------------|-----------------|
+   | C — Contextual Clarity | [main issue] | 🔴/🟡/🟢 |
+   | O — Organization | [main issue] | 🔴/🟡/🟢 |
+   | R — Referenceability | [main issue] | 🔴/🟡/🟢 |
+   | E — Exclusivity | [main issue] | 🔴/🟡/🟢 |
+   | Exp — Experience | [main issue] | 🔴/🟡/🟢 |
+   | Ept — Expertise | [main issue] | 🔴/🟡/🟢 |
+   | A — Authority | [main issue] | 🔴/🟡/🟢 |
+   | T — Trust | [main issue] | 🔴/🟡/🟢 |
 
    **Weakest Dimensions** (focus refresh here):
    1. [Dimension] — [what needs fixing]
@@ -201,7 +200,7 @@ When a user requests content refresh help:
 
    **Refresh Strategy**: Focus on 🔴 dimensions first, then 🟡.
 
-   _For full 80-item audit, use [content-quality-auditor](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/content-quality-auditor/SKILL.md)_
+   _These flags direct refresh effort only — they are not authoritative CORE-EEAT scores. For the full 80-item score, run [content-quality-auditor](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/content-quality-auditor/SKILL.md) on the refreshed content before republishing._
    ```
 
 2. **Identify Content Refresh Candidates**

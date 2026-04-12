@@ -1,16 +1,44 @@
 {
   "mcpServers": {
-    "ahrefs": {
-      "type": "http",
-      "url": "https://api.ahrefs.com/mcp/mcp"
+    "keyword-and-backlinks": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/mcp-servers/keyword-and-backlinks.js"]
     },
-    "similarweb": {
-      "type": "http",
-      "url": "https://mcp.similarweb.com"
+    "serp-analyzer": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/mcp-servers/serp-analyzer.js"]
     },
-    "hubspot": {
-      "type": "http",
-      "url": "https://mcp.hubspot.com/anthropic"
+    "ai-citation-monitor": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/mcp-servers/ai-citation-monitor.js"]
+    },
+    "entity-checker": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/mcp-servers/entity-checker.js"]
+    },
+    "schema-validator": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/mcp-servers/schema-validator.js"]
+    },
+    "pagespeed": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/mcp-servers/pagespeed.js"]
+    },
+    "site-crawler": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/mcp-servers/site-crawler.js"]
+    },
+    "brand-monitor": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["tools/mcp-servers/brand-monitor.js"]
     },
     "amplitude": {
       "type": "http",

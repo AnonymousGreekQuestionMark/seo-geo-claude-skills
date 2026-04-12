@@ -172,6 +172,7 @@ Technical SEO checklist for migrating [old domain] to [new domain]
 - **Reads**: the current page or site state, symptoms, prior audits, and current priorities from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing audit or optimization plan plus a reusable summary that can be stored under `memory/audits/`.
 - **Promotes**: blocking defects, repeated weaknesses, and fix priorities to `memory/open-loops.md` and `memory/decisions.md`.
+- **Maps to**: CITE T07 (HTTPS/security), T08 (content freshness), T09 (penalty history), T03 (link-traffic coherence); CORE T03 (security standards)
 - **Next handoff**: use the `Next Best Skill` below when the repair path is clear.
 
 ## Data Sources

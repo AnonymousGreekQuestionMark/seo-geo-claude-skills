@@ -156,8 +156,9 @@ What does [internal jargon] mean in this project?
 **Expected output**: a memory update plan, hot-cache changes, and a short handoff summary.
 
 - **Reads**: current campaign facts, new findings from other skills, approved decisions, and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md).
-- **Writes**: updates to `memory/hot-cache.md`, `memory/open-loops.md`, `memory/decisions.md`, and related `memory/` folders. Also manages WARM-to-COLD archival in `memory/archive/`.
+- **Writes**: updates to `memory/hot-cache.md`, `memory/open-loops.md`, `memory/decisions.md`, and related `memory/` folders. Also manages WARM-to-COLD archival in `memory/archive/`. Appends dimension-level CITE/CORE scores from each run to `memory/history/<domain>.jsonl` for time-series tracking.
 - **Promotes**: durable strategy, blockers, terminology, entity candidates, and major deltas. Applies temperature lifecycle rules: promote to HOT on high reference frequency, demote on staleness.
+- **Maps to**: (memory orchestrator — no direct CITE/CORE item feeds; maintains history JSONL that performance-reporter and alert-manager consume)
 - **Next handoff**: use the `Next Best Skill` below when the project memory baseline is ready for active work.
 
 ### Temperature Lifecycle Rules
@@ -225,11 +226,13 @@ project-root/
     │   ├── domain/                    # Domain authority (CITE) audits
     │   ├── technical/                 # Technical SEO audits
     │   └── internal-linking/          # Link architecture audits
-    └── monitoring/
-        ├── alerts/                    # Alert history and thresholds
-        ├── rank-history/              # Dated ranking snapshots / CSV exports
-        ├── reports/                   # Monthly, quarterly, campaign reports
-        └── snapshots/                 # Dated hot-cache snapshots
+    ├── monitoring/
+    │   ├── alerts/                    # Alert history and thresholds
+    │   ├── rank-history/              # Dated ranking snapshots / CSV exports
+    │   ├── reports/                   # Monthly, quarterly, campaign reports
+    │   └── snapshots/                 # Dated hot-cache snapshots
+    └── history/
+        └── <domain>.jsonl             # Time-series CITE/CORE dimension scores (append-only)
 ```
 
 > **Templates**: See [references/hot-cache-template.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/memory-management/references/hot-cache-template.md) for the complete CLAUDE.md hot cache template and [references/glossary-template.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/memory-management/references/glossary-template.md) for the project glossary template.
@@ -271,7 +274,18 @@ Step 4: Update both CLAUDE.md and memory/monitoring/rank-history/YYYY-MM-DD-rank
 
 > **Reference**: See [references/promotion-demotion-rules.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/memory-management/references/promotion-demotion-rules.md) for detailed promotion/demotion triggers (keywords, competitors, metrics, campaigns) and the action procedures for each.
 
-### 6. Update Triggers, Archive Management & Cross-Skill Integration
+### 6. Append CITE/CORE History Record
+
+After any run that includes `domain-authority-auditor` or `content-quality-auditor`, append their dimension scores to `memory/history/<domain>.jsonl`:
+
+```json
+{"ts":"<ISO timestamp>","skill":"domain-authority-auditor","domain":"<domain>","scores":{"CITE_C":<n>,"CITE_I":<n>,"CITE_T":<n>,"CITE_E":<n>,"CITE_overall":<n>},"verdict":"<TRUSTED|CAUTIOUS|UNTRUSTED>"}
+{"ts":"<ISO timestamp>","skill":"content-quality-auditor","domain":"<domain>","scores":{"CORE_C":<n>,"CORE_O":<n>,"CORE_R":<n>,"CORE_E":<n>,"CORE_Exp":<n>,"CORE_Ept":<n>,"CORE_A":<n>,"CORE_T":<n>,"GEO":<n>,"SEO":<n>},"verdict":"<SHIP|FIX|BLOCK>"}
+```
+
+Append each as a new line (do not overwrite). Create the file if it does not exist. This history is consumed by `performance-reporter` (trend deltas) and `alert-manager` (baseline comparisons).
+
+### 7. Update Triggers, Archive Management & Cross-Skill Integration
 
 > **Reference**: See [references/update-triggers-integration.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/memory-management/references/update-triggers-integration.md) for the complete update procedures after ranking checks, competitor analyses, audits, and reports; monthly/quarterly archive routines; and integration points with all 8 connected skills (keyword-research, rank-tracker, competitor-analysis, content-gap-analysis, seo-content-writer, content-quality-auditor, domain-authority-auditor).
 

@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "id": "seo-geo-claude-skills",
   "name": "seo-geo-claude-skills",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "displayName": "SEO & GEO Skills Library",
   "description": "21 SEO and GEO skills with prompt-based hook automation, three-tier memory, and protocol-layer gates for content quality, domain trust, entity truth, and campaign memory. Includes company-analysis orchestration for full-domain audits with HTML reports. Tool-agnostic, works with or without integrations.",
   "author": {

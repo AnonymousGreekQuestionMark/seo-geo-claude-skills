@@ -142,6 +142,7 @@ Optimize anchor text across the site
 - **Reads**: the current page or site state, symptoms, prior audits, and current priorities from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing audit or optimization plan plus a reusable summary that can be stored under `memory/audits/`.
 - **Promotes**: blocking defects, repeated weaknesses, and fix priorities to `memory/open-loops.md` and `memory/decisions.md`.
+- **Maps to**: CITE I03 (SERP brand ownership), I09 (niche consistency signals); CORE R08 (internal links), O08 (anchor navigation)
 - **Next handoff**: use the `Next Best Skill` below when the repair path is clear.
 
 ## Data Sources

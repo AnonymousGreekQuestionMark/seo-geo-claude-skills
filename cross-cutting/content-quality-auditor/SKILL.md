@@ -75,9 +75,11 @@ metadata:
 > **System Mode**: This cross-cutting skill is part of the protocol layer and follows the shared [Skill Contract](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/skill-contract.md) and [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md).
 
 
-This skill evaluates content quality across 80 standardized criteria organized in 8 dimensions. It produces a comprehensive audit report with per-item scoring, dimension and system scores, weighted totals by content type, and a prioritized action plan.
+This skill evaluates content quality across 80 standardized CORE-EEAT criteria organized in 8 dimensions. It produces a comprehensive audit report with per-item scoring, dimension and system scores, weighted totals by content type, and a prioritized action plan.
 
 **System role**: Publish Readiness Gate. It decides whether content is ready to ship, what blocks publication, and what should be promoted into durable project memory.
+
+**Scope**: Directly scores the ~50 page-level items observable from a single content page: C01–C10, O01–O10, R01–R10, E01–E10, Exp01, A01, A07–A08, T03–T04. The ~30 org-level items — **Exp02–Exp10, Ept01–Ept10** (scored by entity-optimizer) and **A02–A06, A09–A10, T01/T02, T05–T10** (scored by domain-authority-auditor) — are imported from hot-cache when those skills have already run. When they haven't run, mark org-level items as `N/A (org-level — run entity-optimizer / domain-authority-auditor)` and exclude from dimension averages per N/A handling rules.
 
 ## When This Must Trigger
 
@@ -140,9 +142,10 @@ Audit my content vs competitor: [your content] vs [competitor content]
 
 **Expected output**: a CORE-EEAT audit report, a publish-readiness verdict, and a short handoff summary ready for `memory/audits/content/`.
 
-- **Reads**: the target content, content type, supporting evidence, and any prior decisions from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
+- **Reads**: the target content, content type, supporting evidence, and any prior decisions from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available. **Also reads**: `pre_scored_items` from any prior `on-page-seo-auditor` handoff for the same page — import those 17 item scores directly rather than re-scoring them.
 - **Writes**: a user-facing audit report plus a reusable summary that can be stored under `memory/audits/content/`.
 - **Promotes**: veto items and publish blockers to `memory/hot-cache.md` (auto-saved, no user confirmation needed). Top improvement priorities to `memory/open-loops.md`.
+- **Maps to**: CORE all ~50 page-level items (C01–C10, O01–O10, R01–R10, E01–E10, Exp01, A01, A07–A08, T03–T04) — authoritative full page scorer; imports org-level items from entity-optimizer and domain-authority-auditor hot-cache
 - **Next handoff**: use the `Next Best Skill` below once the verdict is clear.
 
 ## Data Sources
@@ -200,6 +203,17 @@ When a user requests a content quality audit:
 ```
 
 If any veto item triggers, flag it prominently at the top of the report and recommend immediate action before continuing the full audit.
+
+### Step 1b: Import Pre-Scores from on-page-seo-auditor (if available)
+
+Before scoring, check if `on-page-seo-auditor` has already run on this page (look in the current session's handoff or hot-cache). If `pre_scored_items` is present, import those 17 item scores directly:
+
+```
+Pre-scored items (imported from on-page-seo-auditor):
+C01, C02, C09, C10, O01, O02, O03, O05, O06, R01, R02, R06, R08, R10, Exp01, Ept01, T04
+```
+
+Mark imported items as `(imported)` in the audit table. Score only the remaining ~63 items from scratch.
 
 ### Step 2: CORE Audit (40 items)
 

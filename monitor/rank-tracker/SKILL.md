@@ -142,6 +142,7 @@ Create a ranking report for [domain/campaign]
 - **Reads**: current metrics, previous baselines, alert thresholds, and reporting context from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing monitoring deliverable plus a reusable summary that can be stored under `memory/monitoring/`.
 - **Promotes**: significant changes, confirmed anomalies, and follow-up actions to `memory/open-loops.md` and `memory/decisions.md`.
+- **Maps to**: CITE E01 (organic search visibility), E03 (SERP features), E07 (topical authority depth), E10 (industry share of voice); CITE C05 (AI-cited queries), C06 (AI citation depth), C07 (AI citation consistency)
 - **Next handoff**: use the `Next Best Skill` below when a change needs action.
 
 ## Data Sources

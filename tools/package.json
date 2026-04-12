@@ -1,0 +1,14 @@
+{
+  "name": "seo-geo-mcp-servers",
+  "version": "1.0.0",
+  "description": "MCP servers for SEO & GEO Skills Library",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

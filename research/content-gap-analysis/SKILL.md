@@ -138,6 +138,7 @@ What content gaps exist for [audience segment] in my niche?
 - **Reads**: user goals, target market inputs, available tool data, and prior strategy from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing research deliverable plus a reusable summary that can be stored under `memory/research/`.
 - **Promotes**: durable keyword priorities, competitor facts, entity candidates, and strategic decisions to `CLAUDE.md`, `memory/decisions.md`, and `memory/research/`; hand canonical entity work to `entity-optimizer`.
+- **Maps to**: CITE E07 (topical authority depth), E08 (topical authority breadth); CORE C03 (query coverage), C09 (FAQ coverage), E01 (original data / gap filling)
 - **Next handoff**: use the `Next Best Skill` below when the findings are ready to drive action.
 
 ## Data Sources

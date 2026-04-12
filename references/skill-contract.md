@@ -77,8 +77,11 @@ Every skill should be able to produce a concise handoff summary using this shape
 - **Key Findings / Output**: the highest-signal result
 - **Evidence**: URLs, data points, or sections reviewed
 - **Open Loops**: blockers, missing inputs, or unresolved risks
+- **Maps to**: [CITE item IDs] / [CORE-EEAT item IDs] fed by this skill's findings
 - **Recommended Next Skill**: one primary next move
 ```
+
+The `Maps to:` field must list which CITE or CORE-EEAT item IDs are populated by this skill's findings. This makes the data flow explicit so downstream scorers (content-quality-auditor, domain-authority-auditor) know which items to import rather than re-score. Example: `Maps to: CITE C02/C04/C10/T01/T02, CORE A01`.
 
 ## Promotion Rules
 

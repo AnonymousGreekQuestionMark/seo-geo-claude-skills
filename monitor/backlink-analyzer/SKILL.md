@@ -147,6 +147,7 @@ Compare backlink profiles: [your domain] vs [competitor domains]
 - **Reads**: current metrics, previous baselines, alert thresholds, and reporting context from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing monitoring deliverable plus a reusable summary that can be stored under `memory/monitoring/`.
 - **Promotes**: significant changes, confirmed anomalies, and follow-up actions to `memory/open-loops.md` and `memory/decisions.md`.
+- **Maps to**: CITE C01 (referring domains volume), C02 (referring domains quality), C04 (anchor text diversity), C10 (link source diversity), T01 (link profile naturalness), T02 (dofollow ratio); CORE A01 (backlink profile)
 - **Next handoff**: use the `Next Best Skill` below when a change needs action.
 
 ## Data Sources

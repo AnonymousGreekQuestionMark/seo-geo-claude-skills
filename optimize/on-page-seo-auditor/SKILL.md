@@ -158,6 +158,7 @@ Pre-publish SEO audit for this content targeting [keyword]: [content]
 - **Reads**: the current page or site state, symptoms, prior audits, and current priorities from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing audit or optimization plan plus a reusable summary that can be stored under `memory/audits/`.
 - **Promotes**: blocking defects, repeated weaknesses, and fix priorities to `memory/open-loops.md` and `memory/decisions.md`.
+- **Maps to**: CORE C01 (intent alignment), C02 (direct answer), O01–O03 (heading hierarchy, summary box, data tables), R01 (data precision), R02 (citation density), R08 (internal links), R10 (content consistency) — pre-scores 17 items for content-quality-auditor
 - **Next handoff**: use the `Next Best Skill` below when the repair path is clear.
 
 ## Data Sources
@@ -303,9 +304,17 @@ When a user requests an on-page SEO audit:
 
    > **Reference**: See [references/audit-templates.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/on-page-seo-auditor/references/audit-templates.md) for the technical on-page template (Step 9).
 
-10. **CORE-EEAT Content Quality Quick Scan** — 17 on-page-relevant items from the 80-item CORE-EEAT benchmark
+10. **CORE-EEAT Pre-Scores (17 items)** — score the 17 on-page-relevant items from the 80-item CORE-EEAT benchmark that this skill can directly observe from page content
 
-    > **Reference**: See [references/audit-templates.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/on-page-seo-auditor/references/audit-templates.md) for the CORE-EEAT quick scan template (Step 10). Full benchmark: [CORE-EEAT Benchmark](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md).
+    Items scored: C01, C02, C09, C10, O01, O02, O03, O05, O06, R01, R02, R06, R08, R10, Exp01, Ept01, T04
+
+    Output these as item-level scores (0–100) with pass/flag/block status, and include them in the handoff as:
+    ```
+    pre_scored_items: {C01: [score], C02: [score], C09: [score], C10: [score], O01: [score], O02: [score], O03: [score], O05: [score], O06: [score], R01: [score], R02: [score], R06: [score], R08: [score], R10: [score], Exp01: [score], Ept01: [score], T04: [score]}
+    ```
+    _These are pre-scores for the 17 items observable from the page. They are not a full CORE-EEAT score. When content-quality-auditor runs after this skill, it imports these values and only scores the remaining ~63 items. Do not aggregate these 17 items into a standalone CORE-EEAT total._
+
+    > **Reference**: See [references/audit-templates.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/on-page-seo-auditor/references/audit-templates.md) for the CORE-EEAT pre-score template (Step 10). Full benchmark: [CORE-EEAT Benchmark](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md).
 
 11. **Generate Audit Summary** — Overall score with visual breakdown, priority issues (critical/important/minor), quick wins, detailed recommendations, competitor comparison, action checklist, expected results
 

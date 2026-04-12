@@ -155,6 +155,7 @@ Here's my content brief: [brief]. Write SEO-optimized content following this out
 - **Reads**: the brief, target keywords, entity inputs, quality constraints, and prior decisions from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing content, metadata, or schema deliverable plus a reusable summary that can be stored under `memory/content/`.
 - **Promotes**: approved angles, messaging choices, missing evidence, and publish blockers to `CLAUDE.md`, `memory/decisions.md`, and `memory/open-loops.md`.
+- **Maps to**: CORE C01–C10 (contextual clarity), O01–O10 (organization), R01–R10 (referenceability), E01–E10 (exclusivity) — this skill directly authors all 40 GEO-system items
 - **Next handoff**: use the `Next Best Skill` below when the asset is ready for review or deployment.
 
 ## Data Sources

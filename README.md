@@ -2,7 +2,7 @@
 
 **Send a URL. Get a full SEO + GEO analysis with an HTML report.**
 
-[![Version](https://img.shields.io/badge/version-6.3.0-orange)](https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills/blob/main/VERSIONS.md)
+[![Version](https://img.shields.io/badge/version-6.4.0-orange)](https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills/blob/main/VERSIONS.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-green)](https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills/blob/main/LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-purple)](https://claude.ai/download)
 

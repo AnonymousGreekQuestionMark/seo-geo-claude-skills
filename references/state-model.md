@@ -172,6 +172,29 @@ Store:
 - stakeholder reporting summaries
 - dated supporting CSV or export files when helpful
 
+### `memory/history/`
+
+**Purpose**: Time-series store for CITE and CORE-EEAT dimension scores across runs.
+
+**File format**: `memory/history/<domain>.jsonl` — append-only, one JSON object per line per skill run.
+
+**Record schema**:
+```json
+{"ts":"2026-04-12T14:00:00Z","skill":"domain-authority-auditor","domain":"caplinq.com","scores":{"CITE_C":55,"CITE_I":35,"CITE_T":65,"CITE_E":52,"CITE_overall":52},"verdict":"CAUTIOUS"}
+{"ts":"2026-04-12T14:00:00Z","skill":"content-quality-auditor","domain":"caplinq.com","scores":{"CORE_C":72,"CORE_O":78,"CORE_R":65,"CORE_E":62,"CORE_Exp":80,"CORE_Ept":82,"CORE_A":55,"CORE_T":60,"GEO":69,"SEO":69},"verdict":"FIX"}
+```
+
+**Append rules**:
+- `memory-management` appends one record per scoring skill per run
+- Only scoring skills write here: `domain-authority-auditor`, `content-quality-auditor`
+- Append-only: never delete or overwrite existing lines
+- If a skill run produced no numeric scores (BLOCKED), write the record with `"scores":{}` and `"verdict":"BLOCKED"`
+
+**Read rules**:
+- `performance-reporter` reads the last N entries grouped by skill to compute period-over-period deltas
+- `alert-manager` reads the oldest entry within the configured alert window as the baseline for threshold comparison
+- Query by filtering `domain` and `skill` fields
+
 ## Writing Guidance
 
 When a skill describes state updates, it should:

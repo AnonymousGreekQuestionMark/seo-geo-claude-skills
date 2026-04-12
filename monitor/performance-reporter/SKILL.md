@@ -138,6 +138,7 @@ Generate a content performance report
 - **Reads**: current metrics, previous baselines, alert thresholds, and reporting context from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing monitoring deliverable plus a reusable summary that can be stored under `memory/monitoring/`.
 - **Promotes**: significant changes, confirmed anomalies, and follow-up actions to `memory/open-loops.md` and `memory/decisions.md`.
+- **Maps to**: CITE E01 (organic visibility trend), E03 (SERP features trend), E04 (crawlability trend) — aggregated period-over-period; reads from `memory/history/<domain>.jsonl` for CITE/CORE trend data
 - **Next handoff**: use the `Next Best Skill` below when a change needs action.
 
 ## Data Sources
@@ -174,9 +175,11 @@ When a user requests a performance report:
 
 5. **Report GEO/AI Performance** -- AI citation overview, citations by topic, GEO wins, optimization opportunities.
 
-6. **Report Domain Authority (CITE Score)** -- If a CITE audit has been run, include CITE dimension scores (C/I/T/E) with period-over-period trends and veto status. If no audit exists, note as "Not yet evaluated."
+5b. **Load History for Trend Data** -- Before reporting CITE or CORE-EEAT trends, read `memory/history/<domain>.jsonl`. Group entries by `skill`, sort by `ts`, and compute period-over-period deltas for each dimension score. Use this as the primary trend data source. If the file does not exist or has fewer than 2 entries, note "Insufficient history — trends available after 2+ runs" rather than fabricating deltas.
 
-7. **Content Quality (CORE-EEAT Score)** -- If content-quality-auditor has been run, include average scores across all 8 CORE-EEAT dimensions with trends. If no audit exists, note as "Not yet evaluated."
+6. **Report Domain Authority (CITE Score)** -- Include CITE dimension scores (C/I/T/E) with period-over-period trends from `memory/history/<domain>.jsonl` (skill=`domain-authority-auditor`) and veto status. If no history exists, note as "Not yet evaluated."
+
+7. **Content Quality (CORE-EEAT Score)** -- Include average scores across all 8 CORE-EEAT dimensions with trends from `memory/history/<domain>.jsonl` (skill=`content-quality-auditor`). If no history exists, note as "Not yet evaluated."
 
 8. **Report Backlink Performance** -- Link profile summary, weekly link acquisition, notable new links, competitive position.
 

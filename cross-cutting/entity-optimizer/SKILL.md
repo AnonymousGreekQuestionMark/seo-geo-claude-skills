@@ -153,10 +153,12 @@ AI systems confuse [my entity] with [other entity] — help me disambiguate
 
 - **Reads**: the entity name, primary domain, known profiles, topic associations, and prior brand context from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing entity report plus a reusable profile that can be stored under `memory/entities/`.
-- **Promotes**: canonical names, sameAs links, disambiguation notes, and entity gaps to `CLAUDE.md`, `memory/entities/`, and `memory/open-loops.md`.
+- **Promotes**: canonical names, sameAs links, disambiguation notes, and entity gaps to `CLAUDE.md`, `memory/entities/`, and `memory/open-loops.md`. Also writes org-level CORE-EEAT dimension scores to hot-cache for content-quality-auditor to import.
+- **CORE-EEAT org-level scope**: This skill is the authoritative scorer for the ~20 organization-level CORE-EEAT items that cannot be observed from a single content page: **Exp02–Exp10** (author bio depth, credentials, licenses, years of hands-on experience, usage duration, testing history) and **Ept01–Ept10** (author identity, organization methodology docs, professional vocabulary, technical depth, research publications, expert staff). Scores for these items should be written to hot-cache for content-quality-auditor to import rather than re-score.
 
 This skill is the sole writer of canonical entity profiles at `memory/entities/<name>.md`. Other skills write entity candidates to `memory/entities/candidates.md` only. When 3+ candidates accumulate, this skill should be recommended.
 
+- **Maps to**: CITE I01–I10 (identity dimension), E01–E10 partial (eminence via entity recognition); CORE Exp02–Exp10 (author-level experience), Ept01–Ept10 (org-level expertise), A07 (KG presence), A08 (entity consistency)
 - **Next handoff**: use the `Next Best Skill` below once the entity truth is clear.
 
 ## Data Sources
@@ -305,6 +307,7 @@ Sorted by: impact on entity recognition × effort required
 
 ### Cross-Reference
 
+- **CORE-EEAT Exp/Ept scope**: This skill is the authoritative source for Exp02–Exp10 (author-level experience) and Ept01–Ept10 (org-level expertise). Write scores for these 19 items to hot-cache so content-quality-auditor can import them rather than guessing from a single page.
 - **CORE-EEAT relevance**: Items A07 (Knowledge Graph Presence) and A08 (Entity Consistency) directly overlap — entity optimization strengthens Authority dimension
 - **CITE relevance**: CITE I01-I10 (Identity dimension) measures entity signals at domain level — entity optimization feeds these scores
 - For content-level audit: `content-quality-auditor`

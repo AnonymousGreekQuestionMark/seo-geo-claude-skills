@@ -138,6 +138,7 @@ Review and optimize my current SEO alerts
 - **Reads**: current metrics, previous baselines, alert thresholds, and reporting context from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing monitoring deliverable plus a reusable summary that can be stored under `memory/monitoring/`.
 - **Promotes**: significant changes, confirmed anomalies, and follow-up actions to `memory/open-loops.md` and `memory/decisions.md`.
+- **Maps to**: (threshold monitoring — no direct item feeds); reads `memory/history/<domain>.jsonl` as baseline for threshold comparison; alerts when CITE/CORE dimension scores drop by configured thresholds
 - **Next handoff**: use the `Next Best Skill` below when a change needs action.
 
 ## Data Sources
@@ -162,6 +163,8 @@ Proceed with the alert configuration using provided parameters. User will need t
 ## Instructions
 
 When a user requests alert setup:
+
+0b. **Load Baseline from History** -- Before configuring threshold alerts for CITE or CORE-EEAT scores, read `memory/history/<domain>.jsonl`. For each alert window (e.g. "alert if CITE drops >10 points in 30 days"), use the oldest entry within the window as the baseline value. If fewer than 2 entries exist for a skill, note "No baseline yet — alert will activate after 2+ runs" and configure the alert without a current threshold value.
 
 1. **Define Alert Categories**
 

@@ -139,9 +139,11 @@ Run full 120-item assessment on [domain]: CITE domain audit + CORE-EEAT content 
 
 **Expected output**: a CITE audit report, a citation-trust verdict, and a short handoff summary ready for `memory/audits/domain/`.
 
-- **Reads**: the target domain, supporting authority signals, comparison domains, and prior decisions from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
+- **Reads**: the target domain, supporting authority signals, comparison domains, and prior decisions from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available. In company-analysis context: reads CITE C/T dimension data from `backlink-analyzer` handoff and `technical-seo-checker` handoff (hot-cache) before scoring — imports their values for C01/C02/C04/C10, T01/T02/T07/T08/T09 rather than re-fetching.
 - **Writes**: a user-facing authority report plus a reusable summary that can be stored under `memory/audits/domain/`.
-- **Promotes**: veto items and domain risks to `memory/hot-cache.md` (auto-saved). Authority context to `memory/audits/domain/`. Results feed into entity-optimizer as authority input for brand's canonical profile.
+- **Promotes**: veto items and domain risks to `memory/hot-cache.md` (auto-saved). Authority context to `memory/audits/domain/`. Results feed into entity-optimizer as authority input for brand's canonical profile. Also writes the CORE-EEAT org-level A and T dimension scores to hot-cache for content-quality-auditor to import.
+- **CORE-EEAT org-level scope**: This skill is the authoritative scorer for CORE-EEAT items observable at the domain/site level: **A02–A06, A09–A10** (brand recognition, industry awards, publishing record, social proof, KG presence, entity consistency, community standing) and **T01/T02, T05–T10** (HTTPS cert, business registration, privacy policy, contact info, return policy, testimonials, review authenticity, customer support). content-quality-auditor imports these scores from hot-cache rather than re-scoring org signals from a single article page.
+- **Maps to**: CITE all 40 items (full CITE scorer); also supplies CORE A02–A06/A09–A10 (brand authority, awards, KG presence, entity consistency, community) and CORE T01/T02/T05–T10 (site-wide trust signals) to content-quality-auditor via hot-cache
 - **Next handoff**: use the `Next Best Skill` below once the trust picture is clear.
 
 ## Data Sources
@@ -253,7 +255,22 @@ Same format for Trust and Eminence dimensions.
 **E Score**: [X]/100
 ```
 
-**Note**: Some items require specialized data (C05-C08 AI citation data, I01 knowledge graph queries, T04-T05 IP/profile analysis). Score what is observable; mark unverifiable items as "N/A — requires [data source]" and exclude from dimension average.
+**Note on C05–C08 (AI citations)**: Read from hot-cache `citation_baseline` written by the citation-baseline step if it ran. Otherwise score from available data.
+
+### Step 2b: Collect External Data for Six Previously-Unimplemented Items
+
+Before scoring I06, T04, T06, T10, C08, E06, attempt WebFetch for each. Record the source in the per-item Notes column.
+
+| Item | Primary WebFetch target | Fallback |
+|------|------------------------|---------|
+| I06 WHOIS Age/History | `https://who.is/<domain>` or `https://whois.domaintools.com/<domain>` | LLM estimate from training data |
+| T06 WHOIS Privacy | Same WHOIS fetch (check registrant visibility) | LLM estimate |
+| T04 IP Reputation | `https://mxtoolbox.com/blacklists/<domain>` and `https://ipinfo.io/<domain>` | LLM estimate |
+| T10 Reviews | `https://www.trustpilot.com/review/<domain>` and `https://www.g2.com/search?q=<company>` | LLM estimate from brand knowledge |
+| C08 Brand Sentiment | Google News search: `<company name> reviews OR complaints OR news` | LLM estimate from brand knowledge |
+| E06 Media Mentions | Google News search: `<company name> press OR coverage OR mentioned in` | LLM count/classification from fetched snippets |
+
+For each item, record in the per-item scores: `source: <URL fetched>` or `source: LLM estimate`. Do not omit the source tag — it distinguishes real data from estimation.
 
 ### Step 4: Scoring & Report
 

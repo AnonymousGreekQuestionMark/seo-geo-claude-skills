@@ -141,6 +141,7 @@ Review and improve this schema markup: [existing schema]
 - **Reads**: the brief, target keywords, entity inputs, quality constraints, and prior decisions from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing content, metadata, or schema deliverable plus a reusable summary that can be stored under `memory/content/`.
 - **Promotes**: approved angles, messaging choices, missing evidence, and publish blockers to `CLAUDE.md`, `memory/decisions.md`, and `memory/open-loops.md`.
+- **Maps to**: CITE I04 (Schema.org coverage — via site-wide audit mode); CORE O05 (schema markup), R09 (HTML semantics)
 - **Next handoff**: use the `Next Best Skill` below when the asset is ready for review or deployment.
 
 ## Data Sources
@@ -268,6 +269,56 @@ When a user requests schema markup:
     - [ ] Content matches visible page content
     - [ ] No policy violations
     ```
+
+## Site-Wide Audit Mode (CITE-I04 feeder)
+
+Trigger this mode when the input is a **domain** rather than a specific page URL, or in company-analysis context (Step 16). This produces the `schema_coverage_pct` metric needed to score CITE-I04 (Schema.org Coverage).
+
+```
+Trigger phrases: "audit schema for <domain>", "schema coverage for <domain>", or when company-analysis runs Step 16.
+```
+
+### Site-Wide Audit Steps
+
+1. **Fetch sitemap**: `WebFetch <domain>/sitemap.xml` (or sitemap index). If not found, try `/sitemap_index.xml` and `/robots.txt` for sitemap pointer.
+
+2. **Sample URLs**: Take up to 50 URLs from the sitemap (or all if ≤50). Prioritize homepage, key landing pages, blog posts, product pages.
+
+3. **Check each URL for schema**: For each sampled URL, `WebFetch` the page and check for:
+   - Presence of `<script type="application/ld+json">`
+   - `@type` field value (Article, Product, FAQPage, etc.)
+   - `@context` = `https://schema.org`
+
+4. **Compute coverage metrics**:
+   ```
+   schema_coverage_pct = (pages with any ld+json) / (total sampled) × 100
+   valid_pct = (pages with valid @type and @context) / (pages with ld+json) × 100
+   by_type = {Article: N, Product: N, FAQPage: N, Organization: N, ...}
+   ```
+
+5. **Write to hot-cache**:
+   ```
+   schema_audit: { domain: <domain>, coverage_pct: X, valid_pct: X, sampled: N, by_type: {...}, ts: <timestamp> }
+   ```
+   domain-authority-auditor reads `schema_audit.coverage_pct` to score CITE-I04.
+
+6. **Report summary**:
+   ```markdown
+   ## Site-Wide Schema Audit — <domain>
+
+   | Metric | Value |
+   |--------|-------|
+   | Pages sampled | N |
+   | Schema coverage | X% (N/N pages have JSON-LD) |
+   | Valid schema | X% of pages with schema pass @type + @context |
+   | Schema types found | Article (N), Product (N), FAQPage (N), ... |
+
+   **CITE-I04 Score implication**: [Pass ≥70% / Partial 40–69% / Fail <40%]
+
+   **Top missing pages** (high-priority pages lacking schema):
+   - [URL 1] — no schema found
+   - [URL 2] — no schema found
+   ```
 
 ## Validation Checkpoints
 

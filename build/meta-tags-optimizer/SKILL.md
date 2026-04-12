@@ -148,6 +148,7 @@ Create Open Graph and Twitter card tags for [page/URL]
 - **Reads**: the brief, target keywords, entity inputs, quality constraints, and prior decisions from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing content, metadata, or schema deliverable plus a reusable summary that can be stored under `memory/content/`.
 - **Promotes**: approved angles, messaging choices, missing evidence, and publish blockers to `CLAUDE.md`, `memory/decisions.md`, and `memory/open-loops.md`.
+- **Maps to**: CORE C01 (intent alignment — veto gate), C02 (direct answer preview in meta description), O02 (summary/answer box signal)
 - **Next handoff**: use the `Next Best Skill` below when the asset is ready for review or deployment.
 
 ## Data Sources
@@ -277,19 +278,19 @@ When a user requests meta tag optimization:
 
    > **Reference**: See [references/meta-tag-code-templates.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/build/meta-tags-optimizer/references/meta-tag-code-templates.md) for OG type selection guide, Twitter card type selection, all HTML code templates, and the complete meta tag block template.
 
-5. **CORE-EEAT Alignment Check**
+5. **CORE-EEAT Alignment Check — C01 Veto Gate**
 
-   Verify meta tags align with content quality standards. Reference: [CORE-EEAT Benchmark](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md)
+   Verify meta tags align with content quality standards. **C01 is a veto item**: if the title's intent signal does not match the target query's intent, do not emit any title candidate — rewrite until C01 passes. Reference: [CORE-EEAT Benchmark](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md)
 
    ```markdown
    ### CORE-EEAT Meta Tag Alignment
 
    | Check | Status | Notes |
    |-------|--------|-------|
-   | **C01 Intent Alignment**: Title promise matches actual content delivery | ✅/⚠️/❌ | [Does the title accurately represent what the page delivers?] |
+   | **C01 Intent Alignment** ⛔ VETO: Title intent (informational/navigational/commercial/transactional) matches the target query's intent | ✅/❌ | [Does the title accurately represent what the page delivers?] |
    | **C02 Direct Answer**: Meta description reflects the core answer available in first 150 words | ✅/⚠️/❌ | [Does the description preview the direct answer?] |
 
-   **If C01 fails**: Title is misleading — rewrite to match actual content.
+   **If C01 fails**: **BLOCKED — do not emit title candidates.** Rewrite all title options until intent alignment passes, then continue.
    **If C02 fails**: Content may need restructuring to front-load the answer, or description should better reflect available content.
    ```
 
@@ -335,6 +336,7 @@ When a user requests meta tag optimization:
 - [ ] Unique value proposition articulated
 
 ### Output Validation
+- [ ] **C01 Intent Alignment passes** — title intent matches target query intent (VETO: no titles emitted until this passes)
 - [ ] Title length 50-60 characters (displays fully in SERP)
 - [ ] Meta description length 150-160 characters
 - [ ] Primary keyword appears in both title and description

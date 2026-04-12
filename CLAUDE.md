@@ -45,9 +45,9 @@ analyses/
   <company-root>/           # apex domain root (e.g. "caplinq")
     <domain>/               # exact hostname analyzed (e.g. "caplinq.com")
       analysis-<timestamp>/ # YYYYMMDDTHHmmss timestamped run folder
-        01-domain-baseline/ # entity-optimizer + domain-authority-auditor
+        01-domain-baseline/ # entity-optimizer (+ citation-baseline step)
         02-research/        # keyword-research, competitor-analysis, serp-analysis, content-gap-analysis
-        03-technical/       # technical-seo-checker, on-page-seo-auditor, internal-linking-optimizer, backlink-analyzer
+        03-technical/       # technical-seo-checker, on-page-seo-auditor, internal-linking-optimizer, backlink-analyzer, domain-authority-auditor
         04-content/         # content-quality-auditor, content-refresher
         05-recommendations/ # seo-content-writer, geo-content-optimizer, meta-tags-optimizer, schema-markup-generator
         06-monitoring/      # rank-tracker, performance-reporter, alert-manager
@@ -56,7 +56,9 @@ analyses/
       <company-root>_<domain>_<timestamp>.html
 ```
 
-**Skill execution order**: entity-optimizer → domain-authority-auditor → keyword-research → competitor-analysis → serp-analysis → content-gap-analysis → technical-seo-checker → on-page-seo-auditor → internal-linking-optimizer → backlink-analyzer → content-quality-auditor → content-refresher → seo-content-writer → geo-content-optimizer → meta-tags-optimizer → schema-markup-generator → rank-tracker → performance-reporter → alert-manager → memory-management → HTML report.
+**Skill execution order**: entity-optimizer → keyword-research → competitor-analysis → serp-analysis → content-gap-analysis → technical-seo-checker → on-page-seo-auditor → internal-linking-optimizer → backlink-analyzer → domain-authority-auditor → content-quality-auditor → content-refresher → seo-content-writer → geo-content-optimizer → meta-tags-optimizer → schema-markup-generator → rank-tracker → performance-reporter → alert-manager → memory-management → HTML report.
+
+**Note**: domain-authority-auditor runs after backlink-analyzer and technical-seo-checker so it can read real CITE C/T dimension data from those feeders rather than estimating from scratch.
 
 **Skill**: [orchestration/company-analysis/SKILL.md](https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills/blob/main/orchestration/company-analysis/SKILL.md)
 

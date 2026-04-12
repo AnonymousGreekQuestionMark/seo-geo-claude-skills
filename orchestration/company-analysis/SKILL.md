@@ -99,19 +99,20 @@ Run each skill in order. After each skill, save its handoff summary to the desig
 ```
 Phase 01 — Domain Baseline
   Step  1: entity-optimizer          → 01-domain-baseline/entity-optimizer-handoff.md
-  Step  2: domain-authority-auditor  → 01-domain-baseline/domain-authority-handoff.md
+  Step 1.5: citation-baseline        → 01-domain-baseline/citation-baseline-handoff.md
 
 Phase 02 — Research
-  Step  3: keyword-research          → 02-research/keyword-research-handoff.md
-  Step  4: competitor-analysis       → 02-research/competitor-analysis-handoff.md
-  Step  5: serp-analysis             → 02-research/serp-analysis-handoff.md
-  Step  6: content-gap-analysis      → 02-research/content-gap-analysis-handoff.md
+  Step  2: keyword-research          → 02-research/keyword-research-handoff.md
+  Step  3: competitor-analysis       → 02-research/competitor-analysis-handoff.md
+  Step  4: serp-analysis             → 02-research/serp-analysis-handoff.md
+  Step  5: content-gap-analysis      → 02-research/content-gap-analysis-handoff.md
 
-Phase 03 — Technical
-  Step  7: technical-seo-checker     → 03-technical/technical-seo-handoff.md
-  Step  8: on-page-seo-auditor       → 03-technical/on-page-seo-handoff.md
-  Step  9: internal-linking-optimizer → 03-technical/internal-linking-handoff.md
-  Step 10: backlink-analyzer         → 03-technical/backlink-handoff.md
+Phase 03 — Technical + CITE
+  Step  6: technical-seo-checker     → 03-technical/technical-seo-handoff.md
+  Step  7: on-page-seo-auditor       → 03-technical/on-page-seo-handoff.md
+  Step  8: internal-linking-optimizer → 03-technical/internal-linking-handoff.md
+  Step  9: backlink-analyzer         → 03-technical/backlink-handoff.md
+  Step 10: domain-authority-auditor  → 03-technical/domain-authority-handoff.md
 
 Phase 04 — Content Quality
   Step 11: content-quality-auditor   → 04-content/content-quality-handoff.md
@@ -144,6 +145,34 @@ Before executing any skills:
 2. Print the resolved paths: `Analysis: analyses/<company-root>/<domain>/analysis-<timestamp>/` and `Report: analyses/<company-root>/reports/<company-root>_<domain>_<timestamp>.html`
 3. Note the timestamp so all files use the same value throughout the run
 4. Announce: "Starting 21-step company analysis for `<domain>`. Running skills in sequence — this will take several minutes."
+
+### Step 1.5: Citation Baseline (runs immediately after entity-optimizer)
+
+Run `mcp__ai-citation-monitor__check_citations` with 8–10 queries covering:
+- Brand name alone (e.g. "CAPLINQ")
+- Brand + primary product category (e.g. "CAPLINQ carbon paper")
+- 6–8 top niche queries the company should be cited for
+
+Save the full result to `01-domain-baseline/citation-baseline-handoff.md`. Also write a compact summary to `memory/hot-cache.md` under key `citation_baseline`:
+```
+citation_baseline: { cited_on: N/10 queries, engines: [...], top_cited_queries: [...] }
+```
+
+The domain-authority-auditor (step 10) reads this from hot-cache to score CITE C05–C08 and I-dimension items with real measured data instead of estimates. If `ai-citation-monitor` is not connected, mark step 1.5 as DONE_WITH_CONCERNS and continue.
+
+### Step 16: schema-markup-generator (run site-wide audit mode first)
+
+When executing as part of company-analysis, run schema-markup-generator in **Site-Wide Audit Mode** before generating per-page schema. This produces `schema_audit.coverage_pct` in hot-cache for CITE-I04. Then generate per-page schema for the homepage and 2–3 key content pages.
+
+### Step 10: domain-authority-auditor (CITE synthesis step)
+
+domain-authority-auditor runs **after** its primary data feeders. Before scoring, read the following from hot-cache / prior handoff files:
+- **CITE C/T dimensions**: from step 9 (backlink-analyzer) — toxic links → C10, referring domains → C02, anchor diversity → C04, link naturalness → T01/T02
+- **CITE T07/T08/T09**: from step 6 (technical-seo-checker) — HTTPS cert, tech freshness, penalty signals
+- **CITE C05–C08 (AI citations)**: from step 1.5 (citation-baseline)
+- **CITE I04 (schema coverage)**: from step 16 (schema-markup-generator site-wide audit) — not available at step 10; note as "pending schema audit"
+
+Import these values directly rather than re-fetching. Only independently score CITE items that have no upstream feeder.
 
 ### Steps 1–20: Execute Each Skill
 
@@ -210,7 +239,7 @@ The report must:
 <html>
   <head><style>[dark mode CSS — #0d1117 bg, #161b22 cards, #e6edf3 text]</style></head>
   <body>
-    <header>Company: {company-root} | Domain: {domain} | Analysis: {date} | Library v6.3.0</header>
+    <header>Company: {company-root} | Domain: {domain} | Analysis: {date} | Library v6.4.0</header>
     <nav>[8 tab buttons: Executive Summary, Domain Baseline, Research, Technical,
           Content Quality, Recommendations, Monitoring, Next Steps]</nav>
     <main>

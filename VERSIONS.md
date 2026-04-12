@@ -8,29 +8,44 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 
 | Skill | Category | Version | Last Updated |
 |-------|----------|---------|--------------|
-| keyword-research | research | 6.0.0 | 2026-03-31 |
-| competitor-analysis | research | 6.0.0 | 2026-03-31 |
-| serp-analysis | research | 6.0.0 | 2026-03-31 |
-| content-gap-analysis | research | 6.0.0 | 2026-03-31 |
-| seo-content-writer | build | 6.0.0 | 2026-03-31 |
-| geo-content-optimizer | build | 6.0.0 | 2026-03-31 |
-| meta-tags-optimizer | build | 6.0.0 | 2026-03-31 |
-| schema-markup-generator | build | 6.0.0 | 2026-03-31 |
-| on-page-seo-auditor | optimize | 6.0.0 | 2026-03-31 |
-| technical-seo-checker | optimize | 6.0.0 | 2026-03-31 |
-| internal-linking-optimizer | optimize | 6.0.0 | 2026-03-31 |
-| content-refresher | optimize | 6.0.0 | 2026-03-31 |
-| rank-tracker | monitor | 6.0.0 | 2026-03-31 |
-| backlink-analyzer | monitor | 6.0.0 | 2026-03-31 |
-| performance-reporter | monitor | 6.0.0 | 2026-03-31 |
-| alert-manager | monitor | 6.0.0 | 2026-03-31 |
-| content-quality-auditor | cross-cutting | 6.0.0 | 2026-03-31 |
-| domain-authority-auditor | cross-cutting | 6.0.0 | 2026-03-31 |
-| entity-optimizer | cross-cutting | 6.0.0 | 2026-03-31 |
-| memory-management | cross-cutting | 6.0.0 | 2026-03-31 |
-| company-analysis | orchestration | 1.0.0 | 2026-04-04 |
+| keyword-research | research | 6.4.0 | 2026-04-12 |
+| competitor-analysis | research | 6.4.0 | 2026-04-12 |
+| serp-analysis | research | 6.4.0 | 2026-04-12 |
+| content-gap-analysis | research | 6.4.0 | 2026-04-12 |
+| seo-content-writer | build | 6.4.0 | 2026-04-12 |
+| geo-content-optimizer | build | 6.4.0 | 2026-04-12 |
+| meta-tags-optimizer | build | 6.4.0 | 2026-04-12 |
+| schema-markup-generator | build | 6.4.0 | 2026-04-12 |
+| on-page-seo-auditor | optimize | 6.4.0 | 2026-04-12 |
+| technical-seo-checker | optimize | 6.4.0 | 2026-04-12 |
+| internal-linking-optimizer | optimize | 6.4.0 | 2026-04-12 |
+| content-refresher | optimize | 6.4.0 | 2026-04-12 |
+| rank-tracker | monitor | 6.4.0 | 2026-04-12 |
+| backlink-analyzer | monitor | 6.4.0 | 2026-04-12 |
+| performance-reporter | monitor | 6.4.0 | 2026-04-12 |
+| alert-manager | monitor | 6.4.0 | 2026-04-12 |
+| content-quality-auditor | cross-cutting | 6.4.0 | 2026-04-12 |
+| domain-authority-auditor | cross-cutting | 6.4.0 | 2026-04-12 |
+| entity-optimizer | cross-cutting | 6.4.0 | 2026-04-12 |
+| memory-management | cross-cutting | 6.4.0 | 2026-04-12 |
+| company-analysis | orchestration | 1.1.0 | 2026-04-12 |
 
 ## Changelog
+
+### v6.4.0 — Framework Integrity: Feeder Chain, Maps-to, Time-Series, Scope Split (2026-04-12)
+
+Structural improvements across all 21 skills addressing 8 architectural concerns.
+
+- **Orchestration order fixed** (`company-analysis` v1.1.0): `domain-authority-auditor` moved from Step 2 to Step 10 (end of Phase 03 Technical + CITE), after `backlink-analyzer` and `technical-seo-checker`. It now reads real feeder data rather than estimating from scratch. Citation-baseline step renumbered 1.5.
+- **C01 veto gate** (`meta-tags-optimizer`): Step 5 C01 check is now a hard blocking gate — no title candidates are emitted until C01 intent alignment passes. Added to Output Validation checklist.
+- **CORE-EEAT scoring cleanup** (`on-page-seo-auditor`, `content-refresher`, `content-quality-auditor`): on-page-seo-auditor's 17-item scan renamed to "Pre-Scores" with explicit item IDs; content-quality-auditor imports them rather than re-scoring. content-refresher's 8-dimension table renamed to "Refresh Priority Flags" with priority indicators only (no competing numeric scores).
+- **6 dangling CITE items now have WebFetch implementations** (`domain-authority-auditor`): I06/T06 (WHOIS), T04 (IP reputation), T10 (reviews), C08/E06 (brand sentiment/media) now have explicit WebFetch data collection steps with source: tags for auditability.
+- **CORE-EEAT scope split** (`content-quality-auditor`, `entity-optimizer`, `domain-authority-auditor`): content-quality-auditor narrowed to ~50 page-level items; org-level items (Exp02–Exp10/Ept01–Ept10 → entity-optimizer; A02–A06/A09–A10/T01/T02/T05–T10 → domain-authority-auditor) imported from hot-cache.
+- **Site-wide schema audit mode** (`schema-markup-generator`): new "Site-Wide Audit Mode" section; fetches sitemap, samples up to 50 URLs, computes `schema_coverage_pct`/`valid_pct`/`by_type`, writes to hot-cache for CITE-I04.
+- **Maps to: field** (all 21 skills + `references/skill-contract.md`): every skill now declares which CITE/CORE-EEAT items its findings feed, making the data flow explicit.
+- **Time-series history** (`memory-management`, `performance-reporter`, `alert-manager`, `references/state-model.md`): new `memory/history/<domain>.jsonl` append-only store for CITE/CORE dimension scores; performance-reporter reads it for trend deltas; alert-manager uses it for threshold baselines.
+- plugin.json: version 6.3.0 → 6.4.0
+- marketplace.json: version 6.3.0 → 6.4.0
 
 ### v6.3.0 — Company Analysis Orchestration Workflow (2026-04-04)
 
