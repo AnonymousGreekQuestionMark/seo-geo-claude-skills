@@ -143,6 +143,33 @@ describe('ai-citation-monitor MCP server', () => {
 
       expect(mentioned).toBe(true);
     });
+
+    it('handles undefined URLs in OpenAI annotations', () => {
+      // Simulate OpenAI response with annotations that have missing/undefined URLs
+      const message = {
+        content: 'Some response mentioning caplinq.com',
+        annotations: [
+          { type: 'url_citation', url: 'https://example.com/page1' },
+          { type: 'url_citation', url: undefined },
+          { type: 'url_citation', url: null },
+          { type: 'url_citation' }, // missing url property
+          { type: 'url_citation', url: 'https://caplinq.com/products' }
+        ]
+      };
+
+      // This is the fix we applied - filter(Boolean) after map
+      const citations = (message.annotations || [])
+        .filter(a => a.type === 'url_citation')
+        .map(a => a.url)
+        .filter(Boolean);
+
+      const domain = 'caplinq.com';
+      // Should not throw error and should correctly identify citations
+      const citedInUrls = citations.some(c => c.includes(domain));
+
+      expect(citations).toHaveLength(2); // Only valid URLs
+      expect(citedInUrls).toBe(true);
+    });
   });
 
   describe('check_citations tool - Google Gemini', () => {

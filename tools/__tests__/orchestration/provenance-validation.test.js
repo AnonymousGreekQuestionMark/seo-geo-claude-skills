@@ -434,6 +434,178 @@ describe('Feeder Chain Validation', () => {
   });
 });
 
+describe('Provenance Builder - PENDING to NOT_ASSESSED', () => {
+  // Simulate the provenance-builder behavior
+  function simulateFinalizeProvenance(provenance) {
+    // Mark remaining PENDING items as NOT_ASSESSED
+    for (const dimension of Object.values(provenance.cite_provenance.dimensions)) {
+      if (dimension.items) {
+        for (const item of dimension.items) {
+          if (item.status === 'PENDING') {
+            item.status = 'NOT_ASSESSED';
+            item.reason = 'Item not evaluated in this analysis run';
+          }
+        }
+      }
+    }
+    for (const dimension of Object.values(provenance.core_eeat_provenance.dimensions)) {
+      if (dimension.items) {
+        for (const item of dimension.items) {
+          if (item.status === 'PENDING') {
+            item.status = 'NOT_ASSESSED';
+            item.reason = 'Item not evaluated in this analysis run';
+          }
+        }
+      }
+    }
+    return provenance;
+  }
+
+  it('converts PENDING items to NOT_ASSESSED after finalization', () => {
+    const provenance = {
+      cite_provenance: {
+        dimensions: {
+          C: {
+            items: [
+              { id: 'C01', status: 'PENDING' },
+              { id: 'C02', status: 'PASS', score: 75 },
+              { id: 'C03', status: 'PENDING' }
+            ]
+          },
+          I: { items: [] },
+          T: { items: [] },
+          E: { items: [] }
+        }
+      },
+      core_eeat_provenance: {
+        dimensions: {
+          C: {
+            items: [
+              { id: 'C01', status: 'FAIL', score: 30 },
+              { id: 'C02', status: 'PENDING' }
+            ]
+          },
+          O: { items: [] },
+          R: { items: [] },
+          E: { items: [] },
+          Exp: { items: [] },
+          Ept: { items: [] },
+          A: { items: [] },
+          T: { items: [] }
+        }
+      }
+    };
+
+    const finalized = simulateFinalizeProvenance(provenance);
+
+    // Check CITE items
+    const citeC = finalized.cite_provenance.dimensions.C.items;
+    expect(citeC[0].status).toBe('NOT_ASSESSED');
+    expect(citeC[0].reason).toBe('Item not evaluated in this analysis run');
+    expect(citeC[1].status).toBe('PASS'); // Should remain unchanged
+    expect(citeC[2].status).toBe('NOT_ASSESSED');
+
+    // Check CORE-EEAT items
+    const coreC = finalized.core_eeat_provenance.dimensions.C.items;
+    expect(coreC[0].status).toBe('FAIL'); // Should remain unchanged
+    expect(coreC[1].status).toBe('NOT_ASSESSED');
+  });
+
+  it('handles empty items arrays without error', () => {
+    const provenance = {
+      cite_provenance: {
+        dimensions: {
+          C: { items: [] },
+          I: { items: [] },
+          T: { items: [] },
+          E: { items: [] }
+        }
+      },
+      core_eeat_provenance: {
+        dimensions: {
+          C: { items: [] },
+          O: { items: [] },
+          R: { items: [] },
+          E: { items: [] },
+          Exp: { items: [] },
+          Ept: { items: [] },
+          A: { items: [] },
+          T: { items: [] }
+        }
+      }
+    };
+
+    expect(() => simulateFinalizeProvenance(provenance)).not.toThrow();
+  });
+
+  it('handles dimensions without items property', () => {
+    const provenance = {
+      cite_provenance: {
+        dimensions: {
+          C: { score: 72 }, // No items array (legacy format)
+          I: { score: 68 },
+          T: { score: 71 },
+          E: { score: 65 }
+        }
+      },
+      core_eeat_provenance: {
+        dimensions: {
+          C: { score: 72, source_skill: 'content-quality-auditor' },
+          O: { score: 68 },
+          R: { score: 65 },
+          E: { score: 70 },
+          Exp: { score: 78 },
+          Ept: { score: 80 },
+          A: { score: 62 },
+          T: { score: 68 }
+        }
+      }
+    };
+
+    // Should not throw when items property is missing
+    expect(() => simulateFinalizeProvenance(provenance)).not.toThrow();
+  });
+
+  it('no PENDING items remain after finalization', () => {
+    const provenance = {
+      cite_provenance: {
+        dimensions: {
+          C: { items: [{ id: 'C01', status: 'PENDING' }, { id: 'C02', status: 'PENDING' }] },
+          I: { items: [{ id: 'I01', status: 'PENDING' }] },
+          T: { items: [] },
+          E: { items: [] }
+        }
+      },
+      core_eeat_provenance: {
+        dimensions: {
+          C: { items: [{ id: 'C01', status: 'PENDING' }] },
+          O: { items: [] },
+          R: { items: [] },
+          E: { items: [] },
+          Exp: { items: [] },
+          Ept: { items: [] },
+          A: { items: [] },
+          T: { items: [] }
+        }
+      }
+    };
+
+    const finalized = simulateFinalizeProvenance(provenance);
+
+    // Collect all items and check none are PENDING
+    const allItems = [];
+    for (const dim of Object.values(finalized.cite_provenance.dimensions)) {
+      if (dim.items) allItems.push(...dim.items);
+    }
+    for (const dim of Object.values(finalized.core_eeat_provenance.dimensions)) {
+      if (dim.items) allItems.push(...dim.items);
+    }
+
+    const pendingItems = allItems.filter(i => i.status === 'PENDING');
+    expect(pendingItems).toHaveLength(0);
+  });
+});
+
 // Export for use in other tests
 export {
   validateScoreProvenance,

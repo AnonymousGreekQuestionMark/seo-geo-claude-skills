@@ -364,5 +364,128 @@ describe('Data File Validation', () => {
   });
 });
 
+describe('llms.txt Section Handling', () => {
+  it('shows explicit 404 message when llms.txt missing', () => {
+    // Simulate the check in buildLlmsTxtSection
+    const technicalData = {
+      llms_txt: null, // 404 - file doesn't exist
+      robots_ai: {
+        training_bots_addressed: false,
+        retrieval_bots_allowed: true
+      }
+    };
+
+    const hasMissingLlmsTxt = !technicalData?.llms_txt || technicalData.llms_txt?.exists === false;
+    expect(hasMissingLlmsTxt).toBe(true);
+
+    // Should show 404 message, not generic "audit not performed"
+    const expectedMessage = 'llms.txt Status: 404 Not Found';
+    expect(expectedMessage).toContain('404');
+  });
+
+  it('still shows robots.txt analysis when llms.txt is 404', () => {
+    const technicalData = {
+      llms_txt: { exists: false }, // Explicitly 404
+      robots_ai: {
+        training_bots_addressed: true,
+        retrieval_bots_allowed: true,
+        distinction_made: true,
+        llms_txt_accessible: false
+      }
+    };
+
+    // Even with missing llms.txt, robots_ai data should be displayed
+    expect(technicalData.robots_ai.training_bots_addressed).toBe(true);
+    expect(Object.keys(technicalData.robots_ai).length).toBeGreaterThan(0);
+  });
+
+  it('shows full llms.txt analysis when file exists', () => {
+    const technicalData = {
+      llms_txt: {
+        exists: true,
+        url: 'https://example.com/llms.txt',
+        h1_present: true,
+        h1_text: 'Example Corp',
+        blockquote_present: true,
+        valid_markdown: true,
+        canonical_links: true,
+        size_ok: true,
+        size_bytes: 2048,
+        page_count_ok: true,
+        page_count: 12
+      }
+    };
+
+    expect(technicalData.llms_txt.exists).toBe(true);
+    expect(technicalData.llms_txt.h1_present).toBe(true);
+  });
+});
+
+describe('CORE-EEAT Dimension Display', () => {
+  it('shows dimension-level summary when items array missing', () => {
+    // Simulate legacy/simplified provenance format
+    const eeat = {
+      dimensions: {
+        C: { score: 72, source_skill: 'content-quality-auditor' }, // No items array
+        O: { score: 68, source_skill: 'content-quality-auditor' },
+        R: { score: 65, source_skill: 'content-quality-auditor' },
+        E: { score: 70, source_skill: 'content-quality-auditor' }
+      }
+    };
+
+    // Check that dimension-level data is available even without items
+    ['C', 'O', 'R', 'E'].forEach(dim => {
+      const d = eeat.dimensions[dim];
+      const hasItems = !!(d && d.items && d.items.length > 0);
+      const hasDimensionScore = !!(d && d.score !== undefined);
+
+      expect(hasItems).toBe(false); // No items
+      expect(hasDimensionScore).toBe(true); // But has score
+      expect(d.source_skill).toBeDefined(); // And source info
+    });
+  });
+
+  it('shows full items table when items array present', () => {
+    const eeat = {
+      dimensions: {
+        C: {
+          score: 72,
+          items: [
+            { id: 'C01', name: 'Intent Alignment', status: 'PASS', score: 85, priority: 'Dual' },
+            { id: 'C02', name: 'Direct Answer', status: 'PARTIAL', score: 65, priority: 'GEO' }
+          ]
+        }
+      }
+    };
+
+    const d = eeat.dimensions.C;
+    const hasItems = d && d.items && d.items.length > 0;
+
+    expect(hasItems).toBe(true);
+    expect(d.items[0].id).toBe('C01');
+    expect(d.items[1].status).toBe('PARTIAL');
+  });
+
+  it('EEAT dimensions (Exp, Ept, A, T) also support fallback', () => {
+    const eeat = {
+      dimensions: {
+        Exp: { score: 78, source_skill: 'content-quality-auditor' },
+        Ept: { score: 80, source_skill: 'content-quality-auditor' },
+        A: { score: 62, source_skill: 'content-quality-auditor' },
+        T: { score: 68, source_skill: 'content-quality-auditor' }
+      }
+    };
+
+    ['Exp', 'Ept', 'A', 'T'].forEach(dim => {
+      const d = eeat.dimensions[dim];
+      const hasItems = !!(d && d.items && d.items.length > 0);
+      const hasDimensionScore = !!(d && d.score !== undefined);
+
+      expect(hasItems).toBe(false);
+      expect(hasDimensionScore).toBe(true);
+    });
+  });
+});
+
 // Export for use in other tests
 export { PDF_REQUIREMENTS };

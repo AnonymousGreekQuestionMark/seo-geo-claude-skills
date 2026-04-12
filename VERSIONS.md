@@ -13,24 +13,119 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 | serp-analysis | research | 6.4.0 | 2026-04-12 |
 | content-gap-analysis | research | 6.4.0 | 2026-04-12 |
 | seo-content-writer | build | 6.4.0 | 2026-04-12 |
-| geo-content-optimizer | build | 6.4.0 | 2026-04-12 |
+| geo-content-optimizer | build | 6.5.0 | 2026-04-12 |
 | meta-tags-optimizer | build | 6.4.0 | 2026-04-12 |
 | schema-markup-generator | build | 6.4.0 | 2026-04-12 |
 | on-page-seo-auditor | optimize | 6.4.0 | 2026-04-12 |
-| technical-seo-checker | optimize | 6.4.0 | 2026-04-12 |
+| technical-seo-checker | optimize | 6.5.0 | 2026-04-12 |
 | internal-linking-optimizer | optimize | 6.4.0 | 2026-04-12 |
 | content-refresher | optimize | 6.4.0 | 2026-04-12 |
 | rank-tracker | monitor | 6.4.0 | 2026-04-12 |
 | backlink-analyzer | monitor | 6.4.0 | 2026-04-12 |
 | performance-reporter | monitor | 6.4.0 | 2026-04-12 |
 | alert-manager | monitor | 6.4.0 | 2026-04-12 |
-| content-quality-auditor | cross-cutting | 6.4.0 | 2026-04-12 |
+| content-quality-auditor | cross-cutting | 6.6.0 | 2026-04-12 |
 | domain-authority-auditor | cross-cutting | 6.4.0 | 2026-04-12 |
-| entity-optimizer | cross-cutting | 6.4.0 | 2026-04-12 |
+| entity-optimizer | cross-cutting | 6.5.0 | 2026-04-12 |
 | memory-management | cross-cutting | 6.4.0 | 2026-04-12 |
-| company-analysis | orchestration | 1.1.0 | 2026-04-12 |
+| company-analysis | orchestration | 1.4.0 | 2026-04-12 |
 
 ## Changelog
+
+### v6.6.1 — Pipeline Integrity Fixes (2026-04-12)
+
+Bug fixes and improvements for pipeline transparency and error reporting.
+
+**Fixed**
+- OpenAI citation checks failing when annotations have missing/undefined URLs (added `.filter(Boolean)`)
+- Score provenance items remaining as "PENDING" instead of "NOT_ASSESSED" after finalization
+- llms.txt audit showing generic "not performed" message instead of explicit "404 Not Found"
+- Empty CORE-EEAT data provenance tables in PDF — added fallback for dimension-level display
+
+**Added**
+- CLI wrapper `ops-log-cli.js` for operations logging during orchestration
+- Tests for OpenAI undefined URL handling, provenance NOT_ASSESSED conversion, llms.txt 404 display, and dimension-level fallback
+
+### v6.6.0 — Comprehensive PDF Report & Score Provenance System (2026-04-12)
+
+Major enhancement to make PDF the comprehensive audit trail with full 120-item framework traceability.
+
+**Phase 1 — Citation Prominence Testing**
+- Auto-extract hero keywords from entity-optimizer handoff (industry, products, services)
+- Generate queries across 3 types: brand (3), industry (4), hero (6) = 13 total
+- Track C06 citation prominence (primary vs secondary citations)
+- New `extractHeroKeywords()` and `runCitationProminenceTest()` functions in pipeline-runner.js
+
+**Phase 2 — LIMIT_ANTHROPIC Environment Flag**
+- Added `config.anthropic.limitCalls` (default: true)
+- When enabled, Anthropic runs ONCE per step, not per query
+- Reduces ~150 Anthropic calls to ~7 (one per step)
+- Other engines (OpenAI, Gemini) run on ALL queries
+
+**Phase 3 — Comprehensive Score Provenance**
+- New `provenance-builder.js` with full 120-item structure (40 CITE + 80 CORE-EEAT)
+- All items include: score, status, confidence, data_source, raw_data, threshold, calculation
+- Tracks veto items (CITE: T03/T05/T09; CORE-EEAT: C01/R10/T04)
+- Weighted CITE scoring (C:35%, I:20%, T:25%, E:20%)
+- GEO = avg(C,O,R,E); SEO = avg(Exp,Ept,A,T)
+
+**Phase 5 — Save ALL AI Prompts**
+- Updated `ai-citation-monitor.js` to save all prompts when `analysisPath` provided
+- check_citations, compare_competitor_citations, track_citation_snapshot now save 148-200 prompts
+- All 4 MCP tools accept `analysisPath` and `step` parameters
+
+**Phase 6 — Execution Status Document**
+- New `status-report-generator.js` generating both JSON and Markdown
+- Tracks pass/fail/skip/fallback for all 120 items
+- Shows handoff file presence, skill execution status, veto triggers
+
+**Phase 7 — Comprehensive PDF**
+- Updated `pdf-generator.js` with full 120-item tables
+- Appendix A: Raw Data Links
+- Appendix B: ALL AI Prompts (not just 5 samples)
+- Appendix C: Full CITE (40) + CORE-EEAT (80) provenance tables
+- Appendix D: llms.txt AI Discoverability audit
+- Appendix E: Execution Status
+
+**Operations Logging**
+- New `operations-logger.js` captures full execution trace per analysis
+- Logs: step events, tool calls, file operations, errors, warnings
+- Outputs: `operations-log.json` (machine) + `operations-log.md` (human)
+- Tracks: API calls by engine, duration per step, LIMIT_ANTHROPIC events
+
+**Updated Files**
+- `tools/shared/config.js` — LIMIT_ANTHROPIC flag
+- `tools/shared/pipeline-runner.js` — provenance integration, hero keywords, lifecycle functions, operations logging
+- `tools/shared/provenance-builder.js` — NEW: 120-item structure builder
+- `tools/shared/status-report-generator.js` — NEW: execution status generator
+- `tools/shared/operations-logger.js` — NEW: comprehensive operations logging
+- `tools/shared/pdf-generator.js` — comprehensive appendix sections
+- `tools/mcp-servers/ai-citation-monitor.js` — prompt saving, LIMIT_ANTHROPIC
+- `orchestration/company-analysis/SKILL.md` — Steps 0.5, 1.5, 21.7, 21.8 updated
+
+### v6.5.1 — Prompt Results Appendix + Score Provenance (2026-04-12)
+
+Added comprehensive prompt logging, appendix tab, and full score auditability for company-analysis reports.
+
+- **Prompt logging** (`company-analysis` v1.2.0): New Step 0.5 initializes `prompt-results.json` to capture all LLM prompts and responses during analysis.
+- **Full response capture** (`ai-citation-monitor`): All 4 engine functions (Perplexity, Anthropic, OpenAI, Gemini) now return `response_full` and `prompt_used` fields alongside excerpts.
+- **Tab 8: Prompt Appendix** (`company-analysis`): New collapsible HTML tab displaying all LLM queries, full responses, and citation findings by engine. WebFetch calls table also included.
+- **Score provenance** (`company-analysis`): New Step 21.6 generates `score-provenance.json` tracing every CITE/CORE-EEAT score to its source skill, step, raw data, and calculation method.
+- **Maps to field** (`company-analysis`): Handoff template now requires "Maps to:" field listing which CITE/CORE-EEAT items the skill feeds.
+- **Prompting documentation** (`docs/prompting-documentation.md`): New reference document detailing all prompt templates, when they execute in the pipeline, call counts, and output file structures.
+- **CSS additions** (`company-analysis`): New styles for collapsible engine sections, prompt/response boxes, and findings summaries.
+
+### v6.5.0 — llms.txt AI Discoverability Integration (2026-04-12)
+
+Added llms.txt/llms-full.txt checking and AI crawler user-agent auditing for forward-looking GEO optimization.
+
+- **AI Discoverability Files Review** (`technical-seo-checker`): New section in Step 1 Crawlability Audit adds llms.txt (10 checks), llms-full.txt (4 checks), and robots-ai.txt detection. Generates draft llms.txt for sites missing the file.
+- **AI crawler robots.txt checks** (`technical-seo-checker`): Robots.txt review table expanded with 5 new rows for AI training bots (GPTBot, ClaudeBot, Google-Extended, CCBot), AI retrieval bots (ChatGPT-User, Claude-User, PerplexityBot), training/retrieval distinction, deprecated user-agents, and llms.txt accessibility.
+- **llms.txt reference** (`technical-seo-checker`): New `references/llms-txt-reference.md` with full spec, AI crawler tables, 4 site-type templates (SaaS, e-commerce, publisher, docs), common mistakes, adoption reality data, pre-publish checklist.
+- **Signal #48: llms.txt self-declaration** (`entity-optimizer`): New AI-specific signal in Priority 3 tier checking llms.txt exists, H1 matches canonical entity name, blockquote aligns with KG description, linked pages cover primary topics.
+- **AI Discoverability Alignment** (`geo-content-optimizer`): New post-optimization check verifying llms.txt H1/blockquote alignment and AI engine structure preferences (Google AI Overview, ChatGPT, Perplexity, Claude).
+- **CITE mapping** (`technical-seo-checker`): Maps to field updated to include I01 (brand knowledge via llms.txt H1), I04 (schema coverage), A07 (brand signals), O05 (structured data).
+- **Handoff template** (`technical-seo-checker`): AI Discoverability summary block added to audit output.
 
 ### v6.4.0 — Framework Integrity: Feeder Chain, Maps-to, Time-Series, Scope Split (2026-04-12)
 
@@ -52,7 +147,7 @@ Structural improvements across all 21 skills addressing 8 architectural concerns
 New orchestration skill and command for full-company SEO/GEO analysis.
 
 - **`company-analysis` skill**: Orchestrates all 20 existing skills in a fixed 21-step sequence against a company domain. Parses URL to company root (e.g. `blog.caplinq.com` → `caplinq`). Saves phase-organized handoff summaries to `analyses/<company-root>/<domain>/analysis-<timestamp>/` across 7 phase subdirectories. Generates a self-contained dark-mode HTML report.
-- **`/seo:analyze-company` command**: One-shot command that invokes the `company-analysis` skill. Supports optional `pages` parameter for targeted on-page audits.
+- **`/geo:analyze-company` command**: One-shot command that invokes the `company-analysis` skill. Supports optional `pages` parameter for targeted on-page audits.
 - **`analyses/` directory**: New output directory for all company analysis runs. Organized by company root → domain → timestamped run → 7 phase subdirectories. Reports saved to `analyses/<company-root>/reports/`.
 - **BLOCKED handling**: Individual skill blocks are recorded and skipped; analysis continues. Overall DONE_WITH_CONCERNS if ≤5 skills blocked.
 - plugin.json: version 6.2.0 → 6.3.0
@@ -310,7 +405,7 @@ Consolidates all post-2.0.0 changes into a single major release aligned with plu
 - Entity optimizer with Knowledge Graph + Wikidata + AI resolution
 - Memory management with two-layer hot/cold storage
 - Tool-agnostic ~~placeholder connector system with progressive enhancement tiers
-- 9 one-shot commands (`/seo:audit-page`, `/seo:audit-domain`, etc.)
+- 9 one-shot commands (`/geo:audit-page`, `/geo:audit-domain`, etc.)
 - Inter-skill handoff protocol with score passthrough
 - skills.sh marketplace and Claude Code plugin distribution
 

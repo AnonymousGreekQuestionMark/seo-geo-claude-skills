@@ -5,12 +5,27 @@
  * Perplexity (sonar) does live web search — most accurate for current citation state.
  * Claude/GPT/Gemini reflect training data knowledge — useful for brand awareness signal.
  * Missing engine keys are skipped gracefully; at least one engine must be configured.
+ *
+ * Prompt Saving: When analysisPath is provided, saves all prompts to prompt-results.json
+ * per prompting-documentation.md (148-200 LLM calls per full analysis).
+ *
+ * LIMIT_ANTHROPIC: When enabled (default), Anthropic runs once per step, not per query.
  */
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { config, tierStatus } from '../shared/config.js';
 import { post, ok, err, tier1Manual } from '../shared/http.js';
+import { savePromptResult } from '../shared/pipeline-runner.js';
+
+// Debug: Log config status at startup
+const anyEngine = config.anthropic.available || config.openai.available || config.gemini.available || config.perplexity.available;
+console.error(`[ai-citation-monitor] Starting. anyEngine=${anyEngine} anthropic=${config.anthropic.available} openai=${config.openai.available} gemini=${config.gemini.available} perplexity=${config.perplexity.available}`);
+
+/**
+ * Track steps where Anthropic has already run (LIMIT_ANTHROPIC support)
+ */
+const anthropicRanInStep = new Set();
 
 tierStatus('ai-citation-monitor', {
   'Anthropic Claude (live web search)': config.anthropic.available && config.anthropic.webSearch,
@@ -25,6 +40,47 @@ const CITATION_PROMPT = (domain, query) =>
 
 const AWARENESS_PROMPT = (domain, query) =>
   `I'm researching: "${query}". What websites or domains are authoritative sources on this topic? Please list specific domain names you know about. Does ${domain} appear in your knowledge as a relevant source?`;
+
+/**
+ * Save prompt result to analysis directory if analysisPath provided
+ */
+async function maybeSavePrompt(analysisPath, step, skill, engineResult, domain, query) {
+  if (!analysisPath) return;
+  try {
+    await savePromptResult(analysisPath, {
+      step,
+      skill,
+      engine: engineResult.engine,
+      model: engineResult.model || config[engineResult.engine]?.model || 'unknown',
+      timestamp_utc: new Date().toISOString(),
+      live_search: engineResult.live_search,
+      query,
+      domain,
+      response_excerpt: engineResult.response_excerpt,
+      response_full: engineResult.response_full,
+      citation_urls: engineResult.citation_urls || [],
+      domain_cited: engineResult.domain_cited,
+      prompt_used: engineResult.prompt_used
+    });
+  } catch (e) {
+    console.error(`[ai-citation-monitor] Failed to save prompt: ${e.message}`);
+  }
+}
+
+/**
+ * Check if Anthropic should run for this step (LIMIT_ANTHROPIC support)
+ */
+function shouldRunAnthropic(step) {
+  if (!config.anthropic.available) return false;
+  if (!config.anthropic.limitCalls) return true;
+  if (anthropicRanInStep.has(step)) {
+    console.log(`[LIMIT_ANTHROPIC] Skipping Anthropic (already ran in step ${step})`);
+    return false;
+  }
+  anthropicRanInStep.add(step);
+  console.log(`[LIMIT_ANTHROPIC] Running Anthropic for step ${step}`);
+  return true;
+}
 
 // ── Engine implementations ────────────────────────────────────────────────────
 
@@ -102,7 +158,8 @@ async function queryOpenAI(query, domain) {
   const content = typeof message.content === 'string' ? message.content : '';
   const citations = (message.annotations || [])
     .filter((a) => a.type === 'url_citation')
-    .map((a) => a.url);
+    .map((a) => a.url)
+    .filter(Boolean);
   const citedInUrls = citations.some((c) => c.includes(domain));
   const citedInContent = content.toLowerCase().includes(domain.toLowerCase());
   return {
@@ -147,20 +204,68 @@ async function queryGemini(query, domain) {
 
 // ── Aggregate across engines ──────────────────────────────────────────────────
 
-async function checkAllEngines(domain, query) {
-  const engines = [
-    config.perplexity.available && queryPerplexity(query, domain),
-    config.anthropic.available && queryAnthropic(query, domain),
-    config.openai.available && queryOpenAI(query, domain),
-    config.gemini.available && queryGemini(query, domain),
-  ].filter(Boolean);
+/**
+ * Check all engines for a query
+ * @param {string} domain - Domain to check
+ * @param {string} query - Query to test
+ * @param {Object} opts - Options
+ * @param {string} opts.step - Pipeline step (for LIMIT_ANTHROPIC)
+ * @param {string} opts.skill - Skill name (for prompt saving)
+ * @param {string} opts.analysisPath - Path to save prompts
+ */
+async function checkAllEngines(domain, query, opts = {}) {
+  const { step = '1.5', skill = 'citation-baseline', analysisPath = null } = opts;
+  const results = [];
 
-  if (engines.length === 0) return [];
+  // Run engines and save prompts
+  if (config.perplexity.available) {
+    try {
+      const result = await queryPerplexity(query, domain);
+      results.push(result);
+      await maybeSavePrompt(analysisPath, step, skill, result, domain, query);
+    } catch (e) {
+      results.push({ engine: 'perplexity', error: e.message });
+    }
+  }
 
-  const results = await Promise.allSettled(engines);
-  return results.map((r) =>
-    r.status === 'fulfilled' ? r.value : { engine: 'unknown', error: r.reason?.message }
-  );
+  if (config.openai.available) {
+    try {
+      const result = await queryOpenAI(query, domain);
+      results.push(result);
+      await maybeSavePrompt(analysisPath, step, skill, result, domain, query);
+    } catch (e) {
+      results.push({ engine: 'openai', error: e.message });
+    }
+  }
+
+  if (config.gemini.available) {
+    try {
+      const result = await queryGemini(query, domain);
+      results.push(result);
+      await maybeSavePrompt(analysisPath, step, skill, result, domain, query);
+    } catch (e) {
+      results.push({ engine: 'gemini', error: e.message });
+    }
+  }
+
+  // Anthropic: check LIMIT_ANTHROPIC before running
+  if (shouldRunAnthropic(step)) {
+    try {
+      const result = await queryAnthropic(query, domain);
+      results.push(result);
+      await maybeSavePrompt(analysisPath, step, skill, result, domain, query);
+    } catch (e) {
+      results.push({ engine: 'anthropic', error: e.message });
+    }
+  } else if (config.anthropic.available && config.anthropic.limitCalls) {
+    results.push({
+      engine: 'anthropic',
+      skipped: true,
+      reason: `LIMIT_ANTHROPIC=true, already ran in step ${step}`
+    });
+  }
+
+  return results;
 }
 
 // ── Server ────────────────────────────────────────────────────────────────────
@@ -174,7 +279,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
     {
       name: 'check_citations',
-      description: 'Check if a domain is cited by AI engines for a given query. Queries all configured LLM engines (Perplexity with live search, Claude/GPT/Gemini from training data). Maps to CITE C05 (AI Citation Frequency), C06 (Prominence), C07 (Cross-Engine).',
+      description: 'Check if a domain is cited by AI engines for a given query. Queries all configured LLM engines (Perplexity with live search, Claude/GPT/Gemini from training data). Maps to CITE C05 (AI Citation Frequency), C06 (Prominence), C07 (Cross-Engine). Pass analysisPath to save all prompts to prompt-results.json.',
       inputSchema: {
         type: 'object',
         properties: {
@@ -184,6 +289,9 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
             items: { type: 'string' },
             description: 'List of queries to test (e.g. ["what is a gas diffusion layer", "PFAS alternatives for GDL"])',
           },
+          analysisPath: { type: 'string', description: 'Path to analysis directory for saving prompts (optional)' },
+          step: { type: 'string', description: 'Pipeline step number for prompt tracking (default: 1.5)' },
+          query_type: { type: 'string', enum: ['brand', 'industry', 'hero'], description: 'Type of queries being tested (for C06 prominence tracking)' },
         },
         required: ['domain', 'queries'],
       },
@@ -195,30 +303,36 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
         type: 'object',
         properties: {
           query: { type: 'string', description: 'Query to analyze AI response format for' },
+          analysisPath: { type: 'string', description: 'Path to analysis directory for saving prompts (optional)' },
+          step: { type: 'string', description: 'Pipeline step number for prompt tracking' },
         },
         required: ['query'],
       },
     },
     {
       name: 'compare_competitor_citations',
-      description: 'Compare AI citation share across multiple domains for a set of topic queries. Returns per-domain citation rates and gaps (queries where a competitor is cited but the target domain is not). Used by competitor-analysis and content-gap-analysis.',
+      description: 'Compare AI citation share across multiple domains for a set of topic queries. Returns per-domain citation rates and gaps (queries where a competitor is cited but the target domain is not). Used by competitor-analysis and content-gap-analysis. Pass analysisPath to save all prompts (20-40 per call).',
       inputSchema: {
         type: 'object',
         properties: {
           topic_queries: { type: 'array', items: { type: 'string' }, description: '5–10 queries to test across all domains' },
           domains: { type: 'array', items: { type: 'string' }, description: 'Domains to compare — include target domain + competitors (e.g. ["caplinq.com", "specialchem.com"])' },
+          analysisPath: { type: 'string', description: 'Path to analysis directory for saving prompts (optional)' },
+          step: { type: 'string', description: 'Pipeline step number for prompt tracking (default: 3)' },
         },
         required: ['topic_queries', 'domains'],
       },
     },
     {
       name: 'track_citation_snapshot',
-      description: 'Take a compact citation state snapshot for a domain — which queries it is cited for, which engines cite it. Designed for storage and diff against prior snapshots to detect citation gains/losses. Used by rank-tracker, performance-reporter, and alert-manager.',
+      description: 'Take a compact citation state snapshot for a domain — which queries it is cited for, which engines cite it. Designed for storage and diff against prior snapshots to detect citation gains/losses. Used by rank-tracker (step 17), performance-reporter (step 18), and alert-manager (step 19). Pass analysisPath to save all prompts (32-40 per call).',
       inputSchema: {
         type: 'object',
         properties: {
           domain: { type: 'string', description: 'Domain to snapshot (e.g. caplinq.com)' },
           queries: { type: 'array', items: { type: 'string' }, description: 'Queries to test' },
+          analysisPath: { type: 'string', description: 'Path to analysis directory for saving prompts (optional)' },
+          step: { type: 'string', description: 'Pipeline step number (17=rank-tracker, 18=performance-reporter, 19=alert-manager)' },
         },
         required: ['domain', 'queries'],
       },
@@ -251,13 +365,22 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         );
       }
 
+      const step = args.step || '1.5';
+      const analysisPath = args.analysisPath || null;
+      const queryType = args.query_type || 'brand';
       const queryResults = [];
+
       for (const query of args.queries) {
-        const engineResults = await checkAllEngines(args.domain, query);
-        const citedCount = engineResults.filter((r) => r.domain_cited).length;
-        const totalEngines = engineResults.filter((r) => !r.error).length;
+        const engineResults = await checkAllEngines(args.domain, query, {
+          step,
+          skill: 'check_citations',
+          analysisPath
+        });
+        const citedCount = engineResults.filter((r) => r.domain_cited && !r.skipped).length;
+        const totalEngines = engineResults.filter((r) => !r.error && !r.skipped).length;
         queryResults.push({
           query,
+          query_type: queryType,
           cited_by_engines: citedCount,
           total_engines_checked: totalEngines,
           citation_rate: totalEngines > 0 ? `${citedCount}/${totalEngines}` : 'n/a',
@@ -266,7 +389,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
 
       const totalCited = queryResults.filter((r) => r.cited_by_engines > 0).length;
-      const enginesUsed = [...new Set(queryResults.flatMap((r) => r.engines.map((e) => e.engine).filter((e) => e !== 'unknown')))];
+      const enginesUsed = [...new Set(queryResults.flatMap((r) => r.engines.map((e) => e.engine).filter((e) => e !== 'unknown' && !r.engines.find(eng => eng.engine === e)?.skipped)))];
       const c05 = totalCited >= 10 ? 'PASS' : totalCited >= 3 ? 'PARTIAL' : 'FAIL';
       const c07 = enginesUsed.length >= 3 ? 'PASS' : enginesUsed.length === 2 ? 'PARTIAL' : 'FAIL';
 
@@ -275,10 +398,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         queries_tested: args.queries.length,
         queries_with_citation: totalCited,
         engines_used: enginesUsed,
+        query_type: queryType,
         cite_C05_verdict: c05,
         cite_C05_note: 'PASS requires cited on ≥10 queries across ≥2 engines',
         cite_C07_verdict: c07,
         cite_C07_note: 'PASS requires cited by ≥3 different AI engines',
+        prompts_saved: analysisPath ? args.queries.length * enginesUsed.length : 0,
         results: queryResults,
       });
     } catch (e) {
@@ -286,7 +411,6 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
   }
 
-  // ── get_ai_response_format ──────────────────────────────────────────────────
   // ── get_ai_response_format ──────────────────────────────────────────────────
   if (name === 'get_ai_response_format') {
     try {
@@ -297,12 +421,19 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         );
       }
 
+      const step = args.step || '13';
+      const analysisPath = args.analysisPath || null;
+
       // Use first available engine — Perplexity preferred (live), then OpenAI, Gemini, Anthropic
       let engineResult;
       if (config.perplexity.available) engineResult = await queryPerplexity(args.query, '');
       else if (config.openai.available) engineResult = await queryOpenAI(args.query, '');
       else if (config.gemini.available) engineResult = await queryGemini(args.query, '');
-      else engineResult = await queryAnthropic(args.query, '');
+      else if (shouldRunAnthropic(step)) engineResult = await queryAnthropic(args.query, '');
+      else return err('No engines available for get_ai_response_format');
+
+      // Save prompt if analysisPath provided
+      await maybeSavePrompt(analysisPath, step, 'get_ai_response_format', engineResult, '', args.query);
 
       const text = engineResult.response_excerpt || '';
       const hasList = /^\s*[-*•]\s/m.test(text) || /^\s*\d+\.\s/m.test(text);
@@ -320,6 +451,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         word_count: words,
         starts_with_direct_answer: startsWithDirect,
         response_excerpt: text,
+        prompt_saved: analysisPath ? 1 : 0,
       });
     } catch (e) {
       return err(e.message);
@@ -336,10 +468,19 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         );
       }
 
+      const step = args.step || '3';
+      const analysisPath = args.analysisPath || null;
       const citationShare = Object.fromEntries(args.domains.map((d) => [d, { cited_count: 0, queries_cited: [] }]));
+      let promptsSaved = 0;
 
       for (const query of args.topic_queries) {
-        const engineResults = await checkAllEngines('', query);
+        const engineResults = await checkAllEngines('', query, {
+          step,
+          skill: 'compare_competitor_citations',
+          analysisPath
+        });
+        promptsSaved += engineResults.filter(r => !r.skipped && !r.error).length;
+
         const allCitedUrls = engineResults.flatMap((r) => r.citation_urls || []);
         const allText = engineResults.map((r) => r.response_excerpt || '').join(' ').toLowerCase();
 
@@ -375,6 +516,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         citation_share: citationShare,
         leader,
         gaps,
+        prompts_saved: analysisPath ? promptsSaved : 0,
       });
     } catch (e) {
       return err(e.message);
@@ -391,14 +533,25 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         );
       }
 
+      const step = args.step || '17';
+      const analysisPath = args.analysisPath || null;
+      const skillMap = { '17': 'rank-tracker', '18': 'performance-reporter', '19': 'alert-manager' };
+      const skill = skillMap[step] || 'track_citation_snapshot';
+
       const queriesCited = [];
       const queriesNotCited = [];
       const enginesSeenSet = new Set();
+      let promptsSaved = 0;
 
       for (const query of args.queries) {
-        const engineResults = await checkAllEngines(args.domain, query);
-        engineResults.forEach((r) => { if (r.engine && r.engine !== 'unknown') enginesSeenSet.add(r.engine); });
-        const anyCited = engineResults.some((r) => r.domain_cited);
+        const engineResults = await checkAllEngines(args.domain, query, {
+          step,
+          skill,
+          analysisPath
+        });
+        promptsSaved += engineResults.filter(r => !r.skipped && !r.error).length;
+        engineResults.forEach((r) => { if (r.engine && r.engine !== 'unknown' && !r.skipped) enginesSeenSet.add(r.engine); });
+        const anyCited = engineResults.some((r) => r.domain_cited && !r.skipped);
         if (anyCited) queriesCited.push(query);
         else queriesNotCited.push(query);
       }
@@ -412,6 +565,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         queries_not_cited: queriesNotCited,
         engines_checked: enginesUsed,
         citation_rate: `${queriesCited.length}/${args.queries.length}`,
+        prompts_saved: analysisPath ? promptsSaved : 0,
       });
     } catch (e) {
       return err(e.message);
