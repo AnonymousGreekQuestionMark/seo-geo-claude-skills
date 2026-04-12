@@ -21,11 +21,11 @@ Generates valid **Schema.org JSON-LD** structured data markup to enhance search 
 ## Usage
 
 ```
-/seo:generate-schema FAQ for our pricing page Q&As
-/seo:generate-schema Product for [product details]
-/seo:generate-schema Article for https://example.com/blog-post
-/seo:generate-schema LocalBusiness for our main location page
-/seo:generate-schema HowTo for installation guide
+/geo:generate-schema FAQ for our pricing page Q&As
+/geo:generate-schema Product for [product details]
+/geo:generate-schema Article for https://example.com/blog-post
+/geo:generate-schema LocalBusiness for our main location page
+/geo:generate-schema HowTo for installation guide
 ```
 
 **Arguments:**

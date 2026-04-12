@@ -18,14 +18,14 @@ parameters:
 
 > Content quality scoring based on [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/core-eeat-content-benchmark). Full reference: [references/core-eeat-benchmark.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md)
 
-A combined **on-page SEO** + **CORE-EEAT content quality** audit. For full site-wide technical SEO, use `/seo:check-technical`.
+A combined **on-page SEO** + **CORE-EEAT content quality** audit. For full site-wide technical SEO, use `/geo:check-technical`.
 
 ## Usage
 
 ```
-/seo:audit-page https://example.com/blog-post
-/seo:audit-page [paste content here] targeting "keyword"
-/seo:audit-page https://example.com/landing-page keyword="primary keyword"
+/geo:audit-page https://example.com/blog-post
+/geo:audit-page [paste content here] targeting "keyword"
+/geo:audit-page https://example.com/landing-page keyword="primary keyword"
 ```
 
 **Arguments:**
@@ -98,14 +98,14 @@ DETAILED FINDINGS
 [Section-by-section breakdown + full 80-item score table]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NOTE: For technical SEO (speed, crawl, HTTPS), run: /seo:check-technical
+NOTE: For technical SEO (speed, crawl, HTTPS), run: /geo:check-technical
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
 ## Tips
 
 - Provide target keyword for accurate relevance scoring
-- Use alongside `/seo:check-technical` for full technical + content picture
+- Use alongside `/geo:check-technical` for full technical + content picture
 - Some EEAT items (A01, A05, A07) require site-level data; mark "N/A" if not observable
 - Run audits monthly for key pages and compare scores over time
 

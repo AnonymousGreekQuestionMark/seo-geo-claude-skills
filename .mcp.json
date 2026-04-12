@@ -1,43 +1,44 @@
 {
+  "$comment": "MCP servers for SEO/GEO skills - updated 2026-04-12T21:10 - using wrapper for env loading",
   "mcpServers": {
     "keyword-and-backlinks": {
       "type": "stdio",
-      "command": "node",
+      "command": "tools/mcp-servers/run-with-env.sh",
       "args": ["tools/mcp-servers/keyword-and-backlinks.js"]
     },
     "serp-analyzer": {
       "type": "stdio",
-      "command": "node",
+      "command": "tools/mcp-servers/run-with-env.sh",
       "args": ["tools/mcp-servers/serp-analyzer.js"]
     },
     "ai-citation-monitor": {
       "type": "stdio",
-      "command": "node",
+      "command": "tools/mcp-servers/run-with-env.sh",
       "args": ["tools/mcp-servers/ai-citation-monitor.js"]
     },
     "entity-checker": {
       "type": "stdio",
-      "command": "node",
+      "command": "tools/mcp-servers/run-with-env.sh",
       "args": ["tools/mcp-servers/entity-checker.js"]
     },
     "schema-validator": {
       "type": "stdio",
-      "command": "node",
+      "command": "tools/mcp-servers/run-with-env.sh",
       "args": ["tools/mcp-servers/schema-validator.js"]
     },
     "pagespeed": {
       "type": "stdio",
-      "command": "node",
+      "command": "tools/mcp-servers/run-with-env.sh",
       "args": ["tools/mcp-servers/pagespeed.js"]
     },
     "site-crawler": {
       "type": "stdio",
-      "command": "node",
+      "command": "tools/mcp-servers/run-with-env.sh",
       "args": ["tools/mcp-servers/site-crawler.js"]
     },
     "brand-monitor": {
       "type": "stdio",
-      "command": "node",
+      "command": "tools/mcp-servers/run-with-env.sh",
       "args": ["tools/mcp-servers/brand-monitor.js"]
     },
     "amplitude": {

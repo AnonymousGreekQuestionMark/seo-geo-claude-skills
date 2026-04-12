@@ -1,9 +1,23 @@
 import dotenv from 'dotenv';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: resolve(__dirname, '../../.env') });
+
+// Try multiple locations for .env file
+const envPaths = [
+  resolve(__dirname, '../../.env'),                    // From tools/shared/ → root
+  resolve(process.cwd(), '.env'),                      // CWD
+  '/Users/anirvin/AARAI/geo/seo-geo-claude-skills/.env' // Absolute fallback
+];
+
+for (const envPath of envPaths) {
+  if (existsSync(envPath)) {
+    dotenv.config({ path: envPath });
+    break;
+  }
+}
 
 const has = (key) => !!process.env[key];
 
@@ -38,6 +52,9 @@ export const config = {
     model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5',
     webSearch: process.env.ANTHROPIC_WEB_SEARCH === 'true',
     available: has('ANTHROPIC_API_KEY'),
+    // LIMIT_ANTHROPIC=true (default): Run Anthropic once per step, not per query
+    // LIMIT_ANTHROPIC=false: Run Anthropic on all queries like other engines
+    limitCalls: process.env.LIMIT_ANTHROPIC !== 'false',
   },
   gemini: {
     apiKey: process.env.GEMINI_API_KEY,

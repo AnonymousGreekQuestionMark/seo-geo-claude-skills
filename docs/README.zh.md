@@ -40,7 +40,7 @@ npx skills add aaron-he-zhu/seo-geo-claude-skills -s keyword-research
 
 或运行命令：
 ```
-/seo:audit-page https://example.com
+/geo:audit-page https://example.com
 ```
 
 ## 技能总览
@@ -94,15 +94,15 @@ npx skills add aaron-he-zhu/seo-geo-claude-skills -s keyword-research
 
 | 命令 | 说明 |
 |------|------|
-| `/seo:audit-page <URL>` | 页面 SEO + CORE-EEAT 内容质量审计 |
-| `/seo:check-technical <URL>` | 技术 SEO 健康检查 |
-| `/seo:generate-schema <type>` | 生成 JSON-LD 结构化数据 |
-| `/seo:optimize-meta <URL>` | 优化标题、描述和 OG 标签 |
-| `/seo:report <domain> <period>` | SEO/GEO 综合表现报告 |
-| `/seo:audit-domain <domain>` | CITE 域名权威审计 |
-| `/seo:write-content <topic>` | SEO + GEO 优化内容写作 |
-| `/seo:keyword-research <seed>` | 关键词研究与分析 |
-| `/seo:setup-alert <metric>` | 配置监控告警 |
+| `/geo:audit-page <URL>` | 页面 SEO + CORE-EEAT 内容质量审计 |
+| `/geo:check-technical <URL>` | 技术 SEO 健康检查 |
+| `/geo:generate-schema <type>` | 生成 JSON-LD 结构化数据 |
+| `/geo:optimize-meta <URL>` | 优化标题、描述和 OG 标签 |
+| `/geo:report <domain> <period>` | SEO/GEO 综合表现报告 |
+| `/geo:audit-domain <domain>` | CITE 域名权威审计 |
+| `/geo:write-content <topic>` | SEO + GEO 优化内容写作 |
+| `/geo:keyword-research <seed>` | 关键词研究与分析 |
+| `/geo:setup-alert <metric>` | 配置监控告警 |
 
 ## 贡献
 

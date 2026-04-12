@@ -1,7 +1,7 @@
 ---
 name: entity-optimizer
-description: 'Build entity presence in Knowledge Graph, Wikidata, AI systems for brand recognition and citations. 实体优化/知识图谱'
-version: "6.0.0"
+description: 'Build entity presence in Knowledge Graph, Wikidata, AI systems, llms.txt for brand recognition and citations. 实体优化/知识图谱'
+version: "6.5.0"
 license: Apache-2.0
 compatibility: "Claude Code ≥1.0, skills.sh marketplace, ClawHub marketplace, Vercel Labs skills ecosystem. No system packages required. Optional: MCP network access for SEO tool integrations."
 homepage: "https://github.com/aaron-he-zhu/seo-geo-claude-skills"
@@ -9,7 +9,7 @@ when_to_use: "Use when optimizing entity presence for Knowledge Graph, Wikidata,
 argument-hint: "<entity name or brand>"
 metadata:
   author: aaron-he-zhu
-  version: "6.0.0"
+  version: "6.5.0"
   geo-relevance: "high"
   tags:
     - seo
@@ -226,7 +226,7 @@ Test how AI systems identify this entity by querying:
 
 ### Step 2: Entity Signal Audit
 
-Evaluate entity signals across 6 categories. For the detailed 47-signal checklist with verification methods, see [references/entity-signal-checklist.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/entity-optimizer/references/entity-signal-checklist.md).
+Evaluate entity signals across 6 categories. For the detailed 48-signal checklist with verification methods, see [references/entity-signal-checklist.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/entity-optimizer/references/entity-signal-checklist.md).
 
 Evaluate each signal as Pass / Fail / Partial with a specific action for each gap. The 6 categories are:
 
@@ -235,9 +235,9 @@ Evaluate each signal as Pass / Fail / Partial with a specific action for each ga
 3. **Consistent NAP+E Signals** -- Name/description/logo/social consistency across platforms
 4. **Content-Based Entity Signals** -- About page, author pages, topical authority, branded backlinks
 5. **Third-Party Entity Signals** -- Authoritative mentions, co-citation, reviews, press coverage
-6. **AI-Specific Entity Signals** -- Clear definitions, disambiguation, verifiable claims, crawlability
+6. **AI-Specific Entity Signals** -- Clear definitions, disambiguation, verifiable claims, crawlability, llms.txt self-declaration
 
-> **Reference**: Use the audit template in [references/entity-signal-checklist.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/entity-optimizer/references/entity-signal-checklist.md) for the full 47-signal checklist with verification methods for each category.
+> **Reference**: Use the audit template in [references/entity-signal-checklist.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/entity-optimizer/references/entity-signal-checklist.md) for the full 48-signal checklist with verification methods for each category.
 
 ### Step 3: Report & Action Plan
 

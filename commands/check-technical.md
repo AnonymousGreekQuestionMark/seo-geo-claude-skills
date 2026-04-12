@@ -12,14 +12,14 @@ parameters:
 
 # Check Technical Command
 
-A focused **technical SEO health check** covering infrastructure, performance, and crawlability. Complements `/seo:audit-page` which covers content quality + on-page SEO.
+A focused **technical SEO health check** covering infrastructure, performance, and crawlability. Complements `/geo:audit-page` which covers content quality + on-page SEO.
 
 ## Usage
 
 ```
-/seo:check-technical https://example.com
-/seo:check-technical https://example.com/specific-page
-/seo:check-technical example.com
+/geo:check-technical https://example.com
+/geo:check-technical https://example.com/specific-page
+/geo:check-technical example.com
 ```
 
 **Arguments:**
@@ -65,7 +65,7 @@ ACTION CHECKLIST
 [ ] [Action items]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NOTE: For content quality + on-page SEO, run: /seo:audit-page
+NOTE: For content quality + on-page SEO, run: /geo:audit-page
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 

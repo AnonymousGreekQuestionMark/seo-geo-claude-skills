@@ -24,9 +24,9 @@ Writes search-engine-optimized content, then applies a GEO optimization pass for
 ## Usage
 
 ```
-/seo:write-content "email marketing for SaaS" keyword="saas email marketing" type="how-to guide"
-/seo:write-content "cloud hosting comparison" keyword="best cloud hosting"
-/seo:write-content "React performance tips" keyword="react performance optimization" type="blog post"
+/geo:write-content "email marketing for SaaS" keyword="saas email marketing" type="how-to guide"
+/geo:write-content "cloud hosting comparison" keyword="best cloud hosting"
+/geo:write-content "React performance tips" keyword="react performance optimization" type="blog post"
 ```
 
 **Arguments:**
@@ -71,8 +71,8 @@ Writes search-engine-optimized content, then applies a GEO optimization pass for
 ## Tips
 
 - Specify content type explicitly -- it affects CORE-EEAT weight profiles and content structure
-- For competitive keywords, run `/seo:keyword-research` first to inform the content angle
-- After publishing, run `/seo:audit-page` to verify on-page optimization
+- For competitive keywords, run `/geo:keyword-research` first to inform the content angle
+- After publishing, run `/geo:audit-page` to verify on-page optimization
 - Provide secondary keywords and target audience in your prompt for better results
 
 ## Related Skills

@@ -1,6 +1,6 @@
 # SEO & GEO Skills Library — Claude Code Context
 
-This plugin provides **21 skills and 10 commands** for Search Engine Optimization (SEO) and Generative Engine Optimization (GEO). All skills follow one shared contract: trigger, quick start, skill contract, handoff summary, and next best skill. Skills are auto-loaded by context; commands are invoked with `/seo:` (or `/geo:` for the company analysis command).
+This plugin provides **21 skills and 10 commands** for Search Engine Optimization (SEO) and Generative Engine Optimization (GEO). All skills follow one shared contract: trigger, quick start, skill contract, handoff summary, and next best skill. Skills are auto-loaded by context; commands are invoked with `/geo:` prefix.
 
 ## Skills by Phase
 
@@ -16,15 +16,15 @@ This plugin provides **21 skills and 10 commands** for Search Engine Optimizatio
 ## One-Shot Commands
 
 ```
-/seo:audit-page        — On-page SEO + CORE-EEAT audit
-/seo:audit-domain      — CITE domain authority audit
-/seo:check-technical   — Technical SEO health check
-/seo:write-content     — SEO + GEO optimized content
-/seo:keyword-research  — Keyword discovery and clustering
-/seo:optimize-meta     — Title tags and meta descriptions
-/seo:generate-schema   — JSON-LD structured data
-/seo:report            — Performance report
-/seo:setup-alert       — Monitoring alert configuration
+/geo:audit-page        — On-page SEO + CORE-EEAT audit
+/geo:audit-domain      — CITE domain authority audit
+/geo:check-technical   — Technical SEO health check
+/geo:write-content     — SEO + GEO optimized content
+/geo:keyword-research  — Keyword discovery and clustering
+/geo:optimize-meta     — Title tags and meta descriptions
+/geo:generate-schema   — JSON-LD structured data
+/geo:report            — Performance report
+/geo:setup-alert       — Monitoring alert configuration
 /geo:analyze-company   — Full company analysis (all 20 skills) + HTML report
 ```
 
@@ -43,6 +43,7 @@ Run all 20 skills against a company domain in one command:
 ```
 analyses/
   <company-root>/           # apex domain root (e.g. "caplinq")
+    concerns-log-<timestamp>.md  # concerns, fallbacks, blocked skills (separate from HTML report)
     <domain>/               # exact hostname analyzed (e.g. "caplinq.com")
       analysis-<timestamp>/ # YYYYMMDDTHHmmss timestamped run folder
         01-domain-baseline/ # entity-optimizer (+ citation-baseline step)
@@ -52,7 +53,7 @@ analyses/
         05-recommendations/ # seo-content-writer, geo-content-optimizer, meta-tags-optimizer, schema-markup-generator
         06-monitoring/      # rank-tracker, performance-reporter, alert-manager
         07-memory/          # memory-management snapshot
-    reports/                # self-contained HTML reports
+    reports/                # self-contained HTML reports (clean, no concerns)
       <company-root>_<domain>_<timestamp>.html
 ```
 

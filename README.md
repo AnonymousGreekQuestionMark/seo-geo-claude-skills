@@ -68,7 +68,7 @@ git clone https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills.gi
 claude --plugin-dir ./seo-geo-claude-skills
 ```
 
-That's it. Every `/seo:` command is now available in your Claude session. You run this once per terminal session (or add it to a shell alias so you don't have to type it every time).
+That's it. Every `/geo:` command is now available in your Claude session. You run this once per terminal session (or add it to a shell alias so you don't have to type it every time).
 
 > If you don't have `git` installed, [download it here](https://git-scm.com/downloads). If you're on Mac, running `git` in Terminal for the first time will prompt you to install it automatically.
 
@@ -163,15 +163,15 @@ One-shot tasks with explicit input and structured output.
 | Command | Description |
 |---------|-------------|
 | `/geo:analyze-company <domain>` | Run all 20 skills end-to-end and generate an HTML report in `analyses/` |
-| `/seo:audit-page <URL>` | On-page SEO + CORE-EEAT content quality audit |
-| `/seo:audit-domain <domain>` | Full CITE domain authority audit (40-item) |
-| `/seo:check-technical <URL>` | Technical SEO health check |
-| `/seo:write-content <topic>` | Write SEO + GEO optimized content |
-| `/seo:keyword-research <seed>` | Keyword discovery and clustering |
-| `/seo:optimize-meta <URL>` | Optimize title, description, and OG tags |
-| `/seo:generate-schema <type>` | Generate JSON-LD structured data |
-| `/seo:report <domain> <period>` | SEO/GEO performance report |
-| `/seo:setup-alert <metric>` | Configure monitoring alerts |
+| `/geo:audit-page <URL>` | On-page SEO + CORE-EEAT content quality audit |
+| `/geo:audit-domain <domain>` | Full CITE domain authority audit (40-item) |
+| `/geo:check-technical <URL>` | Technical SEO health check |
+| `/geo:write-content <topic>` | Write SEO + GEO optimized content |
+| `/geo:keyword-research <seed>` | Keyword discovery and clustering |
+| `/geo:optimize-meta <URL>` | Optimize title, description, and OG tags |
+| `/geo:generate-schema <type>` | Generate JSON-LD structured data |
+| `/geo:report <domain> <period>` | SEO/GEO performance report |
+| `/geo:setup-alert <metric>` | Configure monitoring alerts |
 
 ---
 
@@ -188,10 +188,10 @@ Scores are color-coded throughout: green ≥80, amber 60–79, red <60.
 
 | Goal | Command |
 |------|---------|
-| Audit a single page | `/seo:audit-page https://example.com/page` |
-| Fix technical issues | `/seo:check-technical example.com` |
-| Check domain authority | `/seo:audit-domain example.com` |
-| Write new content | `/seo:write-content "your topic"` |
+| Audit a single page | `/geo:audit-page https://example.com/page` |
+| Fix technical issues | `/geo:check-technical example.com` |
+| Check domain authority | `/geo:audit-domain example.com` |
+| Write new content | `/geo:write-content "your topic"` |
 | Full company audit | `/geo:analyze-company example.com` |
 
 ---

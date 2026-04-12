@@ -40,7 +40,7 @@ npx skills add aaron-he-zhu/seo-geo-claude-skills -s keyword-research
 
 또는 명령 실행:
 ```
-/seo:audit-page https://example.com
+/geo:audit-page https://example.com
 ```
 
 ## 스킬 목록
@@ -94,15 +94,15 @@ npx skills add aaron-he-zhu/seo-geo-claude-skills -s keyword-research
 
 | 명령 | 설명 |
 |------|------|
-| `/seo:audit-page <URL>` | 페이지 SEO + CORE-EEAT 콘텐츠 품질 감사 |
-| `/seo:check-technical <URL>` | 기술 SEO 건강 점검 |
-| `/seo:generate-schema <type>` | JSON-LD 구조화 데이터 생성 |
-| `/seo:optimize-meta <URL>` | 제목, 설명, OG 태그 최적화 |
-| `/seo:report <domain> <period>` | SEO/GEO 종합 성과 보고서 |
-| `/seo:audit-domain <domain>` | CITE 도메인 권위 감사 |
-| `/seo:write-content <topic>` | SEO + GEO 최적화 콘텐츠 작성 |
-| `/seo:keyword-research <seed>` | 키워드 리서치 및 분석 |
-| `/seo:setup-alert <metric>` | 모니터링 알림 설정 |
+| `/geo:audit-page <URL>` | 페이지 SEO + CORE-EEAT 콘텐츠 품질 감사 |
+| `/geo:check-technical <URL>` | 기술 SEO 건강 점검 |
+| `/geo:generate-schema <type>` | JSON-LD 구조화 데이터 생성 |
+| `/geo:optimize-meta <URL>` | 제목, 설명, OG 태그 최적화 |
+| `/geo:report <domain> <period>` | SEO/GEO 종합 성과 보고서 |
+| `/geo:audit-domain <domain>` | CITE 도메인 권위 감사 |
+| `/geo:write-content <topic>` | SEO + GEO 최적화 콘텐츠 작성 |
+| `/geo:keyword-research <seed>` | 키워드 리서치 및 분석 |
+| `/geo:setup-alert <metric>` | 모니터링 알림 설정 |
 
 ## 기여
 

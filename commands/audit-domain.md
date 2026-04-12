@@ -21,14 +21,14 @@ parameters:
 
 > Domain authority scoring based on [CITE Domain Rating](https://github.com/aaron-he-zhu/cite-domain-rating). Full reference: [references/cite-domain-rating.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/cite-domain-rating.md)
 
-A comprehensive **CITE 40-item domain authority** audit with veto checks and actionable recommendations. For page-level content quality, use `/seo:audit-page`.
+A comprehensive **CITE 40-item domain authority** audit with veto checks and actionable recommendations. For page-level content quality, use `/geo:audit-page`.
 
 ## Usage
 
 ```
-/seo:audit-domain example.com
-/seo:audit-domain example.com type="e-commerce"
-/seo:audit-domain example.com vs competitor1.com competitor2.com
+/geo:audit-domain example.com
+/geo:audit-domain example.com type="e-commerce"
+/geo:audit-domain example.com vs competitor1.com competitor2.com
 ```
 
 **Arguments:**
@@ -99,7 +99,7 @@ DETAILED PER-ITEM SCORES
 [Full 40-item score table with notes]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NOTE: For page-level content quality, run: /seo:audit-page
+NOTE: For page-level content quality, run: /geo:audit-page
 For combined 120-item assessment: run both commands
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
@@ -108,7 +108,7 @@ For combined 120-item assessment: run both commands
 
 - Provide domain type for accurate weight selection
 - Include competitor domains for relative benchmarking
-- Run alongside `/seo:audit-page` for complete 120-item assessment
+- Run alongside `/geo:audit-page` for complete 120-item assessment
 - Re-audit quarterly (domain authority changes slowly)
 
 ## Related Skills

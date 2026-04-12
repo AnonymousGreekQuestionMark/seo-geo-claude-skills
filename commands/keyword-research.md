@@ -32,10 +32,10 @@ Discovers high-value keywords from a seed topic, classifies intent, scores diffi
 ## Usage
 
 ```
-/seo:keyword-research "project management software"
-/seo:keyword-research "vegan meal prep" audience="busy professionals"
-/seo:keyword-research "cloud hosting" competitors="digitalocean.com,vultr.com"
-/seo:keyword-research "email marketing" goal="leads" authority="low"
+/geo:keyword-research "project management software"
+/geo:keyword-research "vegan meal prep" audience="busy professionals"
+/geo:keyword-research "cloud hosting" competitors="digitalocean.com,vultr.com"
+/geo:keyword-research "email marketing" goal="leads" authority="low"
 ```
 
 **Arguments:**
@@ -90,7 +90,7 @@ _(when competitors= provided)_
 
 - Include site authority level -- this filters out keywords too competitive for newer sites
 - Providing competitor domains unlocks the most actionable insights (keyword gaps)
-- Pair with `/seo:write-content` to immediately create content for top opportunities
+- Pair with `/geo:write-content` to immediately create content for top opportunities
 - Re-run quarterly -- keyword dynamics shift as markets evolve
 
 ## Related Skills

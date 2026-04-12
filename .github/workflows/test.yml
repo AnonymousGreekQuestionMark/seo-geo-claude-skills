@@ -1,0 +1,151 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'tools/**'
+      - 'research/**'
+      - 'build/**'
+      - 'optimize/**'
+      - 'monitor/**'
+      - 'cross-cutting/**'
+      - 'orchestration/**'
+      - 'commands/**'
+      - '.claude-plugin/**'
+      - 'marketplace.json'
+      - '.github/workflows/test.yml'
+  pull_request:
+    branches: [main]
+
+jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: tools/package-lock.json
+
+      - name: Install dependencies
+        working-directory: tools
+        run: npm ci
+
+      - name: Run unit tests
+        working-directory: tools
+        run: npm run test:unit
+
+      - name: Run tests with coverage
+        if: matrix.node-version == '20.x'
+        working-directory: tools
+        run: npm run test:coverage
+
+      - name: Upload coverage to Codecov
+        if: matrix.node-version == '20.x'
+        uses: codecov/codecov-action@v4
+        with:
+          directory: tools/coverage
+          fail_ci_if_error: false
+          verbose: true
+
+  contract-tests:
+    name: Contract Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: tools/package-lock.json
+
+      - name: Install dependencies
+        working-directory: tools
+        run: npm ci
+
+      - name: Run contract tests
+        working-directory: tools
+        run: npm run test:contracts
+
+  orchestration-tests:
+    name: Orchestration Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: tools/package-lock.json
+
+      - name: Install dependencies
+        working-directory: tools
+        run: npm ci
+
+      - name: Run orchestration tests
+        working-directory: tools
+        run: npm run test:orchestration
+
+  e2e-tests:
+    name: E2E Tests (caplinq.com)
+    runs-on: ubuntu-latest
+    # Only run on main branch pushes
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: tools/package-lock.json
+
+      - name: Install dependencies
+        working-directory: tools
+        run: npm ci
+
+      - name: Run E2E tests
+        working-directory: tools
+        run: npm run test:e2e
+        env:
+          RUN_E2E: 'true'
+        timeout-minutes: 5
+
+  all-tests:
+    name: All Tests Summary
+    needs: [unit-tests, contract-tests, orchestration-tests]
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Check all job statuses
+        run: |
+          if [[ "${{ needs.unit-tests.result }}" == "failure" ]] || \
+             [[ "${{ needs.contract-tests.result }}" == "failure" ]] || \
+             [[ "${{ needs.orchestration-tests.result }}" == "failure" ]]; then
+            echo "One or more test jobs failed"
+            exit 1
+          fi
+          echo "All tests passed successfully!"

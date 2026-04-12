@@ -24,10 +24,10 @@ Analyzes and enhances **title tags, meta descriptions, and social media tags** t
 ## Usage
 
 ```
-/seo:optimize-meta https://example.com/landing-page
-/seo:optimize-meta title="Current Title" keyword="target keyword"
-/seo:optimize-meta https://example.com/blog-post target="best practices"
-/seo:optimize-meta url="..." mode="a/b-test"
+/geo:optimize-meta https://example.com/landing-page
+/geo:optimize-meta title="Current Title" keyword="target keyword"
+/geo:optimize-meta https://example.com/blog-post target="best practices"
+/geo:optimize-meta url="..." mode="a/b-test"
 ```
 
 **Arguments:**

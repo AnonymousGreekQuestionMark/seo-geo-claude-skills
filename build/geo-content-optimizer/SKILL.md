@@ -1,7 +1,7 @@
 ---
 name: geo-content-optimizer
-description: 'Optimize content for AI citations in ChatGPT, Perplexity, AI Overviews, Gemini, Claude. AI引用优化/GEO优化/AI搜索'
-version: "6.0.0"
+description: 'Optimize content for AI citations in ChatGPT, Perplexity, AI Overviews, Gemini, Claude with llms.txt alignment. AI引用优化/GEO优化/AI搜索'
+version: "6.5.0"
 license: Apache-2.0
 compatibility: "Claude Code ≥1.0, skills.sh marketplace, ClawHub marketplace, Vercel Labs skills ecosystem. No system packages required. Optional: MCP network access for SEO tool integrations."
 homepage: "https://github.com/aaron-he-zhu/seo-geo-claude-skills"
@@ -9,7 +9,7 @@ when_to_use: "Use when optimizing content for AI engines like ChatGPT, Perplexit
 argument-hint: "<content URL or text> [target AI engine]"
 metadata:
   author: aaron-he-zhu
-  version: "6.0.0"
+  version: "6.5.0"
   geo-relevance: "high"
   tags:
     - geo
@@ -329,6 +329,32 @@ When a user requests GEO optimization:
 
     _For full 80-item audit, use [content-quality-auditor](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/content-quality-auditor/SKILL.md)_
     ```
+
+    ### AI Discoverability Alignment
+
+    If `llms.txt` exists (check from `technical-seo-checker` handoff or fetch /llms.txt):
+
+    | Check | Status | Notes |
+    |-------|--------|-------|
+    | llms.txt H1 matches entity name | ✅/⚠️/❌ | [compare to entity-optimizer canonical name] |
+    | Blockquote aligns with homepage H1/meta | ✅/⚠️/❌ | [notes] |
+    | Optimized pages are in llms.txt | ✅/⚠️/❌ | [X of Y pages linked] |
+    | Content structure matches engine preferences | ✅/⚠️/❌ | [see table below] |
+
+    **AI Engine Structure Preferences**:
+
+    | Engine | Preferred Content Structure |
+    |--------|---------------------------|
+    | Google AI Overview | Structured, factual summaries with tables and FAQ |
+    | ChatGPT | Comprehensive pages with clear H2 sections |
+    | Perplexity | Pages with citations, data points, and sources |
+    | Claude | Well-structured, authoritative content with reasoning |
+
+    **If llms.txt is missing**:
+    - Recommend creating one using the entity profile from `entity-optimizer`
+    - Generate a draft based on the site's pillar pages identified in `keyword-research`
+    - Priority: P2 (low effort, speculative benefit)
+    - Reference: [llms.txt Reference](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/technical-seo-checker/references/llms-txt-reference.md)
 
 ## Validation Checkpoints
 

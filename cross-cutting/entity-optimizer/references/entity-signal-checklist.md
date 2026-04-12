@@ -2,7 +2,7 @@
 
 > Part of [entity-optimizer](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/entity-optimizer/SKILL.md). See also: [knowledge-graph-guide.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/entity-optimizer/references/knowledge-graph-guide.md)
 
-Complete checklist of entity signals organized by priority and verification method. Use this as a systematic audit guide — work through each signal, verify its status, and note actions needed.
+Complete checklist of **48 entity signals** organized by priority and verification method. Use this as a systematic audit guide — work through each signal, verify its status, and note actions needed.
 
 ## Priority 1: Foundation Signals (Must-Have)
 
@@ -92,6 +92,20 @@ These signals specifically help AI systems recognize, understand, and cite the e
 | 35 | Entity name used consistently | Audit all platforms | Identical name format everywhere (no abbreviations in some places, full name in others) |
 | 36 | Content is crawlable by AI systems | Check robots.txt for AI bot access | Not blocking GPTBot, ClaudeBot, or other AI crawlers (unless intentional) |
 | 37 | Fresh information available | Check update dates | Key entity pages updated within last 6 months |
+
+### llms.txt Self-Declaration
+
+| # | Signal | Verification Method | Pass Criteria |
+|---|--------|-------------------|---------------|
+| 48 | llms.txt self-declaration with correct entity identity | Fetch /llms.txt, compare H1 to canonical entity name | File exists, H1 matches canonical name, blockquote aligns with entity description |
+
+**Signal #48 detailed checks**:
+- [ ] llms.txt exists at domain root
+- [ ] H1 matches canonical entity name (from signal #35)
+- [ ] Blockquote aligns with Knowledge Graph description (if present)
+- [ ] Linked pages cover the entity's primary topics/products
+- [ ] No contradictions with schema.org Organization markup
+- [ ] File is accessible to AI retrieval bots (not blocked by robots.txt)
 
 ## Priority 4: Advanced Signals (Nice-to-Have)
 

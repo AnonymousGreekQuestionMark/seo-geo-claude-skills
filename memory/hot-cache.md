@@ -1,9 +1,11 @@
-## Company Analysis — caplinq.com — 2026-04-04
-- CITE: C:55 I:35 T:65 E:52 | Overall: 52/100 | Verdict: CAUTIOUS
-- CORE-EEAT: C:72 O:78 R:65 E:62 Exp:80 Ept:82 A:55 T:60 | GEO:69 SEO:69 | Verdict: FIX
+## Company Analysis — caplinq.com — 2026-04-12
+- CITE: C:35 I:40 T:72 E:45 | Overall: 48/100 | Verdict: CAUTIOUS
+- CORE-EEAT: C:72 O:68 R:65 E:70 Exp:78 Ept:80 A:62 T:68 | GEO:69 SEO:71
 - Veto items: NONE
-- Hero keywords: thermal interface materials, die attach materials, ion exchange membranes, electrochemical materials, REACH representation service
-- Primary competitors: SpecialChem, Digi-Key, Grainger, Sigma-Aldrich
-- Top finding: Identity dimension critical (I:35) — no Wikipedia, unverified Wikidata
-- Critical tech: blog.caplinq.com subdomain splits PageRank from main domain
-- Report: analyses/caplinq/reports/caplinq_caplinq.com_20260404T140000.html
+- Hero keywords: thermal interface materials, die attach materials, epoxy molding compounds, conductive adhesives, REACH only representative
+- Primary competitors: Henkel, Brenntag, Indium Corporation, Laird Technologies
+- Top finding: 0% AI citation rate — llms.txt missing, no schema, brand known but not linked
+- Critical issues: Multiple 410 errors, mobile LCP 10.5s, blog on subdomain
+- Rankings: #1 EMC, #2 die attach, #3 REACH, #7 conductive adhesives, NR thermal (410)
+- Report: analyses/caplinq/reports/caplinq_caplinq.com_20260412T182500.html
+- citation_baseline: { cited_on: 0/13 queries, brand_mentions: 1, engines: [gemini, anthropic], prominence_rate: 0% }

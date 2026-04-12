@@ -850,7 +850,77 @@ New **`tools/shared/pipeline-runner.js`** (~340 lines) provides utilities for:
 
 ---
 
-### 5.14 Conclusion
+### 5.14 Pipeline Integrity Fixes — v6.6.1 (2026-04-13)
+
+Bug fixes for pipeline transparency, error reporting, and data provenance display.
+
+#### Issues Identified
+
+| Issue | Symptom | Root Cause |
+|-------|---------|------------|
+| OpenAI citation error | "Cannot read properties of undefined (reading 'includes')" | `annotations.map(a => a.url)` returns undefined for missing URLs |
+| PENDING provenance items | Score provenance shows "PENDING" for items never assessed | `finalizeProvenance()` didn't mark unassessed items |
+| Generic llms.txt message | Shows "audit not performed" for 404 | No explicit 404 handling in `buildLlmsTxtSection()` |
+| Empty CORE-EEAT tables | PDF shows empty tables for Content Quality | PDF generator requires `items` array but provenance has dimension scores only |
+| Empty operations-log.json | No execution trace captured | Logger functions exist but never called |
+
+#### Solutions Implemented
+
+**1. OpenAI Citation Fix** (`ai-citation-monitor.js:161`)
+```javascript
+// Before
+const citations = (message.annotations || [])
+  .filter((a) => a.type === 'url_citation')
+  .map((a) => a.url);
+
+// After — filter(Boolean) removes undefined/null
+const citations = (message.annotations || [])
+  .filter((a) => a.type === 'url_citation')
+  .map((a) => a.url)
+  .filter(Boolean);
+```
+
+**2. Provenance NOT_ASSESSED** (`provenance-builder.js:333-351`)
+- Added loop in `finalizeProvenance()` to mark remaining PENDING items as `NOT_ASSESSED`
+- Sets `item.reason = 'Item not evaluated in this analysis run'`
+
+**3. llms.txt 404 Explicit Message** (`pdf-generator.js:601-621`)
+- New check: `if (!technicalData?.llms_txt || technicalData.llms_txt.exists === false)`
+- Shows: "llms.txt Status: 404 Not Found" with recommendation link
+- Extracted `buildRobotsTxtAiSection()` helper for reuse
+
+**4. CORE-EEAT Dimension Fallback** (`pdf-generator.js:468-512`)
+- Added `else if (d)` branch for dimension-level display
+- Shows dimension code, name, score, and source_skill when items array missing
+- Applied to both CORE (C, O, R, E) and EEAT (Exp, Ept, A, T) sections
+
+**5. Operations Log CLI** (`tools/shared/ops-log-cli.js`)
+```bash
+# Usage
+node ops-log-cli.js init <path> <domain> <timestamp>
+node ops-log-cli.js step-start <num> <skill>
+node ops-log-cli.js step-complete <num> <status>
+node ops-log-cli.js finalize <status>
+```
+
+#### Tests Added
+
+| Test File | Tests Added |
+|-----------|-------------|
+| `ai-citation-monitor.test.js` | handles undefined URLs in OpenAI annotations |
+| `provenance-validation.test.js` | 4 tests for PENDING → NOT_ASSESSED conversion |
+| `pdf-report.test.js` | 6 tests for llms.txt 404 and dimension fallback |
+
+#### Validation
+
+```
+npm test -- ai-citation-monitor.test.js provenance-validation.test.js pdf-report.test.js
+# 320 passed | 4 skipped (324)
+```
+
+---
+
+### 5.15 Conclusion
 
 The full pipeline is operational at Tier 2 with:
 - 3/4 AI engines active (Perplexity requires paid key)
@@ -858,4 +928,5 @@ The full pipeline is operational at Tier 2 with:
 - Graceful fallback for missing credentials
 - HTML + PDF report generation with business-friendly language
 - PDF appendix verified populated with AI prompts and score provenance
-- All tests passing (108 PDF + orchestration tests)
+- Pipeline integrity fixes for error handling and data provenance
+- All tests passing (320+ PDF + orchestration tests)

@@ -28,10 +28,10 @@ A comprehensive **SEO and GEO performance report** that aggregates data across a
 ## Usage
 
 ```
-/seo:report example.com last-month
-/seo:report example.com last-quarter vs previous-quarter
-/seo:report example.com [YYYY-MM-DD] to [YYYY-MM-DD]
-/seo:report example.com last-90-days format=executive
+/geo:report example.com last-month
+/geo:report example.com last-quarter vs previous-quarter
+/geo:report example.com [YYYY-MM-DD] to [YYYY-MM-DD]
+/geo:report example.com last-90-days format=executive
 ```
 
 **Arguments:**

@@ -1,7 +1,7 @@
 ---
 name: content-quality-auditor
 description: 'Publish-readiness gate: 80-item CORE-EEAT audit with weighted scoring, veto checks, and fix plan. 内容质量/EEAT评分'
-version: "6.0.0"
+version: "6.6.0"
 license: Apache-2.0
 allowed-tools: WebFetch
 compatibility: "Claude Code ≥1.0, skills.sh marketplace, ClawHub marketplace, Vercel Labs skills ecosystem. No system packages required. Optional: MCP network access for SEO tool integrations."
@@ -10,7 +10,7 @@ when_to_use: "Use when auditing content quality before publishing. Runs CORE-EEA
 argument-hint: "<URL or paste content> [keyword]"
 metadata:
   author: aaron-he-zhu
-  version: "6.0.0"
+  version: "6.6.0"
   geo-relevance: "high"
   tags:
     - seo
@@ -358,7 +358,47 @@ Sorted by: weight × points lost (highest impact first)
 - For full content rewrite: use `seo-content-writer` with CORE-EEAT constraints
 - For GEO optimization: use `geo-content-optimizer` targeting failed GEO-First items
 - For content refresh: use `content-refresher` with weak dimensions as focus
-- For technical fixes: run `/seo:check-technical` for site-level issues
+- For technical fixes: run `/geo:check-technical` for site-level issues
+```
+
+### Step 5: Update Score Provenance (Company Analysis Mode)
+
+When running as part of `/geo:analyze-company`, update `score-provenance.json` with all 80 CORE-EEAT item scores:
+
+```javascript
+// Called automatically by company-analysis orchestration
+await updateCoreEeatProvenance(analysisPath, {
+  domain: domain,
+  geo_score: geoScore,      // avg(C, O, R, E)
+  seo_score: seoScore,      // avg(Exp, Ept, A, T)
+  dimensions: {
+    C: { score: cScore, items: [...] },
+    O: { score: oScore, items: [...] },
+    R: { score: rScore, items: [...] },
+    E: { score: eScore, items: [...] },
+    Exp: { score: expScore, items: [...] },
+    Ept: { score: eptScore, items: [...] },
+    A: { score: aScore, items: [...] },
+    T: { score: tScore, items: [...] }
+  }
+});
+```
+
+Each item in `dimensions.*.items` includes:
+- `id`: Item ID (e.g., "C01")
+- `score`: 0-100 (Fail=0, Partial=50, Pass=100)
+- `status`: "PASS" | "PARTIAL" | "FAIL" | "N/A"
+- `confidence`: "HIGH" | "MEDIUM" | "LOW"
+- `raw_data`: Evidence from content (e.g., "H1 matches search intent")
+- `calculation`: How score was derived
+
+**This step ensures GEO and SEO scores are NOT N/A in the final report.**
+
+If veto items are triggered (T04, C01, R10), also update:
+```javascript
+provenance.core_eeat_provenance.veto_items = [
+  { id: "C01", name: "Intent Alignment", status: "FAIL", triggered: true }
+];
 ```
 
 ### Save Results

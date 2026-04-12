@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "SEO & GEO skill operating system with a shared contract, protocol-layer gates, and reusable state handoffs",
-    "version": "6.4.0",
+    "version": "6.5.0",
     "repository": "https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills"
   },
   "plugins": [
@@ -14,7 +14,7 @@
       "name": "seo-geo-claude-skills",
       "source": "./",
       "description": "21 SEO and GEO skills plus 10 commands on one shared operating contract. Includes company-analysis orchestration for full-domain audits with HTML reports, protocol-layer gates for content quality, domain trust, entity truth, and campaign memory alongside keyword research, content creation, audits, monitoring, schema markup, and AI citation optimization.",
-      "version": "6.4.0",
+      "version": "6.5.0",
       "category": "marketing",
       "tags": [
         "seo",

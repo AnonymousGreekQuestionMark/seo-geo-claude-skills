@@ -40,7 +40,7 @@ Investiga palabras clave para "marketing digital" e identifica oportunidades
 
 O ejecuta un comando:
 ```
-/seo:audit-page https://example.com
+/geo:audit-page https://example.com
 ```
 
 ## Skills
@@ -94,15 +94,15 @@ O ejecuta un comando:
 
 | Comando | Descripcion |
 |---------|-------------|
-| `/seo:audit-page <URL>` | Auditoria SEO + CORE-EEAT de pagina |
-| `/seo:check-technical <URL>` | Chequeo de salud tecnica SEO |
-| `/seo:generate-schema <type>` | Generacion de datos estructurados JSON-LD |
-| `/seo:optimize-meta <URL>` | Optimizacion de titulo, descripcion y OG |
-| `/seo:report <domain> <period>` | Informe integral de rendimiento SEO/GEO |
-| `/seo:audit-domain <domain>` | Auditoria de autoridad de dominio CITE |
-| `/seo:write-content <topic>` | Redaccion de contenido optimizado SEO + GEO |
-| `/seo:keyword-research <seed>` | Investigacion y analisis de keywords |
-| `/seo:setup-alert <metric>` | Configuracion de alertas de monitoreo |
+| `/geo:audit-page <URL>` | Auditoria SEO + CORE-EEAT de pagina |
+| `/geo:check-technical <URL>` | Chequeo de salud tecnica SEO |
+| `/geo:generate-schema <type>` | Generacion de datos estructurados JSON-LD |
+| `/geo:optimize-meta <URL>` | Optimizacion de titulo, descripcion y OG |
+| `/geo:report <domain> <period>` | Informe integral de rendimiento SEO/GEO |
+| `/geo:audit-domain <domain>` | Auditoria de autoridad de dominio CITE |
+| `/geo:write-content <topic>` | Redaccion de contenido optimizado SEO + GEO |
+| `/geo:keyword-research <seed>` | Investigacion y analisis de keywords |
+| `/geo:setup-alert <metric>` | Configuracion de alertas de monitoreo |
 
 ## Contribuir
 

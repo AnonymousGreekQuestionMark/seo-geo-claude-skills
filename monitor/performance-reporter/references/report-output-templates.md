@@ -215,7 +215,7 @@ Action Required:
 - [Notable improvement or concern 1]
 - [Notable improvement or concern 2]
 
-_For full 40-item evaluation, run `/seo:audit-domain`_
+_For full 40-item evaluation, run `/geo:audit-domain`_
 ```
 
 **Note**: If no previous CITE audit exists, note this section as "Not yet evaluated -- run domain-authority-auditor for baseline" and skip.
@@ -255,10 +255,10 @@ _For full 40-item evaluation, run `/seo:audit-domain`_
 - [Notable score changes since last report]
 - [Pages with significant quality improvements/declines]
 
-_For full 80-item evaluation, run `/seo:audit-page` on individual pages._
+_For full 80-item evaluation, run `/geo:audit-page` on individual pages._
 ```
 
-**Note**: If no content quality audit exists, note this section as "Content quality not yet evaluated -- run `/seo:audit-page` on key landing pages to establish baseline" and skip.
+**Note**: If no content quality audit exists, note this section as "Content quality not yet evaluated -- run `/geo:audit-page` on key landing pages to establish baseline" and skip.
 
 ---
 

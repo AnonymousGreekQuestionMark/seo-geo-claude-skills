@@ -28,13 +28,13 @@ Configures proactive **monitoring alerts for critical SEO and GEO metrics**, def
 ## Usage
 
 ```
-/seo:setup-alert ranking-drop threshold=-5 keywords="primary keywords"
-/seo:setup-alert traffic-change threshold=-20%
-/seo:setup-alert indexing-issue
-/seo:setup-alert backlink-change threshold=lost-domain-rating-70+
-/seo:setup-alert geo-visibility threshold=-30%
-/seo:setup-alert core-web-vitals threshold=poor
-/seo:setup-alert all-critical (sets up standard alert package)
+/geo:setup-alert ranking-drop threshold=-5 keywords="primary keywords"
+/geo:setup-alert traffic-change threshold=-20%
+/geo:setup-alert indexing-issue
+/geo:setup-alert backlink-change threshold=lost-domain-rating-70+
+/geo:setup-alert geo-visibility threshold=-30%
+/geo:setup-alert core-web-vitals threshold=poor
+/geo:setup-alert all-critical (sets up standard alert package)
 ```
 
 **Arguments:**

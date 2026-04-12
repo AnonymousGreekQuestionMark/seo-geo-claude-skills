@@ -40,7 +40,7 @@ npx skills add aaron-he-zhu/seo-geo-claude-skills -s keyword-research
 
 またはコマンドを実行：
 ```
-/seo:audit-page https://example.com
+/geo:audit-page https://example.com
 ```
 
 ## スキル一覧
@@ -94,15 +94,15 @@ npx skills add aaron-he-zhu/seo-geo-claude-skills -s keyword-research
 
 | コマンド | 説明 |
 |----------|------|
-| `/seo:audit-page <URL>` | ページSEO + CORE-EEATコンテンツ品質監査 |
-| `/seo:check-technical <URL>` | 技術SEOヘルスチェック |
-| `/seo:generate-schema <type>` | JSON-LD構造化データ生成 |
-| `/seo:optimize-meta <URL>` | タイトル、ディスクリプション、OGタグ最適化 |
-| `/seo:report <domain> <period>` | SEO/GEO総合パフォーマンスレポート |
-| `/seo:audit-domain <domain>` | CITEドメイン権威監査 |
-| `/seo:write-content <topic>` | SEO + GEO最適化コンテンツ執筆 |
-| `/seo:keyword-research <seed>` | キーワードリサーチ＆分析 |
-| `/seo:setup-alert <metric>` | モニタリングアラート設定 |
+| `/geo:audit-page <URL>` | ページSEO + CORE-EEATコンテンツ品質監査 |
+| `/geo:check-technical <URL>` | 技術SEOヘルスチェック |
+| `/geo:generate-schema <type>` | JSON-LD構造化データ生成 |
+| `/geo:optimize-meta <URL>` | タイトル、ディスクリプション、OGタグ最適化 |
+| `/geo:report <domain> <period>` | SEO/GEO総合パフォーマンスレポート |
+| `/geo:audit-domain <domain>` | CITEドメイン権威監査 |
+| `/geo:write-content <topic>` | SEO + GEO最適化コンテンツ執筆 |
+| `/geo:keyword-research <seed>` | キーワードリサーチ＆分析 |
+| `/geo:setup-alert <metric>` | モニタリングアラート設定 |
 
 ## コントリビューション
 

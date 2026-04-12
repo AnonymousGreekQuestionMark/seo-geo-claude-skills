@@ -1,7 +1,7 @@
 ---
 name: technical-seo-checker
-description: 'Technical SEO audit: Core Web Vitals, crawl, indexing, mobile, speed, architecture, redirects. 技术SEO/网站速度'
-version: "6.0.0"
+description: 'Technical SEO audit: Core Web Vitals, crawl, indexing, mobile, speed, architecture, redirects, llms.txt, AI crawlers. 技术SEO/网站速度'
+version: "6.5.0"
 license: Apache-2.0
 compatibility: "Claude Code ≥1.0, skills.sh marketplace, ClawHub marketplace, Vercel Labs skills ecosystem. No system packages required. Optional: MCP network access for SEO tool integrations."
 homepage: "https://github.com/aaron-he-zhu/seo-geo-claude-skills"
@@ -10,7 +10,7 @@ argument-hint: "<URL or domain>"
 allowed-tools: WebFetch
 metadata:
   author: aaron-he-zhu
-  version: "6.0.0"
+  version: "6.5.0"
   geo-relevance: "low"
   tags:
     - seo
@@ -172,7 +172,7 @@ Technical SEO checklist for migrating [old domain] to [new domain]
 - **Reads**: the current page or site state, symptoms, prior audits, and current priorities from [CLAUDE.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/CLAUDE.md) and the shared [State Model](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/state-model.md) when available.
 - **Writes**: a user-facing audit or optimization plan plus a reusable summary that can be stored under `memory/audits/`.
 - **Promotes**: blocking defects, repeated weaknesses, and fix priorities to `memory/open-loops.md` and `memory/decisions.md`.
-- **Maps to**: CITE T07 (HTTPS/security), T08 (content freshness), T09 (penalty history), T03 (link-traffic coherence); CORE T03 (security standards)
+- **Maps to**: CITE T07 (HTTPS/security), T08 (content freshness), T09 (penalty history), T03 (link-traffic coherence), I01 (brand knowledge via llms.txt H1), I04 (schema coverage — llms.txt as structured brand declaration); CORE T03 (security standards), A07 (brand signals), O05 (structured data)
 - **Next handoff**: use the `Next Best Skill` below when the repair path is clear.
 
 ## Data Sources
@@ -218,6 +218,11 @@ When a user requests a technical SEO audit:
    | Important pages blocked | ✅/⚠️/❌ | [blocked paths] |
    | Assets blocked | ✅/⚠️/❌ | [CSS/JS blocked?] |
    | Correct user-agents | ✅/⚠️/❌ | [notes] |
+   | AI training bots addressed | ✅/⚠️/❌ | GPTBot, ClaudeBot, Google-Extended, CCBot |
+   | AI retrieval bots allowed | ✅/⚠️/❌ | ChatGPT-User, Claude-User, PerplexityBot |
+   | Training/retrieval distinction | ✅/⚠️/❌ | Blocks training, allows retrieval (recommended) |
+   | Deprecated AI user-agents | ⚠️/✅ | Uses Claude-Web or anthropic-ai (deprecated) |
+   | llms.txt accessible to AI bots | ✅/❌ | /llms.txt not blocked by Disallow rules |
    
    **Issues Found**:
    - [Issue 1]
@@ -268,6 +273,91 @@ When a user requests a technical SEO audit:
    
    **Crawlability Score**: [X]/10
    ```
+   
+   ---
+   
+   ### AI Discoverability Files Review
+   
+   #### llms.txt
+   
+   **URL**: [domain]/llms.txt
+   **Status**: [Found/Not Found/Error]
+   **Content-Type**: [text/plain | text/markdown | other]
+   **File Size**: [X] KB
+   
+   **Current Content** (if found):
+   ```
+   [llms.txt content — show first 50 lines if large]
+   ```
+   
+   | Check | Status | Notes |
+   |-------|--------|-------|
+   | File exists at root | ✅/❌ | [notes] |
+   | H1 heading present (required) | ✅/❌ | [content of H1] |
+   | Blockquote summary present | ✅/❌ | [first 100 chars] |
+   | Valid Markdown syntax | ✅/⚠️/❌ | [errors found] |
+   | Links use canonical URLs | ✅/⚠️/❌ | [duplicates or params found] |
+   | Link targets return 200 | ✅/⚠️/❌ | [broken links count] |
+   | File size ≤ 10 KB | ✅/⚠️ | [actual size] |
+   | Content current (no stale products/dates) | ✅/⚠️/❌ | [stale items] |
+   | Limited to 5–20 key pages | ✅/⚠️ | [actual count] |
+   | Has ## Optional section | ✅/❌ | [present for secondary content?] |
+   
+   **Issues Found**:
+   - [Issue 1]
+   - [Issue 2]
+   
+   **If llms.txt is missing — draft recommendation**:
+   
+   > ⚠️ llms.txt not found. While no major AI provider has confirmed using llms.txt as a ranking signal (as of April 2026), it is low-cost insurance for forward-looking GEO optimization. Priority: P2 (low effort, speculative benefit). Effort: 30 minutes.
+   
+   ```markdown
+   # [Company Name]
+   
+   > [One-line description from homepage H1 or meta description]
+   
+   ## [Primary Product/Service Category]
+   
+   - [Key Page 1](https://domain/page-1): [Description from meta or H1]
+   - [Key Page 2](https://domain/page-2): [Description]
+   - [Key Page 3](https://domain/page-3): [Description]
+   
+   ## Documentation
+   
+   - [Getting Started](https://domain/docs/): [Description]
+   - [API Reference](https://domain/api/): [Description]
+   
+   ## Optional
+   
+   - [Blog](https://domain/blog/): Secondary content
+   - [About](https://domain/about/): Company background
+   ```
+   
+   ---
+   
+   #### llms-full.txt
+   
+   **URL**: [domain]/llms-full.txt
+   **Status**: [Found/Not Found/Error]
+   **File Size**: [X] KB
+   
+   | Check | Status | Notes |
+   |-------|--------|-------|
+   | File exists | ✅/❌ | [notes] |
+   | File size ≤ 100 KB | ✅/⚠️ | [actual size] |
+   | Contains inline content (not just links) | ✅/❌ | [notes] |
+   | Content aligns with llms.txt sections | ✅/⚠️/❌ | [mismatches] |
+   
+   **Recommendation**: [Present if documentation-heavy site; skip if ≤10 pages of documentation]
+   
+   ---
+   
+   #### robots-ai.txt (emerging)
+   
+   **URL**: [domain]/robots-ai.txt
+   **Status**: [Found/Not Found/N/A]
+   
+   **Note**: This is an emerging specification (v1.1.0, Jan 2026). Mention if present; do not flag absence as an issue.
 
 2. **Audit Indexability**
 
@@ -383,6 +473,11 @@ If yes, write a dated summary to `memory/audits/technical-seo-checker/YYYY-MM-DD
 - Top 3-5 actionable items
 - Open loops or blockers
 - Source data references
+- **AI Discoverability**:
+  - llms.txt: [Present/Missing] | [X] pages listed | [X] KB | Issues: [list or "none"]
+  - llms-full.txt: [Present/Missing] | [X] KB
+  - robots.txt AI bot coverage: Training blocked: [Y/N] | Retrieval allowed: [Y/N]
+  - Deprecated user-agents in use: [list or "none"]
 
 If any veto-level issue was found (CORE-EEAT T04, C01, R10 or CITE T03, T05, T09), also append a one-liner to `memory/hot-cache.md` without asking.
 
@@ -392,6 +487,7 @@ If any veto-level issue was found (CORE-EEAT T04, C01, R10 or CITE T03, T05, T09
 - [HTTP Status Codes](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/technical-seo-checker/references/http-status-codes.md) — SEO impact of each status code, redirect best practices
 - [Technical Audit Templates](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/technical-seo-checker/references/technical-audit-templates.md) — Detailed output templates for steps 3-9 (CWV, mobile, security, URL structure, structured data, international, audit summary)
 - [Technical Audit Example & Checklist](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/technical-seo-checker/references/technical-audit-example.md) — Full worked example and comprehensive technical SEO checklist
+- [llms.txt Reference](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/optimize/technical-seo-checker/references/llms-txt-reference.md) — llms.txt/llms-full.txt specification, AI crawler user-agents, site-type templates
 
 ## Next Best Skill
 
