@@ -4,6 +4,88 @@ All notable changes to this project are documented here. Technical-level descrip
 
 ---
 
+## [6.5.1] — 2026-04-12
+
+### tools/shared/pipeline-runner.js (new file)
+
+- **Citation baseline automation utility (~340 lines).** Exports `runCitationBaseline(domain, queries, analysisPath)` that executes citation checks across all 3 AI engines (OpenAI, Anthropic, Gemini) and saves each result to `prompt-results.json`.
+- **Prompt result persistence:** `savePromptResult(analysisPath, result)` appends each AI query result with engine, model, timestamp, query, response excerpt, response full, domain_cited flag.
+- **Score provenance generation:** `generateScoreProvenance(citationResults, technicalResults)` creates CITE C05 (AI Citation Frequency) and C07 (Cross-Engine Consistency) scores from citation baseline data.
+- **Summary updates:** `updatePromptSummary(analysisPath)` computes `total_llm_calls`, `by_engine` breakdown, and `total_webfetch_calls`.
+
+### tools/shared/pdf-generator.js
+
+- **Field name fix for prompt results:** Changed `result.prompt?.query` to `result.query || result.prompt?.query` and `result.response?.excerpt` to `result.response_excerpt || result.response?.excerpt` to match the actual data structure from pipeline-runner.
+
+### tools/scripts/ (new directory)
+
+- **run-citation-baseline.js** — Script to run citation baseline and save results for a domain.
+- **regenerate-pdf.js** — Script to regenerate PDF from HTML with populated appendix data.
+
+### tools/__tests__/orchestration/pdf-report.test.js
+
+- **Validation functions added:** `validatePromptResults(promptResults)` catches empty `prompt_results` arrays and missing required fields. `validateScoreProvenance(provenance)` catches missing `cite_provenance`, `core_eeat_provenance`, and `feeder_chain`.
+- **New tests:** "validatePromptResults catches empty prompt_results", "validateScoreProvenance catches missing cite_provenance", integration tests for validation function exports.
+
+### Full Pipeline Validation
+
+- **PDF appendix verified populated:** 
+  - prompt-results.json: 9 entries (3 queries × 3 engines)
+  - score-provenance.json: CITE score 80/100 (C05: 80, C07: 80)
+  - PDF regenerated: 628.9 KB with populated Appendix B and C
+
+---
+
+## [6.5.0] — 2026-04-12
+
+### orchestration/company-analysis/SKILL.md (v1.2.0 → v1.3.0)
+
+- **Step 21.7 added: PDF Report Generation.** After HTML report, generates a comprehensive PDF at `analyses/<company-root>/reports/<company-root>_<domain>_<timestamp>.pdf`. Includes all 8 sections sequentially (no tabs), 2-line section descriptions, and an Appendix with: A) Raw data links, B) Full AI prompts & responses, C) Score provenance summary.
+- **HTML report enhancements:** Added `data-tooltip` attributes on section `<h2>` headers with hover descriptions. Added `.section-intro` paragraphs at start of each tab. Added print CSS for PDF generation (`@media print` with white background, black text).
+- **CSS additions:** Tooltip styles (`[data-tooltip]:hover::after`), section intro styles, and print mode overrides.
+- **Validation checkpoints updated:** Added checks for tooltips, intro paragraphs, PDF existence, and appendix content.
+
+### orchestration/company-analysis/references/ (new directory)
+
+- **report-content-descriptions.md** — Section descriptions (2-line summaries for PDF, tooltip text for HTML), score threshold explanations in business language.
+- **business-language-glossary.md** — Technical → business term mappings (CITE → Domain Authority Score, CORE-EEAT dimensions → plain English).
+
+### tools/shared/pdf-generator.js (new file)
+
+- Puppeteer-based utility (~250 lines) for HTML-to-PDF conversion with appendix injection. Exports `generatePdfFromHtml(htmlPath, pdfPath, options)`. Builds appendix sections for raw data links, prompt results, and score provenance.
+
+### tools/package.json
+
+- **puppeteer ^24.0.0 added** to dependencies for PDF generation.
+
+### tools/__tests__/orchestration/
+
+- **pdf-report.test.js** (new) — Tests PDF requirements, appendix structure, filename format, print CSS, section descriptions.
+- **html-report.test.js** — Added tests for tooltip presence, intro paragraphs, print mode CSS.
+
+### tools/shared/config.js
+
+- **Default models updated:**
+  - OpenAI: `gpt-4o-mini` → `gpt-4o`
+  - Anthropic: `claude-haiku-4-5-20251001` → `claude-sonnet-4-5` (Haiku doesn't support web search tool)
+  - Gemini: `gemini-2.0-flash` → `gemini-2.5-flash`
+
+### tools/mcp-servers/ai-citation-monitor.js
+
+- **Web search tool version updated:** `web_search_20250305` → `web_search_20260209` (current Anthropic API version).
+
+### Full Pipeline Validation
+
+- **All 3 AI engines validated with web search:**
+  - OpenAI (gpt-4o-search-preview): Working ✓
+  - Anthropic (claude-sonnet-4-5 + web_search): Working ✓
+  - Gemini (gemini-2.5-flash + Google Search): Working ✓
+- **Dynamic exclusion verified:** Perplexity skipped gracefully when API key not provided.
+- **DataForSEO fallback verified:** Falls back to OpenPageRank, Google APIs, Serper when credentials missing.
+- **caplinq.com analysis executed:** Citation baseline (4/4 OpenAI, 1/4 Anthropic, 0/4 Gemini), PageSpeed (26/100), entity check (no Wikidata). HTML + PDF reports generated.
+
+---
+
 ## [6.4.0] — 2026-04-12
 
 ### orchestration/company-analysis/SKILL.md (v1.0.0 → v1.1.0)

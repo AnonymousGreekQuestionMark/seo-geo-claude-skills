@@ -29,19 +29,19 @@ export const config = {
   },
   openai: {
     apiKey: process.env.OPENAI_API_KEY,
-    model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+    model: process.env.OPENAI_MODEL || 'gpt-4o',
     searchModel: process.env.OPENAI_SEARCH_MODEL || 'gpt-4o-search-preview',
     available: has('OPENAI_API_KEY'),
   },
   anthropic: {
     apiKey: process.env.ANTHROPIC_API_KEY,
-    model: process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001',
+    model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5',
     webSearch: process.env.ANTHROPIC_WEB_SEARCH === 'true',
     available: has('ANTHROPIC_API_KEY'),
   },
   gemini: {
     apiKey: process.env.GEMINI_API_KEY,
-    model: process.env.GEMINI_MODEL || 'gemini-2.0-flash',
+    model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
     available: has('GEMINI_API_KEY'),
   },
   perplexity: {

@@ -51,6 +51,8 @@ async function queryPerplexity(query, domain) {
     cited_in_content: citedInContent,
     citation_urls: citations,
     response_excerpt: content.slice(0, 300),
+    response_full: content,
+    prompt_used: query,
   };
 }
 
@@ -61,7 +63,7 @@ async function queryAnthropic(query, domain) {
     messages: [{ role: 'user', content: config.anthropic.webSearch ? query : AWARENESS_PROMPT(domain, query) }],
   };
   if (config.anthropic.webSearch) {
-    body.tools = [{ type: 'web_search_20250305', name: 'web_search', max_uses: 3 }];
+    body.tools = [{ type: 'web_search_20260209', name: 'web_search', max_uses: 3 }];
   }
   const data = await post(
     'https://api.anthropic.com/v1/messages',
@@ -82,6 +84,8 @@ async function queryAnthropic(query, domain) {
     cited_in_content: citedInContent,
     citation_urls: citations,
     response_excerpt: content.slice(0, 300),
+    response_full: content,
+    prompt_used: config.anthropic.webSearch ? query : AWARENESS_PROMPT(domain, query),
   };
 }
 
@@ -110,6 +114,8 @@ async function queryOpenAI(query, domain) {
     cited_in_content: citedInContent,
     citation_urls: citations,
     response_excerpt: content.slice(0, 300),
+    response_full: content,
+    prompt_used: query,
   };
 }
 
@@ -134,6 +140,8 @@ async function queryGemini(query, domain) {
     cited_in_content: citedInContent,
     citation_urls: citations,
     response_excerpt: content.slice(0, 300),
+    response_full: content,
+    prompt_used: query,
   };
 }
 
