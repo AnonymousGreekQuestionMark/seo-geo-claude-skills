@@ -694,7 +694,30 @@ Previously, hot-cache stored only the latest audit result per domain — perform
 
 ---
 
-### 5.9 Updated coverage matrix — state after v6.4.0
+### 5.9 Tool connector layer replaced — self-hosted MCP servers (#Tier1/2 access)
+
+The tool connector layer that skills use to fetch real data was replaced. Previously, `.mcp.json` pointed at three remote HTTP endpoints (Ahrefs, SimilarWeb, HubSpot) that require enterprise subscriptions ($1,499+/month for Ahrefs, $75,000+/year for SimilarWeb). Skills that needed those tools would either estimate from LLM training data or mark themselves DONE_WITH_CONCERNS when the connections weren't present — which was the common case.
+
+Eight self-hosted MCP servers now replace those three remote entries. Each server works at Tier 1 (free APIs) and upgrades automatically when paid credentials are present:
+
+| Server | What it provides to skills | CITE/CORE items it feeds |
+|--------|---------------------------|--------------------------|
+| `ai-citation-monitor` | Queries Claude, GPT, Gemini, Perplexity and checks if a domain is cited | CITE C05, C06, C07 |
+| `serp-analyzer` | Live SERP positions and SERP feature data (Serper.dev free tier) | CITE E03, I03, E07/E08 |
+| `keyword-and-backlinks` | Keyword volume/difficulty + backlink profiles (DataForSEO Tier 2; Open PageRank Tier 1) | CITE C01/C02/C04, I02, E01/E02 |
+| `entity-checker` | Wikidata SPARQL + Wikipedia + Google Knowledge Graph lookups (all free) | CITE I01, I05, I07 |
+| `schema-validator` | Fetches a URL and validates all JSON-LD blocks locally (no API key) | CITE I04, CORE O05 |
+| `pagespeed` | Google PageSpeed Insights — Core Web Vitals, LCP/CLS/INP (free, 25k/day) | CITE E04, CORE T03 |
+| `site-crawler` | BFS crawler for internal links, orphan pages, schema presence (runs locally, no API) | CITE E04, I04, CORE R08 |
+| `brand-monitor` | Brand mentions on third-party sites (Serper.dev Tier 1; Google Custom Search fallback) | CITE I09 |
+
+**Functional effect on the pipeline**: Several CITE items that §5.3 documents as "now have explicit data collection" are backed by these servers when they are connected. For example, `ai-citation-monitor` is the live data source for the C05–C07 AI citation queries in Step 1.5 (citation-baseline); `entity-checker` feeds the entity resolution test in `entity-optimizer`; `schema-validator` and `site-crawler` together enable the `schema-markup-generator` site-wide audit mode added in §5.6. When these servers are not connected, skills fall back to WebFetch and LLM estimation with explicit source: tags — the same fallback chain described in §5.3.
+
+The practical result: a full `/geo:analyze-company` run at Tier 1 (free accounts only) can now produce real measured values for most CITE items instead of estimates, without requiring any paid enterprise subscription.
+
+---
+
+### 5.11 Updated coverage matrix — state after v6.4.0
 
 Items previously marked "**no feeder**" in §1 that now have feeders:
 
