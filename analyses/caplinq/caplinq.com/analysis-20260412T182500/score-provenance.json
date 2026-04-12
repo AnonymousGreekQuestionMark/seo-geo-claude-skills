@@ -1,0 +1,69 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "timestamp": "20260412T182500",
+    "version": "1.2.0"
+  },
+  "cite_provenance": {
+    "overall": { "score": 48, "verdict": "CAUTIOUS" },
+    "dimensions": {
+      "C": {
+        "score": 35,
+        "items": [
+          { "id": "C02", "name": "Referring Domain Count", "score": 40, "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "PageRank 2, est. 100-500 RDs", "calculation": "Low PR suggests limited RDs → 40/100" },
+          { "id": "C05", "name": "AI Citation Frequency", "score": 15, "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "0/13 queries cited", "calculation": "0% citation rate → 15/100" },
+          { "id": "C06", "name": "Citation Prominence", "score": 0, "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "No citations", "calculation": "N/A - no citations to measure" },
+          { "id": "C07", "name": "Cross-Engine Consistency", "score": 20, "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "Gemini + Anthropic tested, OpenAI errored", "calculation": "Limited engine coverage → 20/100" },
+          { "id": "C08", "name": "Sentiment Analysis", "score": 70, "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "Neutral-positive when mentioned", "calculation": "Good sentiment → 70/100" }
+        ]
+      },
+      "I": {
+        "score": 40,
+        "items": [
+          { "id": "I01", "name": "AI Crawler Access", "score": 80, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "robots.txt allows all crawlers", "calculation": "No AI blocks → 80/100" },
+          { "id": "I04", "name": "Schema Coverage", "score": 10, "source_skill": "schema-markup-generator", "source_step": 16, "raw_data": "0 schema blocks found", "calculation": "0% coverage → 10/100" },
+          { "id": "I05", "name": "llms.txt Presence", "score": 0, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "/llms.txt returns 404", "calculation": "Missing → 0/100" },
+          { "id": "I08", "name": "HTTP Error Rate", "score": 30, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "Multiple 410 errors on key pages", "calculation": "High error rate → 30/100" }
+        ]
+      },
+      "T": {
+        "score": 72,
+        "items": [
+          { "id": "T03", "name": "HTTPS Security", "score": 90, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "Valid SSL, HSTS enabled, strong headers", "calculation": "Full security suite → 90/100" },
+          { "id": "T05", "name": "Penalty Signals", "score": 85, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "No penalty indicators detected", "calculation": "Clean → 85/100" },
+          { "id": "T07", "name": "Security Headers", "score": 90, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "CSP, X-Frame, XSS protection present", "calculation": "9/10 headers → 90/100" },
+          { "id": "T08", "name": "Technical Freshness", "score": 65, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "HTTP/2, Cloudflare, but slow perf", "calculation": "Modern infra, slow perf → 65/100" }
+        ]
+      },
+      "E": {
+        "score": 45,
+        "items": [
+          { "id": "E01", "name": "Knowledge Graph Presence", "score": 30, "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "No Wikipedia/Wikidata entry", "calculation": "Not in KG → 30/100" },
+          { "id": "E04", "name": "Technical Crawlability", "score": 53, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "Mobile PageSpeed 53/100", "calculation": "Score passthrough → 53/100" },
+          { "id": "E05", "name": "Organization Schema", "score": 10, "source_skill": "schema-markup-generator", "source_step": 16, "raw_data": "No Organization JSON-LD", "calculation": "Missing → 10/100" }
+        ]
+      }
+    }
+  },
+  "core_eeat_provenance": {
+    "geo_score": 69,
+    "seo_score": 71,
+    "dimensions": {
+      "C": { "score": 72, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "O": { "score": 68, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "R": { "score": 65, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "E": { "score": 70, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "Exp": { "score": 78, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "Ept": { "score": 80, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "A": { "score": 62, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "T": { "score": 68, "source_skill": "content-quality-auditor", "source_step": 11 }
+    }
+  },
+  "feeder_chain": [
+    { "target": "CITE C02/C04/C10/T01/T02", "source": "backlink-analyzer (step 9)" },
+    { "target": "CITE T07/T08/T09", "source": "technical-seo-checker (step 6)" },
+    { "target": "CITE C05-C08", "source": "citation-baseline (step 1.5)" },
+    { "target": "CITE I04", "source": "schema-markup-generator (step 16)" },
+    { "target": "CORE C/O/R/E/Exp/Ept/A/T", "source": "content-quality-auditor (step 11)" }
+  ]
+}

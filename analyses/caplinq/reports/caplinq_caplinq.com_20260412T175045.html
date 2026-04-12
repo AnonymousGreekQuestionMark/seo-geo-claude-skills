@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO/GEO Analysis - caplinq.com</title>
+  <style>
+    :root {
+      --bg: #0d1117; --surface: #161b22; --surface2: #1c2128; --border: #30363d;
+      --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+      --green: #3fb950; --amber: #d29922; --red: #f85149;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 20px 24px; }
+    header h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+    header .meta { color: var(--muted); font-size: 14px; }
+    nav#tabs { display: flex; gap: 4px; padding: 12px 24px; background: var(--surface); border-bottom: 1px solid var(--border); overflow-x: auto; }
+    nav#tabs button { padding: 8px 16px; background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--text); cursor: pointer; font-size: 13px; white-space: nowrap; }
+    nav#tabs button.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+    nav#tabs button:hover:not(.active) { background: var(--surface2); }
+    main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+    .card h3 { font-size: 16px; margin-bottom: 12px; color: var(--text); }
+    .section-intro { color: var(--muted); font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
+    h2 { font-size: 20px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    h2[data-tooltip] { cursor: help; border-bottom: 1px dashed var(--muted); display: inline-block; position: relative; }
+    h2[data-tooltip]:hover::after { content: attr(data-tooltip); position: absolute; left: 0; top: 100%; margin-top: 8px; background: var(--surface2); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: 400; max-width: 320px; white-space: normal; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    .score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+    .score-item { background: var(--surface2); padding: 12px; border-radius: 6px; text-align: center; }
+    .score-item .label { font-size: 11px; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+    .score-item .value { font-size: 24px; font-weight: 600; }
+    .score-good { color: var(--green); }
+    .score-warning { color: var(--amber); }
+    .score-bad { color: var(--red); }
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+    .badge-green { background: rgba(63, 185, 80, 0.2); color: var(--green); }
+    .badge-amber { background: rgba(210, 153, 34, 0.2); color: var(--amber); }
+    .badge-red { background: rgba(248, 81, 73, 0.2); color: var(--red); }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: var(--surface2); font-weight: 600; }
+    tr:hover { background: var(--surface2); }
+    .finding { padding: 12px; border-left: 3px solid var(--amber); background: var(--surface2); margin-bottom: 8px; border-radius: 0 6px 6px 0; }
+    .finding.critical { border-color: var(--red); }
+    .finding.info { border-color: var(--accent); }
+    @media print {
+      :root { --bg: #ffffff; --surface: #f6f8fa; --surface2: #f0f2f5; --border: #d0d7de; --text: #1f2328; --muted: #656d76; }
+      body { background: var(--bg); color: var(--text); }
+      .tab-panel { display: block !important; page-break-after: always; }
+      nav#tabs { display: none; }
+      h2[data-tooltip]:hover::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SEO & GEO Analysis Report</h1>
+    <div class="meta">Company: <strong>caplinq</strong> | Domain: <strong>caplinq.com</strong> | Analysis: <strong>2026-04-12 17:50 UTC</strong> | Library v1.3.0</div>
+  </header>
+
+  <nav id="tabs">
+    <button class="active" data-tab="0">Executive Summary</button>
+    <button data-tab="1">Domain Baseline</button>
+    <button data-tab="2">Technical</button>
+    <button data-tab="3">Recommendations</button>
+    <button data-tab="4">Next Steps</button>
+  </nav>
+
+  <main>
+    <!-- Tab 0: Executive Summary -->
+    <section class="tab-panel active" id="tab-0">
+      <h2 data-tooltip="Overview of domain authority and content quality scores with critical findings">Executive Summary</h2>
+      <p class="section-intro">Your company's overall digital health at a glance. This section shows AI citation performance, technical health, and the most critical findings requiring attention.</p>
+
+      <div class="card">
+        <h3>AI Citation Performance</h3>
+        <div class="score-grid">
+          <div class="score-item">
+            <div class="label">Citation Rate</div>
+            <div class="value score-good">100%</div>
+          </div>
+          <div class="score-item">
+            <div class="label">OpenAI</div>
+            <div class="value score-good">4/4</div>
+          </div>
+          <div class="score-item">
+            <div class="label">Anthropic</div>
+            <div class="value score-warning">1/4</div>
+          </div>
+          <div class="score-item">
+            <div class="label">Gemini</div>
+            <div class="value score-bad">0/4</div>
+          </div>
+        </div>
+        <p style="margin-top: 12px; color: var(--muted); font-size: 13px;">
+          <span class="badge badge-green">CITE C05: PASS</span>
+          <span class="badge badge-green">CITE C07: PASS</span>
+          — Cited by at least 2 of 3 AI engines
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Technical Health</h3>
+        <div class="score-grid">
+          <div class="score-item">
+            <div class="label">PageSpeed (Mobile)</div>
+            <div class="value score-bad">26</div>
+          </div>
+          <div class="score-item">
+            <div class="label">LCP</div>
+            <div class="value score-bad">10.5s</div>
+          </div>
+          <div class="score-item">
+            <div class="label">CLS</div>
+            <div class="value score-bad">0.635</div>
+          </div>
+          <div class="score-item">
+            <div class="label">FCP</div>
+            <div class="value score-bad">5.7s</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Top 5 Critical Findings</h3>
+        <div class="finding critical">
+          <strong>1. Poor Core Web Vitals</strong> — LCP 10.5s (should be &lt;2.5s), CLS 0.635 (should be &lt;0.1). Mobile performance score 26/100. Severely impacts SEO and user experience.
+        </div>
+        <div class="finding critical">
+          <strong>2. No Wikidata Entity</strong> — CAPLINQ lacks a Wikidata entry, limiting Knowledge Graph presence and AI entity recognition.
+        </div>
+        <div class="finding">
+          <strong>3. Zero Gemini Citations</strong> — Despite using Google Search, Gemini doesn't cite caplinq.com. Content may lack structured data for AI.
+        </div>
+        <div class="finding">
+          <strong>4. Low Anthropic Citation Rate</strong> — Only 1/4 queries cite caplinq.com. Opportunity for GEO optimization.
+        </div>
+        <div class="finding info">
+          <strong>5. Strong OpenAI Presence</strong> — 4/4 queries cite caplinq.com. Leverage this as a baseline for other engines.
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 1: Domain Baseline -->
+    <section class="tab-panel" id="tab-1">
+      <h2 data-tooltip="Entity recognition across search engines, knowledge graphs, and AI systems">Domain Baseline</h2>
+      <p class="section-intro">How search engines and AI systems recognize your company as an entity. Strong entity signals help your content appear in Knowledge Panels and AI-generated answers.</p>
+
+      <div class="card">
+        <h3>Entity Presence</h3>
+        <table>
+          <tr><th>Platform</th><th>Status</th><th>Action</th></tr>
+          <tr><td>Wikidata</td><td><span class="badge badge-red">Not Found</span></td><td>Create entity with basic facts</td></tr>
+          <tr><td>Wikipedia</td><td><span class="badge badge-red">Not Found</span></td><td>Consider notability criteria</td></tr>
+          <tr><td>Google Knowledge Panel</td><td><span class="badge badge-amber">Unknown</span></td><td>Verify with brand search</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>AI Citation Baseline</h3>
+        <table>
+          <tr><th>Query</th><th>OpenAI</th><th>Anthropic</th><th>Gemini</th></tr>
+          <tr><td>CAPLINQ specialty chemicals</td><td class="score-good">✓</td><td class="score-bad">✗</td><td class="score-bad">✗</td></tr>
+          <tr><td>thermal interface materials supplier</td><td class="score-good">✓</td><td class="score-good">✓</td><td class="score-bad">✗</td></tr>
+          <tr><td>gas diffusion layer carbon paper</td><td class="score-good">✓</td><td class="score-bad">✗</td><td class="score-bad">✗</td></tr>
+          <tr><td>semiconductor mold compounds Europe</td><td class="score-good">✓</td><td class="score-bad">✗</td><td class="score-bad">✗</td></tr>
+        </table>
+        <p style="margin-top: 12px; color: var(--muted); font-size: 13px;">
+          Engines tested: OpenAI (gpt-4o-search-preview), Anthropic (claude-sonnet-4-5 + web search), Gemini (gemini-2.5-flash + Google Search)
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Company Profile</h3>
+        <table>
+          <tr><td><strong>Industry</strong></td><td>Specialty Chemicals, Electronics Materials</td></tr>
+          <tr><td><strong>Products</strong></td><td>Thermal interface materials, die attach adhesives, ion exchange membranes, semiconductor materials</td></tr>
+          <tr><td><strong>Markets</strong></td><td>Semiconductors, eMobility, Renewable Energy, Aerospace</td></tr>
+          <tr><td><strong>Locations</strong></td><td>Netherlands (HQ), USA, Canada, China, Philippines, Malaysia</td></tr>
+          <tr><td><strong>Certifications</strong></td><td>ISO 9001</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tab 2: Technical -->
+    <section class="tab-panel" id="tab-2">
+      <h2 data-tooltip="Crawlability, page speed, mobile optimization, and URL structure">Technical</h2>
+      <p class="section-intro">Website performance, crawlability, and search engine accessibility issues. Technical problems can prevent even great content from ranking well.</p>
+
+      <div class="card">
+        <h3>Core Web Vitals (Mobile)</h3>
+        <table>
+          <tr><th>Metric</th><th>Value</th><th>Target</th><th>Status</th></tr>
+          <tr><td>LCP (Largest Contentful Paint)</td><td>10.5s</td><td>&lt;2.5s</td><td><span class="badge badge-red">Poor</span></td></tr>
+          <tr><td>CLS (Cumulative Layout Shift)</td><td>0.635</td><td>&lt;0.1</td><td><span class="badge badge-red">Poor</span></td></tr>
+          <tr><td>FCP (First Contentful Paint)</td><td>5.7s</td><td>&lt;1.8s</td><td><span class="badge badge-red">Poor</span></td></tr>
+          <tr><td>Performance Score</td><td>26/100</td><td>&gt;90</td><td><span class="badge badge-red">Poor</span></td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Crawlability</h3>
+        <table>
+          <tr><td><strong>robots.txt</strong></td><td><span class="badge badge-green">Present</span></td></tr>
+          <tr><td><strong>Sitemaps</strong></td><td>4 declared (general, products, blog, services)</td></tr>
+          <tr><td><strong>CMS</strong></td><td>Joomla (based on blocked paths)</td></tr>
+          <tr><td><strong>Blocked Paths</strong></td><td>Standard Joomla admin/system directories</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tab 3: Recommendations -->
+    <section class="tab-panel" id="tab-3">
+      <h2 data-tooltip="Schema markup, meta tags, and content optimization priorities">Recommendations</h2>
+      <p class="section-intro">Prioritized improvements with specific implementation guidance. Each recommendation maps to a measurable improvement in your visibility scores.</p>
+
+      <div class="card">
+        <h3>P0 — Critical (This Week)</h3>
+        <table>
+          <tr><th>Action</th><th>Impact</th><th>Effort</th></tr>
+          <tr><td>Fix Core Web Vitals — optimize images, defer JS, reduce server response time</td><td>High</td><td>High</td></tr>
+          <tr><td>Add Organization schema to homepage</td><td>Medium</td><td>Low</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>P1 — Important (This Month)</h3>
+        <table>
+          <tr><th>Action</th><th>Impact</th><th>Effort</th></tr>
+          <tr><td>Create Wikidata entity for CAPLINQ</td><td>High</td><td>Medium</td></tr>
+          <tr><td>Add FAQ schema to product pages for Gemini visibility</td><td>Medium</td><td>Medium</td></tr>
+          <tr><td>Optimize content for "thermal interface materials" (Anthropic opportunity)</td><td>Medium</td><td>Medium</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>P2 — Recommended (This Quarter)</h3>
+        <table>
+          <tr><th>Action</th><th>Impact</th><th>Effort</th></tr>
+          <tr><td>Add Product schema to all product pages</td><td>Medium</td><td>High</td></tr>
+          <tr><td>Create definitive content for "gas diffusion layer" queries</td><td>Medium</td><td>High</td></tr>
+          <tr><td>Build citation-worthy content (studies, whitepapers, data)</td><td>High</td><td>High</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tab 4: Next Steps -->
+    <section class="tab-panel" id="tab-4">
+      <h2 data-tooltip="Prioritized 90-day roadmap with effort and impact estimates">Next Steps</h2>
+      <p class="section-intro">Your 90-day action plan with priorities and expected impact. Start with P0 items for the fastest improvements.</p>
+
+      <div class="card">
+        <h3>90-Day Action Plan</h3>
+        <table>
+          <tr><th>Priority</th><th>Action</th><th>Owner</th><th>Timeline</th></tr>
+          <tr><td><span class="badge badge-red">P0</span></td><td>Audit and fix Core Web Vitals (LCP, CLS)</td><td>Dev Team</td><td>Week 1-2</td></tr>
+          <tr><td><span class="badge badge-red">P0</span></td><td>Add Organization + LocalBusiness schema</td><td>Dev Team</td><td>Week 1</td></tr>
+          <tr><td><span class="badge badge-amber">P1</span></td><td>Create Wikidata entity</td><td>Marketing</td><td>Week 2-3</td></tr>
+          <tr><td><span class="badge badge-amber">P1</span></td><td>Add FAQ schema to top 10 product pages</td><td>Dev Team</td><td>Week 3-4</td></tr>
+          <tr><td><span class="badge badge-amber">P1</span></td><td>GEO-optimize "thermal interface materials" content</td><td>Content</td><td>Week 4-6</td></tr>
+          <tr><td><span class="badge badge-green">P2</span></td><td>Product schema rollout (all products)</td><td>Dev Team</td><td>Week 6-8</td></tr>
+          <tr><td><span class="badge badge-green">P2</span></td><td>Create citation-worthy technical content</td><td>Content</td><td>Week 8-12</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Analysis Metadata</h3>
+        <table>
+          <tr><td><strong>Domain</strong></td><td>caplinq.com</td></tr>
+          <tr><td><strong>Timestamp</strong></td><td>2026-04-12T17:50:45Z</td></tr>
+          <tr><td><strong>Tool Tier</strong></td><td>Tier 2 (API integrations active)</td></tr>
+          <tr><td><strong>AI Engines</strong></td><td>OpenAI, Anthropic, Gemini (Perplexity skipped)</td></tr>
+          <tr><td><strong>Data Confidence</strong></td><td>High (live API data)</td></tr>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('#tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

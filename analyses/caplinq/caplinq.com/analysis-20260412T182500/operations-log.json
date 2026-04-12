@@ -1,0 +1,33 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "timestamp": "20260412T182500",
+    "started_at": "2026-04-12T18:25:00Z",
+    "completed_at": null,
+    "duration_seconds": null,
+    "version": "1.0.0"
+  },
+  "environment": {
+    "node_version": "v20",
+    "platform": "darwin",
+    "limit_anthropic": true
+  },
+  "api_availability": {
+    "anthropic": true,
+    "openai": true,
+    "gemini": false,
+    "perplexity": false
+  },
+  "steps": [],
+  "tool_calls": [],
+  "file_operations": [],
+  "errors": [],
+  "warnings": [],
+  "metrics": {
+    "total_api_calls": 0,
+    "by_engine": {},
+    "total_webfetch_calls": 0,
+    "total_file_writes": 0,
+    "total_file_reads": 0
+  }
+}

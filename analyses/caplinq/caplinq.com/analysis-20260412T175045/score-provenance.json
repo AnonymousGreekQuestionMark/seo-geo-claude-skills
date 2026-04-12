@@ -1,0 +1,58 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "timestamp": "2026-04-12T18:10:29.990Z",
+    "version": "1.3.0"
+  },
+  "cite_provenance": {
+    "overall": {
+      "score": 80,
+      "verdict": "PASS"
+    },
+    "dimensions": {
+      "C": {
+        "score": 80,
+        "items": [
+          {
+            "id": "C05",
+            "name": "AI Citation Frequency",
+            "score": 80,
+            "source_skill": "citation-baseline",
+            "source_step": "1.5",
+            "raw_data": "cited on 3/3 queries",
+            "calculation": "3/3 = 100% citation rate"
+          },
+          {
+            "id": "C07",
+            "name": "Cross-Engine Consistency",
+            "score": 80,
+            "source_skill": "citation-baseline",
+            "source_step": "1.5",
+            "raw_data": "cited by 3 engines: openai, gemini, anthropic",
+            "calculation": "3/3 engines = 100% coverage"
+          }
+        ]
+      }
+    }
+  },
+  "core_eeat_provenance": {
+    "geo_score": null,
+    "seo_score": null,
+    "note": "Full CORE-EEAT scoring requires content-quality-auditor"
+  },
+  "feeder_chain": [
+    {
+      "target": "CITE C05-C07",
+      "source": "citation-baseline (step 1.5)"
+    },
+    {
+      "target": "CITE C02/C04/C10/T01/T02",
+      "source": "backlink-analyzer (step 9) - not run"
+    },
+    {
+      "target": "CITE T07/T08/T09",
+      "source": "technical-seo-checker (step 6) - partial"
+    }
+  ],
+  "technical_data": {}
+}

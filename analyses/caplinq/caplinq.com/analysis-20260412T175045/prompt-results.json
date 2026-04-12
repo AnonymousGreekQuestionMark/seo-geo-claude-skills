@@ -1,0 +1,164 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "timestamp": "20260412T175045",
+    "tier": 2,
+    "version": "1.3.0"
+  },
+  "prompt_results": [
+    {
+      "step": "1.5",
+      "skill": "citation-baseline",
+      "engine": "openai",
+      "model": "gpt-4o-search-preview",
+      "timestamp_utc": "2026-04-12T18:09:00.790Z",
+      "live_search": true,
+      "query": "What is caplinq.com and what do they specialize in?",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ Corporation is a supplier of specialty chemicals, adhesives, and plastics, serving industries such as semiconductors (including 5G), eMobility, power distribution, renewable energy, and electronics assembly. ([in.linkedin.com](https://in.linkedin.com/company/caplinq-corporation?utm_source=op",
+      "response_full": "CAPLINQ Corporation is a supplier of specialty chemicals, adhesives, and plastics, serving industries such as semiconductors (including 5G), eMobility, power distribution, renewable energy, and electronics assembly. ([in.linkedin.com](https://in.linkedin.com/company/caplinq-corporation?utm_source=openai)) Their product portfolio includes epoxy coating powders, epoxy molding compounds, polyimide films and tapes, solder spheres, anti-static products, specialty silicones, plastics, films, and tapes. ([craft.co](https://craft.co/caplinq?utm_source=openai))\n\nIn addition to their product offerings, CAPLINQ provides services like order fulfillment, technical representation, technical marketing, and REACH (Registration, Evaluation, Authorization, and Restriction of Chemicals) compliance services. ([craft.co](https://craft.co/caplinq?utm_source=openai)) They have a global presence with offices in the Netherlands, Canada, the United States, China, the Philippines, and Malaysia. ([caplinq.com](https://www.caplinq.com/view-all-categories.html?utm_source=openai)) ",
+      "domain_cited": true
+    },
+    {
+      "step": "1.5",
+      "skill": "citation-baseline",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T18:09:04.848Z",
+      "live_search": true,
+      "query": "What is caplinq.com and what do they specialize in?",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ is a company specializing in specialty chemicals, adhesives, and plastics, operating as a digital-age market channel partner. They were founded in 2006 with a focus on providing high-quality technical support to customers.\n\nCaplinq's specializations include:\n*   **Specialty Chemicals and Pla",
+      "response_full": "CAPLINQ is a company specializing in specialty chemicals, adhesives, and plastics, operating as a digital-age market channel partner. They were founded in 2006 with a focus on providing high-quality technical support to customers.\n\nCaplinq's specializations include:\n*   **Specialty Chemicals and Plastics** They are experts in conductive plastics and offer a wide range of products such as die attach materials, epoxy molding compounds, electrically conductive epoxies, thermal interface materials (like phase change materials, thermal gap pads, and thermal grease), electrochemical materials (ion exchange membranes, carbon papers), and various adhesives, coatings, and films. These materials are supplied to industries like semiconductor manufacturing (including 5G), eMobility, power distribution, renewable energy, and electronics assembly.\n*   **REACH Only Representation** CAPLINQ acts as a REACH Only Representative, helping foreign companies comply with European chemical regulations.\n*   **Order Fulfillment** They provide order fulfillment services, enabling foreign companies to establish a European presence without needing to set up their own entity.\n*   **Technical Marketing and Sales Services** CAPLINQ offers technical marketing and sales services, translating complex technical information into engaging content to attract customers and extending the reach of sales organizations. They provide technical knowledge and customized support to engineers and buyers at original equipment manufacturers (OEMs) and contract manufacturers.\n\nEssentially, CAPLINQ helps foreign companies compete in the European market by acting as a market partner, providing specialized materials, and offering services that cover regulatory compliance",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFa9BjR9L_PrujldBz7p-19ImORuAyw5U2d4vCR333hyaaZADZWI3Nh8XLuoD6OMQtFWcQfilEaz9xkFYKrdjeA8IeSFk6zP66zshJ5gLFGBOM",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFlRSPARWyS3F5ISFq-_uyq99KWmwbR6rbs1fS_a2SHPda_bcmt-ot-xhR9RuTowWIWq1LRwR7MgYkh_KdelOdLSgQHZgoGibuNhH9nse2fUSWnXbLOZrrIS0ZEZFHG7oywiGET",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCbxvTexa-IJvJvuqLzCqsvXNNp7K42w8K2NKXMvDQHl0imAz_8vyKyW7pXO7vU35Ek-J931WvtYQbKPoy34cJvE9uSJwHd6x8CIpWUABsNeGfVGqwxQEbcwkLahku_44mbJSc9vxo3XB3r0NlLBU=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH9y8Za0wK1usyefhkzC-iVd1YCzbhUnF9RvYxQRu7cY-vNdYPODRwl_SfRL0knmZjzlQpecmxOPmF-sgJyGJ_u9aqP73DqeCi7rZpvEwP8zvDvn2gVUoaJVkR89n6zr8-QW17p184BFRS5Oy9KVw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAJiwVx7jPy8kKDgpFNOQEhozKs7Iea-0wCrxG4j58Jtdo9bU22TfiGT9ZrKe2Htth00_hLaihyG3owDT5wYDj8hhX6tC0K93mZxRDk4u-4WQYfvAne8nsSO4fMUO1reJi9ItBtfciOg=="
+      ],
+      "domain_cited": false
+    },
+    {
+      "step": "1.5",
+      "skill": "citation-baseline",
+      "engine": "anthropic",
+      "model": "claude-sonnet-4-5",
+      "timestamp_utc": "2026-04-12T18:09:17.883Z",
+      "live_search": true,
+      "query": "What is caplinq.com and what do they specialize in?",
+      "domain": "caplinq.com",
+      "response_excerpt": "I'll search for information about caplinq.com to find out what they are and what they specialize in. Based on the search results,  CAPLINQ is a specialty chemicals and plastics expert specialized in conductive plastic, REACH Only Representation, Order Fulfillment and Technical Marketing .\n\nMore spec",
+      "response_full": "I'll search for information about caplinq.com to find out what they are and what they specialize in. Based on the search results,  CAPLINQ is a specialty chemicals and plastics expert specialized in conductive plastic, REACH Only Representation, Order Fulfillment and Technical Marketing .\n\nMore specifically,  CAPLINQ is a supplier of specialty chemicals, adhesives, and plastics to the semiconductor (including 5G), eMobility, power distribution, renewable energy, and electronics assembly markets .\n\n CAPLINQ provides polyimide films, tapes, anti-static and ESD plastics, epoxy molding compounds, epoxy coating powders, thermal interface material, and die-attach materials .\n\nIn summary, CAPLINQ specializes in supplying advanced materials and chemicals to high-tech industries, with particular expertise in conductive plastics and materials used in electronics, semiconductors, and renewable energy applications.",
+      "citation_urls": [],
+      "domain_cited": true
+    },
+    {
+      "step": "1.5",
+      "skill": "citation-baseline",
+      "engine": "openai",
+      "model": "gpt-4o-search-preview",
+      "timestamp_utc": "2026-04-12T18:09:22.102Z",
+      "live_search": true,
+      "query": "Best suppliers for specialty chemicals like caplinq",
+      "domain": "caplinq.com",
+      "response_excerpt": "Caplinq is a supplier of specialty chemicals, adhesives, and plastics serving industries such as semiconductors, eMobility, power distribution, renewable energy, and electronics assembly. ([knowde.com](https://www.knowde.com/stores/caplinq?utm_source=openai)) If you're seeking similar suppliers, her",
+      "response_full": "Caplinq is a supplier of specialty chemicals, adhesives, and plastics serving industries such as semiconductors, eMobility, power distribution, renewable energy, and electronics assembly. ([knowde.com](https://www.knowde.com/stores/caplinq?utm_source=openai)) If you're seeking similar suppliers, here are some notable companies in the specialty chemicals sector:\n\n\n\n**Element Solutions Inc**  \nA global manufacturer and supplier of specialty chemicals for various applications, including electronics, automotive, and industrial surface finishing. ([en.wikipedia.org](https://en.wikipedia.org/wiki/Element_Solutions?utm_source=openai))\n\n\n\n\n**Vantage Specialty Chemicals**  \nAn American company offering specialty chemicals across personal care, performance materials, oleochemicals, and food sectors. ([en.wikipedia.org](https://en.wikipedia.org/wiki/Vantage_Specialty_Chemicals?utm_source=openai))\n\n\n\n\n**Shin-Etsu Chemical Co.**  \nA Japanese chemical company known for its silicone products used in LED and electronic applications. ([blog.caplinq.com](https://blog.caplinq.com/caplinq-supports-shin-etsu-led-silicone-products_1130/?utm_source=openai))\n\n\n\n\n**MacDermid Enthone**  \nA subsidiary of Element Solutions Inc, specializing in surface finishing and electronics solutions.\n\n\n\n\n**Kester**  \nAnother subsidiary of Element Solutions Inc, providing materials for electronic assembly, including solder and related products.\n\n\nWhen selecting a supplier, consider factors such as product range, industry focus, technical support, and global reach to ensure they align with your specific requirements. ",
+      "domain_cited": true
+    },
+    {
+      "step": "1.5",
+      "skill": "citation-baseline",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T18:09:26.892Z",
+      "live_search": true,
+      "query": "Best suppliers for specialty chemicals like caplinq",
+      "domain": "caplinq.com",
+      "response_excerpt": "Caplinq is a manufacturer and supplier of specialty chemicals, adhesives, and plastics, primarily serving the semiconductor, eMobility, renewable energy, and electronics assembly industries. Their product offerings include a range of high-performance materials such as epoxy molding compounds, therma",
+      "response_full": "Caplinq is a manufacturer and supplier of specialty chemicals, adhesives, and plastics, primarily serving the semiconductor, eMobility, renewable energy, and electronics assembly industries. Their product offerings include a range of high-performance materials such as epoxy molding compounds, thermal interface materials, die attach materials, electrically conductive epoxies, conductive plastics, specialty tapes and films (including polyimide, polyester, and PTFE tapes), specialty cleaners and conditioners, and various fine and specialty chemicals like additives, high-purity alumina, bismaleimides (BMI), high-purity silica, and reactive silicones. Beyond manufacturing, Caplinq also acts as a market channel partner, providing services like order fulfillment, REACH Only Representation, technical sales, and marketing for other specialty chemical manufacturers in the European market.\n\nTo identify suppliers for specialty chemicals similar to Caplinq, consider companies that also focus on high-performance materials for advanced technology sectors. These typically include:\n\n*   **Manufacturers of advanced electronic materials:** Companies specializing in materials for semiconductors, PCBs, and electronic assembly will offer products like encapsulants, die attach films, molding compounds, and thermal management solutions.\n*   **Suppliers of high-performance adhesives and sealants:** Given Caplinq's offerings, other suppliers in this category would be relevant, particularly those with products engineered for demanding industrial or electronic applications.\n*   ",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5LwKTB4Z5Nz4FG-hKuJC00Ylz_KRvYs6Sn5W3JrfaxJWF3RMZUcSNuuABrBe4xCB5rTJjMYklF5NwWv-j3yRIxuXcvXtEUAqqSvkjbcUMcYnY7n9iBYIUgwCIba1P8ItvYYvYWA==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFD7ycT0Kw4JLbV_lbjAkbZfPGsXvHVC1Jge3g0p3thNbwLuyRLBKe0tEvuod7zqx7Wphc_AmTEvWQyvWuNOvo_c15dTQ0bY-5O3jknH_MdhYMEGmDT5obiEzHcJJcqU1J1XfI=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFoeRf8hPlrzT7r74kWYZSGVI019gB-NOK6pqCF4yNAtce1HB-DTkogJHw-0QNVLjdhZJx3bnisUpzykmcdm-YZFvASIs6D5f0XnH7ZSb-7h61kew==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFBev3oKEaDBGJVK9YisrMtwNeHb3_-_tU-xmFVGzn5KGiUiNHlCVtosSIhDaU0_QkjsvN7F-lCUkXnUdXiV4qxCjZ5lXIoybnXxfW1i3sRBikHUl4Xo-dvPAxLnCKieF5sodlzghnUfvdRS_UGvz_Z",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGvHzyXXa64ZW0EnDJPFo94FmO0v9FnPZjzUWmRuCwKqQJDnws1FiIynoy6jXri0BG2a5IAVioKHl5l-bANC8KxLSnU2aodc_kJlT8RlajxgiHofdbY3lpL1mxBvBzZVSzK",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEfZBT6DSWDFC1kvYGrrkB6NiJH3RHGICqhvN7M2_rrSLntolyUE2ECnbypxHCGpkAH8vnJSYRr9pU11RTvxs3zVGBhQIg3Q0KGy-pcxrmczj4ecnb3-udcvVsT2D33evBVtgmvjoMIxG8=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFm9sGNEdj4UIXJwypwvxgQREhXysgDHsGjzSKo7dCTaxJ7cwjLZwK1FpZtx-9U9JEVnrzlHqVIy5Q0VvKRAjBnS8KhNcBxXBxVnqaos372dnFdC93SYUmJMu4NRwcG4Dl5XaOTa8RTqttjmT22McwIji2G5WK_74O6",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE6NNOsDEckJhSNWWE7MjsgQTi6VMh-R1CT4VUVlSYC1tsQq-8g11K7ZdAD-Mp9_XGdvO8MlQ7DrJdgWtbvVqCHhh6jR53ue9REy841Zj6hFBk9K0yXkfr1EUDWFpgl5_LqqRUHrvKzVjGiycpj3TOLGRaBzu8H_Ac4ghHARgDv37c="
+      ],
+      "domain_cited": false
+    },
+    {
+      "step": "1.5",
+      "skill": "citation-baseline",
+      "engine": "anthropic",
+      "model": "claude-sonnet-4-5",
+      "timestamp_utc": "2026-04-12T18:10:00.862Z",
+      "live_search": true,
+      "query": "Best suppliers for specialty chemicals like caplinq",
+      "domain": "caplinq.com",
+      "response_excerpt": "I'll help you find information about specialty chemical suppliers similar to Caplinq. Based on my search results, here are the **best suppliers for specialty chemicals** similar to Caplinq:\n\n## **Top Specialty Chemical Distributors**\n\n### **Major Global Distributors**\n **Brenntag** and **Univar** ar",
+      "response_full": "I'll help you find information about specialty chemical suppliers similar to Caplinq. Based on my search results, here are the **best suppliers for specialty chemicals** similar to Caplinq:\n\n## **Top Specialty Chemical Distributors**\n\n### **Major Global Distributors**\n **Brenntag** and **Univar** are leading distributors good for sourcing commodity chemicals and intermediates with multiple suppliers aggregated .\n\n **Azelis** is a leading specialty chemical distributor that positions itself as a fully integrated, innovative service provider of chemicals and food ingredients .\n\n### **Leading US Specialty Chemical Companies**\n Major players in the US specialty chemicals sector include **The Lubrizol Corporation** and **Kraton Corporation** .\n\n **Inhance Technologies** specializes in performance additives for improving abrasion and wear resistance .\n\n## **Key Considerations When Choosing**\n\nWhen selecting a specialty chemical supplier similar to Caplinq, consider:\n\n- **Product range** - Whether they carry the specific chemicals you need\n- **Geographic coverage** - Local availability and shipping capabilities\n- **Technical support** - Access to formulation expertise and application support\n- **Regulatory compliance** - REACH registration and other regulatory services (which Caplinq specializes in)\n- **Minimum order quantities** - Some suppliers focus on bulk while others handle smaller quantities\n\nFor more detailed comparisons and specific product availability, I'd recommend visiting the websites of these suppliers directly to evaluate which best matches your specific needs.",
+      "citation_urls": [],
+      "domain_cited": false
+    },
+    {
+      "step": "1.5",
+      "skill": "citation-baseline",
+      "engine": "openai",
+      "model": "gpt-4o-search-preview",
+      "timestamp_utc": "2026-04-12T18:10:10.411Z",
+      "live_search": true,
+      "query": "caplinq company overview and products",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ is a supplier of specialty chemicals, adhesives, and plastics, serving industries such as semiconductors (including 5G), eMobility, power distribution, renewable energy, and electronics assembly. Established in 2004, the company operates globally with offices in Canada, the United States, th",
+      "response_full": "CAPLINQ is a supplier of specialty chemicals, adhesives, and plastics, serving industries such as semiconductors (including 5G), eMobility, power distribution, renewable energy, and electronics assembly. Established in 2004, the company operates globally with offices in Canada, the United States, the Netherlands, China, the Philippines, and Malaysia. ([caplinq.com](https://www.caplinq.com/?utm_source=openai))\n\n**Product Portfolio:**\n\nCAPLINQ offers a diverse range of products tailored to various industrial applications:\n\n- **Specialty Tapes and Films:** Under the LINQTAPE™ brand, CAPLINQ provides high-temperature polyimide (Kapton) tapes, polyester (PET) tapes, PTFE tapes, and wafer dicing tapes. ([caplinq.com](https://www.caplinq.com/about-caplinq.html?utm_source=openai))\n\n- **Conductive Plastics:** The LINQSTAT™ line includes conductive plastic films and materials designed for applications requiring electrical conductivity. ([caplinq.com](https://www.caplinq.com/about-caplinq.html?utm_source=openai))\n\n- **Epoxy Coating Powders and Molding Compounds:** CAPLINQ supplies epoxy-based materials suitable for coatings and molding applications, offering durability and resistance in demanding environments. ([caplinq.com](https://www.caplinq.com/view-all-categories.html?utm_source=openai))\n\n- **Thermal Interface Materials:** Products like phase change thermal pastes and thermal gap pads are designed to enhance heat dissipation in electronic components, ensuring optimal performance. ([caplinq.com](https://www.caplinq.com/emobility/?utm_source=openai))\n\n- **Adhesives and Sealants:** The company offers a variety of adhesives, including Silyl Modified Polymers (SMP), polyurethane, and hot melt adhesives, catering to general and industrial applications. ([caplinq.com](https://www.caplinq.com/adhesives.html?utm_source=openai))\n\n- **Encapsulants and Underfills:** CAPLINQ provides materials for potting, liquid encapsulation, low-pressure molding, underfills, and optically clear materials, essential for protecting electronic components. ([caplinq.com](https://www.caplinq.com/view-all-categories.html?utm_source=openai))\n\n**Services:**\n\nBeyond its product offerings, CAPLINQ delivers several services to support its clients:\n\n- **Order Fulfillment:** Assisting companies in establishing a European presence without the need for a local entity, CAPLINQ manages logistics and supply chain operations. ([caplinq.com](https://www.caplinq.com/?utm_source=openai))\n\n- **REACH Only Representation:** Acting as the chemical importer of record into Europe, ensuring compliance with EU regulations. ([caplinq.com](https://www.caplinq.com/?utm_source=openai))\n\n- **Technical Representation and Marketing:** Providing sales engineering, onsite technical support, and marketing services to build brand and product awareness both online and offline. ([caplinq.com](https://www.caplinq.com/?utm_source=openai))\n\nCAPLINQ's commitment to innovation and quality has positioned it as a trusted partner for companies seeking specialized materials and services in high-tech industries. ",
+      "domain_cited": true
+    },
+    {
+      "step": "1.5",
+      "skill": "citation-baseline",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T18:10:14.552Z",
+      "live_search": true,
+      "query": "caplinq company overview and products",
+      "domain": "caplinq.com",
+      "response_excerpt": "Caplinq Corporation, founded in 2004 in Assendelft, North Holland, is a company that operates as both a manufacturer and a digital-age market channel partner, specializing in specialty chemicals, adhesives, and plastics. The company was established with the goal of providing high-quality technical s",
+      "response_full": "Caplinq Corporation, founded in 2004 in Assendelft, North Holland, is a company that operates as both a manufacturer and a digital-age market channel partner, specializing in specialty chemicals, adhesives, and plastics. The company was established with the goal of providing high-quality technical support to customers by understanding their needs.\n\n**Company Overview:**\nCaplinq serves as a premier supplier of specialty chemicals, adhesives, and plastics, with a focus on markets such as semiconductor manufacturing, eMobility, renewable energy, and electronics assembly. They offer two distinct business models:\n\n*   **Specialty Chemicals Manufacturer:** Caplinq develops, manufactures, and markets niche, high-value products under its own brands, including CHEMLINQ, LINQSOL, LINQCELL, LINQBOND, OPTOLINQ, LINQALLOY, LINQSTAT, SMARTLINQ, LINQSIL, and LINQTAPE.\n*   **Channel Market Partner:** Caplinq acts as an extension of its suppliers' organizations, offering a European presence without the necessity of a European entity. In this role, they provide technical sales, support, and service to customers globally, working closely with other specialty manufacturers. They are also specialized in REACH Only Representation and order fulfillment services.\n\nCaplinq is noted for its global distribution network, technical expertise, and customized support for engineers and buyers in original equipment manufacturing (OEMs) and contract manufacturing. The company has approximately 62 employees across three continents (Asia, Europe, and North America) and generates an estimated revenue of $37.5 million.\n\n**Products:**\nCaplinq offers a diverse product range that includes advanced materials designed to improve thermal conductivity, enhance electronic component",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFVT5vZLpsJVKgLVuHwbKfkHiIvd1KkFiLQNoHJcKHRv4sBG39ZtAjuUI6x5JQM2in_WuMH7M4zOePpWynl-tRMAWWN-dtx-bWOZDqUvXOp7kNR-AG_5nxv_TaC7vCh2aq3PAwG0A==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmNh95s43rOZHPIp6NOz9ntuU-74Yv10NqUsEro7DDK4C-erkn5Mist2MD1qQ_yOYfoRg3gYYl121qbJKM31WC7U4Sve3LJLTfhXwyxZLmS-1fYVeXIqxH_fOrJLLjgLf4egE=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEu11s-Z9fLSDm7upnirx7PQEmu9-apoFVZRm3_uLTRcBUyKENuSBsyoa8cAlxwssYrCo2yted32617nzZbgRHLYpxVPR4wF0HE5L5GAdW6J9Iws-nQxtTAM5Zm0whQ9r4=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGL9wpVC3U-8hau4oNOCN6cMuNcQ5v-ysiC14SNaP-WGwfOURkiWcYhetHjs2V3M3dnkqWe5AV9PZnzjYKDczxk_u3EbN--0WQmjtP5Jm_Ct1BBFce6kluDf0U5sDQMiHiLfcPPpqcVDe2Grc__6dr0",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHD4T3peGvVLy3EGTKvT4GFu9yRdzaU6NncbRrsnUELO-2OfPwujjVzmOP2lFILZVuQ5Po53eAeyCGakw8Wlsgu5RsZrwum0UiHE9NtiaYOnIGitg=="
+      ],
+      "domain_cited": false
+    },
+    {
+      "step": "1.5",
+      "skill": "citation-baseline",
+      "engine": "anthropic",
+      "model": "claude-sonnet-4-5",
+      "timestamp_utc": "2026-04-12T18:10:29.985Z",
+      "live_search": true,
+      "query": "caplinq company overview and products",
+      "domain": "caplinq.com",
+      "response_excerpt": "I'll search for information about Caplinq company and their products. Based on the search results, here's an overview of CAPLINQ:\n\n## Company Overview\n\n CAPLINQ is a manufacturer of specialty chemicals, adhesives and plastics that develops, manufactures, and markets niche, high-value products . The ",
+      "response_full": "I'll search for information about Caplinq company and their products. Based on the search results, here's an overview of CAPLINQ:\n\n## Company Overview\n\n CAPLINQ is a manufacturer of specialty chemicals, adhesives and plastics that develops, manufactures, and markets niche, high-value products . The company serves as  an internet-age market partner, giving European presence without a European entity .\n\n CAPLINQ handles its suppliers' entire supply chain from freight forwarding to customs , providing comprehensive distribution services.\n\n## Key Industries Served\n\n CAPLINQ's products are qualified and used by major global companies in the Semiconductor, eMobility, Renewable Energy, and Electronics Assembly industries .\n\n## Products and Brands\n\nCAPLINQ offers several proprietary product brands including:\n-  CHEMLINQ, LINQSOL, LINQCELL, LINQBOND, OPTOLINQ, LINQALLOY, LINQSTAT, SMARTLINQ, LINQSIL & LINQTAPE \n\n**Specific Product Categories:**\n-  Polyimide films and tapes \n-  Anti-static and ESD plastics \n-  Epoxy molding compounds and epoxy coating powders \n-  Thermal interface materials \n-  Die-attach materials and semiconductor packaging materials \n\nThe company appears to specialize in high-performance materials for advanced manufacturing and electronics applications, with a focus on providing both products and comprehensive supply chain services to its customers.",
+      "citation_urls": [],
+      "domain_cited": false
+    }
+  ],
+  "webfetch_calls": [],
+  "summary": {
+    "total_llm_calls": 9,
+    "by_engine": {
+      "openai": 3,
+      "gemini": 3,
+      "anthropic": 3
+    },
+    "total_webfetch_calls": 0
+  }
+}

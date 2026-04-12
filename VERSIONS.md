@@ -32,21 +32,7 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 
 ## Changelog
 
-### v6.6.1 — Pipeline Integrity Fixes (2026-04-12)
-
-Bug fixes and improvements for pipeline transparency and error reporting.
-
-**Fixed**
-- OpenAI citation checks failing when annotations have missing/undefined URLs (added `.filter(Boolean)`)
-- Score provenance items remaining as "PENDING" instead of "NOT_ASSESSED" after finalization
-- llms.txt audit showing generic "not performed" message instead of explicit "404 Not Found"
-- Empty CORE-EEAT data provenance tables in PDF — added fallback for dimension-level display
-
-**Added**
-- CLI wrapper `ops-log-cli.js` for operations logging during orchestration
-- Tests for OpenAI undefined URL handling, provenance NOT_ASSESSED conversion, llms.txt 404 display, and dimension-level fallback
-
-### v6.6.0 — Comprehensive PDF Report & Score Provenance System (2026-04-12)
+### v6.5.0 — Comprehensive PDF Report, Score Provenance & Pipeline Integrity (2026-04-13)
 
 Major enhancement to make PDF the comprehensive audit trail with full 120-item framework traceability.
 
@@ -93,17 +79,30 @@ Major enhancement to make PDF the comprehensive audit trail with full 120-item f
 - Outputs: `operations-log.json` (machine) + `operations-log.md` (human)
 - Tracks: API calls by engine, duration per step, LIMIT_ANTHROPIC events
 
+**Pipeline Integrity Fixes**
+- OpenAI citation checks: added `.filter(Boolean)` to prevent undefined URL errors
+- Score provenance: PENDING items now marked as `NOT_ASSESSED` after finalization
+- llms.txt audit: explicit "404 Not Found" message instead of generic "not performed"
+- CORE-EEAT tables: dimension-level fallback display when items array missing
+- CLI wrapper `ops-log-cli.js` for operations logging during orchestration
+
+**Sample Analysis Output**
+- Full caplinq.com analysis with 21 skills, HTML + PDF reports
+- `.claude/commands/` — 10 geo command definitions
+- `analyses/caplinq/` — handoff files, prompt-results.json, score-provenance.json, concerns-log
+
 **Updated Files**
 - `tools/shared/config.js` — LIMIT_ANTHROPIC flag
 - `tools/shared/pipeline-runner.js` — provenance integration, hero keywords, lifecycle functions, operations logging
 - `tools/shared/provenance-builder.js` — NEW: 120-item structure builder
 - `tools/shared/status-report-generator.js` — NEW: execution status generator
 - `tools/shared/operations-logger.js` — NEW: comprehensive operations logging
-- `tools/shared/pdf-generator.js` — comprehensive appendix sections
-- `tools/mcp-servers/ai-citation-monitor.js` — prompt saving, LIMIT_ANTHROPIC
+- `tools/shared/ops-log-cli.js` — NEW: CLI wrapper for operations logging
+- `tools/shared/pdf-generator.js` — comprehensive appendix sections, integrity fixes
+- `tools/mcp-servers/ai-citation-monitor.js` — prompt saving, LIMIT_ANTHROPIC, undefined URL fix
 - `orchestration/company-analysis/SKILL.md` — Steps 0.5, 1.5, 21.7, 21.8 updated
 
-### v6.5.1 — Prompt Results Appendix + Score Provenance (2026-04-12)
+### v6.4.1 — Prompt Results Appendix + Score Provenance (2026-04-12)
 
 Added comprehensive prompt logging, appendix tab, and full score auditability for company-analysis reports.
 
@@ -115,7 +114,7 @@ Added comprehensive prompt logging, appendix tab, and full score auditability fo
 - **Prompting documentation** (`docs/prompting-documentation.md`): New reference document detailing all prompt templates, when they execute in the pipeline, call counts, and output file structures.
 - **CSS additions** (`company-analysis`): New styles for collapsible engine sections, prompt/response boxes, and findings summaries.
 
-### v6.5.0 — llms.txt AI Discoverability Integration (2026-04-12)
+### v6.4.0 — llms.txt AI Discoverability Integration (2026-04-12)
 
 Added llms.txt/llms-full.txt checking and AI crawler user-agent auditing for forward-looking GEO optimization.
 

@@ -1,0 +1,274 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "timestamp": "20260412T182500",
+    "tier": 1,
+    "version": "6.5.0"
+  },
+  "prompt_results": [
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:31:48.948Z",
+      "live_search": true,
+      "query": "What is CAPLINQ?",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ is a company that supplies specialty engineered solutions, including a range of chemicals, plastics, and products, primarily serving the semiconductor, e-mobility, power distribution, and renewable energy sectors. Established in 2004, CAPLINQ operates with a global distribution network and h",
+      "response_full": "CAPLINQ is a company that supplies specialty engineered solutions, including a range of chemicals, plastics, and products, primarily serving the semiconductor, e-mobility, power distribution, and renewable energy sectors. Established in 2004, CAPLINQ operates with a global distribution network and has offices in locations such as Ottawa, Canada (HQ), Livonia, USA, Shenzhen, China, Assendelft, Netherlands, and Muntinlupa, Philippines.\n\nCAPLINQ's offerings include a diverse portfolio of materials and services:\n*   **Specialty Chemicals and Materials** They provide adhesives & sealants, coatings, powders & resins, die attach materials, electrochemical materials, encapsulants & underfills, fine & specialty chemicals, molding compounds, soldering materials, thermal interface materials, and surface treatments.\n*   **Tapes and Films** Their product range also features specialty tapes and films, including polyimide films and tapes, dicing tapes, and conductive films.\n*   **Semiconductor Focus** CAPLINQ is a significant supplier of materials for the back-end semiconductor market, offering products like epoxy molding compounds, electrically conductive epoxies, die attach pastes, liquid potting, encapsulants, underfills, leadframes, solder balls, and tacky fluxes.\n*   **Other Products** Beyond advanced electronics materials, they also supply industrial and food-grade tapioca starches for various applications.\n*   **Services** In addition to product supply, CAPLINQ offers supply chain management services such as order fulfillment, technical representation, and technical marketing. They also provide REACH (Registration, Evaluation, Authorization, and Restriction of Chemicals) services.",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFeTQ0vXJFfS9yNwa2Rj9Mx1d6BozuyI7Z_eceiboj19VAnn8cJPUEd2Udow5IbuauFdo7VwfNcPVcx3tkBoNXodFaCPFFMq9MkLNvUsbs8fEqV",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_fA4DOwidBxG7LZ9Ocou_0hRnNdPQWABgUGu95e95KmKh7epaBLasADLi0Taj2s4-M5b-FDYvhunusj347gM5L0YOemibj_nvS0qV4m6rMDhE",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF8sIllEhTk1UZS7VdbGl9RwfpWqxYyKNjKwJWaNYFV8iNCHS5WK2JDaWl17URhLxG3UPTX3d5qM1P6mLiPVPUSkYrdPWUtqVTjM-dFi5JfeVJSTdeLmL57_mQymY4f3Q==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF0PRU0YNutuylJUWv7TwPoOnBVAe4OMd0bKACe0-T-NpXXU22JytY9zuCqgyEZ_uKeoPuxC9Te1iS8Ocua6TkLOI_hYu6Fun7xTC3ImquMQQYjtkeTCVGzlV2nXTL0uuA5Rw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFh7kGWxcN6qxJHtJnaDZOtpLNQFLdH6Ai6Q5LfguFXjQ5SIOIkmn8bX2c_bst0QboozepEewZMXA32px7xAW-aBIPaY2x72nf0gHtmT3p20lFDHSzCgR_GP_9iPXAqkNlleas7pivtCvtM"
+      ],
+      "domain_cited": false,
+      "prompt_used": "What is CAPLINQ?"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "anthropic",
+      "model": "claude-sonnet-4-5",
+      "timestamp_utc": "2026-04-12T21:32:01.542Z",
+      "live_search": true,
+      "query": "What is CAPLINQ?",
+      "domain": "caplinq.com",
+      "response_excerpt": "I'll search for information about CAPLINQ to provide you with accurate details. Based on the search results,  CAPLINQ is a specialty chemicals and plastics expert specialized in conductive plastic, REACH Only Representation, Order Fulfillment and Technical Marketing . \n\n CAPLINQ offers a range of sp",
+      "response_full": "I'll search for information about CAPLINQ to provide you with accurate details. Based on the search results,  CAPLINQ is a specialty chemicals and plastics expert specialized in conductive plastic, REACH Only Representation, Order Fulfillment and Technical Marketing . \n\n CAPLINQ offers a range of specialty chemicals, tapes and films and cleaners . According to Crunchbase,  CAPLINQ is a supplier of chemicals and plastics for semiconductors .\n\nThe company appears to be based in Ottawa, Ontario, Canada, and provides specialized products and services primarily for B2B (business-to-business) customers in technical industries.",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "What is CAPLINQ?"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:32:11.782Z",
+      "live_search": true,
+      "query": "CAPLINQ Corporation overview",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ Corporation is a company founded in 2004 that operates with a dual business model: as a manufacturer and supplier of specialty chemicals, adhesives, and plastics, and as a digital-age market channel partner. Headquartered in Assendelft, North Holland, CAPLINQ serves high-growth sectors such ",
+      "response_full": "CAPLINQ Corporation is a company founded in 2004 that operates with a dual business model: as a manufacturer and supplier of specialty chemicals, adhesives, and plastics, and as a digital-age market channel partner. Headquartered in Assendelft, North Holland, CAPLINQ serves high-growth sectors such as the semiconductor (including 5G), eMobility, power distribution, renewable energy, and electronics assembly markets.\n\nThe company's product portfolio is diverse, including advanced materials like semiconductor materials, thermal interface materials, adhesives, coatings, conductive plastics, and specialty tapes and films. CAPLINQ manufactures and supplies its own branded products such as LINQTAPE (e.g., high-temperature polyimide, polyester, and PTFE tapes), and also has proprietary brands like CHEMLINQ, LINQSOL, LINQCELL, LINQBOND, OPTOLINQ, LINQALLOY, LINQSTAT, SMARTLINQ, and LINQSIL.\n\nAs a market channel partner, CAPLINQ assists foreign specialty chemicals companies in establishing a European presence without needing a European entity. This involves providing services such as order fulfillment (managing the entire supply chain from freight forwarding to customs clearance and warehousing), technical representation (technical sales and support), REACH services (acting as a REACH Only Representative and ensuring SDS compliance), and technical marketing (building brand and product awareness). CAPLINQ works with customers to research and develop products that meet specific applications. The company had approximately 62 employees across three continents as of January 2026, with a reported revenue range of $10 to $25 million.",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQGRHuMyVjv7Jm7WjDJr2KHpfYRBR2UDOOSde7wMXtVSfgdwJ3abTOfLlvJU7xAZVfrTpXQmyBYcp7uc_K6JZB_C5sMo0FShKViKDsWT7w4BWXTYyG5RB0Iq6ECbu48WIXawE=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHv6a34160iTppTgN5OOfQWUO3aySE-33-blQqQMLhEPA4pJ4cWexkTNia_ZDmdJU6IaoVYLrUzQhiG0hXNn1s-P0lbSqxHIjJXnZOgaCYbIz7Qdyf5x5EES6AlswjGvO1S",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGLxHFWnCIhsosEIpocP0AvdVLRn6S4YR1x3_Jy83y2juocDgnEUGhmmAgHEIhurXcDM6ItvwmZewrlHNY5d-CLPPPGn6fITc1ucKxkDPfPTb7-7Npt0qYsw4f-FtQTAbqu0498idURVhX3fKOkfw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAXy5Zf7yaWRQannheEB0xBNBAnBkOgarrilI0OyIHcwhNUPLOYN9OTHiM_0Xfq0jvL41hRKELEji8NQLGBftPtNugLa5nZrWjBjObQM-05dN7oJiqnLfO9CuDoJwp",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpMU4MDiAqwEe2gxioldHPXq8FI90_d1L5hL_a5C1OUJW-726UBqxjUpzXhcm2B4MUqe9Nc9uBbbKcyYXvsE5CeTJiXygG72yNHJU8QJskERM=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE3VdYiBDpeXZ6qZE-Iu-T8x9fdVM8LSjhnCTPiN-KisvyDFeSRVYm-9mDRNxbiKj5fjODEkxMlCSBrlPbpwdfPyf2pKoqJtKfYur5f0N8KHekfAs1fp7NS0BEzXgiNVnattyLkDgHV"
+      ],
+      "domain_cited": false,
+      "prompt_used": "CAPLINQ Corporation overview"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:32:19.359Z",
+      "live_search": true,
+      "query": "CAPLINQ specialty chemicals supplier",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ is a specialty chemicals, plastics, and products supplier with over 20 years of experience in the industry. The company, founded in 2006, focuses on providing high-grade materials and technical support to a diverse range of customers globally.\n\nCAPLINQ's product portfolio includes a variety ",
+      "response_full": "CAPLINQ is a specialty chemicals, plastics, and products supplier with over 20 years of experience in the industry. The company, founded in 2006, focuses on providing high-grade materials and technical support to a diverse range of customers globally.\n\nCAPLINQ's product portfolio includes a variety of specialty chemicals and materials, such as epoxy coating powders, epoxy molding compounds, polyimide films and tapes, solder spheres, anti-static products, and specialty silicones. They also offer adhesives, sealants, die attach materials, electrochemical materials, encapsulants, underfills, molding compounds, and thermal interface materials.\n\nThe company serves numerous industries, with a primary focus on the engineering manufacturing industry, including large multinational clients like GE, Siemens, Emerson, and Honeywell. Their expertise also extends to sectors such as semiconductors, e-mobility, power distribution, renewable energy, pharmaceuticals, petrochemicals, agrichemicals, food, life sciences & humanities, cosmetics, and textiles.\n\nBeyond product supply, CAPLINQ provides a suite of services designed to support their clients. These include order fulfillment, technical representation, technical marketing, and REACH (Registration, Evaluation, Authorisation and Restriction of Chemicals) services. They also offer material testing services and aim to act as a market channel partner, assisting foreign companies in establishing a European presence without requiring a separate",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHS5dnZRunzRIk0aCtzrSHy55Jq4BsIYh3mgN6WhLEb8d1-IuO27ayi7HLgpBfWB77rzK5KOckSoij7IlQAQ68VM5ePJSOyYVeqb-EIVVbDqqdSFGHeUm1i0Pu6fbaMUNiRBiSafq52_EQXjcI7EsqI",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF8a1qjME3UGcK_CofT0lWqKU_wFTVsd8YTzqx7EvPEBvPNOmAz_9IK7SmvIbUX9bpwgbdWYFguqUF6a_JiOytl4I7VtNT4YFC2-_odNwyksikgtMeHo8P7bs8FHEsvJV6jv0paxw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHZZ4AM3_q49skEZ1z1qENnL75aWuK9uZhVye4BS6pkbHb-ivtr63wqVazgKnx4Fv6HGzog_mxDC6yRT5CcUkQ_w9pSW_mfYyKADTX5aWfXJ_Wc0et7NBNvsmn4a1yUhZBblqKmv5IVkPjVFqgM7pDI-ibR3jbNZc6h",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFHYAl_PmjUT2od9l3puJTwdxK2COaamxITb5a5NKguCB3RtnhnWOBFlQfQTBP5G5uwJ2Ze5NybjXFCzJqehzeCEKi2dRo5celedFmnPH2qWiWuFQ==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHpK4O7xlWHoBQkTO4ZstN_grNX4HwIDEEWCxp9BRbW-5dZ4nKyDGqlkoEW_Z-kilUuubVhg4j0wlEutJFSDzE-nLCdkkyLI4JaAhI0RY6y4_9v2g=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "CAPLINQ specialty chemicals supplier"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:32:40.455Z",
+      "live_search": true,
+      "query": "Best specialty chemicals distributors",
+      "domain": "caplinq.com",
+      "response_excerpt": "Identifying the \"best\" specialty chemical distributors depends largely on specific needs, including geographic location, required product portfolio, industry focus, and the level of technical support desired. However, several companies consistently rank among the top globally and regionally due to t",
+      "response_full": "Identifying the \"best\" specialty chemical distributors depends largely on specific needs, including geographic location, required product portfolio, industry focus, and the level of technical support desired. However, several companies consistently rank among the top globally and regionally due to their extensive networks, diverse offerings, and value-added services.\n\n**Globally Recognized Leaders:**\n\n*   **Brenntag** is a prominent global market leader in chemical and ingredient distribution. It offers a comprehensive portfolio of industrial and specialty chemicals and ingredients, along with tailored application, marketing, and supply chain solutions. Brenntag also provides strong technical and formulation support and extensive regulatory knowledge across a wide range of industries. With operations in more than 600 locations across 72 countries, it has a significant global footprint.\n*   **Univar Solutions** is another leading global distributor of chemicals and ingredients, with a strong presence in North America. The company emphasizes sustainability, innovation, and customer collaboration through technical expertise and supply chain solutions. It offers products like chelates, hydrocarbons, oleochemicals, silica, and resins.\n*   **IMCD Group** is recognized as a leading specialty chemical distributor with a strong focus on formulation expertise and technical partnerships. IMCD emphasizes value-added distribution through technical expertise, formulation support, and market development services to help customers optimize product performance.\n*   **Azelis** operates globally with a strong focus on specialty chemicals across Europe, the Americas, and Asia. It is known for providing value-added services to various market segments, including chemicals, coatings, plastics, food, animal nutrition, pharma, and personal care [cite: 4",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFPBKRl8Yjxqv1nqSmW86CeZE9AhKeWjp8OjRka6Tg0S4xDSqhhamVol6qPNRh2XRclin6lytf_9jErgEtygwnh0biUUZ7ZMwwY3kndo6sg6Z5sB-MFgf1WdyvbvIUBY8LxKXJsKgJOEGZ-gaHQ6sQGhIyfL1QGLkF6W9k8j85hrSEHQjqDXAHGJSJh1-at",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHaiVqx_xUPcGjpGmJ12Y6W78srYDCGb-kexx042-xBaJm3KgkYiD8flI0NBxmjH_y2DZaJZJwaden5zsZP-Fn7JdRl9h_zUGoFS31lIIjT9oObMccFl2sEFThJLR_XYkof0gKYhonj6lCQrucrDv9TlNoaG2k1v2Ua33_lDzCjmA_2pmNx5SZXTUgar3U=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHr70nYU-66Snimrx5W7rMISbRjF5CV-qGtSOCJDJe5_xHmYPolkeVWmrWp9N5WCNCQAeFvR7AlYY1RQbG0LpL8P9apD28nWogn4Eozyf1OmSAtJgO-WMMaF-muxieK3I7Ip6CKipHlqqbO60792k2axEZA51K-nYES37_GQF37UxQ8vINgmGu8SMXHid5qWDVvOVqwMtyfTqT9ggpj94eOvGxd9jvJwMUqvDfYpdt1szSEEleF-5mGj0RiHo0YJQ==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrj6Z5Xdf3H6n_QYuAA8YZNcPD-92GqmhxSPBi2Q1jiwA_5eSBxOAZNq92GW6UcBpFQLZT4kB5YWXA--1-jLLHAkkKHeMj3-sH94iFXEGsfWMz3oh09ITIC-YSuDqVIJh74jdHolnAP_lPnLNEwMftTc1tMLYnfBFzyaUVQ7ym0dFpAM-FPJXrBco_7PSAOXuAjOgf7wKaNHD_z32a8MG-vWN_ens=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEviWEVDFUnAUGWvIOnNx977iRf_k6X1D3LBCNC2t84apHfJsR5bqXA-B4r4d11G-WaJqGtc9iBCwGiWEI4NYVgMhgGC4xRNEK8Aq-GPi-H437WFowG-J_1YefAnasHE_vqghfS6jDYts7NJPg-MHKl4ip2-x-v2H-adiWHwX_Q4jw="
+      ],
+      "domain_cited": false,
+      "prompt_used": "Best specialty chemicals distributors"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:32:48.997Z",
+      "live_search": true,
+      "query": "Top semiconductor materials suppliers",
+      "domain": "caplinq.com",
+      "response_excerpt": "The semiconductor industry relies on a specialized group of companies for the essential materials that form the foundation of microchips and other electronic components. While many companies are involved in various stages of semiconductor production, a few stand out as leading suppliers of the raw a",
+      "response_full": "The semiconductor industry relies on a specialized group of companies for the essential materials that form the foundation of microchips and other electronic components. While many companies are involved in various stages of semiconductor production, a few stand out as leading suppliers of the raw and processed materials.\n\nBased on recent market analyses, some of the top semiconductor materials suppliers include:\n\n*   **DuPont de Nemours, Inc.**\n*   **Shin-Etsu Chemical Co., Ltd.**\n*   **Showa Denko Materials Co., Ltd.** (now Resonac Corporation)\n*   **BASF SE**\n*   **Tokyo Ohka Kogyo Co., Ltd.**\n*   **Merck KGaA (EMD Electronics)**\n*   **LG Chem Ltd.**\n*   **Sumitomo Chemical Co., Ltd.**\n*   **DOW Inc.**\n*   **Air Liquide Electronics**\n*   **Linde plc Electronics**\n*   **SK Materials Co., Ltd.**\n*   **JSR Corporation**\n*   **SUMCO Corporation**\n\nThese companies provide a diverse range of critical materials, including silicon wafers, specialty gases, photoresists, and various chemicals essential for the intricate manufacturing processes involved in semiconductor fabrication.",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHfkpzgJ16fvtqsZZ7ETpGX2Ndk-fqx-6aYbi_g_kpTEu5R9VTE9ROwn8j863eWMVU8Cm2DDLARNvHcD-d8qFfrGKP5oP31d__l72KkUgz7Fiq0Y19Yrmwk0BSpZj54R1hz9J51jxyUSEarpAnz8IeaHxgAOkiCYdS8fPTy5YxU3WRrg2YgyhPXN7o0s4UVq-MDGvOYFw26"
+      ],
+      "domain_cited": false,
+      "prompt_used": "Top semiconductor materials suppliers"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:32:58.374Z",
+      "live_search": true,
+      "query": "Best engineered materials suppliers Europe",
+      "domain": "caplinq.com",
+      "response_excerpt": "Europe boasts a robust landscape of engineered materials suppliers, offering a wide array of advanced solutions across various industries",
+      "response_full": "Europe boasts a robust landscape of engineered materials suppliers, offering a wide array of advanced solutions across various industries",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "Best engineered materials suppliers Europe"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:33:09.079Z",
+      "live_search": true,
+      "query": "Leading electronics assembly materials companies",
+      "domain": "caplinq.com",
+      "response_excerpt": "Leading companies in electronics assembly materials specialize in a range of products essential for manufacturing electronic devices, including solder pastes, conductive adhesives, encapsulants, underfills, and fluxes. These materials ensure reliable connections, protect components, and enhance the ",
+      "response_full": "Leading companies in electronics assembly materials specialize in a range of products essential for manufacturing electronic devices, including solder pastes, conductive adhesives, encapsulants, underfills, and fluxes. These materials ensure reliable connections, protect components, and enhance the overall performance and longevity of electronic assemblies.\n\nKey players in the electronics assembly materials market include:\n\n**Solder Paste Manufacturers:**\n*   **MacDermid Alpha Electronics Solutions** is recognized as one of the largest global providers of circuitry, assembly, and semiconductor solutions, offering a full line of advanced solder pastes, including no-clean and water-soluble options.\n*   **Indium Corporation** is a world leader in solder paste and SMT assembly, specializing in innovative solder paste alloys for various applications, including high-performance SAC and low-temperature solutions for fine-pitch and high-density assemblies. They also provide fluxes, alloys, and thermal interface materials.\n*   **Henkel AG & Co. KGaA** stands out for its solder paste innovations, offering high-reliability formulations for demanding multi-reflow environments and advanced, lead-free, and low-residue products.\n*   **AIM Solder** is a global manufacturer and technical support provider of both tin-lead and lead-free solder assembly materials, including solder paste, liquid and paste flux, solder wire, and bar solder.\n*   **Senju Metal Industry Co., Ltd.** is a global company involved in the development of high-tech soldering materials, factory automation equipment, and slide bearings.\n*   **KOKI Company, Ltd.** excels in environmentally responsible solder pastes, focusing on low-voiding and high-reliability performance, particularly for lead-free transitions and complex assembly technologies.\n*   **Kester** has a long history as a leading manufacturer and supplier of soldering materials",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGK4JHWRrih2PT4Ec8rjxdxBaxQah5uG3Urf-xp6n_FCDHd1LsL3tF0-jsOetmfFiQwIp3yGuvRhlEcseq0Lwksxh_-n-917HC_-tjfQG9xNjHrD1LaTEyXpfTV75CDTnHo_JYd-a1crh76DcBjerFgQGol6PvjZg5QaevVpGTnhujFME8wuQ==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGrw5BgHL0SIUfG27bMYQj2gDuLc7OSIf-zAn5TXqCp9W1GrfmcXuOliWOcCsPbvoo4Dj8B8gA-Zd6x9Ur58yansQv3_P9CYm9AnqbUSkoZGxmSbBZwkzN1CsFE6fRTRa9gXTkp6PjaKJGI3q5i3aFOBsiJ9GsrByEGtgwQQKjNHMX19kuPNLHYwbo7dQZ0V6r02qKv2n3VpHgHS_8tAdegrfFjG6k=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE8CQbPXPb2ZzgJ0d0tVB1My4F9jPjnlLFPpJonAsCpY_HJ_LgB35FxYFHIFw0hTVWmKkT9C9kYKOY3NlWQOpfSt3sFhiBI5vRtgQo-n1F_fi73QQhDyyK1D4f1yrNvhKJExKBO-kZNPRDZ_160",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHTuu6DpWTVcBHbPXw_NlBq2p7APTfg3XLNUwaEvHLixWCsLcVWoWrO4xR9bbY3c10WmPiz0aZt-T3Z6yQ9YkorPg6lVzvAyYOoweepUiCL4e8qz9pG8dLejVAeaW0_N2W_IFN0IQk-CbZm1N-7HkxyrLLBc4Zfm5pwvzA8rHuMa6i3UAP4AIS4fR2d42ekMw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHdaVRDDJLSW6zlZ4AW0Ds0SyMir-CiGizZkZhfIfQg-jNGyzA3hut_NDSkqKUnC2YFacJBXV2csG1AV8e2tsGwN5FRMaD7N7MhQzQFNbRox954Kw1nRAlOo1cHt9Dw27u1pQ=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "Leading electronics assembly materials companies"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:33:22.438Z",
+      "live_search": true,
+      "query": "Best thermal interface materials suppliers",
+      "domain": "caplinq.com",
+      "response_excerpt": "When seeking the best thermal interface materials (TIM) suppliers, several companies consistently stand out for their comprehensive product portfolios, global presence, and commitment to innovation. These industry leaders offer a wide array of solutions, including thermal greases, pads, tapes, and g",
+      "response_full": "When seeking the best thermal interface materials (TIM) suppliers, several companies consistently stand out for their comprehensive product portfolios, global presence, and commitment to innovation. These industry leaders offer a wide array of solutions, including thermal greases, pads, tapes, and gap fillers, catering to diverse application needs in electronics, telecommunications, automotive, and other sectors.\n\nSome of the top thermal interface material suppliers include:\n\n*   **3M Company** is a major American corporation with a diversified portfolio that includes thermal management materials such as thermally conductive tapes, interface pads, epoxy, and greases. The company has a global presence, operating in approximately 70 countries.\n*   **Dow Inc.** is recognized as a global leader in silicon-based technology, offering a wide variety of thermal interface materials. Their portfolio includes thermally and electrically conductive silicones, plastics, and industrial intermediates, serving various high-growth market segments. Dow operates numerous manufacturing sites and R&D laboratories across 31 countries.\n*   **Henkel AG & Co. KGaA** is a prominent German chemical and consumer goods company known for its adhesive technologies. Their Bergquist brand is particularly trusted for thermal interface materials and",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGBwMivCasoBIWo1lPpecI9a9OGlk4TjE8CoVc_Z_zQw1nmHsgvwne0hFDuwgGXThJlWDYkrmNmmmWvdE0r7g13xwnJDNXuV0MUarLlKiu7_KwgSArVHud6krF84ZbA-O57zbpSFjgfxDe5TxYwsuZQRFSWJHSM7BitAJXnURjWVDq6Th4sbr_omboCt8E=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5mdRi3PqnKclUIse9ndhxl9yTIhP3ARX_8w37XgfCklAoxYZjPwsVRObDhjJ4voCswm1KaDsY3pugUh2lfP-frWHqHetbQUKH46hEZjbcW3paLGuUVGEzqetw1d8l2QPSpyAFp9OHBw3decx2uZpYyQthlY0VnHPuOSRRuRpQQZDoJBGhgK6Jy-iy6d2rkXeyEZioTdVahEEX",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELViIv0nNnaCCVqIB3oNS2dkcM9Cah5vwSrbh1_sBPT4Npy1192RuDT-7TU7ayMwOkxiJXZ6cA7RCiFFqqs2S1g27R503SAAZk72Nz3_jRBUP-SJoKmBbr8Vh86_fxeBdq7MNoGvCEiWD2_9JYsJWM680pIyZZRTQSC2mkq0_-ENqmDHrbK_qqf_WpfqjW7GunOg=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "Best thermal interface materials suppliers"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:33:36.262Z",
+      "live_search": true,
+      "query": "Die attach materials comparison",
+      "domain": "caplinq.com",
+      "response_excerpt": "Die attach materials are crucial components in semiconductor packaging, providing mechanical bonding, electrical connections, and",
+      "response_full": "Die attach materials are crucial components in semiconductor packaging, providing mechanical bonding, electrical connections, and",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "Die attach materials comparison"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:33:46.707Z",
+      "live_search": true,
+      "query": "Where to buy solder paste Europe",
+      "domain": "caplinq.com",
+      "response_excerpt": "You can purchase solder paste in Europe from a variety of suppliers, ranging from large industrial manufacturers and distributors to online retailers catering to smaller businesses and hobbyists.\n\n**For Industrial and Professional Use:**\n\n*   **GENMA Europe** is a premium producer of solder wire, so",
+      "response_full": "You can purchase solder paste in Europe from a variety of suppliers, ranging from large industrial manufacturers and distributors to online retailers catering to smaller businesses and hobbyists.\n\n**For Industrial and Professional Use:**\n\n*   **GENMA Europe** is a premium producer of solder wire, solder paste, and bar solder with headquarters in southern Germany. They serve the European market, offering Europe-wide next-day or on-demand delivery for their standard products. GENMA provides solutions for the automotive, industrial electronics, EMS, and consumer electronics sectors.\n*   **Ishikawa Europe** specializes in providing high-quality Type 4 solder paste that conforms to European Union health and safety regulations. They supply businesses in the electrical manufacturing industry.\n*   **PCB Directory** lists several solder paste manufacturers in Germany, including:\n    *   **Balver Zinn Josef Jost GmbH & Co. KG** (Balve, Germany)\n    *   **Almit GmbH** (Michelstadt, Germany)\n    *   **Emil Otto** (Eltville, Germany)\n    ",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQECUNSskdP6SimNXskBcNg0Kb_Spa4r5iVhF3G0ZlyNR-REPZZA7Cmz_IVcL4I44Xy0uPbg8CDHjo4dCdi1IRIhys70s7uEsYLDK1MtAWyib66Y",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPOqMRn-biSDXQfV4FIfk0VX4raCS_hviSwGZp5qjCaim4xG7zdZirpiUYDHSBms9Rr_ZXVsbnOLU8Sc4Moi4N7t18O-0ZSMhLIcvx88qzElzaHL0K-hpIRZ6zC16Z2VE1ARWZKgAySRLOphHNzg==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG6un8sXoyCw2nI8aO0ofsNcABWfCd71MdGMjaG87xEO3gPf14gmyqCPCy9gGF57iyN6tJE0SAuUkKsp6Vlvl9OiWvNK0OrAXXfHh__TSH8TWMm66rwe_l5bEmfsuPYRkB0go0e5NMlbPuaB01EhIHFBOoxSxj-vA=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "Where to buy solder paste Europe"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:33:56.140Z",
+      "live_search": true,
+      "query": "Conductive adhesives manufacturers",
+      "domain": "caplinq.com",
+      "response_excerpt": "Numerous companies specialize in the manufacturing of conductive adhesives, which are crucial for various electronic and industrial applications. These adhesives are designed to create electrical connections and often offer properties like thermal conductivity, mechanical strength, and environmental",
+      "response_full": "Numerous companies specialize in the manufacturing of conductive adhesives, which are crucial for various electronic and industrial applications. These adhesives are designed to create electrical connections and often offer properties like thermal conductivity, mechanical strength, and environmental resistance.\n\nSome of the leading manufacturers in the conductive adhesives market include:\n*   **3M Company** is a global leader offering effective conductive adhesives and tapes, applied in electronic assemblies for EMI shielding, grounding, and interconnects. Their products support miniaturization and flexibility in manufacturing.\n*   **AI Technology, Inc.** focuses on high-performance thermal and electrically conductive adhesives for semiconductor packaging and electronic device manufacturing, known for reliability and tailored formulations.\n*   **Aremco Products Inc.** provides a broad portfolio of conductive adhesives for high-temperature and critical electronic applications, ensuring optimal electrical performance.\n*   **Caplinq Corporation** is also listed among the significant players in the market.\n*   **Chemtronics by Illinois Tool Works Inc.** is recognized for its contributions to the conductive adhesives market.\n*   **Creative Materials Inc.** is another key manufacturer of electrically conductive adhesives.\n*   **Dymax Corporation** specializes in UV-curable and dual-curing conductive adhesives, enabling fast assembly and robust electrical connections, with a focus on cost-efficient and high-throughput production.\n*   **Electrolube by Element Solutions Inc.** supplies conductive adhesives and coating technologies to protect sensitive electronics, emphasizing eco-friendly and durable materials.\n*   **Epoxy International** is included in the list of manufacturers.\n*   **H.B. Fuller Company** offers various adhesive technologies, including conductive options.\n*   **Henkel AG & Co. KGaA** is a global frontrunner in adhesive technologies, providing isotropic and anisotropic conductive adhesives for critical electronic applications, focusing on miniaturization, sustainability, and high-performance connectivity. They also offer thermally conductive adhesives under brands like",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFBIqUFHVu81NLo3xLLxcS-Yt8MezCO1R0VX4JzZ9HLAvBfGpjmT152014HdYa_x1c2MGwzOT4ADgiOVjMZgxomsIs0PgzxjriySq1UbSTbfPS7pjJbplUqimXkYMRf56z4OkPRp_VXHHN6YMUbQrjmw88Jn_8qMQ2shGZZSzZEYic9JZgHugLrzb4qS1o3jqTF3zTcJs-0CR6QI8m7opG9duRY",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEWQzCXXL1Ti0VApBgXRGUdA0vWgjjW2eeAwu6m1GjCK9VPvm6NO1KFzv-5vCRexqnoTuQ4mDTw9bwfT5r3S3dvLEu_HelF5jPI1faIIUoOaXfUdmDWq04EC6xAO1nVQwNTA8d-6dtyG40b1-MkIwoy3bC3DDwSlv7TN4kH2AeYlMHiSUCSFOrw8hNasQGowhgKf3zMb63ZhxRpxuPvig6tAdcLosALcxIKARmRCSn5WBu2fxSCUYcwohJTB1aTlYsKaJKxogAHvddXJuTgeH0LWkv_aeb_Bn1Y87-H",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFWzmWQM4Z4_5yzUNQKH4p5dsiqyLivRH8djXR5Ye3HgkiHQc6i7CnCZOjC8oBceslmr6WmW2sKTwylY8uPByvYU1U2MIb1QbPLHFQs_cxMOQE81Fd8fdSV9iylKxmNAlS4vkqzALAnES77ZModLA3Anpg3BazOFDCFxVyntU9xV8_rK60OPKMh3gmW8DcHdrm_DzwP2BRxZxzyTj7YDblIpw=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "Conductive adhesives manufacturers"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:34:06.778Z",
+      "live_search": true,
+      "query": "Encapsulant materials for semiconductors",
+      "domain": "caplinq.com",
+      "response_excerpt": "Encapsulant materials play a crucial role in semiconductor manufacturing, providing protection and ensuring the long-term",
+      "response_full": "Encapsulant materials play a crucial role in semiconductor manufacturing, providing protection and ensuring the long-term",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "Encapsulant materials for semiconductors"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-12T21:34:15.877Z",
+      "live_search": true,
+      "query": "Molding compounds suppliers",
+      "domain": "caplinq.com",
+      "response_excerpt": "Molding compounds are specialized materials used in various manufacturing processes to create a wide range of products with specific mechanical, electrical, and thermal properties. Numerous global suppliers offer diverse molding compounds, including Sheet Molding Compounds (SMC), Bulk Molding Compou",
+      "response_full": "Molding compounds are specialized materials used in various manufacturing processes to create a wide range of products with specific mechanical, electrical, and thermal properties. Numerous global suppliers offer diverse molding compounds, including Sheet Molding Compounds (SMC), Bulk Molding Compounds (BMC), and Epoxy Molding Compounds (EMC), alongside other types like phenolic and urea compounds.\n\nKey suppliers in the molding compounds market include:\n\n**For Sheet Molding Compounds (SMC) and Bulk Molding Compounds (BMC):**\n\n*   **IDI Composites International** is a global leader in custom-formulated SMC and BMC solutions, serving industries such as automotive, construction, and electrical. They offer tailored resin systems and fiber blends, focusing on customization and sustainability.\n*   **Polynt Composites** (also Polynt Composites USA, Polynt-Reichhold, Polynt S.p.A.) is an international leader in composite resins, including SMC and BMC materials, widely used in automotive, aerospace, and construction industries. Polynt Composites USA specifically provides electrical BMC and structural compounds.\n*   **Menzolit Kunststoffwerk GmbH** is recognized among the top manufacturers of sheet molding compounds.\n*   **Continental Structural Plastics (CSP)** specializes in advanced composite materials for the automotive industry, with expertise in structural BMC applications and also supplies SMC.\n*   **Molding Products LLC** is a leader in producing sheet molding composites (SMC) and other engineered thermoset materials, offering custom formulations and technical support for diverse markets like transportation and infrastructure.\n*   **Premix Inc.** is a major North American developer and manufacturer of thermoset compounds, including SMC, BMC, Thick Molding Compounds (TMC), and Engineered Structural Composites (ESC). They serve industries such as transportation, electrical, and aerospace [cite: 3, ",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGubNljNyVjwMtv6_bCWI9NCQr5tidoz9rmrAqbFl1c4RTT7fC8wPEcmQbxge7Gjic9pnkLQFcxzgu24xaw6BlUi2AbSN84Mvf9UAL9xdaeFyk-XvL5z83abTCek63qmB-sCte9q24Zu-fmsKqxPg_Gr6qSx73601KS5smixUJzvuFWWzSCDth2zrzb3rdL3cWdPM6LgzxNnESMlLdrzw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFxux6bGMGdyCLYz7WIaSfShASuBcUDY68Z5kO9O8rAYcmcbuiv_cfl-UaeSfFuiZ1y3m801Wga_XMRfHVIsLNfkYabTLSUCiFkQmVYJIHqpFq0bescaFCgpxBm2AmiqoC6cDpQnCe8K5R5xcHx4KqIKlrdPwIDIiQDSalNpKE6IasjSU3XyYostxQWcrKbhuQ=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH6o2_Iga5mcWdMNgH0y3BsvHRPMXxSaGmySm3QiK5COuaupvQhUxz68VngB8mN_rn5qks557d32rwlg4ylZsdbLJf9_iw-RcaBWfbmhoTD01kY1NA-ifpRPRvRebpM1qH9774YSEDtMufmFpPn5Ax82e8RBE-tvB6GLV06pwaLezN9pTf27O4fcpulAChm4AnngCpto7N3mw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFOquy8Adw5m9gy83zn1Ty16Mrh0YqghmwTHEl2hRbxnMl3Kof5FGkyYAeBT_i-iU_UMP4fqGkazsiLR0hB1QyyKAkxUQa-iL6IdO4bu3rVV1BH9AJ4Tc4X5Y2loULCTPQss1s4kb6J6nI3rrZZ1e5rDvtGkz9o4tiHJd6LwShZM-smmE002w==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfja1YfeOIuUyEMiacPiEZBlg1BEmRaZvSFDT5eoexMDgWsQkeQW2UsMLMHt8TB39NKFRIcpp4k2sfSCuQW0gJ8nLeR28GH93jEk35szGigAPL5UFEhHIzhmHsyCmdNvHNXj2k0mifDiSiknpaNiDyg7FcI8RkD7chk8KGhgkMb1qt",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHCnpfXGzEe5YFQ-zf1490aMqKIvKxIh3hhHHv5yji-xNaQ-UH-EIIacSVeypo44R-N-5fUC55hlGAafnF3C-fcGsYZB2UVVfw0jNJQhRG0qx0cwRJtfUTgkSI="
+      ],
+      "domain_cited": false,
+      "prompt_used": "Molding compounds suppliers"
+    }
+  ],
+  "webfetch_calls": [],
+  "summary": null
+}
