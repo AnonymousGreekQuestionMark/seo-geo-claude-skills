@@ -52,8 +52,7 @@
         "./cross-cutting/content-quality-auditor",
         "./cross-cutting/domain-authority-auditor",
         "./cross-cutting/entity-optimizer",
-        "./cross-cutting/memory-management",
-        "./orchestration/company-analysis"
+        "./cross-cutting/memory-management"
       ]
     }
   ]
