@@ -121,19 +121,19 @@ describe('ai-citation-monitor MCP server', () => {
         method: 'POST',
         headers: { 'Authorization': 'Bearer test_key', 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          model: 'gpt-4o-mini',
+          model: 'gpt-4o',
           messages: [{ role: 'user', content: 'What are sources for carbon materials?' }]
         })
       });
 
-      expect(capturedBody.model).toBe('gpt-4o-mini');
+      expect(capturedBody.model).toBe('gpt-4o');
     });
 
     it('detects domain mention in OpenAI response', async () => {
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: { 'Authorization': 'Bearer test_key', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model: 'gpt-4o-mini', messages: [] })
+        body: JSON.stringify({ model: 'gpt-4o', messages: [] })
       });
       const data = await res.json();
 

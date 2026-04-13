@@ -133,8 +133,14 @@ Phase 06 — Monitoring
 Phase 07 — Memory
   Step 20: memory-management         → 07-memory/memory-snapshot.md
 
-Step 21 — HTML Report
+Step 21 — Reports & Finalization
+  Step 21.1-4: HTML Report generation
+  Step 21.5: Concerns log generation
+  Step 21.6: Score provenance generation
+  Step 21.7: Execution status generation
+  Step 21.8: PDF Report generation (REQUIRED - comprehensive audit trail)
   → analyses/<company-root>/reports/<company-root>_<domain>_<timestamp>.html
+  → analyses/<company-root>/reports/<company-root>_<domain>_<timestamp>.pdf
 ```
 
 ## Instructions
@@ -692,6 +698,14 @@ The PDF report is the **most comprehensive deliverable** — a full audit trail 
 5. Inject appendix sections after the Next Steps content
 6. Render to PDF using puppeteer (A4 format, 1cm margins)
 7. Ensure page breaks at section boundaries (~20-30 pages for full audit)
+
+**REQUIRED ACTION**: After HTML report generation, you MUST generate the PDF by calling:
+```javascript
+import { generatePdfFromHtml } from './tools/shared/pdf-generator.js';
+await generatePdfFromHtml(htmlReportPath, pdfReportPath, { scoreProvenance, promptResults, executionStatus });
+```
+
+The PDF is the comprehensive audit deliverable. The analysis is NOT complete until both HTML and PDF reports exist.
 
 ### Step 0 (Final): Promote to Hot Cache
 

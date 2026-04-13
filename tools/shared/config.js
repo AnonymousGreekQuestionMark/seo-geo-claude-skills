@@ -44,7 +44,8 @@ export const config = {
   openai: {
     apiKey: process.env.OPENAI_API_KEY,
     model: process.env.OPENAI_MODEL || 'gpt-4o',
-    searchModel: process.env.OPENAI_SEARCH_MODEL || 'gpt-4o-search-preview',
+    // gpt-4o supports web search via Responses API; use it directly
+    searchModel: process.env.OPENAI_SEARCH_MODEL || 'gpt-4o',
     available: has('OPENAI_API_KEY'),
   },
   anthropic: {
