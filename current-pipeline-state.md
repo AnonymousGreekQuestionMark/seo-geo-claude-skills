@@ -920,7 +920,70 @@ npm test -- ai-citation-monitor.test.js provenance-validation.test.js pdf-report
 
 ---
 
-### 5.15 Conclusion
+### 5.15 Sample Analysis Validation — v6.5.1 (2026-04-14)
+
+End-to-end pipeline validation with real caplinq.com analysis runs.
+
+#### Analysis Runs
+
+| Run | Timestamp | Skills | Status | Report |
+|-----|-----------|--------|--------|--------|
+| 1 | 20260413T120000 | 20/20 | DONE_WITH_CONCERNS | HTML |
+| 2 | 20260414T140000 | 20/20 | DONE_WITH_CONCERNS | HTML + PDF |
+
+#### caplinq.com Results (20260414T140000)
+
+**CITE Domain Authority:**
+| Dimension | Score | Weight |
+|-----------|-------|--------|
+| Citation (C) | 35/100 | 35% |
+| Identity (I) | 45/100 | 20% |
+| Trust (T) | 65/100 | 25% |
+| Eminence (E) | 50/100 | 20% |
+| **Overall** | **48/100** | CAUTIOUS |
+
+**CORE-EEAT Content Quality:**
+| Score Type | Value |
+|------------|-------|
+| GEO Score | 56/100 |
+| SEO Score | 58/100 |
+
+**Key Findings:**
+- AI Citation Rate: 0% (llms.txt missing — 404)
+- Schema Coverage: 0% (no JSON-LD detected)
+- Mobile PageSpeed: 33/100
+- LCP: 13.2s (target <2.5s)
+- CLS: 0.671 (target <0.1)
+- Rankings: #2 die attach, #2 conductive adhesives, #4 thermal gap pad
+
+**Concerns Logged (4 skills):**
+| Skill | Issue |
+|-------|-------|
+| citation-baseline | OpenAI API errors, Gemini 503 on 2 queries |
+| technical-seo-checker | TIM page PageSpeed 500 error |
+| backlink-analyzer | Tier 3 tools not configured |
+| on-page-seo-auditor | Title tag not fully extractable |
+
+#### New Files
+
+| File | Purpose |
+|------|---------|
+| `tools/scripts/finalize-analysis.js` | Automated PDF generation from completed analyses |
+| `references/prompt-results-schema.json` | Schema for AI prompt capture structure |
+| `references/score-provenance-schema.json` | Schema for 120-item provenance structure |
+| `tools/__tests__/e2e/analysis-completion.test.js` | E2E validation for complete analyses |
+
+#### Score Provenance Validation
+
+```
+CITE items: 40/40
+CORE-EEAT items: 80/80
+Validation: PASSED
+```
+
+---
+
+### 5.16 Conclusion
 
 The full pipeline is operational at Tier 2 with:
 - 3/4 AI engines active (Perplexity requires paid key)
@@ -929,4 +992,5 @@ The full pipeline is operational at Tier 2 with:
 - HTML + PDF report generation with business-friendly language
 - PDF appendix verified populated with AI prompts and score provenance
 - Pipeline integrity fixes for error handling and data provenance
+- Sample analysis validated: caplinq.com CITE 48/100 CAUTIOUS, 120-item provenance complete
 - All tests passing (320+ PDF + orchestration tests)

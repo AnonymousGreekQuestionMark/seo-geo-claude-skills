@@ -4,7 +4,39 @@ All notable changes to this project are documented here. Technical-level descrip
 
 ---
 
-## [6.5.1] — 2026-04-12
+## [6.5.1] — 2026-04-14
+
+### Sample Analysis Validation
+
+- **Two complete caplinq.com analysis runs** (20260413T120000, 20260414T140000) — Full 21-step execution across all 20 skills with handoff files in 7 phase subdirectories.
+- **PDF report validated** — 1,343 KB with full appendix: AI prompts, 120-item score provenance (40 CITE + 80 CORE-EEAT), llms.txt audit, execution status.
+- **Score provenance validation** — "CITE items: 40/40, CORE-EEAT items: 80/80, Validation: PASSED".
+
+### tools/scripts/finalize-analysis.js (new file)
+
+- **Automated PDF finalization utility** (~533 lines) — Reads completed analysis directory, validates all required files present, generates PDF from HTML with puppeteer.
+- **Exports:** `finalizeAnalysis(analysisPath, options)` for programmatic use.
+- **CLI usage:** `node finalize-analysis.js <analysis-path>`.
+
+### references/ (new schemas)
+
+- **prompt-results-schema.json** — JSON Schema defining structure for AI prompt capture (engine, model, timestamp, query, response_excerpt, response_full, domain_cited).
+- **score-provenance-schema.json** — JSON Schema defining 120-item provenance structure with CITE (40) and CORE-EEAT (80) items.
+
+### tools/__tests__/e2e/analysis-completion.test.js (new file)
+
+- **E2E validation tests** (~359 lines) — Validates complete analysis runs have all required handoff files, JSON outputs, and report generation.
+
+### Skill Updates
+
+- **content-quality-auditor** (v6.6.0) — Enhanced CORE-EEAT dimension mapping, clearer handoff format.
+- **domain-authority-auditor** (v6.4.0) — Improved CITE C/T dimension data flow from feeders.
+- **competitor-analysis** (v6.4.0) — Cleaner handoff format with structured competitor profiles.
+- **company-analysis** (v1.4.0) — Pipeline step sequencing fixes, concern logging improvements.
+
+---
+
+## [6.5.1-pre] — 2026-04-12
 
 ### tools/shared/pipeline-runner.js (new file)
 
