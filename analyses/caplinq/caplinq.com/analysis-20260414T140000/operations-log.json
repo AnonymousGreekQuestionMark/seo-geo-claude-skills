@@ -1,0 +1,222 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "company_root": "caplinq",
+    "timestamp": "20260414T140000",
+    "started_at": "2026-04-14T14:00:00Z",
+    "completed_at": null,
+    "duration_seconds": null,
+    "version": "1.4.0"
+  },
+  "environment": {
+    "platform": "darwin",
+    "limit_anthropic": true
+  },
+  "api_availability": {
+    "anthropic": true,
+    "openai": true,
+    "gemini": true,
+    "perplexity": true
+  },
+  "steps": [
+    {
+      "step_number": 1,
+      "skill_name": "entity-optimizer",
+      "phase": "01",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "01-domain-baseline/entity-optimizer-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 1.5,
+      "skill_name": "citation-baseline",
+      "phase": "01",
+      "status": "DONE_WITH_CONCERNS",
+      "timestamp": "20260414T140000",
+      "handoff_file": "01-domain-baseline/citation-baseline-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 2,
+      "skill_name": "keyword-research",
+      "phase": "02",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "02-research/keyword-research-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 3,
+      "skill_name": "competitor-analysis",
+      "phase": "02",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "02-research/competitor-analysis-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 4,
+      "skill_name": "serp-analysis",
+      "phase": "02",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "02-research/serp-analysis-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 5,
+      "skill_name": "content-gap-analysis",
+      "phase": "02",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "02-research/content-gap-analysis-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 6,
+      "skill_name": "technical-seo-checker",
+      "phase": "03",
+      "status": "DONE_WITH_CONCERNS",
+      "timestamp": "20260414T140000",
+      "handoff_file": "03-technical/technical-seo-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 7,
+      "skill_name": "on-page-seo-auditor",
+      "phase": "03",
+      "status": "DONE_WITH_CONCERNS",
+      "timestamp": "20260414T140000",
+      "handoff_file": "03-technical/on-page-seo-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 8,
+      "skill_name": "internal-linking-optimizer",
+      "phase": "03",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "03-technical/internal-linking-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 9,
+      "skill_name": "backlink-analyzer",
+      "phase": "03",
+      "status": "DONE_WITH_CONCERNS",
+      "timestamp": "20260414T140000",
+      "handoff_file": "03-technical/backlink-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 10,
+      "skill_name": "domain-authority-auditor",
+      "phase": "03",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "03-technical/domain-authority-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 11,
+      "skill_name": "content-quality-auditor",
+      "phase": "04",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "04-content/content-quality-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 12,
+      "skill_name": "content-refresher",
+      "phase": "04",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "04-content/content-refresher-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 13,
+      "skill_name": "seo-content-writer",
+      "phase": "05",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "05-recommendations/seo-content-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 14,
+      "skill_name": "geo-content-optimizer",
+      "phase": "05",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "05-recommendations/geo-content-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 15,
+      "skill_name": "meta-tags-optimizer",
+      "phase": "05",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "05-recommendations/meta-tags-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 16,
+      "skill_name": "schema-markup-generator",
+      "phase": "05",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "05-recommendations/schema-markup-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 17,
+      "skill_name": "rank-tracker",
+      "phase": "06",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "06-monitoring/rank-tracker-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 18,
+      "skill_name": "performance-reporter",
+      "phase": "06",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "06-monitoring/performance-reporter-handoff.md",
+      "duration_ms": null
+    },
+    {
+      "step_number": 19,
+      "skill_name": "alert-manager",
+      "phase": "06",
+      "status": "DONE",
+      "timestamp": "20260414T140000",
+      "handoff_file": "06-monitoring/alert-manager-handoff.md",
+      "duration_ms": null
+    }
+  ],
+  "tool_calls": [],
+  "file_operations": [],
+  "errors": [],
+  "warnings": [],
+  "metrics": {
+    "total_api_calls": 0,
+    "by_engine": {},
+    "total_tokens_estimated": 0,
+    "total_webfetch_calls": 4,
+    "total_file_writes": 0,
+    "total_file_reads": 0,
+    "total_steps": 20,
+    "steps_done": 16,
+    "steps_with_concerns": 4,
+    "steps_blocked": 0
+  },
+  "started_at": "20260414T140000",
+  "completed_at": "20260414T140000",
+  "overall_status": "DONE_WITH_CONCERNS"
+}

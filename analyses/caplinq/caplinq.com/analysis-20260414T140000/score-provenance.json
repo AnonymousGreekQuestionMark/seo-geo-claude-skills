@@ -1,0 +1,223 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "company_root": "caplinq",
+    "timestamp": "20260414T140000",
+    "version": "1.2.0"
+  },
+  "cite_provenance": {
+    "overall": { "score": 48, "verdict": "CAUTIOUS" },
+    "dimensions": {
+      "C": {
+        "score": 35,
+        "items": [
+          { "id": "C01", "name": "Referring Domains Volume", "score": 30, "status": "FAIL", "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "PageRank 2/10, estimated 200-500 referring domains", "calculation": "Est. 200-500 RDs vs 500+ threshold → 30/100" },
+          { "id": "C02", "name": "Referring Domains Quality", "score": 35, "status": "FAIL", "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "PageRank 2/10 indicates low average DR of referring domains", "calculation": "PR 2 correlates to ~25 DR avg → 35/100 (need 50+ DR on 20%)" },
+          { "id": "C03", "name": "Link Equity Distribution", "score": 50, "status": "PARTIAL", "source_skill": "estimated", "source_step": 9, "raw_data": "B2B site with specialized products", "calculation": "Unknown outbound link concentration, estimated typical B2B → 50/100" },
+          { "id": "C04", "name": "Link Velocity", "score": 50, "status": "PARTIAL", "source_skill": "estimated", "source_step": 9, "raw_data": "No spike/drop data available", "calculation": "Established 2006, assumed steady growth → 50/100" },
+          { "id": "C05", "name": "AI Citation Frequency", "score": 10, "status": "FAIL", "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "0/13 queries cited caplinq.com URL", "calculation": "0% citation rate → 10/100 (PASS requires ≥10 queries)" },
+          { "id": "C06", "name": "AI Citation Prominence", "score": 15, "status": "FAIL", "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "1 brand mention (polyimide tape) but not in primary position", "calculation": "1/13 with brand mention, 0 primary citations → 15/100" },
+          { "id": "C07", "name": "Cross-Engine Citation", "score": 20, "status": "FAIL", "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "Only Gemini tested (OpenAI errors), 0 citations", "calculation": "0/2 engines citing → 20/100 (PASS requires ≥3 engines)" },
+          { "id": "C08", "name": "Citation Sentiment", "score": 70, "status": "PASS", "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "When mentioned (polyimide tape), context was positive/neutral", "calculation": "100% positive sentiment when mentioned → 70/100" },
+          { "id": "C09", "name": "Editorial Link Ratio", "score": 50, "status": "PARTIAL", "source_skill": "estimated", "source_step": 9, "raw_data": "B2B technical site", "calculation": "Assumed typical B2B editorial ratio → 50/100" },
+          { "id": "C10", "name": "Link Source Diversity", "score": 40, "status": "PARTIAL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "6 global offices across 3 continents", "calculation": "Global presence suggests regional diversity → 40/100" }
+        ]
+      },
+      "I": {
+        "score": 45,
+        "items": [
+          { "id": "I01", "name": "Knowledge Graph Presence", "score": 20, "status": "FAIL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "No Google Knowledge Panel, no Wikidata entity found", "calculation": "0/2 knowledge graphs → 20/100" },
+          { "id": "I02", "name": "Brand Search Volume", "score": 50, "status": "PARTIAL", "source_skill": "keyword-research", "source_step": 2, "raw_data": "'CAPLINQ' has some brand search volume, appears in Crunchbase/LinkedIn", "calculation": "Estimated 500-1000 monthly searches → 50/100 (need 1000+)" },
+          { "id": "I03", "name": "Brand SERP Ownership", "score": 60, "status": "PARTIAL", "source_skill": "serp-analysis", "source_step": 4, "raw_data": "Brand search shows homepage, LinkedIn, Crunchbase, LeadIQ", "calculation": "~5-6 controlled results on page 1 → 60/100 (need 7+)" },
+          { "id": "I04", "name": "Schema.org Coverage", "score": 0, "status": "FAIL", "source_skill": "schema-markup-generator", "source_step": 16, "raw_data": "0 schema blocks on homepage, 0 on die-attach page", "calculation": "0% pages with schema → 0/100" },
+          { "id": "I05", "name": "Author Entity Recognition", "score": 40, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "6+ named authors on blog but no credentials or schema", "calculation": "Authors exist but no verification → 40/100" },
+          { "id": "I06", "name": "Domain Tenure", "score": 90, "status": "PASS", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Founded 2006, 20 years continuous operation", "calculation": "20 years > 5 year threshold → 90/100" },
+          { "id": "I07", "name": "Cross-Platform Consistency", "score": 70, "status": "PASS", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Consistent CAPLINQ branding across LinkedIn, Crunchbase, website", "calculation": "Consistent NAP and branding → 70/100" },
+          { "id": "I08", "name": "Niche Consistency", "score": 85, "status": "PASS", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Specialty chemicals focus since 2006 founding", "calculation": "20 years same niche > 3 year threshold → 85/100" },
+          { "id": "I09", "name": "Unlinked Brand Mentions", "score": 50, "status": "PARTIAL", "source_skill": "estimated", "source_step": 1, "raw_data": "Unknown third-party mention count", "calculation": "Estimated moderate industry presence → 50/100" },
+          { "id": "I10", "name": "Query-Brand Association", "score": 40, "status": "PARTIAL", "source_skill": "keyword-research", "source_step": 2, "raw_data": "CAPLINQ not in autocomplete for industry terms", "calculation": "Limited brand-query association → 40/100" }
+        ]
+      },
+      "T": {
+        "score": 65,
+        "items": [
+          { "id": "T01", "name": "Link Profile Naturalness", "score": 65, "status": "PARTIAL", "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "B2B technical site, no spam signals detected", "calculation": "Assumed natural B2B growth pattern → 65/100" },
+          { "id": "T02", "name": "Dofollow Ratio Normality", "score": 60, "status": "PARTIAL", "source_skill": "estimated", "source_step": 9, "raw_data": "Unknown dofollow ratio", "calculation": "Assumed typical 60-70% dofollow → 60/100" },
+          { "id": "T03", "name": "Link-Traffic Coherence", "score": 70, "status": "PASS", "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "Low PR (2) with low traffic estimate is coherent", "calculation": "Link volume matches traffic level → 70/100 (NOT VETO)", "is_veto": true },
+          { "id": "T04", "name": "IP/Network Diversity", "score": 60, "status": "PARTIAL", "source_skill": "estimated", "source_step": 9, "raw_data": "Unknown IP distribution", "calculation": "Assumed typical distribution → 60/100" },
+          { "id": "T05", "name": "Backlink Profile Uniqueness", "score": 75, "status": "PASS", "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "No PBN signals, unique B2B profile", "calculation": "No shared footprint detected → 75/100 (NOT VETO)", "is_veto": true },
+          { "id": "T06", "name": "WHOIS & Registration Transparency", "score": 70, "status": "PASS", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Established company, public address in Netherlands", "calculation": "Transparent business entity → 70/100" },
+          { "id": "T07", "name": "Technical Security", "score": 100, "status": "PASS", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "HTTPS valid, no malware flags", "calculation": "Full HTTPS deployment → 100/100" },
+          { "id": "T08", "name": "Content Freshness Signal", "score": 80, "status": "PASS", "source_skill": "content-refresher", "source_step": 12, "raw_data": "Sitemap lastmod 2026-04-14, blog 1-2 posts/week", "calculation": "Updated within 90 days → 80/100" },
+          { "id": "T09", "name": "Penalty & Deindex History", "score": 80, "status": "PASS", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "No known manual actions or deindexing", "calculation": "Clean penalty history → 80/100 (NOT VETO)", "is_veto": true },
+          { "id": "T10", "name": "Review & Reputation Signals", "score": 50, "status": "PARTIAL", "source_skill": "estimated", "source_step": 10, "raw_data": "No visible review presence on third-party platforms", "calculation": "Limited review signals → 50/100" }
+        ]
+      },
+      "E": {
+        "score": 50,
+        "items": [
+          { "id": "E01", "name": "Organic Search Visibility", "score": 55, "status": "PARTIAL", "source_skill": "serp-analysis", "source_step": 4, "raw_data": "8/16 keywords in top 10, 2 in top 3", "calculation": "50% top-10 rate → 55/100" },
+          { "id": "E02", "name": "Organic Traffic Estimate", "score": 40, "status": "PARTIAL", "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "PR 2 suggests limited organic traffic", "calculation": "Estimated <10,000 monthly visits → 40/100" },
+          { "id": "E03", "name": "SERP Feature Ownership", "score": 30, "status": "FAIL", "source_skill": "serp-analysis", "source_step": 4, "raw_data": "No featured snippets owned", "calculation": "0 SERP features → 30/100 (need 3+)" },
+          { "id": "E04", "name": "Technical Crawlability", "score": 40, "status": "FAIL", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "Mobile 33/100, LCP 13.2s, no AI crawler directives", "calculation": "Poor mobile + >3s load → 40/100" },
+          { "id": "E05", "name": "Multi-Platform Footprint", "score": 65, "status": "PARTIAL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "LinkedIn, Crunchbase, blog subdomain active", "calculation": "3+ platforms with activity → 65/100" },
+          { "id": "E06", "name": "Authoritative Media Coverage", "score": 40, "status": "PARTIAL", "source_skill": "competitor-analysis", "source_step": 3, "raw_data": "Limited media mentions found", "calculation": "Few authoritative publications → 40/100" },
+          { "id": "E07", "name": "Topical Authority Depth", "score": 70, "status": "PASS", "source_skill": "serp-analysis", "source_step": 4, "raw_data": "#2 die attach, #2 conductive adhesives (long-tail)", "calculation": "Strong niche rankings → 70/100" },
+          { "id": "E08", "name": "Industry Event Presence", "score": 50, "status": "PARTIAL", "source_skill": "estimated", "source_step": 10, "raw_data": "Unknown conference/event presence", "calculation": "Assumed moderate presence → 50/100" },
+          { "id": "E09", "name": "Backlink Growth Trend", "score": 50, "status": "PARTIAL", "source_skill": "estimated", "source_step": 9, "raw_data": "Unknown growth trajectory", "calculation": "Assumed stable growth → 50/100" },
+          { "id": "E10", "name": "Social Proof Signals", "score": 45, "status": "PARTIAL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "LinkedIn presence, limited visible engagement", "calculation": "Limited social signals → 45/100" }
+        ]
+      }
+    }
+  },
+  "core_eeat_provenance": {
+    "geo_score": 56,
+    "seo_score": 58,
+    "dimensions": {
+      "C": {
+        "score": 72,
+        "items": [
+          { "id": "C01", "name": "Search Intent Alignment", "score": 75, "status": "PASS", "source_skill": "on-page-seo-auditor", "source_step": 7, "raw_data": "Category pages match commercial/informational intent", "calculation": "Good intent match → 75/100" },
+          { "id": "C02", "name": "Topic Coverage Depth", "score": 80, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "8,500+ words on die attach, 3,500+ on TIM", "calculation": "Comprehensive coverage → 80/100" },
+          { "id": "C03", "name": "Information Accuracy", "score": 75, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Technical content references IPC standards", "calculation": "Accurate technical info → 75/100" },
+          { "id": "C04", "name": "Content Completeness", "score": 70, "status": "PASS", "source_skill": "content-gap-analysis", "source_step": 5, "raw_data": "Good product coverage, some gaps (EV, hydrogen)", "calculation": "Mostly complete → 70/100" },
+          { "id": "C05", "name": "Unique Value Proposition", "score": 65, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Technical depth but similar to competitor content", "calculation": "Good but not differentiated → 65/100" },
+          { "id": "C06", "name": "Primary Source Content", "score": 70, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Own products, own blog content", "calculation": "Original content → 70/100" },
+          { "id": "C07", "name": "Multimedia Integration", "score": 75, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Diagrams, comparison tables, product images", "calculation": "Good visual content → 75/100" },
+          { "id": "C08", "name": "FAQ Coverage", "score": 60, "status": "PARTIAL", "source_skill": "content-gap-analysis", "source_step": 5, "raw_data": "4 FAQs on die attach, 1 on TIM", "calculation": "Limited FAQ coverage → 60/100" },
+          { "id": "C09", "name": "Content Freshness", "score": 80, "status": "PASS", "source_skill": "content-refresher", "source_step": 12, "raw_data": "Blog updated weekly, sitemap fresh", "calculation": "Recent updates → 80/100" },
+          { "id": "C10", "name": "Answer Directness", "score": 70, "status": "PASS", "source_skill": "geo-content-optimizer", "source_step": 14, "raw_data": "Technical explanations present but not AI-optimized", "calculation": "Good but not structured for AI → 70/100" }
+        ]
+      },
+      "O": {
+        "score": 55,
+        "items": [
+          { "id": "O01", "name": "Title Tag Optimization", "score": 70, "status": "PASS", "source_skill": "meta-tags-optimizer", "source_step": 15, "raw_data": "Keywords present in titles", "calculation": "Good title optimization → 70/100" },
+          { "id": "O02", "name": "Meta Description Quality", "score": 50, "status": "PARTIAL", "source_skill": "on-page-seo-auditor", "source_step": 7, "raw_data": "Some pages missing meta descriptions", "calculation": "Incomplete coverage → 50/100" },
+          { "id": "O03", "name": "Heading Structure", "score": 70, "status": "PASS", "source_skill": "on-page-seo-auditor", "source_step": 7, "raw_data": "Clear H1-H3 hierarchy on category pages", "calculation": "Good heading structure → 70/100" },
+          { "id": "O04", "name": "Schema Markup", "score": 0, "status": "FAIL", "source_skill": "schema-markup-generator", "source_step": 16, "raw_data": "0 schema blocks site-wide", "calculation": "No schema → 0/100" },
+          { "id": "O05", "name": "Internal Link Optimization", "score": 80, "status": "PASS", "source_skill": "internal-linking-optimizer", "source_step": 8, "raw_data": "150+ internal links, good navigation", "calculation": "Strong internal linking → 80/100" },
+          { "id": "O06", "name": "Image Optimization", "score": 50, "status": "PARTIAL", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "Some missing alt text, large images causing LCP issues", "calculation": "Partial optimization → 50/100" },
+          { "id": "O07", "name": "URL Structure", "score": 75, "status": "PASS", "source_skill": "on-page-seo-auditor", "source_step": 7, "raw_data": "Clean URLs: /thermal-interface-materials.html", "calculation": "Good URL structure → 75/100" },
+          { "id": "O08", "name": "Canonical Implementation", "score": 60, "status": "PARTIAL", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "Not verified during analysis", "calculation": "Unknown, assumed partial → 60/100" },
+          { "id": "O09", "name": "Mobile Optimization", "score": 35, "status": "FAIL", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "Mobile score 33/100, CLS 0.671", "calculation": "Poor mobile UX → 35/100" },
+          { "id": "O10", "name": "Page Speed", "score": 40, "status": "FAIL", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "LCP 13.2s mobile, 2.5s desktop", "calculation": "Critical speed issues → 40/100" }
+        ]
+      },
+      "R": {
+        "score": 45,
+        "items": [
+          { "id": "R01", "name": "Source Citation", "score": 30, "status": "FAIL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "IPC standards mentioned but not linked", "calculation": "No linked citations → 30/100" },
+          { "id": "R02", "name": "Authority Site Links", "score": 25, "status": "FAIL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Minimal outbound to authoritative sources", "calculation": "No authority linking → 25/100" },
+          { "id": "R03", "name": "Data Attribution", "score": 40, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Technical specs provided, source unclear", "calculation": "Some data without source → 40/100" },
+          { "id": "R04", "name": "Research References", "score": 35, "status": "FAIL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "No academic/research paper citations", "calculation": "No research backing → 35/100" },
+          { "id": "R05", "name": "Expert Quotes", "score": 40, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "No expert quotes in content", "calculation": "No expert sourcing → 40/100" },
+          { "id": "R06", "name": "Industry Standard References", "score": 55, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "IPC-A-610, IPC-CC-830 mentioned", "calculation": "Standards mentioned not linked → 55/100" },
+          { "id": "R07", "name": "Cross-Reference Quality", "score": 50, "status": "PARTIAL", "source_skill": "internal-linking-optimizer", "source_step": 8, "raw_data": "Good internal cross-references", "calculation": "Internal but not external → 50/100" },
+          { "id": "R08", "name": "Recency of Sources", "score": 60, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Content is current, sources undated", "calculation": "Current content, unclear sources → 60/100" },
+          { "id": "R09", "name": "Primary vs Secondary Sources", "score": 55, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Mix of own expertise and industry knowledge", "calculation": "Mostly secondary synthesis → 55/100" },
+          { "id": "R10", "name": "Misinformation Check", "score": 80, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "No false claims detected in technical content", "calculation": "Accurate information → 80/100 (NOT VETO)", "is_veto": true }
+        ]
+      },
+      "E": {
+        "score": 50,
+        "items": [
+          { "id": "E01", "name": "Readability Score", "score": 70, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Clear technical writing, appropriate for B2B", "calculation": "Good readability → 70/100" },
+          { "id": "E02", "name": "Visual Enhancement", "score": 75, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Diagrams, comparison tables, product images", "calculation": "Strong visuals → 75/100" },
+          { "id": "E03", "name": "Interactive Elements", "score": 20, "status": "FAIL", "source_skill": "content-gap-analysis", "source_step": 5, "raw_data": "No calculators, configurators, or tools", "calculation": "No interactive content → 20/100" },
+          { "id": "E04", "name": "CTA Clarity", "score": 70, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Clear product CTAs, contact forms", "calculation": "Good CTAs → 70/100" },
+          { "id": "E05", "name": "Content Scannability", "score": 70, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Good use of headings, bullets, tables", "calculation": "Scannable layout → 70/100" },
+          { "id": "E06", "name": "Mobile Reading Experience", "score": 35, "status": "FAIL", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "CLS 0.671 causes layout shifts", "calculation": "Poor mobile reading → 35/100" },
+          { "id": "E07", "name": "Page Load Engagement", "score": 35, "status": "FAIL", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "13.2s LCP causes abandonment", "calculation": "Slow load hurts engagement → 35/100" },
+          { "id": "E08", "name": "Navigation Clarity", "score": 75, "status": "PASS", "source_skill": "on-page-seo-auditor", "source_step": 7, "raw_data": "Clear category structure, breadcrumbs missing", "calculation": "Good navigation → 75/100" },
+          { "id": "E09", "name": "Related Content Suggestions", "score": 60, "status": "PARTIAL", "source_skill": "internal-linking-optimizer", "source_step": 8, "raw_data": "Related posts on blog, limited on product pages", "calculation": "Partial related content → 60/100" },
+          { "id": "E10", "name": "Social Sharing Options", "score": 40, "status": "PARTIAL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Limited social sharing visibility", "calculation": "Minimal social integration → 40/100" }
+        ]
+      },
+      "Exp": {
+        "score": 55,
+        "items": [
+          { "id": "Exp01", "name": "First-Hand Experience Indicators", "score": 60, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Product knowledge evident, no case studies", "calculation": "Shows expertise, lacks proof → 60/100" },
+          { "id": "Exp02", "name": "Practical Examples", "score": 55, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Application guidance but few real examples", "calculation": "Generic examples → 55/100" },
+          { "id": "Exp03", "name": "User Testimonials", "score": 30, "status": "FAIL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "No visible customer testimonials", "calculation": "No testimonials → 30/100" },
+          { "id": "Exp04", "name": "Case Study Presence", "score": 25, "status": "FAIL", "source_skill": "content-gap-analysis", "source_step": 5, "raw_data": "No case studies found", "calculation": "No case studies → 25/100" },
+          { "id": "Exp05", "name": "Product Usage Documentation", "score": 70, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Technical guides, application notes", "calculation": "Good documentation → 70/100" },
+          { "id": "Exp06", "name": "Problem-Solution Content", "score": 65, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Troubleshooting content on blog", "calculation": "Some problem-solution → 65/100" },
+          { "id": "Exp07", "name": "Industry Tenure Signals", "score": 80, "status": "PASS", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "20 years in business since 2006", "calculation": "Long tenure → 80/100" },
+          { "id": "Exp08", "name": "Hands-On Demonstrations", "score": 30, "status": "FAIL", "source_skill": "content-gap-analysis", "source_step": 5, "raw_data": "No video content found", "calculation": "No demos → 30/100" },
+          { "id": "Exp09", "name": "Before/After Evidence", "score": 35, "status": "FAIL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "No comparative evidence shown", "calculation": "No visual proof → 35/100" },
+          { "id": "Exp10", "name": "Real-World Application Photos", "score": 60, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Product photos, limited application images", "calculation": "Some real images → 60/100" }
+        ]
+      },
+      "Ept": {
+        "score": 60,
+        "items": [
+          { "id": "Ept01", "name": "Author Credentials Display", "score": 35, "status": "FAIL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Authors named but no credentials shown", "calculation": "No visible credentials → 35/100" },
+          { "id": "Ept02", "name": "Professional Certifications", "score": 70, "status": "PASS", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "ISO 9001 certified company", "calculation": "Company certified → 70/100" },
+          { "id": "Ept03", "name": "Technical Vocabulary Usage", "score": 80, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Appropriate use of Tg, CTE, thermal conductivity", "calculation": "Expert vocabulary → 80/100" },
+          { "id": "Ept04", "name": "Industry Recognition", "score": 50, "status": "PARTIAL", "source_skill": "competitor-analysis", "source_step": 3, "raw_data": "Intel, Bosch, Apple shown as clients", "calculation": "Some recognition → 50/100" },
+          { "id": "Ept05", "name": "Publication/Research History", "score": 40, "status": "PARTIAL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Blog posts, no academic publications", "calculation": "No research publications → 40/100" },
+          { "id": "Ept06", "name": "Speaking/Conference Presence", "score": 50, "status": "PARTIAL", "source_skill": "estimated", "source_step": 10, "raw_data": "Unknown conference presence", "calculation": "Assumed moderate → 50/100" },
+          { "id": "Ept07", "name": "Peer Citations", "score": 45, "status": "PARTIAL", "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "Brand mentioned by AI but not cited", "calculation": "Some recognition → 45/100" },
+          { "id": "Ept08", "name": "Domain Specialization Depth", "score": 80, "status": "PASS", "source_skill": "keyword-research", "source_step": 2, "raw_data": "Deep content on TIM, die attach, electrochemical", "calculation": "Strong specialization → 80/100" },
+          { "id": "Ept09", "name": "Expert Network Connections", "score": 55, "status": "PARTIAL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Supplier partnerships visible", "calculation": "Some network signals → 55/100" },
+          { "id": "Ept10", "name": "Educational Content Quality", "score": 75, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Strong technical blog, glossary", "calculation": "Good educational content → 75/100" }
+        ]
+      },
+      "A": {
+        "score": 50,
+        "items": [
+          { "id": "A01", "name": "Third-Party Endorsements", "score": 40, "status": "PARTIAL", "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "Limited editorial backlinks", "calculation": "Few endorsements → 40/100" },
+          { "id": "A02", "name": "Industry Awards", "score": 30, "status": "FAIL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "No awards visible on site", "calculation": "No awards shown → 30/100" },
+          { "id": "A03", "name": "Media Coverage", "score": 40, "status": "PARTIAL", "source_skill": "competitor-analysis", "source_step": 3, "raw_data": "Limited media mentions found", "calculation": "Minimal coverage → 40/100" },
+          { "id": "A04", "name": "Government/Institution Citations", "score": 35, "status": "FAIL", "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "No gov/edu citations found", "calculation": "No institutional citations → 35/100" },
+          { "id": "A05", "name": "Wikipedia/Knowledge Base Presence", "score": 20, "status": "FAIL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "No Wikipedia or Wikidata entry", "calculation": "No knowledge base → 20/100" },
+          { "id": "A06", "name": "Professional Association Membership", "score": 60, "status": "PARTIAL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "ISO certified, unknown association membership", "calculation": "Some professional signals → 60/100" },
+          { "id": "A07", "name": "Influencer Mentions", "score": 40, "status": "PARTIAL", "source_skill": "estimated", "source_step": 10, "raw_data": "Unknown influencer coverage", "calculation": "Assumed minimal → 40/100" },
+          { "id": "A08", "name": "Partner/Client Logos", "score": 75, "status": "PASS", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Intel, Apple, Bosch, NXP logos displayed", "calculation": "Strong client logos → 75/100" },
+          { "id": "A09", "name": "Speaking Invitations Evidence", "score": 45, "status": "PARTIAL", "source_skill": "estimated", "source_step": 10, "raw_data": "Unknown speaking history", "calculation": "Assumed minimal → 45/100" },
+          { "id": "A10", "name": "Content Syndication", "score": 50, "status": "PARTIAL", "source_skill": "estimated", "source_step": 10, "raw_data": "Unknown syndication status", "calculation": "Assumed minimal → 50/100" }
+        ]
+      },
+      "T": {
+        "score": 65,
+        "items": [
+          { "id": "T01", "name": "Contact Information Visibility", "score": 80, "status": "PASS", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Full address, multiple office locations shown", "calculation": "Complete contact info → 80/100" },
+          { "id": "T02", "name": "Privacy Policy Presence", "score": 70, "status": "PASS", "source_skill": "on-page-seo-auditor", "source_step": 7, "raw_data": "Privacy policy link in footer", "calculation": "Policy present → 70/100" },
+          { "id": "T03", "name": "Terms of Service", "score": 70, "status": "PASS", "source_skill": "on-page-seo-auditor", "source_step": 7, "raw_data": "Terms visible in footer", "calculation": "Terms present → 70/100" },
+          { "id": "T04", "name": "Content Accuracy", "score": 80, "status": "PASS", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Technical content appears accurate", "calculation": "Accurate technical info → 80/100 (NOT VETO)", "is_veto": true },
+          { "id": "T05", "name": "Update Transparency", "score": 50, "status": "PARTIAL", "source_skill": "content-refresher", "source_step": 12, "raw_data": "No 'last updated' dates visible", "calculation": "No update dates → 50/100" },
+          { "id": "T06", "name": "Editorial Standards", "score": 60, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Quality content but no stated standards", "calculation": "Implicit standards → 60/100" },
+          { "id": "T07", "name": "Conflict of Interest Disclosure", "score": 40, "status": "PARTIAL", "source_skill": "content-quality-auditor", "source_step": 11, "raw_data": "Product promotion without disclosure", "calculation": "No COI statements → 40/100" },
+          { "id": "T08", "name": "Secure Transaction Indicators", "score": 75, "status": "PASS", "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "HTTPS, cart functionality visible", "calculation": "Secure site → 75/100" },
+          { "id": "T09", "name": "Physical Address Verification", "score": 80, "status": "PASS", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Verifiable Netherlands HQ address", "calculation": "Verified physical location → 80/100" },
+          { "id": "T10", "name": "Company Registration Visibility", "score": 65, "status": "PARTIAL", "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Multiple legal entities listed", "calculation": "Partial registration visibility → 65/100" }
+        ]
+      }
+    }
+  },
+  "feeder_chain": [
+    { "target": "CITE C01/C02/C04/C09/C10/T01/T02/T04/T05", "source": "backlink-analyzer (step 9)" },
+    { "target": "CITE C05/C06/C07/C08", "source": "citation-baseline (step 1.5)" },
+    { "target": "CITE T07/T08/E04", "source": "technical-seo-checker (step 6)" },
+    { "target": "CITE I04", "source": "schema-markup-generator (step 16)" },
+    { "target": "CITE I01/I06/I07/I08/E05/E10", "source": "entity-optimizer (step 1)" },
+    { "target": "CITE E01/E03/E07", "source": "serp-analysis (step 4)" },
+    { "target": "CORE C01-C10/O01-O10/R01-R10/E01-E10", "source": "on-page-seo-auditor (step 7), content-quality-auditor (step 11)" },
+    { "target": "CORE Exp01-Exp10/Ept01-Ept10", "source": "entity-optimizer (step 1), content-quality-auditor (step 11)" },
+    { "target": "CORE A01-A10/T01-T10", "source": "domain-authority-auditor (step 10)" }
+  ],
+  "veto_items": {
+    "cite": {
+      "T03": { "status": "PASS", "score": 70, "triggered": false },
+      "T05": { "status": "PASS", "score": 75, "triggered": false },
+      "T09": { "status": "PASS", "score": 80, "triggered": false }
+    },
+    "core_eeat": {
+      "T04": { "status": "PASS", "score": 80, "triggered": false },
+      "C01": { "status": "PASS", "score": 75, "triggered": false },
+      "R10": { "status": "PASS", "score": 80, "triggered": false }
+    },
+    "total_triggered": 0
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "timestamp": "20260413T120000",
+    "version": "1.2.0"
+  },
+  "cite_provenance": {
+    "overall": { "score": 52, "verdict": "CAUTIOUS" },
+    "dimensions": {
+      "C": {
+        "score": 35,
+        "items": [
+          { "id": "C01", "name": "Referring Domains Volume", "score": 4, "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "PageRank 2 → ~200-500 RDs estimated", "calculation": "PR 2 suggests 200-500 RDs, needs >=500 for PASS" },
+          { "id": "C02", "name": "Referring Domains Quality", "score": 5, "source_skill": "backlink-analyzer", "source_step": 9, "raw_data": "Estimated 15-20% DA 50+", "calculation": "Estimated from B2B niche profile" },
+          { "id": "C05", "name": "AI Citation Frequency", "score": 0, "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "0/13 queries cited", "calculation": "0% citation rate → FAIL" },
+          { "id": "C06", "name": "AI Citation Prominence", "score": 0, "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "No citations to measure", "calculation": "N/A - no citations" },
+          { "id": "C07", "name": "Cross-Engine Citation", "score": 3, "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "0 engines cite domain", "calculation": "Tested Gemini, OpenAI - 0 citations" },
+          { "id": "C08", "name": "Citation Sentiment", "score": 8, "source_skill": "citation-baseline", "source_step": 1.5, "raw_data": "Positive when mentioned", "calculation": "Gemini describes company accurately and positively" }
+        ]
+      },
+      "I": {
+        "score": 55,
+        "items": [
+          { "id": "I01", "name": "Knowledge Graph Presence", "score": 5, "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "AI knows entity but no KG card", "calculation": "Partial presence" },
+          { "id": "I04", "name": "Schema.org Coverage", "score": 2, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "0% coverage", "calculation": "No structured data detected → FAIL" },
+          { "id": "I06", "name": "Domain Tenure", "score": 10, "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Founded 2004 (20+ years)", "calculation": ">=5 years → PASS" },
+          { "id": "I08", "name": "Niche Consistency", "score": 10, "source_skill": "entity-optimizer", "source_step": 1, "raw_data": "Same niche since founding", "calculation": "20+ years consistent → PASS" }
+        ]
+      },
+      "T": {
+        "score": 70,
+        "items": [
+          { "id": "T03", "name": "Link-Traffic Coherence", "score": 8, "source_skill": "estimated", "source_step": 10, "raw_data": "No spam signals", "calculation": "Traffic proportional to link level (VETO CHECK: PASS)" },
+          { "id": "T05", "name": "Backlink Profile Uniqueness", "score": 8, "source_skill": "estimated", "source_step": 10, "raw_data": "No manipulation signals", "calculation": "B2B legitimate site (VETO CHECK: PASS)" },
+          { "id": "T07", "name": "Technical Security", "score": 10, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "HTTPS valid, no warnings", "calculation": "Full HTTPS → PASS" },
+          { "id": "T08", "name": "Content Freshness", "score": 9, "source_skill": "content-gap-analysis", "source_step": 5, "raw_data": "Blog updated monthly", "calculation": "Active publishing → PASS" },
+          { "id": "T09", "name": "Penalty History", "score": 10, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "Indexed, no manual actions", "calculation": "No penalties (VETO CHECK: PASS)" }
+        ]
+      },
+      "E": {
+        "score": 45,
+        "items": [
+          { "id": "E01", "name": "Organic Search Visibility", "score": 5, "source_skill": "serp-analysis", "source_step": 4, "raw_data": "3 keywords in top 10", "calculation": "Limited visibility → PARTIAL" },
+          { "id": "E03", "name": "SERP Feature Ownership", "score": 3, "source_skill": "serp-analysis", "source_step": 4, "raw_data": "No featured snippets owned", "calculation": "0 SERP features → FAIL" },
+          { "id": "E04", "name": "Technical Crawlability", "score": 4, "source_skill": "technical-seo-checker", "source_step": 6, "raw_data": "Mobile 31/100, LCP 9.7s", "calculation": "Slow performance → FAIL" },
+          { "id": "E08", "name": "Topical Authority Breadth", "score": 7, "source_skill": "content-gap-analysis", "source_step": 5, "raw_data": "40+ blog categories", "calculation": "Good topic coverage → PASS" }
+        ]
+      }
+    }
+  },
+  "core_eeat_provenance": {
+    "geo_score": 58,
+    "seo_score": 62,
+    "dimensions": {
+      "C": { "score": 68, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "O": { "score": 55, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "R": { "score": 50, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "E": { "score": 45, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "Exp": { "score": 55, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "Ept": { "score": 70, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "A": { "score": 60, "source_skill": "content-quality-auditor", "source_step": 11 },
+      "T": { "score": 70, "source_skill": "content-quality-auditor", "source_step": 11 }
+    }
+  },
+  "feeder_chain": [
+    { "target": "CITE C02/C04/C10/T01/T02", "source": "backlink-analyzer (step 9)" },
+    { "target": "CITE T07/T08/T09", "source": "technical-seo-checker (step 6)" },
+    { "target": "CITE C05-C08", "source": "citation-baseline (step 1.5)" },
+    { "target": "CITE I04", "source": "schema-markup-generator (step 16) - noted as 0%" },
+    { "target": "CORE C01-E10", "source": "content-quality-auditor (step 11)" }
+  ]
+}

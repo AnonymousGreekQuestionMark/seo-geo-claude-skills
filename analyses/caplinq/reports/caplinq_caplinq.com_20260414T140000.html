@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO & GEO Analysis Report — caplinq.com — 2026-04-14</title>
+  <style>
+    :root {
+      --bg: #0d1117; --surface: #161b22; --surface2: #21262d; --border: #30363d;
+      --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+      --green: #3fb950; --amber: #d29922; --red: #f85149; --purple: #a371f7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    header { background: var(--surface); padding: 20px 40px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    header h1 { font-size: 20px; font-weight: 600; }
+    header .meta { font-size: 13px; color: var(--muted); }
+    nav#tabs { display: flex; gap: 4px; padding: 12px 40px; background: var(--surface); border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    nav#tabs button { background: transparent; border: none; color: var(--muted); padding: 8px 16px; cursor: pointer; border-radius: 6px; font-size: 13px; transition: all 0.2s; }
+    nav#tabs button:hover { background: var(--surface2); color: var(--text); }
+    nav#tabs button.active { background: var(--accent); color: #fff; }
+    main { padding: 30px 40px; max-width: 1400px; margin: 0 auto; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .section-intro { color: var(--muted); font-size: 14px; margin: 0 0 24px; line-height: 1.6; }
+    h2 { font-size: 18px; margin: 30px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    h2:first-child { margin-top: 0; }
+    h3 { font-size: 15px; margin: 20px 0 12px; color: var(--accent); }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th, td { padding: 10px 12px; text-align: left; border: 1px solid var(--border); }
+    th { background: var(--surface2); font-weight: 600; }
+    tr:nth-child(even) { background: var(--surface); }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin: 16px 0; }
+    .card-title { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+    .card-value { font-size: 28px; font-weight: 700; }
+    .score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+    .score-item { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 14px; text-align: center; }
+    .score-item .label { font-size: 11px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+    .score-item .value { font-size: 24px; font-weight: 700; }
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+    .badge-trusted { background: var(--green); color: #000; }
+    .badge-cautious { background: var(--amber); color: #000; }
+    .badge-untrusted { background: var(--red); color: #fff; }
+    .badge-pass { background: rgba(63, 185, 80, 0.2); color: var(--green); border: 1px solid var(--green); }
+    .badge-partial { background: rgba(210, 153, 34, 0.2); color: var(--amber); border: 1px solid var(--amber); }
+    .badge-fail { background: rgba(248, 81, 73, 0.2); color: var(--red); border: 1px solid var(--red); }
+    .green { color: var(--green); }
+    .amber { color: var(--amber); }
+    .red { color: var(--red); }
+    .priority-p0 { border-left: 4px solid var(--red); padding-left: 12px; }
+    .priority-p1 { border-left: 4px solid var(--amber); padding-left: 12px; }
+    .priority-p2 { border-left: 4px solid var(--accent); padding-left: 12px; }
+    ul { margin: 12px 0; padding-left: 24px; }
+    li { margin: 6px 0; }
+    code { background: var(--surface2); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+    [data-tooltip] { position: relative; cursor: help; border-bottom: 1px dashed var(--muted); }
+    [data-tooltip]:hover::after { content: attr(data-tooltip); position: absolute; left: 0; top: 100%; margin-top: 4px; background: var(--surface); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: 400; max-width: 320px; white-space: normal; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    details.engine-section { margin: 12px 0; border: 1px solid var(--border); border-radius: 6px; }
+    details.engine-section summary { padding: 10px 14px; cursor: pointer; font-weight: 600; background: var(--surface2); border-radius: 6px; }
+    details.engine-section[open] summary { border-radius: 6px 6px 0 0; border-bottom: 1px solid var(--border); }
+    .prompt-result { padding: 12px; border-bottom: 1px solid var(--border); }
+    .prompt-result:last-child { border-bottom: none; }
+    .prompt-label { font-size: 11px; color: var(--muted); text-transform: uppercase; margin: 8px 0 4px; }
+    .prompt-box, .response-box { background: var(--surface2); padding: 10px; border-radius: 4px; white-space: pre-wrap; max-height: 200px; overflow-y: auto; font-size: 12px; font-family: monospace; }
+    footer { text-align: center; padding: 30px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); margin-top: 40px; }
+    @media print {
+      :root { --bg: #fff; --surface: #f6f8fa; --surface2: #f0f2f5; --border: #d0d7de; --text: #1f2328; --muted: #656d76; }
+      body { background: var(--bg); color: var(--text); }
+      .tab-panel { display: block !important; page-break-after: always; }
+      nav#tabs { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>SEO & GEO Analysis Report</h1>
+      <div class="meta">Company: <strong>CAPLINQ</strong> | Domain: <strong>caplinq.com</strong> | Analysis: <strong>2026-04-14</strong> | Library v6.5.0</div>
+    </div>
+    <span class="badge badge-cautious">CAUTIOUS</span>
+  </header>
+
+  <nav id="tabs">
+    <button class="active" data-tab="0">Executive Summary</button>
+    <button data-tab="1">Domain Baseline</button>
+    <button data-tab="2">Research</button>
+    <button data-tab="3">Technical</button>
+    <button data-tab="4">Content Quality</button>
+    <button data-tab="5">Recommendations</button>
+    <button data-tab="6">Monitoring</button>
+    <button data-tab="7">Prompt Appendix</button>
+    <button data-tab="8">Next Steps</button>
+  </nav>
+
+  <main>
+    <!-- TAB 0: EXECUTIVE SUMMARY -->
+    <section class="tab-panel active" id="tab-0">
+      <p class="section-intro">This report presents a comprehensive SEO and GEO analysis of caplinq.com, evaluating domain authority (CITE), content quality (CORE-EEAT), and AI discoverability across 20 specialized skill assessments.</p>
+
+      <h2 data-tooltip="Overall domain authority verdict based on 40 CITE framework items">CITE Domain Authority Verdict</h2>
+      <div class="card" style="text-align: center;">
+        <span class="badge badge-cautious" style="font-size: 18px; padding: 8px 24px;">CAUTIOUS</span>
+        <div style="margin-top: 16px; font-size: 48px; font-weight: 700;">48<span style="font-size: 24px; color: var(--muted);">/100</span></div>
+        <div style="color: var(--muted); margin-top: 8px;">Veto Items Triggered: 0/3</div>
+      </div>
+
+      <h3>CITE Dimension Scores</h3>
+      <div class="score-grid">
+        <div class="score-item"><div class="label">Citation</div><div class="value red">35</div></div>
+        <div class="score-item"><div class="label">Identity</div><div class="value amber">45</div></div>
+        <div class="score-item"><div class="label">Trust</div><div class="value amber">65</div></div>
+        <div class="score-item"><div class="label">Eminence</div><div class="value amber">50</div></div>
+      </div>
+
+      <h2 data-tooltip="Content quality scores based on 80 CORE-EEAT framework items">CORE-EEAT Content Quality</h2>
+      <div class="score-grid">
+        <div class="score-item"><div class="label">GEO Score</div><div class="value amber">56</div></div>
+        <div class="score-item"><div class="label">SEO Score</div><div class="value amber">58</div></div>
+      </div>
+      <div class="score-grid" style="grid-template-columns: repeat(8, 1fr);">
+        <div class="score-item"><div class="label">C</div><div class="value green">72</div></div>
+        <div class="score-item"><div class="label">O</div><div class="value amber">55</div></div>
+        <div class="score-item"><div class="label">R</div><div class="value red">45</div></div>
+        <div class="score-item"><div class="label">E</div><div class="value amber">50</div></div>
+        <div class="score-item"><div class="label">Exp</div><div class="value amber">55</div></div>
+        <div class="score-item"><div class="label">Ept</div><div class="value amber">60</div></div>
+        <div class="score-item"><div class="label">A</div><div class="value amber">50</div></div>
+        <div class="score-item"><div class="label">T</div><div class="value amber">65</div></div>
+      </div>
+
+      <h2 data-tooltip="Most impactful issues requiring immediate attention">Top 5 Critical Findings</h2>
+      <div class="card priority-p0">
+        <strong class="red">1. 0% AI Citation Rate</strong>
+        <p style="margin-top: 8px; color: var(--muted);">Domain not cited by any AI engine (Gemini, OpenAI, Perplexity) despite ranking for keywords. Brand is mentioned for polyimide tape but URL not cited.</p>
+      </div>
+      <div class="card priority-p0">
+        <strong class="red">2. 0% Schema Coverage</strong>
+        <p style="margin-top: 8px; color: var(--muted);">No structured data (JSON-LD) on any page. Missing Organization, Product, FAQPage, BreadcrumbList schemas.</p>
+      </div>
+      <div class="card priority-p0">
+        <strong class="red">3. Critical Mobile Performance</strong>
+        <p style="margin-top: 8px; color: var(--muted);">Mobile PageSpeed score 33/100. LCP 13.2s (target: &lt;2.5s), CLS 0.671 (target: &lt;0.1).</p>
+      </div>
+      <div class="card priority-p0">
+        <strong class="red">4. Missing llms.txt</strong>
+        <p style="margin-top: 8px; color: var(--muted);">No AI discoverability file. Returns 404. No AI crawler directives in robots.txt.</p>
+      </div>
+      <div class="card priority-p1">
+        <strong class="amber">5. Die Attach Page Display Error</strong>
+        <p style="margin-top: 8px; color: var(--muted);">High-value page shows "No Products Found" despite being #2 for keyword.</p>
+      </div>
+
+      <h2 data-tooltip="Skills executed in this analysis">Skills Completion</h2>
+      <table>
+        <thead><tr><th>Step</th><th>Skill</th><th>Phase</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>entity-optimizer</td><td>01-Domain Baseline</td></tr>
+          <tr><td>1.5</td><td>citation-baseline</td><td>01-Domain Baseline</td></tr>
+          <tr><td>2</td><td>keyword-research</td><td>02-Research</td></tr>
+          <tr><td>3</td><td>competitor-analysis</td><td>02-Research</td></tr>
+          <tr><td>4</td><td>serp-analysis</td><td>02-Research</td></tr>
+          <tr><td>5</td><td>content-gap-analysis</td><td>02-Research</td></tr>
+          <tr><td>6</td><td>technical-seo-checker</td><td>03-Technical</td></tr>
+          <tr><td>7</td><td>on-page-seo-auditor</td><td>03-Technical</td></tr>
+          <tr><td>8</td><td>internal-linking-optimizer</td><td>03-Technical</td></tr>
+          <tr><td>9</td><td>backlink-analyzer</td><td>03-Technical</td></tr>
+          <tr><td>10</td><td>domain-authority-auditor</td><td>03-Technical</td></tr>
+          <tr><td>11</td><td>content-quality-auditor</td><td>04-Content</td></tr>
+          <tr><td>12</td><td>content-refresher</td><td>04-Content</td></tr>
+          <tr><td>13</td><td>seo-content-writer</td><td>05-Recommendations</td></tr>
+          <tr><td>14</td><td>geo-content-optimizer</td><td>05-Recommendations</td></tr>
+          <tr><td>15</td><td>meta-tags-optimizer</td><td>05-Recommendations</td></tr>
+          <tr><td>16</td><td>schema-markup-generator</td><td>05-Recommendations</td></tr>
+          <tr><td>17</td><td>rank-tracker</td><td>06-Monitoring</td></tr>
+          <tr><td>18</td><td>performance-reporter</td><td>06-Monitoring</td></tr>
+          <tr><td>19</td><td>alert-manager</td><td>06-Monitoring</td></tr>
+          <tr><td>20</td><td>memory-management</td><td>07-Memory</td></tr>
+        </tbody>
+      </table>
+      <p style="color: var(--muted); font-size: 13px;">20 skills completed</p>
+    </section>
+
+    <!-- TAB 1: DOMAIN BASELINE -->
+    <section class="tab-panel" id="tab-1">
+      <p class="section-intro">Domain baseline establishes the entity profile and AI citation status. CAPLINQ is a well-established specialty chemicals distributor with 20 years of history, but has minimal AI discoverability.</p>
+
+      <h2 data-tooltip="Core company information and entity signals">Entity Profile</h2>
+      <table>
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td>Legal Name</td><td>CAPLINQ Corporation</td></tr>
+        <tr><td>Founded</td><td>2006 (20 years)</td></tr>
+        <tr><td>Headquarters</td><td>Assendelft, Netherlands</td></tr>
+        <tr><td>Employees</td><td>~62</td></tr>
+        <tr><td>Certifications</td><td>ISO 9001</td></tr>
+        <tr><td>Global Presence</td><td>6 offices (NL, USA, Canada, China, Philippines, Malaysia)</td></tr>
+      </table>
+
+      <h3>Target Markets</h3>
+      <ul>
+        <li>Semiconductors (including 5G)</li>
+        <li>eMobility / Electric Vehicles</li>
+        <li>Renewable Energy (fuel cells, electrolyzers)</li>
+        <li>Aerospace</li>
+        <li>Electronics Assembly</li>
+      </ul>
+
+      <h3>Proprietary Brands</h3>
+      <p>LINQTAPE, LINQSOL, LINQCELL, LINQBOND, CHEMLINQ, OPTOLINQ, LINQALLOY, LINQSTAT, SMARTLINQ, LINQSIL</p>
+
+      <h2 data-tooltip="AI engine citation testing across 13 queries">Citation Baseline</h2>
+      <table>
+        <tr><th>Metric</th><th>Value</th><th>Status</th></tr>
+        <tr><td>Queries Tested</td><td>13</td><td>-</td></tr>
+        <tr><td>Queries with Citation</td><td>0</td><td><span class="badge badge-fail">FAIL</span></td></tr>
+        <tr><td>Citation Rate</td><td>0%</td><td><span class="badge badge-fail">FAIL</span></td></tr>
+        <tr><td>Brand Mentions</td><td>1 (polyimide tape)</td><td><span class="badge badge-partial">PARTIAL</span></td></tr>
+        <tr><td>Engines Tested</td><td>Gemini (OpenAI errors)</td><td>-</td></tr>
+      </table>
+
+      <h3>AI Discoverability Gaps</h3>
+      <ul>
+        <li><strong class="red">llms.txt missing</strong> — Returns 404</li>
+        <li><strong class="red">No AI crawler directives</strong> — robots.txt lacks GPTBot, Claude-Web</li>
+        <li><strong class="red">No Knowledge Panel</strong> — Not in Google Knowledge Graph</li>
+        <li><strong class="amber">Blog on subdomain</strong> — blog.caplinq.com reduces association</li>
+      </ul>
+    </section>
+
+    <!-- TAB 2: RESEARCH -->
+    <section class="tab-panel" id="tab-2">
+      <p class="section-intro">Research phase covers keyword opportunities, competitive landscape, SERP positions, and content gaps. CAPLINQ has strong niche rankings but misses high-volume head terms.</p>
+
+      <h2 data-tooltip="Primary and secondary keyword targets">Hero Keywords</h2>
+      <table>
+        <tr><th>Keyword</th><th>Position</th><th>URL</th><th>Priority</th></tr>
+        <tr><td>die attach materials</td><td class="green">#2</td><td>/die-attach-materials.html</td><td>Defend</td></tr>
+        <tr><td>conductive adhesives</td><td class="green">#2</td><td>/electrically-conductive-adhesives.html</td><td>Defend</td></tr>
+        <tr><td>thermal gap pad</td><td class="green">#4</td><td>/thermal-gap-pads.html</td><td>Improve</td></tr>
+        <tr><td>REACH only representative</td><td class="amber">#5</td><td>/reach-only-representative.html</td><td>Recover (was #3)</td></tr>
+        <tr><td>thermal interface materials</td><td class="red">NR</td><td>-</td><td><strong>P0 Create</strong></td></tr>
+        <tr><td>epoxy molding compounds</td><td class="red">NR</td><td>-</td><td><strong>P0 Create</strong></td></tr>
+        <tr><td>ion exchange membranes</td><td class="red">NR</td><td>-</td><td>P1 Recover</td></tr>
+        <tr><td>polyimide tape</td><td class="red">NR</td><td>-</td><td>P1 Recover</td></tr>
+      </table>
+
+      <h2 data-tooltip="Primary competitors and their advantages">Competitive Landscape</h2>
+      <table>
+        <tr><th>Competitor</th><th>Type</th><th>AI Cited</th><th>Advantage</th></tr>
+        <tr><td>Henkel (BERGQUIST, LOCTITE)</td><td>Enterprise</td><td class="green">Yes</td><td>Brand, R&D, scale</td></tr>
+        <tr><td>DuPont/Laird</td><td>Enterprise</td><td class="green">Yes</td><td>Manufacturing, brand</td></tr>
+        <tr><td>3M</td><td>Enterprise</td><td class="green">Yes</td><td>Everything</td></tr>
+        <tr><td>Indium Corporation</td><td>Mid-market</td><td class="green">Yes</td><td>90yr history, Wikipedia</td></tr>
+        <tr><td>CAPLINQ</td><td>Specialty</td><td class="red">No</td><td>REACH OR, niche focus</td></tr>
+      </table>
+
+      <h2 data-tooltip="Content gaps requiring new or enhanced pages">Content Gaps</h2>
+      <ul>
+        <li class="priority-p0"><strong>Epoxy Molding Compounds page</strong> — Blog ranks but no product page exists</li>
+        <li class="priority-p0"><strong>TIM page FAQ expansion</strong> — Only 1 FAQ, needs 10+</li>
+        <li class="priority-p0"><strong>Die attach product display</strong> — Shows "No Products Found"</li>
+        <li class="priority-p1"><strong>EV thermal management content</strong> — Hot market, no dedicated page</li>
+        <li class="priority-p1"><strong>Hydrogen/fuel cell materials</strong> — No dedicated landing page</li>
+      </ul>
+    </section>
+
+    <!-- TAB 3: TECHNICAL -->
+    <section class="tab-panel" id="tab-3">
+      <p class="section-intro">Technical assessment covers Core Web Vitals, crawlability, on-page optimization, backlink profile, and domain authority. Mobile performance is the most critical issue.</p>
+
+      <h2 data-tooltip="Google Core Web Vitals performance metrics">Core Web Vitals</h2>
+      <table>
+        <tr><th>Metric</th><th>Mobile</th><th>Desktop</th><th>Target</th><th>Status</th></tr>
+        <tr><td>Performance Score</td><td class="red">33</td><td class="amber">57</td><td>90+</td><td><span class="badge badge-fail">FAIL</span></td></tr>
+        <tr><td>LCP</td><td class="red">13.2s</td><td class="green">2.5s</td><td>&lt;2.5s</td><td><span class="badge badge-fail">FAIL</span></td></tr>
+        <tr><td>CLS</td><td class="red">0.671</td><td class="red">0.399</td><td>&lt;0.1</td><td><span class="badge badge-fail">FAIL</span></td></tr>
+        <tr><td>INP</td><td class="green">120ms</td><td class="green">33ms</td><td>&lt;200ms</td><td><span class="badge badge-pass">PASS</span></td></tr>
+      </table>
+
+      <h2 data-tooltip="On-page SEO element audit">On-Page SEO</h2>
+      <table>
+        <tr><th>Element</th><th>Status</th><th>Issue</th></tr>
+        <tr><td>Schema Markup</td><td><span class="badge badge-fail">0%</span></td><td>No JSON-LD on any page</td></tr>
+        <tr><td>Meta Descriptions</td><td><span class="badge badge-partial">PARTIAL</span></td><td>Missing on some pages</td></tr>
+        <tr><td>H1 Tags</td><td><span class="badge badge-partial">PARTIAL</span></td><td>Branding-focused, not keyword</td></tr>
+        <tr><td>Internal Links</td><td><span class="badge badge-pass">150+</span></td><td>Good structure</td></tr>
+      </table>
+
+      <h2 data-tooltip="CITE domain authority calculation">CITE Score Breakdown</h2>
+      <table>
+        <tr><th>Dimension</th><th>Score</th><th>Key Factor</th></tr>
+        <tr><td>C (Citation)</td><td class="red">35</td><td>0% AI citation, low backlinks</td></tr>
+        <tr><td>I (Identity)</td><td class="amber">45</td><td>0% schema, no Knowledge Panel</td></tr>
+        <tr><td>T (Trust)</td><td class="amber">65</td><td>ISO 9001, 20yr history</td></tr>
+        <tr><td>E (Eminence)</td><td class="amber">50</td><td>Mobile perf, limited visibility</td></tr>
+        <tr><td><strong>Overall</strong></td><td><strong>48</strong></td><td>CAUTIOUS verdict</td></tr>
+      </table>
+
+      <h3>Backlink Profile</h3>
+      <table>
+        <tr><th>Metric</th><th>Value</th><th>Benchmark</th></tr>
+        <tr><td>PageRank</td><td>2/10</td><td>4+ (good)</td></tr>
+        <tr><td>Est. Referring Domains</td><td>200-500</td><td>1,000+</td></tr>
+        <tr><td>Global Rank</td><td>77M+</td><td>&lt;1M (notable)</td></tr>
+      </table>
+    </section>
+
+    <!-- TAB 4: CONTENT QUALITY -->
+    <section class="tab-panel" id="tab-4">
+      <p class="section-intro">Content quality evaluation using the CORE-EEAT framework. Technical depth is strong but E-A-T signals (author credentials, external citations) are weak.</p>
+
+      <h2 data-tooltip="CORE-EEAT content quality scores">CORE-EEAT Scores</h2>
+      <div class="score-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="score-item"><div class="label">Comprehensive</div><div class="value green">72</div></div>
+        <div class="score-item"><div class="label">Optimized</div><div class="value amber">55</div></div>
+        <div class="score-item"><div class="label">Referenced</div><div class="value red">45</div></div>
+        <div class="score-item"><div class="label">Engaging</div><div class="value amber">50</div></div>
+      </div>
+      <div class="score-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="score-item"><div class="label">Experience</div><div class="value amber">55</div></div>
+        <div class="score-item"><div class="label">Expertise</div><div class="value amber">60</div></div>
+        <div class="score-item"><div class="label">Authority</div><div class="value amber">50</div></div>
+        <div class="score-item"><div class="label">Trust</div><div class="value amber">65</div></div>
+      </div>
+
+      <h2>Content Strengths</h2>
+      <ul>
+        <li><span class="green">✓</span> Deep technical content (8,500+ words on die attach)</li>
+        <li><span class="green">✓</span> Visual aids (diagrams, comparison tables)</li>
+        <li><span class="green">✓</span> Consistent publishing (1-2 blog posts/week)</li>
+        <li><span class="green">✓</span> Multiple named authors</li>
+      </ul>
+
+      <h2>Content Weaknesses</h2>
+      <ul>
+        <li><span class="red">✗</span> No author credentials displayed</li>
+        <li><span class="red">✗</span> No external citations to authoritative sources</li>
+        <li><span class="red">✗</span> Heavy product promotion bias</li>
+        <li><span class="red">✗</span> No case studies or testimonials</li>
+        <li><span class="red">✗</span> No interactive tools or calculators</li>
+      </ul>
+
+      <h2>Content Refresh Priorities</h2>
+      <table>
+        <tr><th>Page</th><th>Issue</th><th>Priority</th></tr>
+        <tr><td>Die Attach Materials</td><td>"No Products Found" display error</td><td><span class="badge badge-fail">P0</span></td></tr>
+        <tr><td>Thermal Interface Materials</td><td>Limited FAQ (1 question)</td><td><span class="badge badge-fail">P0</span></td></tr>
+        <tr><td>REACH Only Representative</td><td>Declining ranking (#3→#5)</td><td><span class="badge badge-fail">P0</span></td></tr>
+        <tr><td>Ion Exchange Membranes</td><td>Lost ranking</td><td><span class="badge badge-partial">P1</span></td></tr>
+      </table>
+    </section>
+
+    <!-- TAB 5: RECOMMENDATIONS -->
+    <section class="tab-panel" id="tab-5">
+      <p class="section-intro">Actionable recommendations for SEO, GEO, meta tags, and schema implementation. Prioritized by impact and effort.</p>
+
+      <h2 data-tooltip="Content creation and optimization priorities">Content Recommendations</h2>
+      <h3>P0 — Create Immediately</h3>
+      <ul>
+        <li><strong>llms.txt</strong> — AI discoverability file with company overview</li>
+        <li><strong>/epoxy-molding-compounds.html</strong> — New landing page (2,500+ words)</li>
+        <li><strong>/thermal-interface-materials-ev-batteries.html</strong> — EV market focus</li>
+      </ul>
+
+      <h3>P1 — This Month</h3>
+      <ul>
+        <li>Ion Exchange Membranes hydrogen guide (3,000 words)</li>
+        <li>Polyimide tape comparison page</li>
+        <li>Die attach selection guide</li>
+        <li>REACH OR ultimate guide refresh</li>
+      </ul>
+
+      <h2 data-tooltip="Schema markup implementation plan">Schema Implementation</h2>
+      <table>
+        <tr><th>Schema Type</th><th>Pages</th><th>Priority</th></tr>
+        <tr><td>Organization</td><td>Homepage</td><td><span class="badge badge-fail">P0</span></td></tr>
+        <tr><td>FAQPage</td><td>Category pages with FAQs</td><td><span class="badge badge-fail">P0</span></td></tr>
+        <tr><td>BreadcrumbList</td><td>All pages</td><td><span class="badge badge-partial">P1</span></td></tr>
+        <tr><td>Product</td><td>Product pages</td><td><span class="badge badge-partial">P1</span></td></tr>
+        <tr><td>Article + Person</td><td>Blog posts</td><td><span class="badge badge-partial">P1</span></td></tr>
+      </table>
+
+      <h2 data-tooltip="GEO-specific optimizations for AI citation">GEO Optimizations</h2>
+      <ul>
+        <li><strong>Create llms.txt</strong> with company overview, products, citation preferences</li>
+        <li><strong>Add AI crawler directives</strong> to robots.txt (GPTBot, Claude-Web, PerplexityBot)</li>
+        <li><strong>Add definition paragraphs</strong> at start of each category page</li>
+        <li><strong>External citations</strong> — Link to IPC standards, IEEE, industry publications</li>
+        <li><strong>Create Wikidata entity</strong> for CAPLINQ Corporation</li>
+      </ul>
+    </section>
+
+    <!-- TAB 6: MONITORING -->
+    <section class="tab-panel" id="tab-6">
+      <p class="section-intro">Monitoring configuration for tracking rankings, performance, and AI citations over time. Alerts configured for critical metric changes.</p>
+
+      <h2 data-tooltip="Baseline rankings for ongoing tracking">Ranking Baseline</h2>
+      <table>
+        <tr><th>Keyword</th><th>Position</th><th>30-Day Target</th><th>90-Day Target</th></tr>
+        <tr><td>die attach materials</td><td>#2</td><td>#2</td><td>#1</td></tr>
+        <tr><td>conductive adhesives</td><td>#2</td><td>#2</td><td>#1-2</td></tr>
+        <tr><td>thermal interface materials</td><td>NR</td><td>Top 20</td><td>Top 5</td></tr>
+        <tr><td>epoxy molding compounds</td><td>NR</td><td>Top 20</td><td>Top 5</td></tr>
+        <tr><td>REACH only representative</td><td>#5</td><td>#3</td><td>#1-2</td></tr>
+      </table>
+
+      <h2>Alert Configuration</h2>
+      <table>
+        <tr><th>Alert</th><th>Condition</th><th>Severity</th></tr>
+        <tr><td>Ranking Drop</td><td>Top-5 keyword drops &gt;3 positions</td><td><span class="badge badge-fail">Critical</span></td></tr>
+        <tr><td>Mobile Score</td><td>PageSpeed mobile &lt;30</td><td><span class="badge badge-fail">Critical</span></td></tr>
+        <tr><td>AI Citation</td><td>Domain cited by AI engine</td><td><span class="badge badge-pass">Positive</span></td></tr>
+        <tr><td>New Top 10</td><td>Keyword enters top 10</td><td><span class="badge badge-pass">Positive</span></td></tr>
+      </table>
+
+      <h2>Recommended Tracking Tools</h2>
+      <ul>
+        <li>Google Search Console — Index, rankings, penalties</li>
+        <li>Google Analytics — Organic traffic monitoring</li>
+        <li>PageSpeed Insights — Performance regression</li>
+        <li>SERP Analyzer MCP — Weekly position checks</li>
+        <li>Citation Monitor MCP — Monthly AI citation checks</li>
+      </ul>
+    </section>
+
+    <!-- TAB 7: PROMPT APPENDIX -->
+    <section class="tab-panel" id="tab-7">
+      <p class="section-intro">All AI prompts and responses from the citation baseline testing. 26 prompts saved across brand, industry, and hero keyword queries.</p>
+
+      <h2>Prompt Summary</h2>
+      <table>
+        <tr><th>Metric</th><th>Value</th></tr>
+        <tr><td>Total LLM Calls</td><td>26</td></tr>
+        <tr><td>Engines Used</td><td>Gemini (OpenAI errors)</td></tr>
+        <tr><td>Query Types</td><td>Brand (3), Industry (4), Hero (6)</td></tr>
+        <tr><td>Citations Found</td><td>0</td></tr>
+        <tr><td>Brand Mentions</td><td>1 (polyimide tape)</td></tr>
+      </table>
+
+      <details class="engine-section">
+        <summary>Gemini Responses (10 queries)</summary>
+        <div class="prompt-result">
+          <div class="prompt-label">Query (Brand)</div>
+          <div class="prompt-box">What is CAPLINQ?</div>
+          <div class="prompt-label">Response</div>
+          <div class="response-box">CAPLINQ is a Canadian-based company established in 2004 that specializes in supplying specialty engineered solutions, chemicals, plastics, and various products primarily to the semiconductor, e-mobility, power distribution, and renewable energy sectors...</div>
+          <div class="prompt-label">Citation</div>
+          <div style="color: var(--red);">Domain NOT cited in sources</div>
+        </div>
+        <div class="prompt-result">
+          <div class="prompt-label">Query (Hero) — NOTABLE</div>
+          <div class="prompt-box">polyimide tape manufacturers</div>
+          <div class="prompt-label">Response</div>
+          <div class="response-box">...CAPLINQ Corporation supplies its LINQTAPE™ PIT-Series brand of high-performance polyimide films and tapes. These are designed for various high-temperature applications in industries such as semiconductor, smartcard, electronic, automotive, and general manufacturing...</div>
+          <div class="prompt-label">Citation</div>
+          <div style="color: var(--amber);">Brand MENTIONED in content (not URL cited)</div>
+        </div>
+      </details>
+
+      <h2>WebFetch Calls</h2>
+      <table>
+        <tr><th>Step</th><th>URL</th><th>Status</th></tr>
+        <tr><td>0.1</td><td>caplinq.com/sitemap.xml</td><td><span class="green">200</span></td></tr>
+        <tr><td>0.1</td><td>caplinq.com/robots.txt</td><td><span class="green">200</span></td></tr>
+        <tr><td>0.1</td><td>caplinq.com/</td><td><span class="green">200</span></td></tr>
+        <tr><td>0.1</td><td>caplinq.com/llms.txt</td><td><span class="red">404</span></td></tr>
+        <tr><td>0.1</td><td>blog.caplinq.com/</td><td><span class="green">200</span></td></tr>
+      </table>
+    </section>
+
+    <!-- TAB 8: NEXT STEPS -->
+    <section class="tab-panel" id="tab-8">
+      <p class="section-intro">Prioritized 90-day action plan to improve CITE score from 48 to 65+ and achieve TRUSTED verdict.</p>
+
+      <h2 data-tooltip="Actions with highest impact, lowest effort">90-Day Action Plan</h2>
+      <table>
+        <tr><th>Priority</th><th>Action</th><th>Skill</th><th>Effort</th><th>Impact</th></tr>
+        <tr><td><span class="badge badge-fail">P0</span></td><td>Create llms.txt file</td><td>geo-content-optimizer</td><td>2 hours</td><td>+10 CITE</td></tr>
+        <tr><td><span class="badge badge-fail">P0</span></td><td>Add Organization schema to homepage</td><td>schema-markup-generator</td><td>1 hour</td><td>+5 CITE</td></tr>
+        <tr><td><span class="badge badge-fail">P0</span></td><td>Fix die attach page product display</td><td>content-refresher</td><td>2-4 hours</td><td>Conversion fix</td></tr>
+        <tr><td><span class="badge badge-fail">P0</span></td><td>Fix mobile performance (images, CLS)</td><td>technical-seo-checker</td><td>8-16 hours</td><td>+15 CITE</td></tr>
+        <tr><td><span class="badge badge-fail">P0</span></td><td>Add FAQPage schema to TIM page (10 FAQs)</td><td>schema-markup-generator</td><td>4 hours</td><td>+5 CITE</td></tr>
+        <tr><td><span class="badge badge-partial">P1</span></td><td>Create epoxy molding compounds page</td><td>seo-content-writer</td><td>8 hours</td><td>New ranking</td></tr>
+        <tr><td><span class="badge badge-partial">P1</span></td><td>Add AI crawler directives to robots.txt</td><td>geo-content-optimizer</td><td>30 min</td><td>+3 CITE</td></tr>
+        <tr><td><span class="badge badge-partial">P1</span></td><td>Add author bios to all blog posts</td><td>content-quality-auditor</td><td>4 hours</td><td>+5 EEAT</td></tr>
+        <tr><td><span class="badge badge-partial">P1</span></td><td>Create Wikidata entity</td><td>entity-optimizer</td><td>2 hours</td><td>+5 CITE</td></tr>
+        <tr><td><span class="badge badge-partial">P2</span></td><td>Build 5 backlinks from DA 50+ sites</td><td>backlink-analyzer</td><td>Ongoing</td><td>+10 CITE</td></tr>
+        <tr><td><span class="badge badge-partial">P2</span></td><td>Create 3 case studies</td><td>content-quality-auditor</td><td>24 hours</td><td>+5 EEAT</td></tr>
+        <tr><td><span class="badge badge-partial">P2</span></td><td>Add external citations to all content</td><td>geo-content-optimizer</td><td>8 hours</td><td>+10 GEO</td></tr>
+      </table>
+
+      <h2>Score Projections</h2>
+      <table>
+        <tr><th>Timeframe</th><th>CITE Score</th><th>Verdict</th><th>Key Actions</th></tr>
+        <tr><td>Current</td><td>48</td><td><span class="badge badge-cautious">CAUTIOUS</span></td><td>Baseline</td></tr>
+        <tr><td>+30 days</td><td>58</td><td><span class="badge badge-cautious">CAUTIOUS</span></td><td>P0 complete</td></tr>
+        <tr><td>+60 days</td><td>65</td><td><span class="badge badge-cautious">CAUTIOUS</span></td><td>P0 + P1</td></tr>
+        <tr><td>+90 days</td><td>72</td><td><span class="badge badge-trusted">TRUSTED</span></td><td>All actions</td></tr>
+      </table>
+
+      <h2>Analysis Metadata</h2>
+      <table>
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td>Domain</td><td>caplinq.com</td></tr>
+        <tr><td>Company Root</td><td>caplinq</td></tr>
+        <tr><td>Analysis Timestamp</td><td>20260414T140000</td></tr>
+        <tr><td>Skills Executed</td><td>20</td></tr>
+        <tr><td>Data Tier</td><td>Tier 1-2 (MCP tools used)</td></tr>
+        <tr><td>Report Generated</td><td>2026-04-14</td></tr>
+        <tr><td>Library Version</td><td>6.5.0</td></tr>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    Generated by SEO & GEO Skills Library v6.5.0 | <a href="https://github.com/aaron-he-zhu/seo-geo-claude-skills" style="color: var(--accent);">GitHub</a>
+  </footer>
+
+  <script>
+    document.querySelectorAll('#tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

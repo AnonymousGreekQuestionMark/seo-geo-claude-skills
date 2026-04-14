@@ -1,0 +1,184 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "timestamp": "20260413T120000",
+    "tier": 1,
+    "version": "6.5.0"
+  },
+  "prompt_results": [
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-13T17:58:59.386Z",
+      "live_search": true,
+      "query": "What is CAPLINQ?",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ is a company that specializes in supplying specialty chemicals, adhesives, and plastics to a variety of high-tech industrial markets. Founded in 2004, its headquarters are located in Assendelft, North Holland, Netherlands, with a presence also in Ottawa, Canada.\n\nCAPLINQ serves industries su",
+      "response_full": "CAPLINQ is a company that specializes in supplying specialty chemicals, adhesives, and plastics to a variety of high-tech industrial markets. Founded in 2004, its headquarters are located in Assendelft, North Holland, Netherlands, with a presence also in Ottawa, Canada.\n\nCAPLINQ serves industries such as semiconductor manufacturing (including 5G), eMobility, power distribution, renewable energy, and electronics assembly. They offer a diverse portfolio of products, including graphitized carbon paper and panels, epoxy coating powders, epoxy molding compounds, waxes, sprays, rubbers, specialty plastic films and tapes, solder spheres, anti-static products, and silicones.\n\nThe company also develops and markets its own brands, which include CHEMLINQ, LINQSOL, LINQCELL, LINQBOND, OPTOLINQ, LINQALLOY, LINQSTAT, SMARTLINQ, LINQSIL, and LINQTAPE. These products are utilized by major global companies in their respective industries.\n\nBeyond its own products, CAPLINQ also acts as a market channel partner, assisting foreign suppliers in entering the European market by providing services such as order fulfillment, logistics, and compliance assistance for chemical regulations. This role involves deploying efficient business processes and high-level technical marketing to help their partners and customers find solutions to manufacturing challenges.",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH3Fn20ugal3OWXfGrAKC1q8uRXYkPWEVj1b6v_p0fIEqtqG3MeU6mzB8rKpsipSMSBcscFZN-bcqFmLrxRff5jW6uRvXwYKXXpPv57R4Z7j2N5ZfGHyV3R0GYj_Znp",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEmh0JoaYoz-JeAXgGCtJovKVgNwn3NAn89oN4KbQ_mW9Fs8Hkm_stpiDMzh3DOOQgaX-i8GxULkNLNBcystx8ZiZmo2Bbtxzff4oUgpvpdGqIyB19U1W-N68xhLGqeBQ==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFdS5YgdssaJ301BWbQS9Io1bnULeSB6CP5BKgm5dxtXXl87-gkdbTbRtdi6YdZFjTEKWksVlT37Ot2UtmBbkRsaS219lu6hOA4cjhNPkZZNIs12JYhWqZn0am3X9FVPO3zSh4xmIEfnPhcAgLCvPP1uA==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGHG0-MqY9g_S3NrQjzylC4JGTnFhZ3_F--A_q6cKvCOe_mmsnT9UFcbAIV3J5m1B52ZtvHoJCTYyWiQNUv1vO7ziYV0XDSI_dIy_z-EtiK_JGtO7IQsRbbdLnGGRELZJGVg-46DWr_EJcJEz5HNFM="
+      ],
+      "domain_cited": false,
+      "prompt_used": "What is CAPLINQ?"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-13T17:59:13.696Z",
+      "live_search": true,
+      "query": "CAPLINQ company overview",
+      "domain": "caplinq.com",
+      "response_excerpt": "",
+      "response_full": "",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "CAPLINQ company overview"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-13T17:59:24.387Z",
+      "live_search": true,
+      "query": "CAPLINQ Corporation products",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ Corporation offers a diverse range of specialty chemicals, plastics, and advanced materials tailored for various industries, including semiconductor, eMobility, renewable energy, and electronics assembly. Their product portfolio encompasses several key categories:\n\n**Semiconductor and PCB As",
+      "response_full": "CAPLINQ Corporation offers a diverse range of specialty chemicals, plastics, and advanced materials tailored for various industries, including semiconductor, eMobility, renewable energy, and electronics assembly. Their product portfolio encompasses several key categories:\n\n**Semiconductor and PCB Assembly Materials:**\n*   Die attach materials, including films.\n*   Epoxy molding compounds.\n*   Electrically conductive epoxies.\n*   Encapsulants and underfills, such as potting materials.\n*   Semiconductor mold maintenance products, including melamine cleaning compounds.\n*   Electronics assembly adhesives and inks, including assembly film adhesives, electrically conductive adhesives, non-conductive adhesives, and printable electronics inks.\n\n**Thermal Interface Materials:**\n*   ",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXt7w5IMXUKzVgd6UYULdHDYBI4qddGxUP1GwGOHv_FGE_LDdWGJ_4uQ_KMohdHHPekbyF4BdDPBpg1-RIKB8KNhJGMu_MCy0cHYy4T71gtRuNug==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE3TLXsYDjZui18ZfZ5WX5XZuFp0pjjAImtywOQst_cUa2gUyL9DsLvoj0J7fENMyevbHm-6Xsimd3RsV4P16VZbjEnnbkjzNWyllL2iBeSEn5PyDv0Jaca0VMroNccxarGR3dMTRHmsE4mlu1V9ZzEeNWL075w0AL5hw0="
+      ],
+      "domain_cited": false,
+      "prompt_used": "CAPLINQ Corporation products"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-13T17:59:59.611Z",
+      "live_search": true,
+      "query": "best specialty chemicals suppliers",
+      "domain": "caplinq.com",
+      "response_excerpt": "Identifying the \"best\" specialty chemicals suppliers often depends on specific industry needs, geographic location, and the particular chemical products required. However, several companies consistently appear as leaders in the global specialty chemicals market due to their extensive product portfol",
+      "response_full": "Identifying the \"best\" specialty chemicals suppliers often depends on specific industry needs, geographic location, and the particular chemical products required. However, several companies consistently appear as leaders in the global specialty chemicals market due to their extensive product portfolios, innovation, and market reach.\n\nSome of the top specialty chemicals suppliers include:\n\n*   **BASF SE:** A global chemical giant, BASF is frequently cited as a leading specialty chemical company with a vast array of products serving numerous industries.\n*   **Dow:** Dow is a material science company that provides specialty compounds and solutions across various markets, including chemical manufacturing, industrial, electronics, and healthcare.\n*   **Evonik Industries AG:** This German-based company is another significant player, recognized for its specialty chemicals and materials.\n*   **Clariant:** A Swiss multinational specialty chemicals company known for its focus on sustainable and innovative solutions.\n*   **Albemarle Corporation:** Albemarle is a global specialty chemicals company with leadership positions in lithium, bromine, and refining catalysts.\n*   **Huntsman International LLC:** Huntsman is a global manufacturer and marketer of differentiated and specialty chemicals.\n*   **Invista:** A subsidiary of Koch Industries, Invista supplies polymers, fibers, and chemical intermediates for various industries requiring plastics, fabrics, and other materials. Its specialty chemicals counterpart, Dytek Specialty, handles amine and nitrile chemical intermediates.\n*   **Inhance Technologies:** Recognized as a global leader in specialty chemicals, Inhance",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFwSXoOa_qVwje9Kak0UBnxi_vcEx93B5vyTA8stmP6ZGfOiHdjE5-TsybPC7SvhIywXyGFN7WCS_2ePVOJnFh_SBpnE80NP0FUgHnXC0TV2uVmKWm85tsY-rMyiA2mlVPJdHq8cmnW1nrEdezEIOrLiaadNFZs1DxWGdiTc6dMqkkOG58WO7FFkOiZ-s_FWJdWjnk=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGu4MxOldaQ9A0R3iQQXmeHINjwg_mx7NQRoVY8txdHEfoGM7B0PQWc8vhTeulH8UU2RnU1k2lJDR-pXMpLhuYfOvTFyj4rZ_-73g8ObqWhlhupH5f1q_wexE_YgYv7GHKvndmknXF77qr6k2se-nKMJKQd4BQPx4FY-Lklz87rGhJuGKvm1Q_OZgF8PUONtWuGYuJcts4=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQEMHglty_-vqpryDrGhC8Nv29go4gKzp5vbLVtszbble_3icl7kdfEayh-lN9Oyr92GZhRniICykGS8F7zyw4__CDCSAygfbS3oTfEUDbVG_5pBNs3mV_zn1Skrazh-EJypN0DJM8f4RpaZmAtFp3YJhuRioLV3iuQ7T9xzbQmMc5vReg6_0TQCJwGAyrmxYxGd1oSBV7"
+      ],
+      "domain_cited": false,
+      "prompt_used": "best specialty chemicals suppliers"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "openai",
+      "model": "gpt-4o-search-preview",
+      "timestamp_utc": "2026-04-13T18:00:58.635Z",
+      "live_search": true,
+      "query": "best thermal interface materials",
+      "domain": "caplinq.com",
+      "response_excerpt": "Thermal Interface Materials (TIMs) are essential for efficient heat transfer between electronic components and heat sinks, ensuring optimal performance and longevity of devices. Selecting the appropriate TIM depends on factors such as thermal conductivity, application method, mechanical properties, ",
+      "response_full": "Thermal Interface Materials (TIMs) are essential for efficient heat transfer between electronic components and heat sinks, ensuring optimal performance and longevity of devices. Selecting the appropriate TIM depends on factors such as thermal conductivity, application method, mechanical properties, and specific use cases. Below is an overview of common TIM types and their characteristics:\n\n**1. Thermal Greases and Pastes:**\nThese materials are composed of silicone or hydrocarbon oils mixed with conductive fillers like ceramic or metal particles.\n- **Pros:** High thermal conductivity; effectively fill microscopic air gaps; suitable for applications requiring thin bond lines.\n- **Cons:** Can be messy; may require reapplication over time due to potential drying out.\n- **Applications:** Ideal for CPUs, GPUs, and other high-performance components.\n\n**2. Thermal Pads:**\nMade from silicone elastomers filled with thermally conductive materials, these pads are designed to conform to uneven surfaces.\n- **Pros:** Easy to apply; reusable; provide electrical insulation; available in various thicknesses.\n- **Cons:** Generally lower thermal conductivity compared to greases; performance can be pressure-dependent.\n- **Applications:** Suitable for components with larger gaps or where ease of application is a priority.\n\n**3. Phase Change Materials (PCMs):**\nThese materials transition from solid to liquid at specific temperatures, enhancing surface wetting and reducing thermal resistance.\n- **Pros:** Conform well to surfaces upon phase change; can be pre-applied for future assembly processes.\n- **Cons:** Limited reusability; moderate thermal conductivity.\n- **Applications:** Common in laptops, servers, and mass production environments.\n\n**4. Thermal Tapes:**\nComprising pressure-sensitive adhesives on a support material, thermal tapes serve as both a thermal interface and mechanical attachment.\n- **Pros:** Simplify assembly by eliminating the need for mechanical fasteners; provide consistent bond line thickness.\n- **Cons:** Lower thermal conductivity; not suitable for applications requiring high thermal performance.\n- **Applications:** Used in applications where mechanical attachment and thermal interface are both required.\n\n**5. Thermal Adhesives:**\nThese are epoxy or silicone-based adhesives that bond components while providing thermal conductivity.\n- **Pros:** Offer strong mechanical bonds; reduce system size and weight; provide long-term reliability.\n- **Cons:** Permanent bonding may complicate rework or repairs; curing time may be required.\n- **Applications:** Suitable for applications where mechanical fastening is impractical.\n\n**6. Advanced Materials (e.g., Graphite-Based TIMs):**\nUtilizing materials like pyrolytic graphite, these TIMs offer high thermal conductivity and anisotropic properties.\n- **Pros:** Exceptional in-plane thermal conductivity; lightweight; flexible.\n- **Cons:** Can be expensive; may require careful handling.\n- **Applications:** Ideal for compact electronic devices and applications requiring efficient heat spreading.\n\n**Selecting the Right TIM:**\nWhen choosing a TIM, consider the following factors:\n- **Thermal Conductivity:** Higher values indicate better heat transfer capabilities.\n- **Application Method:** Ease of application and processing requirements (e.g., curing time, reusability).\n- **Mechanical Properties:** Flexibility, compressibility, and adhesion strength.\n- **Electrical Properties:** Dielectric strength and electrical insulation, especially in high-voltage applications.\n- **Environmental Stability:** Resistance to temperature variations, humidity, and chemical exposure.\n\nFor instance, in high-performance computing, thermal greases like Thermal Grizzly Kryonaut are favored for their high thermal conductivity and ease of application. In contrast, thermal pads are often used in consumer electronics for their simplicity and reusability. Advanced materials like graphite-based TIMs are selected for applications requiring superior heat spreading in compact spaces.\n\nUltimately, the \"best\" TIM is application-specific, balancing thermal performance, mechanical requirements, and practical considerations. ",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "best thermal interface materials"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-13T18:01:03.755Z",
+      "live_search": true,
+      "query": "best thermal interface materials",
+      "domain": "caplinq.com",
+      "response_excerpt": "Choosing the \"best\" thermal interface material (TIM) depends heavily on the specific application, considering factors like thermal conductivity, electrical insulation, ease of application, durability, and cost. There isn't a single universal \"best\" TIM, but rather different types excel in various sc",
+      "response_full": "Choosing the \"best\" thermal interface material (TIM) depends heavily on the specific application, considering factors like thermal conductivity, electrical insulation, ease of application, durability, and cost. There isn't a single universal \"best\" TIM, but rather different types excel in various scenarios.\n\nHere's a breakdown of the most effective thermal interface materials:\n\n**1. Thermal Grease/Paste:**\nThermal grease, also known as thermal paste or compound, is a widely used and cost-effective TIM, particularly for CPUs and GPUs. It's a viscous material that fills microscopic air gaps between components and heat sinks, offering excellent thermal conductivity. Most thermal greases are silicone-based with thermally conductive filler particles, though silicone-free options exist for sensitive applications.\n\n*   **Advantages:** Superior thermal conductivity by filling air gaps, cost-effective, and widely available. Relatively simple to apply for most experience levels.\n*   **Disadvantages:** Some can degrade over time (\"pump-out\" failure mechanism, though high-modulus cured-epoxy thermal adhesives can prevent this). Can be messy to apply and clean. Some high-performance pastes may require yearly replacement.\n\n**2. Thermal Gels:**\nThermal gels are flowable materials that offer more flexibility and durability than traditional greases. They are ideal for filling large and uneven gaps in electronics assemblies, deforming",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEqWX8_J2AjnxvfqNgkFyHljK59j_wlJV830fk00bHxjynjb3GLz-DIqXQpo5Z0j2kSho2XlLAe5RbH3AnJBTH2ttIa49qhGPUKLJMMj1jjXe81e3_f0xxx2hMsF18jKrU=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGGngk-lHZN3pImYP0J7RYJsYeYWsXJ31H_VPUK_flHnlogTtd0Z870wQ3ZebpNhIzLkmszSOr7tQb6GXKG9IF8wUzeIYfX_p7oYcBP4LYa_x2bBX91Uaf7pOvreYbgcVwGMtJ5yXO3wx1XsV4EnkI_-jkEJign",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEK3M_8UjKb9OOgdlx7dIF3qdONGu61txiprghqf3S7Z32OukrD_N4JGf2IOh4wM17Xje77RRxvCP5DvJjKOmjSdFhOZgBzE8ED1hUOZlmqGEnXTpNEL4iF-iCJtpg3cVRYlJS_lX8vvWUlGkZcjz8E4TZqvgk=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPo1LYIxfX9OsVc5KGKmP26Hr5VBCk9t1OBp7Kov09FMtGXHEVAgBzvbnNOGfUEsq5Hg2njBcAXH6-dk4OrlBwm44OwUXX_OdZt1yz25b4xgot-clemiBS6YqAehJ0oRzJxcU1eNryCDW9gz648SaEU5p5tZgq3mjUXMS3YcbQ_0GzBh_ygA9KBeiREJiZPVJHSWqzOYq-LYo6NifhGP15oLPfX8VB0a_DYEr980B27E_mJHgic1zTxi0ZrN9W4fsuBnnk7vyJ",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFDdGgTveOqF8WTiM862PI85PiZY4bjA6KhZJMVb7PSmq4uu2g8Eoyj3QZu4wvbYIIFJURm9l30u2-b9bL2YHblxMk5VBRLSCDqmYV1DzZn44bn1GUt7oItAycfDlCZ_Z6YPUxd5X-IiC80fU280IKYi7ge8DRh1Px1TIuTvF-RvrNkOuC2rIgTy_cWfVjttKF2XTBPeE3TLZ--zKqDKQ=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "best thermal interface materials"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "openai",
+      "model": "gpt-4o-search-preview",
+      "timestamp_utc": "2026-04-13T18:01:12.215Z",
+      "live_search": true,
+      "query": "die attach materials comparison",
+      "domain": "caplinq.com",
+      "response_excerpt": "Die attach materials are critical in semiconductor packaging, providing mechanical support, electrical connectivity, and thermal dissipation between the semiconductor die and its substrate. Selecting the appropriate die attach material is essential for ensuring device performance and reliability. Be",
+      "response_full": "Die attach materials are critical in semiconductor packaging, providing mechanical support, electrical connectivity, and thermal dissipation between the semiconductor die and its substrate. Selecting the appropriate die attach material is essential for ensuring device performance and reliability. Below is a comparison of common die attach materials:\n\n**1. Solder Alloys:**\n- **Composition:** Typically composed of metals like tin (Sn), lead (Pb), silver (Ag), and gold (Au).\n- **Thermal Conductivity:** Moderate to high, depending on the alloy.\n- **Processing Temperature:** Varies; for instance, eutectic gold-tin (Au80Sn20) has a melting point of 280°C.\n- **Advantages:** Established processing techniques; good thermal and electrical conductivity.\n- **Disadvantages:** Lead-containing solders face environmental restrictions; some alloys have high processing temperatures.\n\n**2. Conductive Adhesives (Epoxies):**\n- **Composition:** Epoxy resins filled with conductive particles, commonly silver.\n- **Thermal Conductivity:** Lower than solders; specific values depend on filler content and type.\n- **Processing Temperature:** Low to moderate; curing typically occurs below 200°C.\n- **Advantages:** Lead-free; compatible with various substrates; suitable for temperature-sensitive components.\n- **Disadvantages:** Lower thermal and electrical conductivity compared to solders; potential for moisture absorption.\n\n**3. Silver Sintering Materials:**\n- **Composition:** Nanoscale or microscale silver particles that sinter to form a solid joint.\n- **Thermal Conductivity:** High; approaching that of bulk silver (~400 W/m·K).\n- **Processing Temperature:** Typically between 200°C and 300°C; pressure-assisted and pressure-less options available.\n- **Advantages:** Excellent thermal and electrical conductivity; lead-free; suitable for high-temperature applications.\n- **Disadvantages:** Processing may require pressure; surface preparation is critical; higher cost.\n\n**4. Transient Liquid Phase Sintering (TLPS):**\n- **Composition:** Mixtures of high-melting-point and low-melting-point metals that react to form intermetallic compounds.\n- **Thermal Conductivity:** High, depending on the resulting intermetallics.\n- **Processing Temperature:** Lower than the final joint's melting point; bonding occurs below 300°C.\n- **Advantages:** Creates joints with high re-melting temperatures; suitable for high-temperature applications.\n- **Disadvantages:** Long bonding times; potential for voids and Kirkendall void formation.\n\n**5. Semi-Sintering Materials:**\n- **Composition:** Hybrid materials combining sintering particles with a polymer matrix.\n- **Thermal Conductivity:** Intermediate between conductive adhesives and full sintered materials.\n- **Processing Temperature:** Lower than full sintering; typically below 200°C.\n- **Advantages:** Improved thermal performance over traditional adhesives; easier processing than full sintering.\n- **Disadvantages:** Thermal conductivity and mechanical properties may not match those of fully sintered materials.\n\n**Selection Considerations:**\n- **Thermal Requirements:** High-power devices may benefit from materials with superior thermal conductivity, such as silver sintering materials.\n- **Processing Constraints:** Temperature-sensitive components may require low-temperature processing, favoring conductive adhesives or semi-sintering materials.\n- **Reliability Needs:** Applications exposed to high temperatures or harsh environments may necessitate materials like TLPS or silver sintering for enhanced reliability.\n- **Cost Factors:** Budget constraints may influence the choice, with conductive adhesives generally being more cost-effective than sintering materials.\n\nIn summary, the optimal die attach material depends on the specific application requirements, including thermal management, processing conditions, reliability expectations, and cost considerations. ",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "die attach materials comparison"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-13T18:01:47.750Z",
+      "live_search": true,
+      "query": "REACH representation services Europe",
+      "domain": "caplinq.com",
+      "response_excerpt": "REACH (Registration, Evaluation, Authorisation and Restriction of Chemicals) is a European Union regulation that addresses the manufacture, import, and use of chemical substances. If a company manufactures or imports a substance into Europe in quantities of 1 tonne/year or more, it is likely to requ",
+      "response_full": "REACH (Registration, Evaluation, Authorisation and Restriction of Chemicals) is a European Union regulation that addresses the manufacture, import, and use of chemical substances. If a company manufactures or imports a substance into Europe in quantities of 1 tonne/year or more, it is likely to require registration with the European Chemicals Agency (ECHA).\n\nFor non-EU companies, compliance with REACH often necessitates appointing an Only Representative (OR). An OR is a legal entity established within the EU that takes on the responsibility for fulfilling the REACH registration obligations on behalf of the non-EU manufacturer. This allows the non-EU company to maintain market access in Europe and relieves EU importers of their registration duties.\n\nKey services offered by REACH Only Representatives include:\n*   Providing a legal presence and representation in the EU.\n*   Managing technical aspects of REACH registration, including dossier submission to ECHA.\n*   Participation in Substance Information Exchange Fora (SIEF) and consortia, including data sharing and negotiation.\n*   Creating and submitting Safety Data Sheets (SDS) and Chemical Safety Reports (CSR).\n*   On-call access to REACH experts for support and guidance.\n*   Issuing REACH registration certificates and tonnage coverage certificates.\n\nAdditionally, companies, both EU and non-EU, may opt for a Third-Party Representative (TPR) service. A TPR acts on behalf of a company, particularly in SIEF or consortia discussions, to maintain confidentiality regarding the company's identity and specific interests in a substance.\n\nSeveral companies provide comprehensive REACH representation services in Europe, including:\n*   Yordas Group\n*   Sagentia Regulatory\n*   Intertek [cite: 3, 4,",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHOno8uOPnJNAe6cKH8F6YIKIcazllC6wdVGq2A7qCSpGWTJ79ckyyJHGWqoulQ7iVfxIumbqRZ5kRrdzZch46ucjIYk7RlGbscfiM2DSKafURZECIDbf4gAy3VzIrqlzWBGsvR8LiYCC49J7_Nz1YXuya0kw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE6VmEYG2U-I4ng8YzBzNhihhQfAIDsTEIK_OMmA_0zCE3k7tH9VLlgjtYsWC8DVueFegnHR1yXbrwv9njgjTs1CyWewnm-R0XFvykGsCcJRHn23o-rFZI9NqcVcpxqhdvqSg==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQ1IjpdK8LZBMnx-QBpXfjCWTlFd-0aA7GHUm5mt43SMFmTqsQEzhorx9qSvqFbxrvZkZFTYshQ4D5-q-4LbisW40dMqZh3YpmbsxO9cvVOR_9MxCXSDpvtd56vXh-05KWTSUjcQQPAeglq68=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpGofTvr_65VyXoOqsRevImaFjUDLGy2SYakkbQpMCl85GRQJs9ecraxAMNvXSMMj1USJgCAgc3l96j9cm81_yX6xr1XewSs4evpKANc8E5KYq4vteQdXOiTqz71aA4SAQLrzku6qrpJeNQarCyI0ueoum1Gz1SPzMChfl",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEzXkA4ujK_wRe0EqRJbUn177q7OULAAVB3IWl50ivcquXOmfqhLmi_EcAZ9TcbhN460cP7SpZRVLWj0QDCFePcBpF1NS7pWU8PM_xxV9f5C3IBGFYXBz-CA-v5E8wdlN0y2Iv43XziOAf2YYwTB2_6mUfSBjsCDrZjTOcX",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHbUEUahaaon5CJrXULzgrl90z48mYeuEMM5aMiAMWPIAISyrZ09TxKkJp_Q03R507lciWxmxd_Hiu4ef--6JELZbNqXGpbDLDaP2OuRjBkYZFX27IrYSgpXreQ4JdvkMFdMEbMEseWrU-489QBoHBrdj5io1gWakJSYOZBVbo=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYGbtImwhznm5RJ2gg7qe-IEDOIMWo6GOPHGBneLdGdPJjCMRJciK-KUGLEsAwJsZB0-gzXWTy8KcsIXMUvDMtua97dvSj055YA6_EXaMBgg-Lav1R2hi3g5Uh2vN-BaQN3fK2E6i-93nV3vc3_cKs0w==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFao7wt3mGZ_9pu4N6oZ-tVa1bZqLlOPP4SwAI-kaoJIA1gBHZ3c0sx4AgbLgjWkrRIlnUY_B6rtbsUWvudYKQI89ktwEC88KOVqjtgKc2Lrok2RfMD6ZYo9yWq4KMnqzNSMfvQaP1BgyoGq2niQcA6XSEvqWiTN25pOuO8o-BSr4kp_RGfoqbFvlkX",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFGKBG_dWvgNVaq1-ek2PIiCQSZ6qCYE5Z7DOINIrvFB2rVgU-GFpbJaW3aYXXhrRQZkO4t5smtHfMxaFpC4iqf8OJkAtWb4EcMgqGcO5siIqo-75QiwuaYB_mBaHpMAW8ifLPcVHYlBDYq5bY1B-O8bm8s5okymYdd1w==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHAMxRME5kjzh5gNabbJSGxwXVwL2yOK6Dc-i6updP9OQQNu4QgGaqgnhM2b-zhIuK89g0u1jxjgEFbC27WnrHESSaAWmDikotSh4qPDHo4jzXeIqqFtNjF5B9GNfPEJOT49j0p6Uw6PBcGzNjTs6V4OeshPmqenbYE7tkfY-SujzuhphkpY_j5AIdgxLpMgdjtUw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFQtQ_juvGskykg73lqP3QDg5l_Tcv-C9mzTLC90Qpqrm10sW_2d7otjnmSMXyPKcWtW2RMEcxNG5rcutIKHhmdRiZUg7LyHh9ZO4wSD8ce8LDT-MCHQUecbTj2TwYYcM5FpWpg-N9iLyNip26NR7u-sA==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHuxUsRqDGO5bUYbDBddG5LeX5fi6RnF3EFn_GkFcmG6kj4B0FjURcM2nWNRA2yBYFvTjaq0as1qcWhRei399WpfQRERgz35JZDOPBLDuA5W_Iy3OkXPipND8YeDr5SnPDD5EWFkx9DkSUS0Q==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGnT_Q12ihEefEux-muFQCAT9LGicnfLTxW3TJuCV5aRVvpOhzuTngKQudxGAIG4GSwv15-6x-ETFvl1itdW_VlK1Bfln1ej6VXmzukBA1Ez72VK8H9kDG-zsnE3ABns1ZKfWUGxcJcvPae30XVELD2JLnhJysSGerd4CRpjA=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "REACH representation services Europe"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-13T18:01:58.395Z",
+      "live_search": true,
+      "query": "semiconductor molding compounds",
+      "domain": "caplinq.com",
+      "response_excerpt": "Semiconductor molding compounds are specialized plastic materials used to encapsulate and protect sensitive electronic components, such as integrated circuits (ICs), transistors, capacitors, and memory devices, within various electronic packages. This encapsulation is crucial for providing mechanica",
+      "response_full": "Semiconductor molding compounds are specialized plastic materials used to encapsulate and protect sensitive electronic components, such as integrated circuits (ICs), transistors, capacitors, and memory devices, within various electronic packages. This encapsulation is crucial for providing mechanical strength, resistance to moisture and environmental factors, and thermal stability, ultimately enhancing device performance, reliability, and longevity.\n\n### Composition\nModern molding compounds are complex formulations, often containing up to 20 different raw materials. The five basic classes of materials found in most mold compounds are:\n*   **Organic Resins:** Typically meltable epoxy resins, which form the matrix of the compound. Phenolic-cured epoxy resins are commonly used in semiconductor epoxy molding compounds.\n*   **Fillers:** Non-melting inorganic materials, frequently fused silica. Increasing filler content, which can be as high as 90% in modern compounds, helps reduce the coefficient of thermal expansion (CTE) and minimizes internal stresses, especially with larger chip sizes. However, higher filler content can impact flow and modulus. Silica fillers also reduce shrinkage and water absorption, improve toughness, abrasion resistance, and thermal conductivity.\n*   **Catalysts:** Accelerate the curing reaction of the resin.\n*   **Mold Release Agents:** Allow the cured compound to be easily removed from the mold, as epoxy resins are naturally adhesive.\n*   **",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFfUG9qRNxQt1c_3itVHdcTuuyqkBdqUUonj16vLrvDMjBEJAONJaUSeUigGGcDR_H9aD2HivPL-FhC9QW2Mny3WJmst0Y59Jye7-Q_vE9WHu8HgUnjzbwyQAyMeLpYQ759ohsDSL6AAvz0AWSBQjUT6ArRtsqz",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQESn4j4EH5wxYBNquiV5FJ5svEYcJMebjA0bZpmd--ixCuiaS6eqnH7BUfLf-I-f4a2TS37OAVZ52QW1CHP5kL3kUlQDXhDqz4Vn7PYdpk15WSG-QCsVCe505XUrJWSdmpIs9jB3WjnzkLQqpxIX1hSfBGT-Wtq6en69h5RdAjxBlXl8SoZwwzlZUmH1-E_euU63JQa-wG8",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFp2RobTGc74uKa3z2RP0krcAaH7Yuz3t6xjXxkvQ-kcUuCpbBc94NPKa8oIshwY9WBol9vQOjf2QslBZQmcwb65GBm2TEbUSAsLULzwPwKDUngS2AdcvERZEGCLniWHVHCxcST_DR98TTBotYsIK1r64kqzYcPw9_dZ2EFpamD0L-lRu83vQtM2PO0GW_WJ_7rKKD7178zClhj1Rx0eWU",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG6UdKoZnkZ8frErRVJUAMCuR9dBhNsoB2nOnGr9oCziR_TYcCMNLOExWTL6zypHs6pGACXOwJOFYriezciDn8ebKrPO7TRFpqtd9QAkYCRZ9cd-c8M0fmM1uFbmjvncyLY-Ou2FOFMLpo="
+      ],
+      "domain_cited": false,
+      "prompt_used": "semiconductor molding compounds"
+    }
+  ],
+  "webfetch_calls": [],
+  "summary": null
+}

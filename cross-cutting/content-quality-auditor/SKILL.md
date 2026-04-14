@@ -451,6 +451,78 @@ See [references/item-reference.md](https://github.com/aaron-he-zhu/seo-geo-claud
 
 - [CORE-EEAT Content Benchmark](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/core-eeat-benchmark.md) — Full 80-item benchmark with dimension definitions, scoring criteria, and GEO-First item markers
 - [references/item-reference.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/content-quality-auditor/references/item-reference.md) — All 80 item IDs in a compact lookup table + site-level item handling notes + scored example report
+- [references/score-provenance-schema.json](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/score-provenance-schema.json) — Schema defining required provenance fields for all 80 CORE-EEAT items
+
+## Score Provenance Output (REQUIRED)
+
+When running as part of company-analysis, you MUST output ALL 80 CORE-EEAT items to `score-provenance.json` → `core_eeat_provenance.dimensions`.
+
+**Dimensions and items:**
+
+| Dimension | Items | Count | Scorer |
+|-----------|-------|-------|--------|
+| C (Contextual Clarity) | C01-C10 | 10 | This skill (page-level) |
+| O (Organization) | O01-O10 | 10 | This skill (page-level) |
+| R (Referenceability) | R01-R10 | 10 | This skill (page-level) |
+| E (Exclusivity) | E01-E10 | 10 | This skill (page-level) |
+| Exp (Experience) | Exp01-Exp10 | 10 | entity-optimizer (import from hot-cache) |
+| Ept (Expertise) | Ept01-Ept10 | 10 | entity-optimizer (import from hot-cache) |
+| A (Authoritativeness) | A01-A10 | 10 | domain-authority-auditor (import from hot-cache) |
+| T (Trustworthiness) | T01-T10 | 10 | domain-authority-auditor (import from hot-cache) |
+| **TOTAL** | | **80** | |
+
+**Each item MUST include these fields:**
+
+```json
+{
+  "id": "C01",
+  "name": "Intent Alignment",
+  "score": 8,
+  "source_skill": "content-quality-auditor",
+  "source_step": 11,
+  "raw_data": "Title promise matches content delivery on 3/4 sampled pages",
+  "calculation": "75% alignment → 8/10"
+}
+```
+
+**Required fields:**
+- `id`: Item ID (e.g., C01, O05, Exp03, T04)
+- `name`: Human-readable item name from CORE-EEAT spec
+- `score`: 0-10 (0=Fail, 5=Partial, 10=Pass)
+- `source_skill`: Which skill provided the data
+- `source_step`: Step number where data was collected
+- `raw_data`: The actual measurement or observation — be specific
+- `calculation`: How raw_data became the score — show the threshold/formula
+
+**For org-level items imported from other skills:**
+
+```json
+{
+  "id": "A03",
+  "name": "Industry Awards",
+  "score": 6,
+  "source_skill": "domain-authority-auditor",
+  "source_step": 10,
+  "raw_data": "1 industry award mentioned (2023 B2B supplier award)",
+  "calculation": "1 award = PARTIAL (need >=3 for PASS)"
+}
+```
+
+**If data unavailable**, use this template:
+
+```json
+{
+  "id": "Exp05",
+  "name": "Usage Duration",
+  "score": 5,
+  "source_skill": "estimated",
+  "source_step": null,
+  "raw_data": "No usage duration claims found in content",
+  "calculation": "Default mid-range score (5) due to missing evidence"
+}
+```
+
+**Validation**: The `finalize-analysis.js` script validates that all 80 items are present with non-empty `raw_data` and `calculation` fields. Missing items will cause validation failure.
 
 ## Next Best Skill
 

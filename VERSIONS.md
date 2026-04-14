@@ -9,7 +9,7 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 | Skill | Category | Version | Last Updated |
 |-------|----------|---------|--------------|
 | keyword-research | research | 6.4.0 | 2026-04-12 |
-| competitor-analysis | research | 6.4.0 | 2026-04-12 |
+| competitor-analysis | research | 6.4.0 | 2026-04-14 |
 | serp-analysis | research | 6.4.0 | 2026-04-12 |
 | content-gap-analysis | research | 6.4.0 | 2026-04-12 |
 | seo-content-writer | build | 6.4.0 | 2026-04-12 |
@@ -24,13 +24,40 @@ Current versions of all skills. Agents can fetch this file from `https://raw.git
 | backlink-analyzer | monitor | 6.4.0 | 2026-04-12 |
 | performance-reporter | monitor | 6.4.0 | 2026-04-12 |
 | alert-manager | monitor | 6.4.0 | 2026-04-12 |
-| content-quality-auditor | cross-cutting | 6.6.0 | 2026-04-12 |
-| domain-authority-auditor | cross-cutting | 6.4.0 | 2026-04-12 |
+| content-quality-auditor | cross-cutting | 6.6.0 | 2026-04-14 |
+| domain-authority-auditor | cross-cutting | 6.4.0 | 2026-04-14 |
 | entity-optimizer | cross-cutting | 6.5.0 | 2026-04-12 |
 | memory-management | cross-cutting | 6.4.0 | 2026-04-12 |
-| company-analysis | orchestration | 1.4.0 | 2026-04-12 |
+| company-analysis | orchestration | 1.4.0 | 2026-04-14 |
 
 ## Changelog
+
+### v6.5.1 — Sample Analysis Validation & Finalize Script (2026-04-14)
+
+End-to-end pipeline validation with real caplinq.com analysis and automated finalization.
+
+**Sample Analysis**
+- Two complete caplinq.com analysis runs (20260413T120000, 20260414T140000)
+- All 20 skills executed with handoff files across 7 phase subdirectories
+- Concerns logged separately from HTML reports (concerns-log-TIMESTAMP.md)
+
+**PDF Generation**
+- New `tools/scripts/finalize-analysis.js` automates PDF generation from completed analyses
+- Validates 120-item score provenance (40 CITE + 80 CORE-EEAT): "CITE items: 40/40, CORE-EEAT items: 80/80"
+- Full appendix population: AI prompts, score provenance tables, llms.txt audit, execution status
+
+**Skill Updates**
+- `content-quality-auditor` v6.6.0: Enhanced CORE-EEAT dimension mapping
+- `domain-authority-auditor` v6.4.0: Improved CITE C/T dimension data flow
+- `competitor-analysis` v6.4.0: Cleaner handoff format
+- `company-analysis` v1.4.0: Pipeline step sequencing fixes
+
+**Reference Schemas**
+- `references/prompt-results-schema.json`: Defines prompt capture structure
+- `references/score-provenance-schema.json`: Defines 120-item provenance structure
+
+**E2E Testing**
+- `tools/__tests__/e2e/analysis-completion.test.js`: Validates complete analysis runs
 
 ### v6.5.0 — Comprehensive PDF Report, Score Provenance & Pipeline Integrity (2026-04-13)
 

@@ -1,11 +1,11 @@
-## Company Analysis — caplinq.com — 2026-04-12
-- CITE: C:35 I:40 T:72 E:45 | Overall: 48/100 | Verdict: CAUTIOUS
-- CORE-EEAT: C:72 O:68 R:65 E:70 Exp:78 Ept:80 A:62 T:68 | GEO:69 SEO:71
+## Company Analysis — caplinq.com — 2026-04-14
+- CITE: C:35 I:45 T:65 E:50 | Overall: 48/100 | Verdict: CAUTIOUS
+- CORE-EEAT: C:72 O:55 R:45 E:50 Exp:55 Ept:60 A:50 T:65 | GEO:56 SEO:58
 - Veto items: NONE
-- Hero keywords: thermal interface materials, die attach materials, epoxy molding compounds, conductive adhesives, REACH only representative
-- Primary competitors: Henkel, Brenntag, Indium Corporation, Laird Technologies
-- Top finding: 0% AI citation rate — llms.txt missing, no schema, brand known but not linked
-- Critical issues: Multiple 410 errors, mobile LCP 10.5s, blog on subdomain
-- Rankings: #1 EMC, #2 die attach, #3 REACH, #7 conductive adhesives, NR thermal (410)
-- Report: analyses/caplinq/reports/caplinq_caplinq.com_20260412T182500.html
-- citation_baseline: { cited_on: 0/13 queries, brand_mentions: 1, engines: [gemini, anthropic], prominence_rate: 0% }
+- Hero keywords: thermal interface materials, die attach materials, ion exchange membranes, polyimide tape, REACH only representative
+- Primary competitors: Henkel, DuPont/Laird, 3M, Indium Corporation
+- Top finding: 0% AI citation rate — llms.txt missing (404), schema 0%, brand mentioned (polyimide) but URL not cited
+- Critical issues: Mobile 33/100, LCP 13.2s, CLS 0.671, die attach page broken, missing schema
+- Rankings: #2 die attach, #2 conductive adhesives, #4 thermal gap pad, #5 REACH OR, NR thermal interface
+- Report: analyses/caplinq/reports/caplinq_caplinq.com_20260414T140000.html
+- citation_baseline: { cited_on: 0/13, engines: [gemini], by_type: {brand:0, industry:0, hero:0}, brand_mentioned:1, prominence:0% }

@@ -198,31 +198,56 @@ When a user requests competitor analysis:
    - Include media sites, blogs, aggregators
    ```
 
-2. **Gather Competitor Data**
+2. **Fetch Competitor Sitemaps (Before Page Crawling)**
+
+   **Purpose**: Understand each competitor's site structure before pinging individual pages. This prevents wasteful requests and ensures like-for-like comparison.
+
+   For each competitor domain:
+   1. Fetch `https://<competitor>/sitemap.xml`
+   2. If 404, check `robots.txt` for `Sitemap:` directive
+   3. If still not found, try `/sitemap_index.xml`, `/sitemap-index.xml`
+   4. Parse sitemap to extract URL count and categories
+
+   Log competitor sitemap data in handoff summary:
+   ```markdown
+   ### Competitor Sitemap Analysis
+   
+   | Competitor | Sitemap Found | Total URLs | Blog | Products | Pages |
+   |------------|---------------|------------|------|----------|-------|
+   | henkel.com | Yes | 1,245 | 320 | 450 | 120 |
+   | laird.com | No | — | — | — | — |
+   ```
+
+   Use sitemap data to:
+   - Compare content volume (e.g., "competitor has 3x more blog posts")
+   - Identify page categories to analyze (compare your blog vs their blog)
+   - Select representative sample URLs for deep analysis
+
+3. **Gather Competitor Data**
 
    Collect for each competitor: URL, domain age, estimated traffic, domain authority, business model, target audience, and key offerings.
 
-3. **Analyze Keyword Rankings**
+4. **Analyze Keyword Rankings**
 
    Document total keywords ranking, top 10/top 3 counts, top performing keywords (with position, volume, traffic, page URL), keyword distribution by intent, and keyword gaps.
 
-4. **Audit Content Strategy**
+5. **Audit Content Strategy**
 
    Analyze content volume by type, top performing content, content patterns (word count, frequency, formats), content themes, and success factors.
 
-5. **Analyze Backlink Profile**
+6. **Analyze Backlink Profile**
 
    Review total backlinks, referring domains, link quality distribution, top linking domains, link acquisition patterns, and linkable assets.
 
-6. **Technical SEO Assessment**
+7. **Technical SEO Assessment**
 
    Evaluate Core Web Vitals, mobile-friendliness, site architecture, internal linking quality, URL structure, and technical strengths/weaknesses.
 
-7. **GEO/AI Citation Analysis**
+8. **GEO/AI Citation Analysis**
 
    Test competitor content in AI systems: document which queries cite them, GEO strategies observed (definitions, statistics, Q&A, authority signals), and GEO opportunities they are missing.
 
-8. **Synthesize Competitive Intelligence**
+9. **Synthesize Competitive Intelligence**
 
    Produce a final report with: Executive Summary, Competitive Landscape comparison table, CITE domain authority comparison, Strengths to Learn From, Weaknesses to Exploit, Keyword Opportunities, Content Strategy Recommendations, and Action Plan (Immediate / Short-term / Long-term).
 

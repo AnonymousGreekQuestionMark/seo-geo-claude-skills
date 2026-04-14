@@ -153,6 +153,43 @@ Before executing any skills:
 3. Note the timestamp so all files use the same value throughout the run
 4. Announce: "Starting 21-step company analysis for `<domain>`. Running skills in sequence — this will take several minutes."
 
+### Step 0.1: Fetch Sitemap (Before Any Page Crawling)
+
+**Purpose**: Understand site structure before pinging individual pages. This prevents wasteful requests and ensures we analyze the most important pages.
+
+**Procedure**:
+1. Fetch `https://<domain>/sitemap.xml`
+2. If 404, check `robots.txt` for `Sitemap:` directive
+3. If still not found, try common patterns: `/sitemap_index.xml`, `/sitemap-index.xml`, `/sitemaps/sitemap.xml`
+4. Parse sitemap to extract URL inventory
+
+**Save to** `analyses/<company-root>/<domain>/analysis-<timestamp>/sitemap-data.json`:
+
+```json
+{
+  "sitemap_url": "https://example.com/sitemap.xml",
+  "sitemap_found": true,
+  "fetched_at": "<ISO timestamp>",
+  "total_urls": 234,
+  "categories": {
+    "blog": 45,
+    "products": 120,
+    "pages": 15,
+    "other": 54
+  },
+  "sample_urls": [
+    "https://example.com/",
+    "https://example.com/products/",
+    "https://example.com/blog/"
+  ],
+  "last_modified": "2026-03-15"
+}
+```
+
+**Usage**: Use `sample_urls` (top 20 by priority/lastmod) for subsequent page-level analysis instead of discovering pages ad-hoc. Skills should reference this file to select representative pages.
+
+**Fallback**: If no sitemap found, set `sitemap_found: false`, leave `sample_urls` empty, and note in concerns log. The analysis will proceed using homepage and discovered links.
+
 ### Step 0.5: Initialize Analysis Logs
 
 Create the following files in `analyses/<company-root>/<domain>/analysis-<timestamp>/`:
@@ -226,12 +263,27 @@ Create `analyses/<company-root>/<domain>/analysis-<timestamp>/prompt-results.jso
 }
 ```
 
-Throughout the analysis:
-- After each MCP tool call that queries LLMs (check_citations, compare_competitor_citations, get_ai_response_format, track_citation_snapshot), append to `prompt_results[]` with: `step`, `skill`, `tool`, `timestamp_utc`, `engine`, `model`, `live_search`, `prompt` (type, query, domain), `response` (full_text, excerpt, word_count, citations, domain_cited)
+Throughout the analysis, log ALL LLM interactions to `prompt_results[]`:
+
+**1. MCP Tool Calls** (automatic via `analysisPath` parameter):
+- After each MCP tool call that queries LLMs (check_citations, compare_competitor_citations, get_ai_response_format, track_citation_snapshot), append with: `source: "mcp_tool"`, `step`, `skill`, `tool`, `timestamp_utc`, `engine`, `model`, `live_search`, `prompt` (type, query, domain), `response` (full_text, excerpt, word_count, citations, domain_cited)
+
+**2. Claude Code Web Searches** (MUST log manually):
+- After each WebSearch call, append with: `source: "claude_code"`, `type: "web_search"`, `step`, `skill`, `timestamp_utc`, `query` (search query used), `response_summary` (brief findings), `urls_visited` (URLs accessed), `tokens_estimated`
+
+**3. Claude Code Reasoning/Analysis** (MUST log manually):
+- When performing complex multi-step reasoning or content analysis, append with: `source: "claude_code"`, `type: "reasoning" | "analysis"`, `step`, `skill`, `timestamp_utc`, `query` (context being analyzed), `response_summary` (conclusion reached), `tokens_estimated`
+
+**4. WebFetch Calls**:
 - After each WebFetch call, append to `webfetch_calls[]` with: `step`, `skill`, `url`, `timestamp_utc`, `status`, `content_type`, `response_length`
+
 - If MCP tool returns tier1Manual fallback, log with `source: "manual_required"`
 
-At the end of the analysis (before HTML report generation), compute and write the `summary` object with `total_llm_calls`, `by_engine` counts, `total_webfetch_calls`, and `total_tokens_estimated`.
+**Why log Claude Code prompts?** The analysis is performed by an LLM (Claude Code) orchestrating other LLMs. For complete audit trail, we must capture BOTH the external tool calls AND Claude Code's own search/reasoning activity.
+
+See `references/prompt-results-schema.json` for the full schema.
+
+At the end of the analysis (before HTML report generation), compute and write the `summary` object with `total_llm_calls`, `by_source` counts, `by_engine` counts, `by_type` counts, `total_webfetch_calls`, and `total_tokens_estimated`.
 
 ### Step 1.5: Citation Baseline & Prominence Testing
 
@@ -699,11 +751,21 @@ The PDF report is the **most comprehensive deliverable** — a full audit trail 
 6. Render to PDF using puppeteer (A4 format, 1cm margins)
 7. Ensure page breaks at section boundaries (~20-30 pages for full audit)
 
-**REQUIRED ACTION**: After HTML report generation, you MUST generate the PDF by calling:
-```javascript
-import { generatePdfFromHtml } from './tools/shared/pdf-generator.js';
-await generatePdfFromHtml(htmlReportPath, pdfReportPath, { scoreProvenance, promptResults, executionStatus });
+**REQUIRED ACTION**: After HTML report generation, run the finalize-analysis script via Bash:
+
+```bash
+node tools/scripts/finalize-analysis.js \
+  --analysis-dir "analyses/<company-root>/<domain>/analysis-<timestamp>" \
+  --html-report "analyses/<company-root>/reports/<company-root>_<domain>_<timestamp>.html" \
+  --output-pdf "analyses/<company-root>/reports/<company-root>_<domain>_<timestamp>.pdf"
 ```
+
+This script:
+1. Reconstructs `operations-log.json` from handoff file metadata
+2. Validates `score-provenance.json` has all 120 items (40 CITE + 80 CORE-EEAT) with `raw_data` and `calculation` fields
+3. Generates the PDF with full appendix content
+
+The script exits with code 0 on success, code 1 if validation fails or PDF generation errors. Check the output for diagnostics.
 
 The PDF is the comprehensive audit deliverable. The analysis is NOT complete until both HTML and PDF reports exist.
 

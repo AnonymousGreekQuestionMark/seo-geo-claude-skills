@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Score Provenance Schema",
+  "description": "Schema for score-provenance.json — defines all 120 items (40 CITE + 80 CORE-EEAT) with required provenance fields",
+  "version": "1.0.0",
+
+  "cite_items": {
+    "description": "40 CITE Domain Rating items across 4 dimensions",
+    "C": ["C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10"],
+    "I": ["I01", "I02", "I03", "I04", "I05", "I06", "I07", "I08", "I09", "I10"],
+    "T": ["T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T09", "T10"],
+    "E": ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "E10"]
+  },
+
+  "cite_item_names": {
+    "C01": "Referring Domains Volume",
+    "C02": "Referring Domains Quality",
+    "C03": "Link Equity Distribution",
+    "C04": "Link Velocity",
+    "C05": "AI Citation Frequency",
+    "C06": "AI Citation Prominence",
+    "C07": "Cross-Engine Citation",
+    "C08": "Citation Sentiment",
+    "C09": "Editorial Link Ratio",
+    "C10": "Link Source Diversity",
+    "I01": "Knowledge Graph Presence",
+    "I02": "Brand Search Volume",
+    "I03": "Brand SERP Ownership",
+    "I04": "Schema.org Coverage",
+    "I05": "Author Entity Recognition",
+    "I06": "Domain Tenure",
+    "I07": "Cross-Platform Consistency",
+    "I08": "Niche Consistency",
+    "I09": "Unlinked Brand Mentions",
+    "I10": "Query-Brand Association",
+    "T01": "Link Profile Naturalness",
+    "T02": "Dofollow Ratio Normality",
+    "T03": "Link-Traffic Coherence",
+    "T04": "IP/Network Diversity",
+    "T05": "Backlink Profile Uniqueness",
+    "T06": "WHOIS & Registration Transparency",
+    "T07": "Technical Security",
+    "T08": "Content Freshness Signal",
+    "T09": "Penalty & Deindex History",
+    "T10": "Review & Reputation Signals",
+    "E01": "Organic Search Visibility",
+    "E02": "Organic Traffic Estimate",
+    "E03": "SERP Feature Ownership",
+    "E04": "Technical Crawlability",
+    "E05": "Multi-Platform Footprint",
+    "E06": "Authoritative Media Coverage",
+    "E07": "Topical Authority Depth",
+    "E08": "Topical Authority Breadth",
+    "E09": "Geographic Reach",
+    "E10": "Industry Share of Voice"
+  },
+
+  "cite_veto_items": ["T03", "T05", "T09"],
+
+  "core_eeat_items": {
+    "description": "80 CORE-EEAT Content Benchmark items across 8 dimensions",
+    "C": ["C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09", "C10"],
+    "O": ["O01", "O02", "O03", "O04", "O05", "O06", "O07", "O08", "O09", "O10"],
+    "R": ["R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08", "R09", "R10"],
+    "E": ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "E10"],
+    "Exp": ["Exp01", "Exp02", "Exp03", "Exp04", "Exp05", "Exp06", "Exp07", "Exp08", "Exp09", "Exp10"],
+    "Ept": ["Ept01", "Ept02", "Ept03", "Ept04", "Ept05", "Ept06", "Ept07", "Ept08", "Ept09", "Ept10"],
+    "A": ["A01", "A02", "A03", "A04", "A05", "A06", "A07", "A08", "A09", "A10"],
+    "T": ["T01", "T02", "T03", "T04", "T05", "T06", "T07", "T08", "T09", "T10"]
+  },
+
+  "core_eeat_veto_items": ["T04", "C01", "R10"],
+
+  "required_item_fields": {
+    "description": "Every item in score-provenance.json MUST have these fields",
+    "fields": [
+      {
+        "name": "id",
+        "type": "string",
+        "description": "Item ID (e.g., C01, I04, Exp01)"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "description": "Human-readable item name"
+      },
+      {
+        "name": "score",
+        "type": "number",
+        "description": "Score 0-10",
+        "minimum": 0,
+        "maximum": 10
+      },
+      {
+        "name": "source_skill",
+        "type": "string",
+        "description": "Skill that provided the data (e.g., backlink-analyzer, citation-baseline, estimated)"
+      },
+      {
+        "name": "source_step",
+        "type": "number",
+        "description": "Step number where data was collected (e.g., 9, 1.5)"
+      },
+      {
+        "name": "raw_data",
+        "type": "string",
+        "description": "The actual measurement or observation (e.g., '234 referring domains', '0/13 queries cited')"
+      },
+      {
+        "name": "calculation",
+        "type": "string",
+        "description": "How raw_data became the score (e.g., '234 RDs → 60/100 (threshold: 500+ for 80+)')"
+      }
+    ]
+  },
+
+  "default_estimated_item": {
+    "description": "Template for items without feeder data",
+    "example": {
+      "id": "C03",
+      "name": "Link Equity Distribution",
+      "score": 5,
+      "source_skill": "estimated",
+      "source_step": null,
+      "raw_data": "No data available — requires Ahrefs/DataForSEO API",
+      "calculation": "Default mid-range score (5) due to missing data"
+    }
+  },
+
+  "validation_rules": {
+    "cite_item_count": 40,
+    "core_eeat_item_count": 80,
+    "total_item_count": 120,
+    "all_items_must_have_raw_data": true,
+    "all_items_must_have_calculation": true
+  }
+}

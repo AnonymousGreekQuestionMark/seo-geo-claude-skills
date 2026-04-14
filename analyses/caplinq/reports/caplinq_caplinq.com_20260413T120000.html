@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO/GEO Analysis Report - caplinq.com | 2026-04-13</title>
+  <style>
+    :root {
+      --bg: #0d1117; --surface: #161b22; --surface2: #21262d; --border: #30363d;
+      --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+      --green: #3fb950; --amber: #d29922; --red: #f85149;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    header { background: var(--surface); padding: 20px 40px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    header h1 { font-size: 1.5rem; font-weight: 600; }
+    header .meta { font-size: 0.875rem; color: var(--muted); }
+    nav#tabs { display: flex; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 20px; overflow-x: auto; }
+    nav#tabs button { background: none; border: none; color: var(--muted); padding: 14px 20px; cursor: pointer; font-size: 0.875rem; border-bottom: 2px solid transparent; white-space: nowrap; }
+    nav#tabs button:hover { color: var(--text); }
+    nav#tabs button.active { color: var(--accent); border-bottom-color: var(--accent); }
+    main { max-width: 1400px; margin: 0 auto; padding: 30px 40px; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    h2 { font-size: 1.25rem; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    h2:first-child { margin-top: 0; }
+    h3 { font-size: 1rem; margin: 20px 0 10px; color: var(--accent); }
+    p { margin: 10px 0; }
+    .section-intro { color: var(--muted); font-size: 0.9rem; margin: 0 0 20px; line-height: 1.5; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.875rem; }
+    th, td { padding: 10px 12px; text-align: left; border: 1px solid var(--border); }
+    th { background: var(--surface2); font-weight: 600; }
+    tr:hover { background: var(--surface); }
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+    .badge-trusted { background: var(--green); color: #000; }
+    .badge-cautious { background: var(--amber); color: #000; }
+    .badge-untrusted { background: var(--red); color: #fff; }
+    .score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 20px 0; }
+    .score-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 15px; text-align: center; }
+    .score-card .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; }
+    .score-card .value { font-size: 2rem; font-weight: 700; margin: 5px 0; }
+    .score-card .value.green { color: var(--green); }
+    .score-card .value.amber { color: var(--amber); }
+    .score-card .value.red { color: var(--red); }
+    .finding { background: var(--surface); border-left: 4px solid var(--border); padding: 12px 15px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+    .finding.critical { border-left-color: var(--red); }
+    .finding.high { border-left-color: var(--amber); }
+    .finding.medium { border-left-color: var(--accent); }
+    .action-table td:first-child { font-weight: 600; }
+    .p0 { color: var(--red); }
+    .p1 { color: var(--amber); }
+    .p2 { color: var(--accent); }
+    .p3 { color: var(--muted); }
+    [data-tooltip] { position: relative; cursor: help; border-bottom: 1px dashed var(--muted); }
+    [data-tooltip]:hover::after { content: attr(data-tooltip); position: absolute; left: 0; top: 100%; margin-top: 4px; background: var(--surface); border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 400; max-width: 320px; white-space: normal; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+    ul, ol { margin: 10px 0 10px 25px; }
+    li { margin: 5px 0; }
+    code { background: var(--surface2); padding: 2px 6px; border-radius: 4px; font-size: 0.85em; }
+    .status-pass { color: var(--green); }
+    .status-partial { color: var(--amber); }
+    .status-fail { color: var(--red); }
+    @media print {
+      :root { --bg: #fff; --surface: #f6f8fa; --surface2: #f0f2f5; --border: #d0d7de; --text: #1f2328; --muted: #656d76; }
+      body { background: var(--bg); color: var(--text); }
+      .tab-panel { display: block !important; page-break-after: always; }
+      nav#tabs { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>SEO & GEO Analysis Report</h1>
+      <div class="meta">Company: <strong>CAPLINQ</strong> | Domain: <strong>caplinq.com</strong> | Analysis: <strong>2026-04-13</strong></div>
+    </div>
+    <div class="meta">SEO & GEO Skills Library v6.5.0</div>
+  </header>
+
+  <nav id="tabs">
+    <button class="active" data-tab="executive">Executive Summary</button>
+    <button data-tab="baseline">Domain Baseline</button>
+    <button data-tab="research">Research</button>
+    <button data-tab="technical">Technical</button>
+    <button data-tab="content">Content Quality</button>
+    <button data-tab="recommendations">Recommendations</button>
+    <button data-tab="monitoring">Monitoring</button>
+    <button data-tab="nextsteps">Next Steps</button>
+  </nav>
+
+  <main>
+    <!-- Executive Summary -->
+    <div id="executive" class="tab-panel active">
+      <h2 data-tooltip="High-level overview of domain authority, content quality, and critical findings">Executive Summary</h2>
+      <p class="section-intro">This report presents a comprehensive SEO and GEO analysis of caplinq.com, evaluating domain authority using the 40-item CITE framework and content quality using the 80-item CORE-EEAT benchmark. The analysis identifies optimization opportunities to improve search visibility and AI engine citability.</p>
+
+      <h3>CITE Domain Authority Verdict</h3>
+      <div style="margin: 20px 0;">
+        <span class="badge badge-cautious">CAUTIOUS</span>
+        <span style="margin-left: 15px; font-size: 1.5rem; font-weight: 700;">52/100</span>
+      </div>
+
+      <div class="score-grid">
+        <div class="score-card">
+          <div class="label">Citation (C)</div>
+          <div class="value red">35</div>
+        </div>
+        <div class="score-card">
+          <div class="label">Identity (I)</div>
+          <div class="value amber">55</div>
+        </div>
+        <div class="score-card">
+          <div class="label">Trust (T)</div>
+          <div class="value green">70</div>
+        </div>
+        <div class="score-card">
+          <div class="label">Eminence (E)</div>
+          <div class="value red">45</div>
+        </div>
+      </div>
+
+      <h3>CORE-EEAT Content Quality</h3>
+      <div class="score-grid">
+        <div class="score-card">
+          <div class="label">GEO Score (CORE)</div>
+          <div class="value amber">58</div>
+        </div>
+        <div class="score-card">
+          <div class="label">SEO Score (EEAT)</div>
+          <div class="value amber">62</div>
+        </div>
+        <div class="score-card">
+          <div class="label">Technical</div>
+          <div class="value red">31</div>
+        </div>
+        <div class="score-card">
+          <div class="label">Keywords Top 10</div>
+          <div class="value amber">3</div>
+        </div>
+      </div>
+
+      <h3>Top 5 Critical Findings</h3>
+      <div class="finding critical">
+        <strong>1. AI Citation Gap (CRITICAL)</strong><br>
+        0% citation rate across 13 queries tested. AI engines describe CAPLINQ accurately but do not cite caplinq.com as a source. Missing llms.txt, structured data, and citation-worthy definitive resources.
+      </div>
+      <div class="finding critical">
+        <strong>2. Technical Performance (CRITICAL)</strong><br>
+        Mobile performance score 31/100. LCP 9.7s (target: &lt;2.5s), CLS 0.635 (target: &lt;0.1). Site is slow and has significant layout shift issues impacting user experience and crawlability.
+      </div>
+      <div class="finding high">
+        <strong>3. Missing Structured Data (HIGH)</strong><br>
+        0% schema coverage across the site. No Organization, FAQ, Product, or Article schema implemented. This impacts CITE I04 and rich result eligibility.
+      </div>
+      <div class="finding high">
+        <strong>4. Content Citability Gap (HIGH)</strong><br>
+        Missing comparison tables, original research, and definitive resources that AI engines would cite. Content has good depth but lacks structured, citable formats.
+      </div>
+      <div class="finding medium">
+        <strong>5. SERP Position Gaps (MEDIUM)</strong><br>
+        Not ranking for "thermal interface materials suppliers" or "die attach materials semiconductor" despite having relevant product pages. Content optimization needed.
+      </div>
+
+      <h3>Skills Completed</h3>
+      <table>
+        <thead>
+          <tr><th>Step</th><th>Skill</th><th>Phase</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>entity-optimizer</td><td>Domain Baseline</td></tr>
+          <tr><td>1.5</td><td>citation-baseline</td><td>Domain Baseline</td></tr>
+          <tr><td>2</td><td>keyword-research</td><td>Research</td></tr>
+          <tr><td>3</td><td>competitor-analysis</td><td>Research</td></tr>
+          <tr><td>4</td><td>serp-analysis</td><td>Research</td></tr>
+          <tr><td>5</td><td>content-gap-analysis</td><td>Research</td></tr>
+          <tr><td>6</td><td>technical-seo-checker</td><td>Technical</td></tr>
+          <tr><td>7</td><td>on-page-seo-auditor</td><td>Technical</td></tr>
+          <tr><td>8</td><td>internal-linking-optimizer</td><td>Technical</td></tr>
+          <tr><td>9</td><td>backlink-analyzer</td><td>Technical</td></tr>
+          <tr><td>10</td><td>domain-authority-auditor</td><td>Technical</td></tr>
+          <tr><td>11</td><td>content-quality-auditor</td><td>Content Quality</td></tr>
+          <tr><td>12</td><td>content-refresher</td><td>Content Quality</td></tr>
+          <tr><td>13</td><td>seo-content-writer</td><td>Recommendations</td></tr>
+          <tr><td>14</td><td>geo-content-optimizer</td><td>Recommendations</td></tr>
+          <tr><td>15</td><td>meta-tags-optimizer</td><td>Recommendations</td></tr>
+          <tr><td>16</td><td>schema-markup-generator</td><td>Recommendations</td></tr>
+          <tr><td>17</td><td>rank-tracker</td><td>Monitoring</td></tr>
+          <tr><td>18</td><td>performance-reporter</td><td>Monitoring</td></tr>
+          <tr><td>19</td><td>alert-manager</td><td>Monitoring</td></tr>
+          <tr><td>20</td><td>memory-management</td><td>Memory</td></tr>
+        </tbody>
+      </table>
+      <p style="color: var(--muted); font-size: 0.875rem;">20 skills completed</p>
+    </div>
+
+    <!-- Domain Baseline -->
+    <div id="baseline" class="tab-panel">
+      <h2 data-tooltip="Entity profile and AI citation baseline establishing the foundation for analysis">Domain Baseline</h2>
+      <p class="section-intro">The domain baseline phase establishes CAPLINQ's entity profile and measures current AI citation performance. This foundational data informs all subsequent analysis and recommendations.</p>
+
+      <h3>Entity Profile</h3>
+      <table>
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td>Legal Name</td><td>CAPLINQ Corporation</td></tr>
+        <tr><td>Industry</td><td>Specialty Chemicals, Thermal Interface Materials, Semiconductor Materials</td></tr>
+        <tr><td>Founded</td><td>2004 (20+ years)</td></tr>
+        <tr><td>Headquarters</td><td>Assendelft, Netherlands</td></tr>
+        <tr><td>Global Offices</td><td>Netherlands, USA (MI, IL), Canada (Ottawa), China (Shenzhen), Philippines (Manila), Malaysia (Penang)</td></tr>
+        <tr><td>Certifications</td><td>ISO 9001</td></tr>
+      </table>
+
+      <h3>Products & Services</h3>
+      <ul>
+        <li>Thermal Interface Materials (gap pads, phase change, grease, hybrid)</li>
+        <li>Die Attach Materials and Semiconductor Molding Compounds</li>
+        <li>Ion Exchange Membranes (Ionomr partnership)</li>
+        <li>Specialty Tapes and Polyimide Films (LINQTAPE)</li>
+        <li>REACH Only Representative Services</li>
+        <li>Order Fulfillment and Technical Representation</li>
+      </ul>
+
+      <h3>AI Citation Baseline</h3>
+      <table>
+        <tr><th>Metric</th><th>Result</th></tr>
+        <tr><td>Total Queries Tested</td><td>13</td></tr>
+        <tr><td>Queries with Citation</td><td>0 (0%)</td></tr>
+        <tr><td>Engines Tested</td><td>Gemini, OpenAI</td></tr>
+        <tr><td>Brand Queries Citation</td><td>0/3</td></tr>
+        <tr><td>Industry Queries Citation</td><td>0/4</td></tr>
+        <tr><td>Hero Keyword Queries Citation</td><td>0/6</td></tr>
+        <tr><td>CITE C05 Verdict</td><td class="status-fail">FAIL</td></tr>
+        <tr><td>CITE C08 (Sentiment)</td><td class="status-pass">POSITIVE</td></tr>
+      </table>
+
+      <h3>Key Insight</h3>
+      <p>AI engines (particularly Gemini) demonstrate accurate knowledge of CAPLINQ - describing the company's founding year, products, services, and offices correctly. However, they do not cite caplinq.com as a source. This indicates strong brand recognition in AI training data but a gap in citation-worthy content that would prompt source attribution.</p>
+    </div>
+
+    <!-- Research -->
+    <div id="research" class="tab-panel">
+      <h2 data-tooltip="Keyword research, competitor analysis, SERP analysis, and content gap identification">Research</h2>
+      <p class="section-intro">The research phase identifies target keywords, analyzes the competitive landscape, examines SERP features and positions, and uncovers content gaps that represent optimization opportunities.</p>
+
+      <h3>Priority Keyword Clusters</h3>
+      <table>
+        <tr><th>Cluster</th><th>Primary Keyword</th><th>Intent</th><th>Priority</th></tr>
+        <tr><td>TIM</td><td>thermal interface materials</td><td>Commercial</td><td class="p0">P0</td></tr>
+        <tr><td>Semiconductor</td><td>die attach materials</td><td>Commercial</td><td class="p0">P0</td></tr>
+        <tr><td>Services</td><td>REACH only representative Europe</td><td>Commercial</td><td class="p0">P0</td></tr>
+        <tr><td>Electrochemical</td><td>ion exchange membranes</td><td>Commercial</td><td class="p1">P1</td></tr>
+        <tr><td>Tapes</td><td>polyimide tape suppliers</td><td>Commercial</td><td class="p1">P1</td></tr>
+      </table>
+
+      <h3>Current SERP Positions</h3>
+      <table>
+        <tr><th>Query</th><th>Position</th><th>URL</th><th>Status</th></tr>
+        <tr><td>REACH only representative Europe</td><td class="status-pass">#3</td><td>/reach-only-representative.html</td><td>Ranking</td></tr>
+        <tr><td>polyimide tape suppliers</td><td class="status-partial">#7</td><td>/polyimide-tapes-and-films.html</td><td>Ranking</td></tr>
+        <tr><td>ion exchange membrane suppliers</td><td class="status-partial">#9</td><td>/ion-exchange-membranes-polymers.html</td><td>Ranking</td></tr>
+        <tr><td>thermal interface materials suppliers</td><td class="status-fail">Not found</td><td>-</td><td>Gap</td></tr>
+        <tr><td>die attach materials semiconductor</td><td class="status-fail">Not found</td><td>-</td><td>Gap</td></tr>
+      </table>
+
+      <h3>Top Competitors</h3>
+      <table>
+        <tr><th>Competitor</th><th>Type</th><th>Strength</th></tr>
+        <tr><td>Henkel</td><td>Manufacturer</td><td>Brand, full portfolio</td></tr>
+        <tr><td>Laird Technologies</td><td>Manufacturer</td><td>Featured snippets, product finder</td></tr>
+        <tr><td>Indium Corporation</td><td>Specialty supplier</td><td>Technical guides, depth</td></tr>
+        <tr><td>Intertek</td><td>REACH services</td><td>Brand authority, scale</td></tr>
+        <tr><td>Ionomr</td><td>Partner (membranes)</td><td>Innovation, sustainability</td></tr>
+      </table>
+
+      <h3>Content Gap Analysis</h3>
+      <table>
+        <tr><th>Content Type</th><th>CAPLINQ Has</th><th>Competitors Have</th><th>Gap</th></tr>
+        <tr><td>Comparison tables</td><td>No</td><td>Yes</td><td class="status-fail">HIGH</td></tr>
+        <tr><td>Buyer's guides</td><td>Limited</td><td>Yes</td><td class="status-fail">HIGH</td></tr>
+        <tr><td>Cost/pricing guides</td><td>No</td><td>Yes</td><td class="status-fail">HIGH</td></tr>
+        <tr><td>Selection tools</td><td>No</td><td>Yes (Laird)</td><td class="status-fail">HIGH</td></tr>
+        <tr><td>Technical articles</td><td>Strong</td><td>Strong</td><td class="status-pass">LOW</td></tr>
+        <tr><td>FAQ content</td><td>Limited</td><td>Yes</td><td class="status-partial">MEDIUM</td></tr>
+      </table>
+    </div>
+
+    <!-- Technical -->
+    <div id="technical" class="tab-panel">
+      <h2 data-tooltip="Technical SEO health, Core Web Vitals, on-page optimization, linking, and domain authority">Technical</h2>
+      <p class="section-intro">The technical phase evaluates site performance, crawlability, on-page SEO elements, internal linking structure, backlink profile, and synthesizes the CITE domain authority score.</p>
+
+      <h3>Core Web Vitals (Mobile)</h3>
+      <table>
+        <tr><th>Metric</th><th>Value</th><th>Target</th><th>Status</th></tr>
+        <tr><td>Performance Score</td><td>31/100</td><td>70+</td><td class="status-fail">FAIL</td></tr>
+        <tr><td>LCP (Largest Contentful Paint)</td><td>9.7s</td><td>&lt;2.5s</td><td class="status-fail">FAIL</td></tr>
+        <tr><td>CLS (Cumulative Layout Shift)</td><td>0.635</td><td>&lt;0.1</td><td class="status-fail">FAIL</td></tr>
+        <tr><td>TBT (Total Blocking Time)</td><td>260ms</td><td>&lt;200ms</td><td class="status-partial">PARTIAL</td></tr>
+        <tr><td>FCP (First Contentful Paint)</td><td>4.1s</td><td>&lt;1.8s</td><td class="status-fail">FAIL</td></tr>
+      </table>
+
+      <h3>Technical Checklist</h3>
+      <table>
+        <tr><th>Item</th><th>Status</th></tr>
+        <tr><td>HTTPS</td><td class="status-pass">PASS</td></tr>
+        <tr><td>Mobile Responsive</td><td class="status-pass">PASS</td></tr>
+        <tr><td>robots.txt</td><td class="status-pass">PASS</td></tr>
+        <tr><td>XML Sitemaps</td><td class="status-pass">PASS (4 sitemaps)</td></tr>
+        <tr><td>llms.txt</td><td class="status-fail">MISSING</td></tr>
+        <tr><td>Schema.org Markup</td><td class="status-fail">MISSING (0%)</td></tr>
+        <tr><td>Meta Descriptions</td><td class="status-fail">MISSING on key pages</td></tr>
+        <tr><td>Open Graph Tags</td><td class="status-fail">MISSING</td></tr>
+        <tr><td>Image Alt Text</td><td class="status-fail">MISSING</td></tr>
+        <tr><td>AI Crawler Rules</td><td class="status-pass">None (allowed)</td></tr>
+      </table>
+
+      <h3>On-Page SEO Summary</h3>
+      <table>
+        <tr><th>Element</th><th>TIM Page</th><th>REACH Page</th></tr>
+        <tr><td>Title Tag</td><td class="status-pass">Good</td><td class="status-partial">Basic</td></tr>
+        <tr><td>H1 Match</td><td class="status-pass">Yes</td><td class="status-pass">Yes</td></tr>
+        <tr><td>Content Length</td><td>3,500+ words</td><td>3,000+ words</td></tr>
+        <tr><td>Internal Links</td><td>80+</td><td>50+</td></tr>
+        <tr><td>FAQ Section</td><td class="status-pass">Present</td><td class="status-pass">Present</td></tr>
+        <tr><td>FAQ Schema</td><td class="status-fail">Missing</td><td class="status-fail">Missing</td></tr>
+      </table>
+
+      <h3>CITE Domain Authority (40 Items)</h3>
+      <table>
+        <tr><th>Dimension</th><th>Score</th><th>Key Items</th></tr>
+        <tr><td>C (Citation)</td><td class="status-fail">35/100</td><td>C05 AI Citations: FAIL (0%), C02 Referring Domains: ~200-500 est.</td></tr>
+        <tr><td>I (Identity)</td><td class="status-partial">55/100</td><td>I06 Domain Tenure: PASS (20+ yrs), I04 Schema: FAIL (0%)</td></tr>
+        <tr><td>T (Trust)</td><td class="status-pass">70/100</td><td>T07 HTTPS: PASS, T09 No Penalties: PASS</td></tr>
+        <tr><td>E (Eminence)</td><td class="status-fail">45/100</td><td>E04 Crawlability: FAIL (slow), E01 Visibility: PARTIAL</td></tr>
+      </table>
+    </div>
+
+    <!-- Content Quality -->
+    <div id="content" class="tab-panel">
+      <h2 data-tooltip="CORE-EEAT content quality assessment and content refresh priorities">Content Quality</h2>
+      <p class="section-intro">The content quality phase evaluates pages against the 80-item CORE-EEAT benchmark, measuring both GEO optimization (AI citability) and traditional SEO factors, then identifies content refresh priorities.</p>
+
+      <h3>CORE-EEAT Scores</h3>
+      <div class="score-grid">
+        <div class="score-card">
+          <div class="label">C (Clarity)</div>
+          <div class="value amber">68</div>
+        </div>
+        <div class="score-card">
+          <div class="label">O (Organization)</div>
+          <div class="value amber">55</div>
+        </div>
+        <div class="score-card">
+          <div class="label">R (Reference)</div>
+          <div class="value red">50</div>
+        </div>
+        <div class="score-card">
+          <div class="label">E (Exclusivity)</div>
+          <div class="value red">45</div>
+        </div>
+        <div class="score-card">
+          <div class="label">Exp (Experience)</div>
+          <div class="value amber">55</div>
+        </div>
+        <div class="score-card">
+          <div class="label">Ept (Expertise)</div>
+          <div class="value green">70</div>
+        </div>
+        <div class="score-card">
+          <div class="label">A (Authority)</div>
+          <div class="value amber">60</div>
+        </div>
+        <div class="score-card">
+          <div class="label">T (Trust)</div>
+          <div class="value green">70</div>
+        </div>
+      </div>
+
+      <h3>Content Strengths</h3>
+      <ul>
+        <li>Strong technical vocabulary and industry terminology (Ept03, Ept04)</li>
+        <li>Good topic depth with 3,000+ words on key pages (C02)</li>
+        <li>Proper heading hierarchy H1→H2→H3 (O01)</li>
+        <li>Strong internal linking with 80+ contextual links (R08)</li>
+        <li>FAQ sections present on key pages (C09)</li>
+        <li>Regular blog publishing (4-6 posts/month)</li>
+      </ul>
+
+      <h3>Content Weaknesses</h3>
+      <ul>
+        <li>No TL;DR or summary boxes for quick scanning (O02)</li>
+        <li>No schema markup on any pages (O05)</li>
+        <li>Limited external citations and source references (R02, R03)</li>
+        <li>No original data or research published (E01, E03)</li>
+        <li>No author attribution or credentials (Exp01, Ept01)</li>
+        <li>Missing comparison tables for featured snippet targeting (O03)</li>
+      </ul>
+
+      <h3>Content Refresh Priorities</h3>
+      <table class="action-table">
+        <tr><th>Priority</th><th>Page</th><th>Action</th><th>Impact</th></tr>
+        <tr><td class="p0">P0</td><td>TIM page</td><td>Add comparison table, FAQ schema</td><td>Featured snippet opportunity</td></tr>
+        <tr><td class="p0">P0</td><td>REACH page</td><td>Add pricing section, FAQ schema, optimize title</td><td>Move #3 → #1</td></tr>
+        <tr><td class="p0">P0</td><td>New: Die Attach Guide</td><td>Create comprehensive comparison guide</td><td>Enter top 10</td></tr>
+        <tr><td class="p1">P1</td><td>Ion Exchange page</td><td>Add PFAS-free messaging, comparison</td><td>Move #9 → top 5</td></tr>
+        <tr><td class="p1">P1</td><td>All blog posts</td><td>Add author bios</td><td>E-A-T signals</td></tr>
+      </table>
+    </div>
+
+    <!-- Recommendations -->
+    <div id="recommendations" class="tab-panel">
+      <h2 data-tooltip="SEO content briefs, GEO optimization strategies, meta tags, and schema markup recommendations">Recommendations</h2>
+      <p class="section-intro">The recommendations phase provides actionable implementation guidance including SEO content briefs for priority pages, GEO optimization strategies for AI citability, meta tag optimization, and schema markup templates.</p>
+
+      <h3>Priority Content Briefs</h3>
+      <table>
+        <tr><th>Content</th><th>Target Keyword</th><th>Word Count</th><th>Key Elements</th></tr>
+        <tr><td>TIM Comparison Guide</td><td>thermal interface materials comparison</td><td>2,500-3,500</td><td>Comparison table, decision matrix, FAQ schema</td></tr>
+        <tr><td>REACH Cost Guide</td><td>REACH only representative cost</td><td>2,000-2,500</td><td>Pricing section, process timeline, PAA answers</td></tr>
+        <tr><td>Die Attach Selection Guide</td><td>die attach materials comparison</td><td>3,000-4,000</td><td>Technical comparison, selection criteria, JEDEC refs</td></tr>
+      </table>
+
+      <h3>GEO Optimization Priorities</h3>
+      <table class="action-table">
+        <tr><th>Priority</th><th>Action</th><th>Impact on AI Citation</th></tr>
+        <tr><td class="p0">P0</td><td>Create llms.txt at site root</td><td>AI discoverability baseline</td></tr>
+        <tr><td class="p0">P0</td><td>Add definition boxes to key pages</td><td>Extractable definitions for AI</td></tr>
+        <tr><td class="p0">P0</td><td>Implement FAQ schema on REACH, TIM pages</td><td>Structured data for AI parsing</td></tr>
+        <tr><td class="p1">P1</td><td>Create comparison tables with semantic markup</td><td>Citation-worthy data structures</td></tr>
+        <tr><td class="p1">P1</td><td>Add Organization schema sitewide</td><td>Entity recognition</td></tr>
+        <tr><td class="p2">P2</td><td>Publish original research/survey</td><td>Primary source citability</td></tr>
+      </table>
+
+      <h3>Meta Tag Recommendations</h3>
+      <table>
+        <tr><th>Page</th><th>Optimized Title (60 chars)</th></tr>
+        <tr><td>Homepage</td><td>CAPLINQ - Specialty Chemicals &amp; Thermal Interface Materials</td></tr>
+        <tr><td>TIM</td><td>Thermal Interface Materials: Gap Pads, Grease &amp; More | CAPLINQ</td></tr>
+        <tr><td>REACH OR</td><td>REACH Only Representative Europe | OR Services | CAPLINQ</td></tr>
+        <tr><td>Ion Exchange</td><td>Ion Exchange Membranes | Fuel Cell Materials | CAPLINQ</td></tr>
+      </table>
+
+      <h3>Schema Markup Implementation</h3>
+      <table>
+        <tr><th>Schema Type</th><th>Pages</th><th>Priority</th></tr>
+        <tr><td>Organization</td><td>All pages</td><td class="p0">P0</td></tr>
+        <tr><td>FAQPage</td><td>REACH, TIM, key service pages</td><td class="p0">P0</td></tr>
+        <tr><td>WebSite</td><td>Homepage</td><td class="p0">P0</td></tr>
+        <tr><td>BreadcrumbList</td><td>All pages</td><td class="p1">P1</td></tr>
+        <tr><td>ProductGroup</td><td>Category pages</td><td class="p1">P1</td></tr>
+        <tr><td>Article/TechArticle</td><td>Blog posts</td><td class="p1">P1</td></tr>
+        <tr><td>Product</td><td>Product pages</td><td class="p2">P2</td></tr>
+        <tr><td>Service</td><td>Service pages</td><td class="p2">P2</td></tr>
+      </table>
+    </div>
+
+    <!-- Monitoring -->
+    <div id="monitoring" class="tab-panel">
+      <h2 data-tooltip="Rank tracking setup, performance reporting framework, and alert configuration">Monitoring</h2>
+      <p class="section-intro">The monitoring phase establishes ongoing tracking for rankings, performance metrics, and AI citations, with alert thresholds calibrated to the current baseline to enable proactive issue detection.</p>
+
+      <h3>Ranking Baseline (April 2026)</h3>
+      <table>
+        <tr><th>Keyword</th><th>Current</th><th>30d Target</th><th>90d Target</th></tr>
+        <tr><td>REACH only representative Europe</td><td>#3</td><td>#1</td><td>#1</td></tr>
+        <tr><td>polyimide tape suppliers</td><td>#7</td><td>#5</td><td>#3</td></tr>
+        <tr><td>ion exchange membrane suppliers</td><td>#9</td><td>#7</td><td>#5</td></tr>
+        <tr><td>thermal interface materials suppliers</td><td>Not ranking</td><td>Top 20</td><td>Top 10</td></tr>
+        <tr><td>die attach materials</td><td>Not ranking</td><td>-</td><td>Top 10</td></tr>
+      </table>
+
+      <h3>KPI Dashboard</h3>
+      <table>
+        <tr><th>KPI</th><th>Baseline</th><th>30d Target</th><th>90d Target</th></tr>
+        <tr><td>Keywords in Top 10</td><td>3</td><td>5</td><td>8</td></tr>
+        <tr><td>AI Citation Rate</td><td>0%</td><td>15%</td><td>30%</td></tr>
+        <tr><td>CITE Score</td><td>52</td><td>55</td><td>60</td></tr>
+        <tr><td>Technical Score</td><td>31</td><td>50</td><td>70</td></tr>
+        <tr><td>Featured Snippets</td><td>0</td><td>1</td><td>2</td></tr>
+      </table>
+
+      <h3>Alert Configuration</h3>
+      <table>
+        <tr><th>Alert</th><th>Trigger</th><th>Severity</th></tr>
+        <tr><td>Major Position Drop</td><td>Any top 10 keyword drops 5+ positions</td><td class="status-fail">Critical</td></tr>
+        <tr><td>REACH OR Position</td><td>Position &gt; #5</td><td class="status-fail">Critical</td></tr>
+        <tr><td>Performance Crash</td><td>Mobile score &lt; 25</td><td class="status-fail">Critical</td></tr>
+        <tr><td>CWV Failure</td><td>LCP &gt; 4s or CLS &gt; 0.25</td><td class="status-partial">Warning</td></tr>
+        <tr><td>Citation Stagnation</td><td>0% citation after 30 days of GEO work</td><td class="status-partial">Warning</td></tr>
+        <tr><td>CITE Score Drop</td><td>Score drops 5+ points</td><td class="status-partial">Warning</td></tr>
+      </table>
+
+      <h3>Reporting Cadence</h3>
+      <table>
+        <tr><th>Report</th><th>Frequency</th><th>Key Metrics</th></tr>
+        <tr><td>Technical Pulse</td><td>Weekly</td><td>CWV, errors, uptime</td></tr>
+        <tr><td>Rankings Update</td><td>Weekly</td><td>Position changes, alerts</td></tr>
+        <tr><td>Citation Monitor</td><td>Weekly</td><td>AI citation rate, sentiment</td></tr>
+        <tr><td>Executive Summary</td><td>Monthly</td><td>All KPIs, trends</td></tr>
+        <tr><td>Comprehensive Audit</td><td>Quarterly</td><td>Full CITE + CORE-EEAT</td></tr>
+      </table>
+    </div>
+
+    <!-- Next Steps -->
+    <div id="nextsteps" class="tab-panel">
+      <h2 data-tooltip="Prioritized 90-day action plan with effort and impact assessment">Next Steps</h2>
+      <p class="section-intro">This action plan prioritizes improvements based on impact and effort, organized into a 90-day roadmap. P0 items are critical and should be addressed within 30 days; P1 items within 60 days; P2 items within 90 days.</p>
+
+      <h3>90-Day Action Plan</h3>
+      <table class="action-table">
+        <tr><th>Priority</th><th>Action</th><th>Skill</th><th>Effort</th><th>Impact</th></tr>
+        <tr><td class="p0">P0</td><td>Create llms.txt at site root</td><td>geo-content-optimizer</td><td>Low</td><td>High</td></tr>
+        <tr><td class="p0">P0</td><td>Fix Core Web Vitals (LCP, CLS)</td><td>technical-seo-checker</td><td>High</td><td>High</td></tr>
+        <tr><td class="p0">P0</td><td>Add Organization schema sitewide</td><td>schema-markup-generator</td><td>Low</td><td>High</td></tr>
+        <tr><td class="p0">P0</td><td>Add FAQ schema to REACH and TIM pages</td><td>schema-markup-generator</td><td>Low</td><td>High</td></tr>
+        <tr><td class="p0">P0</td><td>Create TIM comparison guide</td><td>seo-content-writer</td><td>Medium</td><td>High</td></tr>
+        <tr><td class="p0">P0</td><td>Optimize REACH page title and add pricing section</td><td>meta-tags-optimizer</td><td>Low</td><td>Medium</td></tr>
+        <tr><td class="p1">P1</td><td>Create die attach materials selection guide</td><td>seo-content-writer</td><td>High</td><td>High</td></tr>
+        <tr><td class="p1">P1</td><td>Add meta descriptions to all key pages</td><td>meta-tags-optimizer</td><td>Low</td><td>Medium</td></tr>
+        <tr><td class="p1">P1</td><td>Add Open Graph tags for social sharing</td><td>meta-tags-optimizer</td><td>Low</td><td>Low</td></tr>
+        <tr><td class="p1">P1</td><td>Add alt text to all images</td><td>on-page-seo-auditor</td><td>Medium</td><td>Medium</td></tr>
+        <tr><td class="p1">P1</td><td>Update ion exchange page with PFAS-free content</td><td>content-refresher</td><td>Medium</td><td>Medium</td></tr>
+        <tr><td class="p2">P2</td><td>Add author bios to blog posts</td><td>content-quality-auditor</td><td>Medium</td><td>Medium</td></tr>
+        <tr><td class="p2">P2</td><td>Implement Article schema on blog</td><td>schema-markup-generator</td><td>Medium</td><td>Medium</td></tr>
+        <tr><td class="p2">P2</td><td>Commission original industry research</td><td>geo-content-optimizer</td><td>High</td><td>High</td></tr>
+        <tr><td class="p2">P2</td><td>Create customer case studies</td><td>seo-content-writer</td><td>High</td><td>Medium</td></tr>
+        <tr><td class="p3">P3</td><td>Evaluate blog subdomain vs subfolder migration</td><td>internal-linking-optimizer</td><td>High</td><td>Medium</td></tr>
+      </table>
+
+      <h3>Success Criteria</h3>
+      <table>
+        <tr><th>Timeframe</th><th>Success Definition</th></tr>
+        <tr><td>30 days</td><td>Technical score &gt;50, llms.txt live, schema on 5+ pages, 2+ new top 10 rankings</td></tr>
+        <tr><td>60 days</td><td>AI citation rate &gt;15%, CITE score &gt;55, REACH OR at #1-2</td></tr>
+        <tr><td>90 days</td><td>8+ top 10 rankings, featured snippet captured, die attach guide ranking</td></tr>
+        <tr><td>6 months</td><td>CITE score &gt;65, 50%+ AI citation on brand queries, 12+ top 10 keywords</td></tr>
+      </table>
+
+      <h3>Analysis Metadata</h3>
+      <table>
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td>Domain</td><td>caplinq.com</td></tr>
+        <tr><td>Analysis Timestamp</td><td>20260413T120000</td></tr>
+        <tr><td>Skills Executed</td><td>20</td></tr>
+        <tr><td>Data Tier</td><td>Tier 1 (WebFetch) + Tier 2 (MCP tools)</td></tr>
+        <tr><td>Handoff Files</td><td>analyses/caplinq/caplinq.com/analysis-20260413T120000/</td></tr>
+        <tr><td>Next Full Analysis</td><td>Recommended in 90 days after optimizations</td></tr>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('#tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#tabs button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

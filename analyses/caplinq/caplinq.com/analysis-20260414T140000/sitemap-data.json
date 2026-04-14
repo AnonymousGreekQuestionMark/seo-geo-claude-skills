@@ -1,0 +1,41 @@
+{
+  "sitemap_url": "https://www.caplinq.com/sitemap.xml",
+  "sitemap_found": true,
+  "fetched_at": "2026-04-14T14:00:00Z",
+  "total_urls": 104,
+  "categories": {
+    "products": 42,
+    "industries": 20,
+    "resources": 6,
+    "utility": 4,
+    "navigation": 32
+  },
+  "sample_urls": [
+    "https://caplinq.com/",
+    "https://caplinq.com/view-all-categories.html",
+    "https://caplinq.com/adhesives-sealants.html",
+    "https://caplinq.com/thermal-interface-materials.html",
+    "https://caplinq.com/die-attach-materials.html",
+    "https://caplinq.com/electrochemical-materials.html",
+    "https://caplinq.com/molding-compounds.html",
+    "https://caplinq.com/semiconductors/",
+    "https://caplinq.com/emobility/",
+    "https://caplinq.com/renewable-energy/",
+    "https://caplinq.com/electronics-assembly/",
+    "https://caplinq.com/aerospace/",
+    "https://caplinq.com/encapsulants-underfills.html",
+    "https://caplinq.com/soldering-materials.html",
+    "https://caplinq.com/specialty-tapes-films.html",
+    "https://caplinq.com/surface-treatments.html",
+    "https://caplinq.com/coatings-powders-resins.html",
+    "https://caplinq.com/fine-specialty-chemicals.html",
+    "https://caplinq.com/electronics-assembly-adhesives-inks.html",
+    "https://caplinq.com/semiconductor-mold-maintenance.html"
+  ],
+  "additional_sitemaps": [
+    "https://www.caplinq.com/product-sitemap.xml",
+    "https://www.caplinq.com/blog/sitemap_index.xml",
+    "https://www.caplinq.com/services-sitemap.xml"
+  ],
+  "last_modified": "2026-04-14"
+}

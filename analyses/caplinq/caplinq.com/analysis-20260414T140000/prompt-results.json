@@ -1,0 +1,258 @@
+{
+  "analysis_metadata": {
+    "domain": "caplinq.com",
+    "timestamp": "20260414T140000",
+    "tier": 1,
+    "version": "6.5.0"
+  },
+  "prompt_results": [
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:34:55.235Z",
+      "live_search": true,
+      "query": "What is CAPLINQ?",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ is a Canadian-based company established in 2004 that specializes in supplying specialty engineered solutions, chemicals, plastics, and various products primarily to the semiconductor, e-mobility, power distribution, and renewable energy sectors. They also cater to niches within the adhesive ",
+      "response_full": "CAPLINQ is a Canadian-based company established in 2004 that specializes in supplying specialty engineered solutions, chemicals, plastics, and various products primarily to the semiconductor, e-mobility, power distribution, and renewable energy sectors. They also cater to niches within the adhesive tape and chemical industries. Headquartered in Ottawa, Canada, CAPLINQ operates with a global distribution network, offering technical knowledge and customized support to engineers and buyers at original equipment manufacturers (OEMs) and contract manufacturers.\n\nThe company's extensive product portfolio includes:\n*   **Semiconductor and Electronics Assembly Materials:** Such as die attach materials, epoxy molding compounds, electrically conductive epoxies, dicing tapes, polyimide films and tapes, solder spheres, liquid potting, encapsulants, underfills, and tacky fluxes.\n*   **Thermal Management Materials:** Including phase change materials, thermal gap pads, thermal grease, thermal insulators, and thermal hybrids.\n*   **Electrochemical Materials:** Featuring ion exchange membranes, carbon papers, carbon cloth, and conductive films, as well as catalysts, electrodes, and separators.\n*   **Specialty Chemicals and Adhesives:** Encompassing adhesives",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6yhgPZRkCBt0RCZ6Mn1DmCF9LmLLzdMvhHIUlauRaWVcy8sUogWHqLTzoli13humqUeF9UcQ_M2mb-ZLJgXjSLfJxs3XWkmDmyNXOIew_FpgK2Q==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFoBVbsCcyB40tWpwb6zIxw7zQeSRzx5TZAyaZBLXLWvzdGEzzlqY7rgnsFoCM-JyZ2wCLw70l_xx3Gor75vPLOs1_65GVKWnOzqOVRcqpkSQbQUw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHUGbTXzUjooV3DrDdkC-LWdXytAHqX6V_vX3oJN3islBiuE126-XdOxCZPbnrA6HQ1h2nzby6F3Odlxi-UBc5oALJd8lI3S3AtMiCRlTlCjVtUmFdD7VfRJprxa2I44j4=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHGnGlYD1rBNRmsK-EwC_DSJ3B5JX-jCZfXr7qg20Fwc6fkvR8_TpJojwbP5tQ6sZxPBYyIZhNVpCVoR4FxOfzQ_TEElX9JMy8FDeJvXmQaUgZ2UBCTE7UzmisvHlKSEopkwRvzeai5Vhk1EA==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGu5YmaLX9AS8wqWsNXGelOFr21mXDonIy-X3HveF_6LJ4FT8rbppn6iwDNlHABOrBpViqwnEhCLA3zEErJ0lORY5fYBDRSIkx4iXHZ3m2z94dmSw=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "What is CAPLINQ?"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:35:06.920Z",
+      "live_search": true,
+      "query": "CAPLINQ company overview",
+      "domain": "caplinq.com",
+      "response_excerpt": "CAPLINQ is a Netherlands-based company established in 2004, specializing in specialty chemicals, adhesives, and plastics. The company serves as both a manufacturer and a digital-age market channel partner, focusing on delivering advanced engineered solutions to various high-growth industries.\n\n**Cor",
+      "response_full": "CAPLINQ is a Netherlands-based company established in 2004, specializing in specialty chemicals, adhesives, and plastics. The company serves as both a manufacturer and a digital-age market channel partner, focusing on delivering advanced engineered solutions to various high-growth industries.\n\n**Core Business and Services:**\nCAPLINQ operates with two distinct business models. Firstly, it functions as a manufacturer, supplier, and distributor of niche, high-value specialty chemicals, adhesives, and plastics. Secondly,",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGcyXFjze4kryxgPQ07gChXsci3Gisc-E_Eh_2NWAn3Vd7VzEfupoU3-2oS1mBZCNJvJ80t2rXtl4zQYRCaaWorRcZhqSXWVsp-sa1bEzGkq1Wf",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCdmCsbklie-3aUTDandWpM4xCWxcb7N74eibgy5wGQ4Amaq_OY_1i2hZl5BLjJBi86sZgBHvWgxLTPt7tJxX6aEzIBK7tGRdBzxOioV2NUnSMM-6jufLeCd3GXdRWqA==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGGp5Z8MAEJIoJIgxN8iZQ5ApOXGsua-f5DY0jvDNHzKZEIuBBGJIpWToX_el9CYTXcAcpRbvqAlx-L9_dNj7yff7FPCFNyiCpBNnQI8h2HbZpphOOwLzemrmZ1gWuAbPpQcg==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHxxlfla7hkHi2lw5OgMPeCT9hadZGrFX9-xDQHCofvW86u5n8o8jq6zkkgIzok8cN9kfkzy0bvCeAW15d-cbsIJLCTNvPDHgwotug_p9tlmqMJaYw7vRd6-WJWyLWY6USPiZDE"
+      ],
+      "domain_cited": false,
+      "prompt_used": "CAPLINQ company overview"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:35:15.164Z",
+      "live_search": true,
+      "query": "CAPLINQ specialty chemicals",
+      "domain": "caplinq.com",
+      "response_excerpt": "",
+      "response_full": "",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "CAPLINQ specialty chemicals"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:37:14.325Z",
+      "live_search": true,
+      "query": "top semiconductor materials suppliers",
+      "domain": "caplinq.com",
+      "response_excerpt": "The semiconductor industry relies on a diverse range of materials, and several companies specialize in supplying these crucial components. While the lines can sometimes blur between material, equipment, and chip manufacturers, key players primarily known for their semiconductor material contribution",
+      "response_full": "The semiconductor industry relies on a diverse range of materials, and several companies specialize in supplying these crucial components. While the lines can sometimes blur between material, equipment, and chip manufacturers, key players primarily known for their semiconductor material contributions include:\n\n*   **Sumitomo Electric Industries:** This company has a long history in producing semiconductor materials, including early development of copper and silicon copper wires, and continues to be a significant supplier in the field.\n*   **Shin-Etsu Chemical Co., Ltd.:** Recognized as a leading supplier, particularly for silicon wafers, which are fundamental semiconductor materials.\n*   **GlobalWafers Co., Ltd.:** Another major player in the supply of silicon wafers.\n*   **DuPont de Nemours Inc.:** A prominent supplier of various advanced materials essential for semiconductor manufacturing.\n*   **Indium Corporation:** Known for its expertise in indium and other specialty metals used in semiconductor applications.\n*   **Resonac Holdings Corp.:** Listed among the top companies in the semiconductor industry, often involved in materials [cite",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEbP-Jq0AjzhQYuf7GTD8SeGHoSNf5jfiRQ59vuPDNsaxxM_7wRcmm6f4PHHliiuf30x5E5cNhAPzmnEgmoNE2NEge0pvFxkht96xcnpm-RyHamMtByJMsUZwzht5mGwr_FUewJ_MIdhTI=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHohooCmBnoLf7HIfu-2Ai0MVTpWQp0AT4agortLFLYwkjuPmqte9Cj_xnQ8JH-igt0ZXdxfMtCfkMoVPHMe9PXa6CSMdepaJG6d_-clFxKbbMiXiMPod9w4Xbi8UJc0f0-E6-TjpY3q3iaQ8OMFKTps0R7Bs4aDEMpwdaI2q74W6c8t2PJBStCHFI3HiLzdRkPDQzBpaiL2xo=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGvyK4tp7fpeEqhMDUYawh0tutlZcV4Qw3GeWzdXEpsjZYNAvn39llZhFvEC69gngmpQV_SpVQSvDmvsa6nJBO9EW0YmZRxdfp4vC8gDJHQUqvAytf2EC8jCzo0BeJ2cEst03F3x0TkWksjhBpmdA=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "top semiconductor materials suppliers"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:37:25.012Z",
+      "live_search": true,
+      "query": "European chemicals distributors",
+      "domain": "caplinq.com",
+      "response_excerpt": "The European chemical distribution market is a robust and growing sector, vital for connecting chemical manufacturers with various end-use industries across the continent. This market was valued at USD 92.87 billion in 2025 and is projected to reach USD 145.93 billion by 2034, demonstrating a compou",
+      "response_full": "The European chemical distribution market is a robust and growing sector, vital for connecting chemical manufacturers with various end-use industries across the continent. This market was valued at USD 92.87 billion in 2025 and is projected to reach USD 145.93 billion by 2034, demonstrating a compound annual growth rate (CAGR) of 5.15% from 2026 to 2034. Other estimates suggest a CAGR of 6.8% between 2026 and 2033, with the market potentially reaching USD 528.9 billion by 2033.\n\n**Key Aspects of the European Chemical Distribution Market:**\n\n*   **Market Size and Growth:** The market's significant value and steady growth are driven by the continuous demand for both commodity and specialty chemicals across diverse sectors, including automotive, pharmaceuticals, agriculture, construction, and personal care.\n*   **Dominant Segments:** Specialty chemicals play a particularly significant role, accounting for the largest share within the product segments. These chemicals are tailored for niche applications and are crucial for innovation and sustainability efforts in various industries.\n*   **Geographical Landscape:** Germany holds the leading share of the European chemical distribution market, supported by its strong chemical manufacturing sector and advanced infrastructure. The UK is also emerging as a rapidly growing region.\n*   **Key Drivers:**\n    *   **Rising Demand for Specialty Chemicals:** Industries are increasingly relying on",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGycIgd3OkxwyKAJ8P9ABZ1iLocshKs6dPU38-TfSgaAo_sKGB9qi4D8gYE3HXUgdisRlbZ9odT22ztuTMP611llY5nVVbhG29NAjgt1Hz9ArFqu32RvqcHyDv_U4T1389Ikh72x4CrcBrg1vjld8R4SNqKt6OHfZ988lHkIO65fwzXHiMi23DOzL9hnuL7rbE=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHxsWx1Q_kBGDGO2zCWTAQlTChKfEzxwZcyN_l-7qiLrqc7Pz35qOZBOqYTrWLQfV5RLUh0RaJrmJszGpeul17qw4Ja5Fhr9pjt_wgFcjIYkVd64jfhYcFU32qSzD7OGUp8HQ88zDZjtbtXgdMrewLLcGPZ",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEvJ8qPw4ShcYJuijXES1rd412m8wAcQfAY2-nkX0Cb76acVsfP4g_xhYJiIPXcUtz-MHd2vtUV1xMymKrANLvxSsobUwElbJSa2MuZujt_rZBqGBic9lGY0dWR89-2dbof3zI0pZ_lMSzZhzmdQhFRJntgvDeE2OqO-JY8gkxSLMS8nvTxLrOXFg80KEjMC3aP",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGaTEauCr-nW5fsEhTW8Z8cO3I92flqJADhe5F6gh2rFVY8PD8unCEvWByEpouf0IQlFY6bvEkIy5GBs2cRmTpOtII6AUhOb-OXhzW35ou0a7AjVIfinT1VZFDDrl1ChxSF_9e2qwQiTU1QTZoBdwOnRfl_8-zsKNXaw32mUTn7r03KOiLHtacFsGZE"
+      ],
+      "domain_cited": false,
+      "prompt_used": "European chemicals distributors"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:39:41.455Z",
+      "live_search": true,
+      "query": "best thermal interface materials suppliers",
+      "domain": "caplinq.com",
+      "response_excerpt": "Many reputable companies supply high-quality thermal interface materials (TIMs) for various applications, ranging from consumer electronics to automotive and aerospace industries. These suppliers offer a diverse range of products, including thermal greases, pads, gap fillers, and conductive adhesive",
+      "response_full": "Many reputable companies supply high-quality thermal interface materials (TIMs) for various applications, ranging from consumer electronics to automotive and aerospace industries. These suppliers offer a diverse range of products, including thermal greases, pads, gap fillers, and conductive adhesives, designed to optimize heat transfer between components and cooling systems.\n\nSome of the leading thermal interface material suppliers include:\n\n*   **3M Company** An American multinational conglomerate established in 1902, 3M offers thermal interface materials under its Thermally Conductive Adhesive Transfer Tapes brand, including tapes, pads, and gap fillers, used in applications like consumer electronics and telecommunications.\n*   **Dow Inc.** Established in 1897 and headquartered in Midland, Michigan, Dow is a global leader in silicon-based technology, providing a wide variety of thermal interface materials.\n*   **DuPont (Laird Performance Materials)** Laird, established in 1824, is known for engineering thermal and electromagnetic solutions. Laird Performance Materials became part of DuPont's Electronics and Industrial segment in 2021, offering EMI",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHaEm8q3s7RLfp0FAeER6u_wwoZ7DHpg3-xEYna2tqluZ8Q-kWtDpATlbR07MM2kAlDbxYHGachc1HGKnKMY_W_6VB79UNAnTpb24FXvY09BqRMYR5Y1E8WJXuOze2DFx71cICH22y3MXqD8B7GVNSs7FHyEFGcfPLGwq3PRpV5acAam90iLxdkR6L8UQlZe-3I3tC-qaH2Zb5A",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE5guZoIcDW6Bc5JpuxlMApZV_O3CNn7hC-mpQJy5Q846-3pbS8pNiZR87FBde8QAoSqwlaq6f9hhH8uAMeX7BoAd2CkYox-kWrv_Uq88xLVVmaxC5eFdOyIyQ-2oFqVV_bl_kOYaDQyKpOs_TGFT_f4wMlbPeMU_RKE25UupEJ40cekm5nnjedNQPqS08="
+      ],
+      "domain_cited": false,
+      "prompt_used": "best thermal interface materials suppliers"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:39:56.669Z",
+      "live_search": true,
+      "query": "die attach materials comparison",
+      "domain": "caplinq.com",
+      "response_excerpt": "",
+      "response_full": "",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "die attach materials comparison"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:40:06.584Z",
+      "live_search": true,
+      "query": "ion exchange membranes for fuel cells",
+      "domain": "caplinq.com",
+      "response_excerpt": "Ion exchange membranes (IEMs) are critical components in fuel cells, acting as selective barriers that facilitate ion transport while preventing the mixing of reactant gases like hydrogen and oxygen. They are essentially semi-permeable materials, typically polymers, designed to allow specific ions t",
+      "response_full": "Ion exchange membranes (IEMs) are critical components in fuel cells, acting as selective barriers that facilitate ion transport while preventing the mixing of reactant gases like hydrogen and oxygen. They are essentially semi-permeable materials, typically polymers, designed to allow specific ions to pass through based on their electrical charge. This selective permeability is crucial for the efficient operation and stability of fuel cell systems.\n\n### Function of Ion Exchange Membranes in Fuel Cells\n\nIn fuel cells, IEMs serve several vital functions:\n*   **Separation of Reactants:** They act as a chemical barrier, keeping the hydrogen fuel at the anode and the oxygen (or air) at the cathode separate, preventing direct reaction and ensuring safety.\n*   **Ion Transport:** They enable the selective passage of ions (either cations or anions) between the electrodes, completing the electrical circuit within the fuel cell.\n*   **Electrolyte:** The polymer membrane itself functions as a solid electrolyte, eliminating the need for corrosive liquid electrolytes found in some other battery technologies.\n*   **Preventing Side Reactions:** By selectively filtering ions, IEMs help to interrupt unwanted side reactions, thereby increasing the efficiency of the fuel cell.\n\n### Types of Ion Exchange Membranes",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF89ZxJJ6ISrHh9XF--MA00OhWgAzFbbI6z0Ed_REPn7QPCKxT3T-HtVi7a8_Qyn-7aLhrCapklkU8LIUHMktwLy_07uBgHsDaVEHw7tq20au7RFzZnaedlmjqmRu2qfJU55o9uySuFCtxOPt5s-8exAbhenftCCfK7tOihvvsCEOAP8icizQ==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG43BL9TfBxBm2a4A43JFK3LqDKNU8BmhZdcE4KDfv9L_MFBb2L0EZcsd5smec1slPcTKK7_rgrOeJnxjLhlMpRXzF2683FSjsEUnvLrJp7-yjvn3xsqGC8z_3Alkdy3e0N4RPDDMaJWwiXN_B3P9-4e8w3Mso6P1qfMqf9nle_XIp1WxwiENEUeeCycW_vB3OT62Vg3jks",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHMhdRdOMfjG0a75BIMKx5SLqc4YRFvbEjeA9FkiVGV_kaXtBIfjNwJCMOMTiUsK7Hzv5AnAjTSZWCJgsXy8GBqSI0PgvLybFf97zOZnNpVzE7gAHl30MxxuQs4xiZKEsRVZ2R30ipbL7G9t9oHSg==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQETk3E3z6scaqDr7hRMuBBxbYOBEYDBMW8f037xxg8nIxIGDSPUiynuEf0s2uRvXCHEJipugN5A3MCRXqUh4PblBQ6_9uwOvDO-xuF_0yTsBmep7SUyCCDLY9XBehIMPNtmwqzYzckR-Eb28S4KqjXOUoFmElXv71IasDITYy0eO8LKm9v32YO8uym67C5fE9B0D8-p2BFPzVEbJq9G6tjncxA-zQ==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDqAlSjM0H1tIEUtOoGKkApPz32N0dNn8wxyQ5R4i1Zk8RS4_TUt4Y3eNPtM0F80qIsOkoib9bVWJoc2kp69WbwjEFpu9O2hykWqxgnYvqx84uARyWJNUnzXyWomL4iO1lQc6BzqY=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHyBim3yBdffjgG1HY_6IngXgvvKUQXI9_LcUEL0lV3ZFb9n7GrDDd05JLXtjaIAFS5Gcn9KjMLV3PkAJ6M8_KFCv2YrQHA6ylE7WdAv4HnOhYaS3mnysZj2S3-wRenfKfsnBcavWFIbfqk1CU="
+      ],
+      "domain_cited": false,
+      "prompt_used": "ion exchange membranes for fuel cells"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:40:17.456Z",
+      "live_search": true,
+      "query": "polyimide tape manufacturers",
+      "domain": "caplinq.com",
+      "response_excerpt": "A number of prominent manufacturers specialize in polyimide tapes, which are highly valued for their resistance to extreme temperatures, electrical insulation properties, and chemical compatibility. These tapes are widely used in demanding sectors such as aerospace, electronics, and automotive indus",
+      "response_full": "A number of prominent manufacturers specialize in polyimide tapes, which are highly valued for their resistance to extreme temperatures, electrical insulation properties, and chemical compatibility. These tapes are widely used in demanding sectors such as aerospace, electronics, and automotive industries.\n\nKey polyimide tape manufacturers include:\n*   **Saint-Gobain** offers a range of specialty tapes through its Performance Plastics division, including CHR® and Furon® brands. Their polyimide tapes are designed for applications requiring high temperature resistance and electrical insulation, such as aerospace manufacturing and electronics assembly.\n*   **Tesa SE**, a subsidiary of Beiersdorf AG, provides high-performance polyimide tapes like tesa® 51407 and tesa® 51408. These are suitable for high-temperature masking during processes like powder coating or wave soldering, and for securing components in electronics and automotive systems.\n*   **Scapa** manufactures high-performance tapes, including those made with polyimide film, engineered for high-temperature resistance and electrical insulation in automotive, electronics, and general industrial manufacturing.\n*   **3M** is a significant presence in the polyimide tape sector, offering tapes through its Specialty Tapes and Electrical Markets divisions. Their polyimide tapes, often utilizing silicone adhesives, are used for electrical insulation, coil winding, and flux and powder coating masking.\n*   **CAPLINQ Corporation** supplies its LINQTAPE™ PIT-Series brand of high-performance polyimide films and tapes. These are designed for various high-temperature applications in industries such as semiconductor, smartcard, electronic, automotive, and general manufacturing. CAPLINQ offers both silicone and acrylic adhesive versions of their polyimide tapes.\n*   **Lanmar** engineers polyimide film tapes for high-temperature electrical insulation, masking, and component protection in challenging manufacturing environments, including electronics production and aerospace assemblies. They offer various gauges, adhesive systems,",
+      "citation_urls": [
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEYah-7lPTgYKPY9AxG-xoxcA_d8vGSG1oILxlUxw04T_rYEc2fxEu8hAonfpRxISKwmivW3K_thRZRLJhy4FdzSAspWDlQyXiP16-nzIBXmpas5Hv9kmtQmTxeuTNL8uU9Tz-3pL7J27fKJyEram1lNMNGGBzwqETlA15PWYau010a-FOufDk=",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAcC863dT8HNDki8usfy2qELqeE2eIeceC25-ucZR1r-pENNEan-wbnAojXlyL57-pEkes1KBH0lmetza4-4w-UeJBcI2S2IkceOdk1AwnhMn-mm8GYXxHxkrp41YOPMYU8HpwMm3jOm0av3gNwP509hbll5CJlR8JBq-skrGdXIEFUIm-hCXZzW6zyOxJ5Ub5jw==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG2C9vXxyPsWw8-HDk55q-gKwPNfSTpeAx4C85T_ce5yPVfhUWKKIxkYhPSWlSeBgmPxaiUnwfYmFdIkLUpX7KZ0qGx_jrzWVd3fUtxuXoOX8L6WCU_ctkdvW4nviKg-KyrXXxn4JI6KfhI4MP-Im8T2g==",
+        "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGUKEmmOZPxNqok_2yXCClAdW0Q8bUoc0LaCZVmcHTOqRwraLlIqlS3PK0EAhseJWWBs5-VWge784sBEIbJ453NwA8mQvXTE4hoDBoDaCPLBlsfG1_5OP_JcszzDSRgRhozjEHMzeaFqeNmZ1gDkFCuIbZFj3y9OYjbYDLdyXy1xpwqJgJWB204v2QgQKmrh8RpKwZVSQ=="
+      ],
+      "domain_cited": false,
+      "prompt_used": "polyimide tape manufacturers"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:40:27.489Z",
+      "live_search": true,
+      "query": "epoxy molding compounds suppliers",
+      "domain": "caplinq.com",
+      "response_excerpt": "",
+      "response_full": "",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "epoxy molding compounds suppliers"
+    },
+    {
+      "step": "1.5",
+      "skill": "check_citations",
+      "engine": "gemini",
+      "model": "gemini-2.5-flash",
+      "timestamp_utc": "2026-04-14T14:40:39.075Z",
+      "live_search": true,
+      "query": "conformal coating suppliers",
+      "domain": "caplinq.com",
+      "response_excerpt": "A wide array of companies supply conformal coatings, offering various types of materials and services to protect printed",
+      "response_full": "A wide array of companies supply conformal coatings, offering various types of materials and services to protect printed",
+      "citation_urls": [],
+      "domain_cited": false,
+      "prompt_used": "conformal coating suppliers"
+    }
+  ],
+  "webfetch_calls": [
+    {
+      "step": "0.1",
+      "skill": "setup",
+      "url": "https://caplinq.com/sitemap.xml",
+      "timestamp_utc": "2026-04-14T14:00:00Z",
+      "status": 200,
+      "content_type": "xml",
+      "response_length": 104
+    },
+    {
+      "step": "0.1",
+      "skill": "setup",
+      "url": "https://caplinq.com/robots.txt",
+      "timestamp_utc": "2026-04-14T14:00:01Z",
+      "status": 200,
+      "content_type": "text",
+      "response_length": 500
+    },
+    {
+      "step": "0.1",
+      "skill": "setup",
+      "url": "https://caplinq.com/",
+      "timestamp_utc": "2026-04-14T14:00:02Z",
+      "status": 200,
+      "content_type": "html",
+      "response_length": 15000
+    },
+    {
+      "step": "0.1",
+      "skill": "setup",
+      "url": "https://caplinq.com/llms.txt",
+      "timestamp_utc": "2026-04-14T14:00:03Z",
+      "status": 404,
+      "content_type": "none",
+      "response_length": 0
+    },
+    {
+      "step": "0.1",
+      "skill": "setup",
+      "url": "https://blog.caplinq.com/",
+      "timestamp_utc": "2026-04-14T14:00:04Z",
+      "status": 200,
+      "content_type": "html",
+      "response_length": 12000
+    }
+  ],
+  "summary": null
+}

@@ -405,6 +405,60 @@ See [references/example-report.md](https://github.com/aaron-he-zhu/seo-geo-claud
 
 - [CITE Domain Rating](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/cite-domain-rating.md) — Full 40-item benchmark with dimension definitions, scoring criteria, domain-type weight tables, and veto items
 - [references/example-report.md](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/cross-cutting/domain-authority-auditor/references/example-report.md) — Complete CITE audit example with scored dimensions, top 5 improvements, action plan, and CORE-EEAT cross-reference
+- [references/score-provenance-schema.json](https://github.com/aaron-he-zhu/seo-geo-claude-skills/blob/main/references/score-provenance-schema.json) — Schema defining required provenance fields for all 40 CITE items
+
+## Score Provenance Output (REQUIRED)
+
+When running as part of company-analysis, you MUST output ALL 40 CITE items to `score-provenance.json` → `cite_provenance.dimensions`.
+
+**Dimensions and items:**
+
+| Dimension | Items | Count |
+|-----------|-------|-------|
+| C (Citation) | C01, C02, C03, C04, C05, C06, C07, C08, C09, C10 | 10 |
+| I (Identity) | I01, I02, I03, I04, I05, I06, I07, I08, I09, I10 | 10 |
+| T (Trust) | T01, T02, T03, T04, T05, T06, T07, T08, T09, T10 | 10 |
+| E (Eminence) | E01, E02, E03, E04, E05, E06, E07, E08, E09, E10 | 10 |
+| **TOTAL** | | **40** |
+
+**Each item MUST include these fields:**
+
+```json
+{
+  "id": "C01",
+  "name": "Referring Domains Volume",
+  "score": 4,
+  "source_skill": "backlink-analyzer",
+  "source_step": 9,
+  "raw_data": "PageRank 2 → ~200-500 RDs estimated",
+  "calculation": "PR 2 suggests 200-500 RDs, needs >=500 for PASS"
+}
+```
+
+**Required fields:**
+- `id`: Item ID (e.g., C01, I04, T09)
+- `name`: Human-readable item name from CITE spec
+- `score`: 0-10 (0=Fail, 5=Partial, 10=Pass)
+- `source_skill`: Which skill provided the data (e.g., "backlink-analyzer", "citation-baseline", "technical-seo-checker", "estimated")
+- `source_step`: Step number where data was collected
+- `raw_data`: The actual measurement or observation — be specific
+- `calculation`: How raw_data became the score — show the threshold/formula
+
+**If data unavailable**, use this template:
+
+```json
+{
+  "id": "C03",
+  "name": "Link Equity Distribution",
+  "score": 5,
+  "source_skill": "estimated",
+  "source_step": null,
+  "raw_data": "No data available — requires Ahrefs/DataForSEO API",
+  "calculation": "Default mid-range score (5) due to missing data"
+}
+```
+
+**Validation**: The `finalize-analysis.js` script validates that all 40 items are present with non-empty `raw_data` and `calculation` fields. Missing items will cause validation failure.
 
 ## Next Best Skill
 
