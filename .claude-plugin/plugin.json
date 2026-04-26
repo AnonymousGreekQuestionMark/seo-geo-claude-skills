@@ -83,110 +83,25 @@
     }
   ],
   "skills": [
-    {
-      "name": "keyword-research",
-      "description": "Keyword discovery, clustering, and opportunity analysis",
-      "source": "research/keyword-research/SKILL.md"
-    },
-    {
-      "name": "competitor-analysis",
-      "description": "Competitive landscape and gap analysis",
-      "source": "research/competitor-analysis/SKILL.md"
-    },
-    {
-      "name": "serp-analysis",
-      "description": "Search results page analysis and feature detection",
-      "source": "research/serp-analysis/SKILL.md"
-    },
-    {
-      "name": "content-gap-analysis",
-      "description": "Content opportunity and gap identification",
-      "source": "research/content-gap-analysis/SKILL.md"
-    },
-    {
-      "name": "seo-content-writer",
-      "description": "SEO-optimized content creation",
-      "source": "build/seo-content-writer/SKILL.md"
-    },
-    {
-      "name": "geo-content-optimizer",
-      "description": "Generative Engine Optimization for AI citation",
-      "source": "build/geo-content-optimizer/SKILL.md"
-    },
-    {
-      "name": "meta-tags-optimizer",
-      "description": "Title and meta description optimization",
-      "source": "build/meta-tags-optimizer/SKILL.md"
-    },
-    {
-      "name": "schema-markup-generator",
-      "description": "JSON-LD structured data generation",
-      "source": "build/schema-markup-generator/SKILL.md"
-    },
-    {
-      "name": "on-page-seo-auditor",
-      "description": "On-page SEO element auditing",
-      "source": "optimize/on-page-seo-auditor/SKILL.md"
-    },
-    {
-      "name": "technical-seo-checker",
-      "description": "Technical SEO health and performance checks",
-      "source": "optimize/technical-seo-checker/SKILL.md"
-    },
-    {
-      "name": "internal-linking-optimizer",
-      "description": "Internal link structure analysis and optimization",
-      "source": "optimize/internal-linking-optimizer/SKILL.md"
-    },
-    {
-      "name": "content-refresher",
-      "description": "Content update and refresh recommendations",
-      "source": "optimize/content-refresher/SKILL.md"
-    },
-    {
-      "name": "rank-tracker",
-      "description": "Keyword ranking monitoring and tracking",
-      "source": "monitor/rank-tracker/SKILL.md"
-    },
-    {
-      "name": "backlink-analyzer",
-      "description": "Backlink profile analysis",
-      "source": "monitor/backlink-analyzer/SKILL.md"
-    },
-    {
-      "name": "performance-reporter",
-      "description": "SEO performance reporting and dashboards",
-      "source": "monitor/performance-reporter/SKILL.md"
-    },
-    {
-      "name": "alert-manager",
-      "description": "SEO monitoring alert configuration",
-      "source": "monitor/alert-manager/SKILL.md"
-    },
-    {
-      "name": "content-quality-auditor",
-      "description": "CORE-EEAT content quality framework auditing",
-      "source": "cross-cutting/content-quality-auditor/SKILL.md"
-    },
-    {
-      "name": "domain-authority-auditor",
-      "description": "CITE domain authority framework auditing",
-      "source": "cross-cutting/domain-authority-auditor/SKILL.md"
-    },
-    {
-      "name": "entity-optimizer",
-      "description": "Entity profile and knowledge graph optimization",
-      "source": "cross-cutting/entity-optimizer/SKILL.md"
-    },
-    {
-      "name": "memory-management",
-      "description": "Campaign memory and context persistence",
-      "source": "cross-cutting/memory-management/SKILL.md"
-    },
-    {
-      "name": "company-analysis",
-      "description": "Full company SEO/GEO audit orchestration with HTML report",
-      "source": "orchestration/company-analysis/SKILL.md"
-    }
+    "./research/competitor-analysis",
+    "./research/content-gap-analysis",
+    "./research/keyword-research",
+    "./research/serp-analysis",
+    "./build/geo-content-optimizer",
+    "./build/meta-tags-optimizer",
+    "./build/schema-markup-generator",
+    "./build/seo-content-writer",
+    "./optimize/content-refresher",
+    "./optimize/internal-linking-optimizer",
+    "./optimize/on-page-seo-auditor",
+    "./optimize/technical-seo-checker",
+    "./monitor/alert-manager",
+    "./monitor/backlink-analyzer",
+    "./monitor/performance-reporter",
+    "./monitor/rank-tracker",
+    "./cross-cutting/content-quality-auditor",
+    "./cross-cutting/domain-authority-auditor",
+    "./cross-cutting/entity-optimizer",
+    "./cross-cutting/memory-management"
   ]
 }
