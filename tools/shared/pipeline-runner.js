@@ -122,8 +122,19 @@ function inferBusinessType(industry = '', description = '') {
 /**
  * Generate brand/industry/hero query batches from an entity profile.
  * Uses business_type-aware templates so queries are always contextually appropriate.
+ *
+ * hero_queries (from LLM discovery): complete long-tail buyer search queries — used as-is.
+ * hero_keywords (from entity-optimizer handoff): keyword phrases — templates applied.
+ * industries_served: narrows industry queries to customer-specific language.
  */
-export function generateQueriesFromProfile({ company_name, industry, hero_keywords, business_type = 'generic' }) {
+export function generateQueriesFromProfile({
+  company_name,
+  industry,
+  hero_queries,
+  hero_keywords,
+  industries_served = [],
+  business_type = 'generic',
+}) {
   const templates = QUERY_TEMPLATES[business_type] || QUERY_TEMPLATES.generic;
 
   const brand = company_name ? [
@@ -132,13 +143,19 @@ export function generateQueriesFromProfile({ company_name, industry, hero_keywor
     `${company_name} reviews`,
   ] : [];
 
-  const industryQueries = industry
-    ? templates.industry.map(t => t.replace(/\{industry\}/g, industry)).slice(0, 4)
-    : [];
+  // Industry: 2 template queries + up to 2 customer-specific variants
+  const industryQueries = industry ? [
+    ...templates.industry.map(t => t.replace(/\{industry\}/g, industry)).slice(0, 2),
+    ...industries_served.slice(0, 2).map(ind => `${industry} supplier for ${ind}`),
+  ].slice(0, 4) : [];
 
-  const heroQueries = (hero_keywords || []).flatMap(kw =>
-    templates.hero.map(t => t.replace(/\{keyword\}/g, kw))
-  ).slice(0, 6);
+  // Hero: use long-tail queries directly if provided by LLM discovery;
+  // fall back to template substitution for entity-handoff keywords.
+  const heroQueries = (hero_queries && hero_queries.length > 0)
+    ? hero_queries.slice(0, 6)
+    : (hero_keywords || []).flatMap(kw =>
+        templates.hero.map(t => t.replace(/\{keyword\}/g, kw))
+      ).slice(0, 6);
 
   return { brand, industry: industryQueries, hero: heroQueries };
 }
