@@ -87,6 +87,24 @@ When a skill recommends running another, pass: objective, key findings/output, e
 
 If `memory-management` is active, prior audit results load automatically from the hot cache in this [CLAUDE.md](https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills/blob/main/CLAUDE.md) file.
 
+## Prompting Mini-Pipeline
+
+Run the AI citation-checking parts of the pipeline standalone — no SEO checks, no full orchestration:
+
+```bash
+node tools/scripts/run-citation-baseline.js caplinq.com [analysisPath] [entityHandoffPath]
+```
+
+**Two-phase flow:**
+1. **Discovery** — reads `entity-optimizer-handoff.md` if it exists; otherwise fetches the domain homepage and calls gpt-4o-mini to extract company profile (`company_name`, `industry`, `business_type`, `hero_keywords`). Saves `discovery.json` and `query-generation.json`.
+2. **Citation check** — generates 13 queries (3 brand + 4 industry + 6 hero) using business-type-aware templates (7 types: distributor, manufacturer, saas_software, agency_service, ecommerce_retail, media_content, generic) and runs them against all configured AI engines.
+
+**Outputs:** `discovery.json`, `query-generation.json`, `prompt-results.json` (full raw), `prompt-summary.json` (lean: cost at top + model/prompt/result/domain\_mentioned/websites\_cited per call), `score-provenance.json`.
+
+**Claude Code WebSearch capture:** `.claude/settings.json` hook fires `tools/scripts/log-tool-use.js` after every `WebFetch|WebSearch`, appending entries to the active analysis's `prompt-results.json` or to `tools/__tests__/integration/results/claude-code-searches.json` when no session is active.
+
+Full doc: [docs/prompting-mini-pipeline.md](https://github.com/AnonymousGreekQuestionMark/seo-geo-claude-skills/blob/main/docs/prompting-mini-pipeline.md)
+
 ## Tool Connector Pattern
 
 Skills use `~~category` placeholders (e.g., `~~SEO tool`, `~~analytics`). Every skill works without any integrations (Tier 1). MCP servers in `.mcp.json` add Ahrefs, SimilarWeb, HubSpot, Amplitude, Notion, Slack.
