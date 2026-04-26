@@ -1,0 +1,47 @@
+{
+  "domain": "caplinq.com",
+  "generated_at": "2026-04-26T16:52:29.874Z",
+  "discovery_source": "homepage_llm_extraction",
+  "business_type": "manufacturer",
+  "extracted": {
+    "company_name": "Caplinq",
+    "industry": "specialty chemicals and plastics",
+    "business_type": "manufacturer",
+    "products": [
+      "Adhesives & Sealants",
+      "Coatings, Powders & Resins",
+      "Die Attach Materials",
+      "Electrochemical Materials",
+      "Fine & Specialty Chemicals"
+    ],
+    "hero_keywords": [
+      "specialty chemicals",
+      "conductive plastics",
+      "order fulfillment",
+      "REACH Only Representative",
+      "technical marketing"
+    ]
+  },
+  "query_batches": {
+    "brand": [
+      "What is Caplinq?",
+      "Caplinq company overview",
+      "Caplinq reviews"
+    ],
+    "industry": [
+      "best specialty chemicals and plastics manufacturers",
+      "top specialty chemicals and plastics OEMs",
+      "specialty chemicals and plastics manufacturer comparison",
+      "leading specialty chemicals and plastics producers"
+    ],
+    "hero": [
+      "best specialty chemicals manufacturer",
+      "specialty chemicals production comparison",
+      "best conductive plastics manufacturer",
+      "conductive plastics production comparison",
+      "best order fulfillment manufacturer",
+      "order fulfillment production comparison"
+    ]
+  },
+  "total_queries": 13
+}
