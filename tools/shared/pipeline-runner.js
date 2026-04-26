@@ -29,6 +29,120 @@ import {
   finalizeOperationsLog
 } from './operations-logger.js';
 
+// Pricing per million tokens (April 2026)
+const PRICING = {
+  openai:    { input: 0.15,  output: 0.60  },
+  anthropic: { input: 3.00,  output: 15.00 },
+  gemini:    { input: 0.30,  output: 2.50  },
+};
+
+function calcPromptCost(engine, inputTokens, outputTokens) {
+  const p = PRICING[engine] || { input: 0, output: 0 };
+  return +((inputTokens / 1e6) * p.input + (outputTokens / 1e6) * p.output).toFixed(6);
+}
+
+// Query templates keyed by business_type — used in generateQueriesFromProfile()
+const QUERY_TEMPLATES = {
+  distributor: {
+    industry: [
+      'best {industry} distributors',
+      'top {industry} companies',
+      '{industry} supplier comparison',
+      'where to buy {industry}',
+    ],
+    hero: ['best {keyword}', '{keyword} distributor comparison'],
+  },
+  manufacturer: {
+    industry: [
+      'best {industry} manufacturers',
+      'top {industry} OEMs',
+      '{industry} manufacturer comparison',
+      'leading {industry} producers',
+    ],
+    hero: ['best {keyword} manufacturer', '{keyword} production comparison'],
+  },
+  saas_software: {
+    industry: [
+      'best {industry} software',
+      'top {industry} tools',
+      '{industry} platform comparison',
+      '{industry} SaaS solutions',
+    ],
+    hero: ['best {keyword} tool', '{keyword} software review'],
+  },
+  agency_service: {
+    industry: [
+      'best {industry} agencies',
+      'top {industry} firms',
+      '{industry} service providers',
+      'leading {industry} consultants',
+    ],
+    hero: ['best {keyword} agency', '{keyword} consulting firms'],
+  },
+  ecommerce_retail: {
+    industry: [
+      'buy {industry} online',
+      'best {industry} store',
+      '{industry} retailer comparison',
+      'top {industry} online shop',
+    ],
+    hero: ['buy {keyword}', '{keyword} online store review'],
+  },
+  media_content: {
+    industry: [
+      'best {industry} publications',
+      'top {industry} websites',
+      '{industry} media comparison',
+      'leading {industry} blogs',
+    ],
+    hero: ['best {keyword} blog', '{keyword} newsletter'],
+  },
+  generic: {
+    industry: [
+      'best {industry} companies',
+      'top {industry} providers',
+      '{industry} comparison',
+      'leading {industry} solutions',
+    ],
+    hero: ['best {keyword}', '{keyword} comparison'],
+  },
+};
+
+function inferBusinessType(industry = '', description = '') {
+  const text = `${industry} ${description}`.toLowerCase();
+  if (/software|saas|platform|app\b|cloud|api\b|developer/.test(text)) return 'saas_software';
+  if (/manufacturer|manufacturing|oem|production|factory|fabricat/.test(text)) return 'manufacturer';
+  if (/distributor|distribution|supply chain|reseller|dealer|wholesal/.test(text)) return 'distributor';
+  if (/agency|consulting|consultancy|firm|advisory|professional service/.test(text)) return 'agency_service';
+  if (/retail|ecommerce|e-commerce|store|shop|marketplace/.test(text)) return 'ecommerce_retail';
+  if (/media|content|publisher|blog|news|magazine|journal/.test(text)) return 'media_content';
+  return 'generic';
+}
+
+/**
+ * Generate brand/industry/hero query batches from an entity profile.
+ * Uses business_type-aware templates so queries are always contextually appropriate.
+ */
+export function generateQueriesFromProfile({ company_name, industry, hero_keywords, business_type = 'generic' }) {
+  const templates = QUERY_TEMPLATES[business_type] || QUERY_TEMPLATES.generic;
+
+  const brand = company_name ? [
+    `What is ${company_name}?`,
+    `${company_name} company overview`,
+    `${company_name} reviews`,
+  ] : [];
+
+  const industryQueries = industry
+    ? templates.industry.map(t => t.replace(/\{industry\}/g, industry)).slice(0, 4)
+    : [];
+
+  const heroQueries = (hero_keywords || []).flatMap(kw =>
+    templates.hero.map(t => t.replace(/\{keyword\}/g, kw))
+  ).slice(0, 6);
+
+  return { brand, industry: industryQueries, hero: heroQueries };
+}
+
 /**
  * Track steps where Anthropic has already run (LIMIT_ANTHROPIC support)
  * When LIMIT_ANTHROPIC=true (default), Anthropic runs once per step, not per query
@@ -107,9 +221,10 @@ export async function saveScoreProvenance(analysisPath, provenance) {
  * @param {string} analysisPath - Path to save results
  * @returns {Object} Citation baseline results
  */
-export async function runCitationBaseline(domain, queries, analysisPath) {
+export async function runCitationBaseline(domain, queries, analysisPath, query_type = 'brand', step = '1.5') {
   const results = {
     domain,
+    query_type,
     queries_tested: queries.length,
     queries_with_citation: 0,
     engines_used: [],
@@ -120,46 +235,44 @@ export async function runCitationBaseline(domain, queries, analysisPath) {
   for (const query of queries) {
     const queryResult = {
       query,
+      query_type,
       engines: []
     };
 
     // OpenAI
     if (config.openai.available) {
       try {
+        const t0 = Date.now();
         const data = await post(
           'https://api.openai.com/v1/chat/completions',
           { Authorization: `Bearer ${config.openai.apiKey}` },
           { model: config.openai.searchModel, messages: [{ role: 'user', content: query }] }
         );
+        const duration_ms = Date.now() - t0;
         const content = data.choices?.[0]?.message?.content || '';
         const cited = content.toLowerCase().includes(domain.toLowerCase());
+        const inputTokens = data.usage?.prompt_tokens ?? 0;
+        const outputTokens = data.usage?.completion_tokens ?? 0;
 
-        const engineResult = {
-          engine: 'openai',
-          model: config.openai.searchModel,
-          live_search: true,
-          domain_cited: cited,
-          response_excerpt: content.slice(0, 300),
-          response_full: content
-        };
-        queryResult.engines.push(engineResult);
-
+        queryResult.engines.push({ engine: 'openai', model: config.openai.searchModel, live_search: true, domain_cited: cited, response_excerpt: content.slice(0, 300), response_full: content });
         if (cited) results.by_engine.openai++;
         if (!results.engines_used.includes('openai')) results.engines_used.push('openai');
 
-        // Save to prompt-results.json
         await savePromptResult(analysisPath, {
-          step: '1.5',
+          step,
           skill: 'citation-baseline',
           engine: 'openai',
           model: config.openai.searchModel,
           timestamp_utc: new Date().toISOString(),
           live_search: true,
           query,
+          query_type,
           domain,
           response_excerpt: content.slice(0, 300),
           response_full: content,
-          domain_cited: cited
+          domain_cited: cited,
+          duration_ms,
+          cost_usd: calcPromptCost('openai', inputTokens, outputTokens),
         });
       } catch (e) {
         queryResult.engines.push({ engine: 'openai', error: e.message });
@@ -169,46 +282,42 @@ export async function runCitationBaseline(domain, queries, analysisPath) {
     // Gemini
     if (config.gemini.available) {
       try {
+        const t0 = Date.now();
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${config.gemini.model}:generateContent?key=${config.gemini.apiKey}`;
         const data = await post(url, {}, {
           contents: [{ parts: [{ text: query }] }],
           tools: [{ google_search: {} }],
           generationConfig: { maxOutputTokens: 512 }
         });
+        const duration_ms = Date.now() - t0;
         const content = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
         const citations = (data.candidates?.[0]?.groundingMetadata?.groundingChunks || [])
           .map(c => c.web?.uri).filter(Boolean);
         const cited = content.toLowerCase().includes(domain.toLowerCase()) ||
                       citations.some(c => c.includes(domain));
+        const inputTokens = data.usageMetadata?.promptTokenCount ?? 0;
+        const outputTokens = data.usageMetadata?.candidatesTokenCount ?? 0;
 
-        const engineResult = {
-          engine: 'gemini',
-          model: config.gemini.model,
-          live_search: true,
-          domain_cited: cited,
-          citation_urls: citations,
-          response_excerpt: content.slice(0, 300),
-          response_full: content
-        };
-        queryResult.engines.push(engineResult);
-
+        queryResult.engines.push({ engine: 'gemini', model: config.gemini.model, live_search: true, domain_cited: cited, citation_urls: citations, response_excerpt: content.slice(0, 300), response_full: content });
         if (cited) results.by_engine.gemini++;
         if (!results.engines_used.includes('gemini')) results.engines_used.push('gemini');
 
-        // Save to prompt-results.json
         await savePromptResult(analysisPath, {
-          step: '1.5',
+          step,
           skill: 'citation-baseline',
           engine: 'gemini',
           model: config.gemini.model,
           timestamp_utc: new Date().toISOString(),
           live_search: true,
           query,
+          query_type,
           domain,
           response_excerpt: content.slice(0, 300),
           response_full: content,
           citation_urls: citations,
-          domain_cited: cited
+          domain_cited: cited,
+          duration_ms,
+          cost_usd: calcPromptCost('gemini', inputTokens, outputTokens),
         });
       } catch (e) {
         queryResult.engines.push({ engine: 'gemini', error: e.message });
@@ -216,12 +325,10 @@ export async function runCitationBaseline(domain, queries, analysisPath) {
     }
 
     // Anthropic — check LIMIT_ANTHROPIC before running
-    const step = '1.5'; // Citation baseline step
     const shouldRunAnthropic = config.anthropic.available &&
       (!config.anthropic.limitCalls || !anthropicRanInStep.has(step));
 
     if (shouldRunAnthropic) {
-      // Mark step as having run Anthropic (before the call, in case of error)
       if (config.anthropic.limitCalls) {
         anthropicRanInStep.add(step);
         console.log(`[LIMIT_ANTHROPIC] Running Anthropic for step ${step} (first query in step)`);
@@ -237,69 +344,56 @@ export async function runCitationBaseline(domain, queries, analysisPath) {
           body.tools = [{ type: 'web_search_20260209', name: 'web_search', max_uses: 2 }];
         }
 
+        const t0 = Date.now();
         const data = await post(
           'https://api.anthropic.com/v1/messages',
           { 'x-api-key': config.anthropic.apiKey, 'anthropic-version': '2023-06-01' },
           body
         );
+        const duration_ms = Date.now() - t0;
         const textBlocks = (data.content || []).filter(b => b.type === 'text');
         const content = textBlocks.map(b => b.text).join(' ');
         const citations = textBlocks.flatMap(b => b.citations || []).map(c => c.url).filter(Boolean);
         const cited = content.toLowerCase().includes(domain.toLowerCase()) ||
                       citations.some(c => c.includes(domain));
+        const inputTokens = data.usage?.input_tokens ?? 0;
+        const outputTokens = data.usage?.output_tokens ?? 0;
 
-        const engineResult = {
-          engine: 'anthropic',
-          model: config.anthropic.model,
-          live_search: config.anthropic.webSearch,
-          domain_cited: cited,
-          citation_urls: citations,
-          response_excerpt: content.slice(0, 300),
-          response_full: content
-        };
-        queryResult.engines.push(engineResult);
-
+        queryResult.engines.push({ engine: 'anthropic', model: config.anthropic.model, live_search: config.anthropic.webSearch, domain_cited: cited, citation_urls: citations, response_excerpt: content.slice(0, 300), response_full: content });
         if (cited) results.by_engine.anthropic++;
         if (!results.engines_used.includes('anthropic')) results.engines_used.push('anthropic');
 
-        // Save to prompt-results.json
         await savePromptResult(analysisPath, {
-          step: '1.5',
+          step,
           skill: 'citation-baseline',
           engine: 'anthropic',
           model: config.anthropic.model,
           timestamp_utc: new Date().toISOString(),
           live_search: config.anthropic.webSearch,
           query,
+          query_type,
           domain,
           response_excerpt: content.slice(0, 300),
           response_full: content,
           citation_urls: citations,
-          domain_cited: cited
+          domain_cited: cited,
+          duration_ms,
+          cost_usd: calcPromptCost('anthropic', inputTokens, outputTokens),
         });
       } catch (e) {
         queryResult.engines.push({ engine: 'anthropic', error: e.message });
       }
     } else if (config.anthropic.available && config.anthropic.limitCalls) {
-      // Anthropic skipped due to LIMIT_ANTHROPIC
       console.log(`[LIMIT_ANTHROPIC] Skipping Anthropic for query "${query.slice(0, 50)}..." (already ran in step ${step})`);
-      queryResult.engines.push({
-        engine: 'anthropic',
-        skipped: true,
-        reason: 'LIMIT_ANTHROPIC=true, already ran in this step'
-      });
+      queryResult.engines.push({ engine: 'anthropic', skipped: true, reason: 'LIMIT_ANTHROPIC=true, already ran in this step' });
     }
 
-    // Check if any engine cited the domain for this query
     const anyCited = queryResult.engines.some(e => e.domain_cited);
     if (anyCited) results.queries_with_citation++;
-
     results.query_results.push(queryResult);
   }
 
-  // Update summary
   await updatePromptSummary(analysisPath);
-
   return results;
 }
 
@@ -647,14 +741,14 @@ export function resetAnthropicTracking() {
  * @param {string} analysisPath - Path to analysis directory
  * @returns {Object} Extracted keywords and generated queries
  */
-export async function extractHeroKeywords(analysisPath) {
-  const handoffPath = path.join(analysisPath, '01-domain-baseline', 'entity-optimizer-handoff.md');
+export async function extractHeroKeywords(analysisPath, handoffFilePath = null) {
+  const handoffPath = handoffFilePath || path.join(analysisPath, '01-domain-baseline', 'entity-optimizer-handoff.md');
 
   let handoffContent = '';
   try {
     handoffContent = await fs.readFile(handoffPath, 'utf-8');
   } catch {
-    return { found: false, queries: { brand: [], industry: [], hero: [] } };
+    return { found: false, business_type: 'generic', extracted: {}, queries: { brand: [], industry: [], hero: [] } };
   }
 
   // Extract entity data from handoff markdown
@@ -704,44 +798,24 @@ export async function extractHeroKeywords(analysisPath) {
     extracted.hero_keywords = [...extracted.products.slice(0, 3), ...extracted.services.slice(0, 2)];
   }
 
-  // Generate queries for citation prominence testing
-  const queries = {
-    brand: [],
-    industry: [],
-    hero: []
-  };
+  // Extract or infer business_type from handoff
+  const bizTypeMatch = handoffContent.match(/Business\s+Type:\s*(.+)/i) ||
+                       handoffContent.match(/Company\s+Type:\s*(.+)/i);
+  const business_type = bizTypeMatch
+    ? inferBusinessType(bizTypeMatch[1].trim())
+    : inferBusinessType(extracted.industry);
 
-  // Brand queries (existing)
-  if (extracted.company_name) {
-    queries.brand = [
-      `What is ${extracted.company_name}?`,
-      `${extracted.company_name} company overview`,
-      `${extracted.company_name} reviews`
-    ];
-  }
-
-  // Industry queries (new)
-  if (extracted.industry) {
-    queries.industry = [
-      `Best ${extracted.industry} suppliers`,
-      `Top ${extracted.industry} companies`,
-      `${extracted.industry} manufacturers comparison`,
-      `Leading ${extracted.industry} providers`
-    ];
-  }
-
-  // Hero keyword queries (new)
-  extracted.hero_keywords.forEach(keyword => {
-    queries.hero.push(`Best ${keyword} suppliers`);
-    queries.hero.push(`${keyword} comparison`);
+  // Generate contextually appropriate queries using business_type-aware templates
+  const queries = generateQueriesFromProfile({
+    company_name: extracted.company_name,
+    industry: extracted.industry,
+    hero_keywords: extracted.hero_keywords,
+    business_type,
   });
-
-  // Limit to reasonable counts
-  queries.industry = queries.industry.slice(0, 4);
-  queries.hero = queries.hero.slice(0, 6);
 
   return {
     found: true,
+    business_type,
     extracted,
     queries
   };
@@ -1053,6 +1127,52 @@ export async function finalizeAnalysis(analysisPath, overallStatus = 'DONE') {
   return provenance;
 }
 
+/**
+ * Write a lean prompt-summary.json alongside prompt-results.json.
+ * Contains: total cost at top, plus one clean row per AI call.
+ */
+export async function writeLeanSummary(analysisPath) {
+  const filePath = path.join(analysisPath, 'prompt-results.json');
+  const summaryPath = path.join(analysisPath, 'prompt-summary.json');
+
+  let data;
+  try {
+    data = JSON.parse(await fs.readFile(filePath, 'utf-8'));
+  } catch {
+    return null;
+  }
+
+  const prompts = (data.prompt_results || []).map(r => ({
+    engine:          r.engine || 'unknown',
+    model:           r.model || '',
+    query_type:      r.query_type || 'unknown',
+    prompt:          r.query || r.prompt_used || '',
+    result:          r.response_full || '',
+    domain_mentioned: r.domain_cited || false,
+    websites_cited:  r.citation_urls || [],
+    duration_ms:     r.duration_ms ?? null,
+    cost_usd:        r.cost_usd ?? null,
+  }));
+
+  const totalCost = prompts.reduce((s, p) => s + (p.cost_usd || 0), 0);
+  const totalDuration = prompts.reduce((s, p) => s + (p.duration_ms || 0), 0);
+  const byEngine = {};
+  for (const p of prompts) byEngine[p.engine] = (byEngine[p.engine] || 0) + 1;
+
+  const summary = {
+    run_at: new Date().toISOString(),
+    domain: data.analysis_metadata?.domain || '',
+    total_prompts: prompts.length,
+    total_cost_usd: +totalCost.toFixed(6),
+    total_duration_ms: totalDuration,
+    by_engine: byEngine,
+    prompts,
+  };
+
+  await fs.writeFile(summaryPath, JSON.stringify(summary, null, 2));
+  return summaryPath;
+}
+
 // Re-export provenance-builder functions for direct access
 export {
   initProvenance,
@@ -1087,6 +1207,10 @@ export default {
   runCitationBaseline,
   generateScoreProvenance,
   resetAnthropicTracking,
+  // Lean summary
+  writeLeanSummary,
+  // Query generation
+  generateQueriesFromProfile,
   // Lifecycle functions
   initializeAnalysis,
   finalizeAnalysis,

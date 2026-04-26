@@ -13,8 +13,12 @@
  * Always exits 0 — never blocks Claude Code execution.
  */
 import { readFile, writeFile } from 'fs/promises';
-import { join, resolve } from 'path';
-import { existsSync } from 'fs';
+import { join, resolve, dirname } from 'path';
+import { existsSync, mkdirSync } from 'fs';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const FALLBACK_LOG = resolve(__dirname, '../../__tests__/integration/results/claude-code-searches.json');
 
 const SESSION_FILE = resolve(process.cwd(), '.analysis-session.json');
 
@@ -40,11 +44,19 @@ async function appendToPromptResults(analysisPath, entry) {
   await writeFile(filePath, JSON.stringify(data, null, 2));
 }
 
-async function main() {
-  const session = await readSession();
-  if (!session?.analysis_path) return; // No active analysis — nothing to log
+async function appendToFallbackLog(entry) {
+  const dir = dirname(FALLBACK_LOG);
+  if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  let entries = [];
+  try {
+    entries = JSON.parse(await readFile(FALLBACK_LOG, 'utf-8'));
+  } catch { /* start fresh */ }
+  entries.push(entry);
+  await writeFile(FALLBACK_LOG, JSON.stringify(entries, null, 2));
+}
 
-  // Read tool call from stdin
+async function main() {
+  // Read tool call from stdin first (always available)
   let input = '';
   for await (const chunk of process.stdin) input += chunk;
   if (!input.trim()) return;
@@ -59,7 +71,7 @@ async function main() {
   const { tool_name, tool_input, tool_response } = toolCall;
   if (!tool_name) return;
 
-  // Build response summary from content
+  // Build response summary and urls
   let responseSummary = '';
   let urlsVisited = [];
 
@@ -70,28 +82,36 @@ async function main() {
       : tool_response?.content?.[0]?.text || JSON.stringify(tool_response || '');
     responseSummary = responseText.slice(0, 300);
   } else if (tool_name === 'WebSearch') {
-    const query = tool_input?.query || '';
-    urlsVisited = [];
+    // Extract result URLs from WebSearch response if available
+    const responseObj = typeof tool_response === 'string' ? null : tool_response;
+    urlsVisited = (responseObj?.results || []).map(r => r.url).filter(Boolean);
     const responseText = typeof tool_response === 'string'
       ? tool_response
       : JSON.stringify(tool_response || '');
     responseSummary = responseText.slice(0, 300);
   }
 
+  const session = await readSession();
+
   const entry = {
     source: 'claude_code',
-    step: session.current_step,
-    skill: session.current_skill,
+    step: session?.current_step || null,
+    skill: session?.current_skill || null,
     type: tool_name === 'WebSearch' ? 'web_search' : 'web_fetch',
     query: tool_input?.url || tool_input?.query || '',
     response_summary: responseSummary,
     urls_visited: urlsVisited,
-    timestamp_utc: new Date().toISOString(),
+    captured_at: new Date().toISOString(),
+    duration_ms: null,
     raw_response: typeof tool_response === 'string' ? tool_response : JSON.stringify(tool_response),
   };
 
   try {
-    await appendToPromptResults(session.analysis_path, entry);
+    if (session?.analysis_path) {
+      await appendToPromptResults(session.analysis_path, entry);
+    } else {
+      await appendToFallbackLog(entry);
+    }
   } catch {
     // Silently ignore write failures — never block Claude Code
   }
