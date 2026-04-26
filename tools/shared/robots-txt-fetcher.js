@@ -87,13 +87,14 @@ export async function fetchRobotsTxt(domain) {
   const url = `https://${domain}/robots.txt`;
   const fetched_at = new Date().toISOString();
 
+  const emptyAiBots = Object.fromEntries(AI_BOTS.map((b) => [b, 'not_mentioned']));
   const empty = {
     domain,
     url,
     fetched_at,
     status_code: null,
     raw_content: '',
-    parsed: { user_agents: [], sitemaps: [], ai_bots: {}, allows_all_ai: false },
+    parsed: { user_agents: [], sitemaps: [], ai_bots: emptyAiBots, allows_all_ai: true },
   };
 
   try {

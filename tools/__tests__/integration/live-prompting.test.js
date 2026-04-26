@@ -7,6 +7,7 @@
  * Run: OPENAI_API_KEY=sk-... GEMINI_API_KEY=... npx vitest integration/live-prompting
  */
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { server } from '../setup.js';
 import { writeFile, mkdir } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -28,6 +29,10 @@ const hasAnthropic = !!process.env.ANTHROPIC_API_KEY;
 const hasGemini = !!process.env.GEMINI_API_KEY;
 
 const allResults = [];
+
+// Bypass MSW so real API calls go through
+beforeAll(() => server.close());
+afterAll(() => server.listen());
 
 async function saveResults() {
   if (!existsSync(RESULTS_DIR)) await mkdir(RESULTS_DIR, { recursive: true });
