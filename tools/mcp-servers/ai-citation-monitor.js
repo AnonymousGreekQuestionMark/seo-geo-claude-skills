@@ -146,17 +146,22 @@ async function queryAnthropic(query, domain) {
 }
 
 async function queryOpenAI(query, domain) {
+  // Responses API with GA web_search tool (non-preview)
   const data = await post(
-    'https://api.openai.com/v1/chat/completions',
+    'https://api.openai.com/v1/responses',
     { Authorization: `Bearer ${config.openai.apiKey}` },
     {
       model: config.openai.searchModel,
-      messages: [{ role: 'user', content: query }],
+      tools: [{ type: 'web_search' }],
+      input: query,
     }
   );
-  const message = data.choices?.[0]?.message || {};
-  const content = typeof message.content === 'string' ? message.content : '';
-  const citations = (message.annotations || [])
+  // Parse Responses API output: find the message item, extract text + annotations
+  const messageItem = (data.output || []).find((item) => item.type === 'message');
+  const outputContent = messageItem?.content || [];
+  const textBlock = outputContent.find((b) => b.type === 'output_text') || {};
+  const content = textBlock.text || '';
+  const citations = (textBlock.annotations || [])
     .filter((a) => a.type === 'url_citation')
     .map((a) => a.url)
     .filter(Boolean);
@@ -224,7 +229,9 @@ async function checkAllEngines(domain, query, opts = {}) {
       results.push(result);
       await maybeSavePrompt(analysisPath, step, skill, result, domain, query);
     } catch (e) {
-      results.push({ engine: 'perplexity', error: e.message });
+      const errResult = { engine: 'perplexity', error: e.message, domain_cited: null };
+      results.push(errResult);
+      await maybeSavePrompt(analysisPath, step, skill, errResult, domain, query);
     }
   }
 
@@ -234,7 +241,9 @@ async function checkAllEngines(domain, query, opts = {}) {
       results.push(result);
       await maybeSavePrompt(analysisPath, step, skill, result, domain, query);
     } catch (e) {
-      results.push({ engine: 'openai', error: e.message });
+      const errResult = { engine: 'openai', error: e.message, domain_cited: null };
+      results.push(errResult);
+      await maybeSavePrompt(analysisPath, step, skill, errResult, domain, query);
     }
   }
 
@@ -244,7 +253,9 @@ async function checkAllEngines(domain, query, opts = {}) {
       results.push(result);
       await maybeSavePrompt(analysisPath, step, skill, result, domain, query);
     } catch (e) {
-      results.push({ engine: 'gemini', error: e.message });
+      const errResult = { engine: 'gemini', error: e.message, domain_cited: null };
+      results.push(errResult);
+      await maybeSavePrompt(analysisPath, step, skill, errResult, domain, query);
     }
   }
 
@@ -255,7 +266,9 @@ async function checkAllEngines(domain, query, opts = {}) {
       results.push(result);
       await maybeSavePrompt(analysisPath, step, skill, result, domain, query);
     } catch (e) {
-      results.push({ engine: 'anthropic', error: e.message });
+      const errResult = { engine: 'anthropic', error: e.message, domain_cited: null };
+      results.push(errResult);
+      await maybeSavePrompt(analysisPath, step, skill, errResult, domain, query);
     }
   } else if (config.anthropic.available && config.anthropic.limitCalls) {
     results.push({

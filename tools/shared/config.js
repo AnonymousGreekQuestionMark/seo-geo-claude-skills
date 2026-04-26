@@ -43,9 +43,9 @@ export const config = {
   },
   openai: {
     apiKey: process.env.OPENAI_API_KEY,
-    model: process.env.OPENAI_MODEL || 'gpt-4o',
-    // gpt-4o supports web search via Responses API; use it directly
-    searchModel: process.env.OPENAI_SEARCH_MODEL || 'gpt-4o',
+    model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+    // gpt-4o-mini via Responses API (/v1/responses) with web_search tool (GA)
+    searchModel: process.env.OPENAI_SEARCH_MODEL || 'gpt-4o-mini',
     available: has('OPENAI_API_KEY'),
   },
   anthropic: {
@@ -53,9 +53,9 @@ export const config = {
     model: process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5',
     webSearch: process.env.ANTHROPIC_WEB_SEARCH === 'true',
     available: has('ANTHROPIC_API_KEY'),
-    // LIMIT_ANTHROPIC=true (default): Run Anthropic once per step, not per query
-    // LIMIT_ANTHROPIC=false: Run Anthropic on all queries like other engines
-    limitCalls: process.env.LIMIT_ANTHROPIC !== 'false',
+    // LIMIT_ANTHROPIC=true: Run Anthropic once per step (opt-in throttle)
+    // Default OFF — Anthropic runs on all queries like other engines
+    limitCalls: process.env.LIMIT_ANTHROPIC === 'true',
   },
   gemini: {
     apiKey: process.env.GEMINI_API_KEY,

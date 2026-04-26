@@ -7,12 +7,15 @@
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
+import { writeFile } from 'fs/promises';
+import { join } from 'path';
 import { config } from '../shared/config.js';
 import { get, ok, err } from '../shared/http.js';
+import { fetchRobotsTxt } from '../shared/robots-txt-fetcher.js';
 
 process.stderr.write(`[pagespeed] Ready — ${config.google.available ? 'using GOOGLE_API_KEY (higher quota)' : 'no API key (anonymous, 25k/day limit)'}\n`);
 
-async function runPSI(url, strategy = 'mobile') {
+async function runPSI(url, strategy = 'mobile', analysisPath = null) {
   const params = new URLSearchParams({ url, strategy });
   if (config.google.available) params.set('key', config.google.apiKey);
   const endpoint = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?${params}`;
@@ -46,11 +49,17 @@ async function runPSI(url, strategy = 'mobile') {
     first_contentful_paint: audits['first-contentful-paint']?.displayValue,
   };
 
-  // AI crawler check — robots.txt
-  const robotsCheck = {
-    note: 'Check robots.txt manually for GPTBot, PerplexityBot, CCBot entries. PSI does not check robots.txt.',
-    robots_url: `${new URL(url).origin}/robots.txt`,
-  };
+  // Fetch and parse robots.txt
+  const domain = new URL(url).hostname;
+  const robotsData = await fetchRobotsTxt(domain);
+
+  if (analysisPath) {
+    try {
+      await writeFile(join(analysisPath, 'robots-txt.json'), JSON.stringify(robotsData, null, 2));
+    } catch (e) {
+      console.error(`[pagespeed] Failed to save robots-txt.json: ${e.message}`);
+    }
+  }
 
   // CITE E04 verdict
   const score = labData.performance_score;
@@ -61,9 +70,11 @@ async function runPSI(url, strategy = 'mobile') {
     strategy,
     cite_E04_verdict: citeE04,
     cite_E04_note: 'PASS requires <3s load time (score ≥80 correlates). Also check AI crawler access in robots.txt.',
+    robots_allows_ai: robotsData.parsed.allows_all_ai,
     field_data: fieldData,
     lab_data: labData,
-    ai_crawler_check: robotsCheck,
+    ai_crawler_check: robotsData.parsed,
+    robots_txt_url: robotsData.url,
   };
 }
 
@@ -89,6 +100,10 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
             description: 'Device strategy (default: mobile — Google uses mobile-first indexing)',
             default: 'mobile',
           },
+          analysisPath: {
+            type: 'string',
+            description: 'Path to analysis directory. If provided, saves robots-txt.json there.',
+          },
         },
         required: ['url'],
       },
@@ -101,7 +116,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   if (name !== 'get_core_web_vitals') return err(`Unknown tool: ${name}`);
 
   try {
-    const result = await runPSI(args.url, args.strategy || 'mobile');
+    const result = await runPSI(args.url, args.strategy || 'mobile', args.analysisPath || null);
     return ok(result);
   } catch (e) {
     return err(e.message);

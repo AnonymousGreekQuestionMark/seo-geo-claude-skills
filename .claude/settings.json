@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node tools/scripts/log-tool-use.js"
+          }
+        ]
+      }
+    ]
+  }
+}
