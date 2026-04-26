@@ -87,6 +87,7 @@ async function main() {
     response_summary: responseSummary,
     urls_visited: urlsVisited,
     timestamp_utc: new Date().toISOString(),
+    raw_response: typeof tool_response === 'string' ? tool_response : JSON.stringify(tool_response),
   };
 
   try {
