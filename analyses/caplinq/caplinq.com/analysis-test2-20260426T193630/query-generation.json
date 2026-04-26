@@ -1,0 +1,51 @@
+{
+  "domain": "caplinq.com",
+  "generated_at": "2026-04-26T17:36:38.030Z",
+  "discovery_source": "homepage_llm_extraction",
+  "business_type": "distributor",
+  "hero_query_source": "llm_direct_long_tail",
+  "extracted": {
+    "company_name": "Caplinq",
+    "industry": "specialty chemicals and plastics",
+    "products": [
+      "Conductive Plastics",
+      "Adhesives & Sealants",
+      "Epoxy Coating Powders",
+      "Die Attach Materials",
+      "Electrochemical Materials"
+    ],
+    "industries_served": [
+      "electronics assembly",
+      "fuel cell OEMs",
+      "semiconductor manufacturing"
+    ],
+    "hero_queries": [
+      "conductive plastic supplier Europe electronics manufacturing",
+      "epoxy coating powders for automotive applications",
+      "adhesives for electronics assembly in Europe",
+      "die attach materials distributor high volume production",
+      "specialty chemicals supplier REACH compliant Europe"
+    ]
+  },
+  "query_batches": {
+    "brand": [
+      "What is Caplinq?",
+      "Caplinq company overview",
+      "Caplinq reviews"
+    ],
+    "industry": [
+      "best specialty chemicals and plastics distributors",
+      "top specialty chemicals and plastics companies",
+      "specialty chemicals and plastics supplier for electronics assembly",
+      "specialty chemicals and plastics supplier for fuel cell OEMs"
+    ],
+    "hero": [
+      "conductive plastic supplier Europe electronics manufacturing",
+      "epoxy coating powders for automotive applications",
+      "adhesives for electronics assembly in Europe",
+      "die attach materials distributor high volume production",
+      "specialty chemicals supplier REACH compliant Europe"
+    ]
+  },
+  "total_queries": 12
+}
